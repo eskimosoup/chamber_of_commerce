@@ -75,8 +75,49 @@
 
 
 <div class="row">
-  <div class="large-8 columns">
-  
+  <div class="large-8 columns section small large-centered">
+    <%= image_tag 'http://placehold.it/728x90' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 section large columns">
+    <h2 class="full-header"><div>Members' Area</div></h2>
+    <%= link_to 'Sign In', '#', class: 'user-action' %><%= link_to 'Join', '#', class: 'user-register' %>
+
+    <div class="row">
+      <div class="large-4 columns">
+        <div class="content-box">
+          <div class="content-box-area-title">
+            <%= content_box_area_title "Members' News" %>
+          </div>
+
+          <div class="inner">
+            <ul class="plain-list news">
+              <li>
+                <%= link_to 'Google', '#' %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="large-4 columns">
+        <div class="content-box">
+          <div class="content-box-area-title">
+            <%= content_box_area_title "Members' Services" %>
+          </div>
+
+          <div class="inner text-center">
+            <ul class="plain-list">
+              <li>
+                <%= link_to 'Google', '#' %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

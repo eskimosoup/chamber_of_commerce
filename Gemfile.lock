@@ -1,6 +1,6 @@
 GIT
-  remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: ca7419f7025803313d9a6609e0ff1e61026fc07b
+  remote: git@github-pauleskimosoup:eskimosoup/optimadmin_generators.git
+  revision: 397877c3b097ad00a0833de63033632b1705c4c5
   specs:
     optimadmin_generators (0.1.0)
       rails

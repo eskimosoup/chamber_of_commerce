@@ -1,0 +1,20 @@
+.full-header {
+  background: transparent image-url('layout/headings/border.jpg') center repeat-x;
+  text-align: center;
+
+  div {
+    background: $turquoise;
+    display: inline-block;
+    color: $deep-blue;
+    font-family: $proxima-nova;
+    font-size: em(23px, 28px);
+    font-weight: $light;
+    letter-spacing: 2px;
+    padding: 0 em(30px, 23px);
+    text-transform: uppercase;
+  }
+}
+
+.plain-list {
+  list-style: none;
+}
