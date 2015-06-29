@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:eskimosoup/optimadmin_generators.git
+  revision: 0fddce538763c8c0bf1f26faf1faa3d45cdc8a53
+  specs:
+    optimadmin_generators (0.1.0)
+      rails
+
 PATH
   remote: ../optimadmin
   specs:
@@ -218,6 +225,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   optimadmin!
+  optimadmin_generators!
   pg
   rails (= 4.2.3)
   rails-assets-slick.js!
