@@ -1,0 +1,7 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'New Patron' %>
+
+<div class="main-content">
+  <%= render 'optimadmin/shared/module/form/back', path: patrons_path, title: 'Patron' %>
+
+  <%= render 'form', patron: @patron %>
+</div>

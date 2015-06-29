@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:eskimosoup/optimadmin_generators.git
+  revision: ca7419f7025803313d9a6609e0ff1e61026fc07b
+  specs:
+    optimadmin_generators (0.1.0)
+      rails
+
 PATH
   remote: ../optimadmin
   specs:
@@ -65,7 +72,7 @@ GEM
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
-    cancancan (1.11.0)
+    cancancan (1.12.0)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -90,15 +97,23 @@ GEM
       multipart-post (>= 1.2, < 3)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
-    google-api-client (0.8.2)
+    google-api-client (0.8.6)
       activesupport (>= 3.2)
       addressable (~> 2.3)
       autoparse (~> 0.3)
       extlib (~> 0.9)
       faraday (~> 0.9)
+      googleauth (~> 0.3)
       launchy (~> 2.4)
       multi_json (~> 1.10)
       retriable (~> 1.4)
+      signet (~> 0.6)
+    googleauth (0.4.1)
+      faraday (~> 0.9)
+      jwt (~> 1.4)
+      logging (~> 2.0)
+      memoist (~> 0.12)
+      multi_json (= 1.11)
       signet (~> 0.6)
     i18n (0.7.0)
     jbuilder (2.3.0)
@@ -117,16 +132,21 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    libv8 (3.16.14.7)
+    libv8 (3.16.14.9)
+    little-plugger (1.1.3)
+    logging (2.0.0)
+      little-plugger (~> 1.1)
+      multi_json (~> 1.10)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    memoist (0.12.0)
     mime-types (2.6.1)
     mini_magick (4.2.7)
     mini_portile (0.6.2)
     minitest (5.7.0)
-    multi_json (1.11.1)
+    multi_json (1.11.0)
     multipart-post (2.0.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
@@ -218,6 +238,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   optimadmin!
+  optimadmin_generators!
   pg
   rails (= 4.2.3)
   rails-assets-slick.js!

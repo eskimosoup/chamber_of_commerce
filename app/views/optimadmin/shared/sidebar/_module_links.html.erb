@@ -1,0 +1,45 @@
+<div class="content-categories-sidebar">
+  <div class="row collapse">
+    <div class="small-8 show-for-medium-down columns">
+      <%= link_to octicon('book') + 'Manage Content',
+                  '#',
+                  class: 'content-categories-toggle toggle-class',
+                  data: {
+                      class: 'content-categories-toggle-visiblity',
+                      container: '.content-categories, .content-categories-toggle',
+                      return: 'true'
+                  } %>
+    </div>
+    <div class="small-4 show-for-medium-down columns">
+      <%= link_to logout_path, class: 'logout-link' do %>
+        <%= octicon('sign-in') %> Logout
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row collapse">
+    <div class="large-12 small-8 left content-categories columns">
+      <div class="content-category-type">
+        Manage Your Content
+      </div>
+
+      <ul id="modules" class="content-category-list">
+        <%= module_link(model: Patron, path: patrons_path) %>
+
+        <% if can? :manage, Optimadmin::MenuItem %>
+          <li><%= link_to 'Site Navigation', menu_items_path %></li>
+        <% end %>
+      </ul>
+
+      <div class="content-category-type">
+        Website Visuals
+      </div>
+
+      <ul class="content-category-list">
+        <li>
+          <%= link_to 'Banners', '#' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
