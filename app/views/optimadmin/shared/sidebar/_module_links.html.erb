@@ -24,21 +24,12 @@
       </div>
 
       <ul id="modules" class="content-category-list">
+<%= module_link(model: Page, path: pages_path) %>
         <%= module_link(model: Patron, path: patrons_path) %>
 
         <% if can? :manage, Optimadmin::MenuItem %>
           <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <% end %>
-      </ul>
-
-      <div class="content-category-type">
-        Website Visuals
-      </div>
-
-      <ul class="content-category-list">
-        <li>
-          <%= link_to 'Banners', '#' %>
-        </li>
       </ul>
     </div>
   </div>

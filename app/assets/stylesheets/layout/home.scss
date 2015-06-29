@@ -2,7 +2,8 @@
   background: $deep-blue image-url('layout/home/background.jpg') no-repeat;
   max-height: 586px;
   overflow: hidden;
-  padding: em(58px) 0 0;
+  padding: em(58px) 0 em(42px);
+  margin: 0 0 em(46px);
 }
 
 .banner-focus {
@@ -88,6 +89,10 @@
     margin-left: em(20px);
   }
 
+  .navigation {
+    padding: em(25px) 0;
+  }
+
   .content {
     margin: 0 auto;
     width: 90%;
@@ -110,5 +115,15 @@
   .title {
     color: $deep-blue;
     font-weight: $semibold;
+  }
+}
+
+.section {
+  &.large {
+    margin-bottom: em(53px);
+  }
+
+  &.small {
+    margin-bottom: em(33px);
   }
 }
