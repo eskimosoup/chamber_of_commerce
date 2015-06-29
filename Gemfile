@@ -43,5 +43,9 @@ group :development, :test do
   gem 'spring'
 end
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-slick.js'
+end
+
 gem 'therubyracer'
 gem 'optimadmin', path: '../optimadmin'

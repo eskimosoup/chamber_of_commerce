@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree ./vendor/foundation
+//= require_tree ./vendor/foundation/libraries
+//= require vendor/foundation/foundation.js
+//= requrie vendor/foundation/foundation.equalizer.js
 // require_tree .
