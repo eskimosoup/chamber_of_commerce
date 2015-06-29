@@ -1,0 +1,8 @@
+<li>
+  <%= menu_item_presenter.link_to_webpage %>
+  <% if sub_menu_items.present? %>
+    <%= content_tag :ul, class: "depth-#{ depth }" do %>
+      <%= nested_menu_items(menu_items: sub_menu_items, depth: depth + 1) %>
+    <% end %>
+  <% end %>
+</li>
