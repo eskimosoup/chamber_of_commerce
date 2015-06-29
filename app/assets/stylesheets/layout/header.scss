@@ -7,10 +7,10 @@
   color: $white;
   display: inline-block;
   font-family: $proxima-nova;
-  font-weight: $semibold;
   font-size: em(14px);
-  text-decoration: none;
+  font-weight: $semibold;
   padding: em(4px) em(9px);
+  text-decoration: none;
   vertical-align: top;
 
   &:link,
@@ -38,14 +38,14 @@
 
 .header-navigation {
   list-style: none;
-  margin-top: em(12px);
+  margin: em(12px) 0 em(20px);
   overflow: hidden;
 }
 
 .menu-link {
-  text-decoration: none;
   float: left;
   margin: 0 em(10px);
+  text-decoration: none;
 
   &:link,
   &:visited {

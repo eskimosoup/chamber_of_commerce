@@ -1,11 +1,65 @@
 <section class="home">
-  <div class="row">
+  <div class="row collapse">
     <div class="large-5 columns">
-      
+      <div class="banner-focus">
+        <div class="image">
+          <%= image_tag 'placeholders/home-slider.jpg' %>
+        </div>
+
+        <div class="item-entry">
+          <div class="title">
+            Hull & Humber Chamber of Commerce Annual Dinner
+          </div>
+
+          <div class="date">
+            27/02/2015
+          </div>
+        </div>
+
+        <div class="summary">
+          <p>The Rt. Hon. Ed Balls MP, the Shadow Chancellor of the Exchequer, will be the Chamber’s VIP guest speaker just weeks before voters go to the polls on May 7, in the most unpredictable General Election in a generation.</p>
+        </div>
+      </div>
     </div>
 
     <div class="large-7 columns">
+      <ul class="content-focus-tabs">
+        <li class="active">
+          <%= link_to 'Events', '#' %>
+        </li>
 
+        <li>
+          <%= link_to 'News', '#' %>
+        </li>
+
+        <li>
+          <%= link_to "Members' Offers", '#' %>
+        </li>
+      </ul>
+
+      <div class="scrolling-slider">
+        <div class="content">
+          <div class="row">
+            <div class="large-2 columns date">
+              03/03/2015
+            </div>
+
+            <div class="large-10 columns title">
+              <%= link_to 'test', '#' %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="large-2 columns date">
+              03/03/2015
+            </div>
+
+            <div class="large-10 columns title">
+              <%= link_to 'test', '#' %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

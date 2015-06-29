@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'test', to: 'application#index', as: 'alternative'
-  root to: "application#index"
+  root to: 'application#index'
 
-  mount Optimadmin::Engine => "/admin"
+  mount Optimadmin::Engine => '/admin'
 end
