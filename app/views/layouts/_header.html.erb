@@ -1,0 +1,20 @@
+<header class="row">
+  <div class="large-4 columns">
+    <%= link_to root_path, title: global_site_settings['Name'], class: 'logo' do %>
+      <%= image_tag 'layout/header/logo.png', alt: global_site_settings['Name'] %>
+    <% end %>
+  </div>
+
+  <div class="large-8 columns">
+    <div class="text-right">
+      <% # Please skip over this 'hacky' method to remove the space that inline-block creates %>
+      <%= link_to 'Sign In', '#', class: 'user-action' %><%= link_to 'Join', '#', class: 'user-register' %>
+    </div>
+
+    <nav>
+      <ul class="header-navigation">
+        <%= nested_menu_items(menu_items: @header_menu.menu_items) %>
+      </ul>
+    </nav>
+  </div>
+</header>

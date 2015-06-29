@@ -1,0 +1,29 @@
+html,
+body {
+  font-size: 14px;
+}
+
+body {
+  color: $offset-black;
+}
+
+a {
+  text-decoration: none;
+
+  &:link {
+    color: $deep-blue;
+  }
+
+  &:visited {
+    color: $accent-blue;
+  }
+
+  &:hover {
+    color: $light-blue;
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: $light-blue;
+  }
+}
