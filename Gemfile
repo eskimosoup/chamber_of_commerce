@@ -43,6 +43,12 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'shoulda'
+  gem 'capybara'
+  gem 'minitest-reporters'
+end
+
 group :development do
   gem 'optimadmin_generators', git: 'git@github-pauleskimosoup:eskimosoup/optimadmin_generators.git'
 end
