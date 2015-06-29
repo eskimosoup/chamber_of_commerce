@@ -2,7 +2,7 @@
   background: $deep-blue image-url('layout/home/background.jpg') no-repeat;
   max-height: 586px;
   overflow: hidden;
-  padding: em(58px) 0 0;
+  padding: em(58px) 0 em(42px);
 }
 
 .banner-focus {
@@ -86,6 +86,10 @@
 
   .row {
     margin-left: em(20px);
+  }
+
+  .navigation {
+    padding: em(25px) 0;
   }
 
   .content {
