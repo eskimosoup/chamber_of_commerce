@@ -1,0 +1,25 @@
+<div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= internal_promotion_presenter.id %>">
+  <div class="large-4 small-6 columns" data-equalizer-watch="module-list">
+    <%= internal_promotion_presenter.name %>
+  </div>
+
+  <div class="large-4 small-6 columns" data-equalizer-watch="module-list">
+    <%= internal_promotion_presenter.area %>
+  </div>
+
+    <div class="large-1 hide-for-medium-down columns" data-equalizer-watch="module-list">
+      <%= internal_promotion_presenter.edit_image(:image) %>
+    </div>
+
+  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+    <%= internal_promotion_presenter.toggle_link %>
+  </div>
+
+  <div class="large-1 small-4 text-center columns" data-equalizer-watch="module-list">
+    <%= internal_promotion_presenter.edit_link %>
+  </div>
+
+  <div class="large-1 hide-for-medium-down text-center columns last" data-equalizer-watch="module-list">
+    <%= internal_promotion_presenter.delete_link %>
+  </div>
+</div>

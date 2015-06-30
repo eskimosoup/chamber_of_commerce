@@ -11,10 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629142737) do
+ActiveRecord::Schema.define(version: 20150630124924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title",                      null: false
+    t.integer  "category_id"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "image"
+    t.date     "date"
+    t.boolean  "display",     default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "internal_promotions", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.string   "image",                     null: false
+    t.string   "link"
+    t.string   "area",                      null: false
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "optimadmin_administrators", force: :cascade do |t|
     t.string   "username",               null: false
@@ -119,4 +149,5 @@ ActiveRecord::Schema.define(version: 20150629142737) do
     t.datetime "updated_at",                null: false
   end
 
+  add_foreign_key "articles", "categories"
 end

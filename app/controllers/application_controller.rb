@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   before_action :global_site_settings, :navigation
 
+  def index
+    @internal_promotions = InternalPromotionPresenter.new(object: InternalPromotion.where(display: true).order(created_at: :desc), view_template: view_context)
+  end
+
   private
 
   def global_site_settings
