@@ -1,12 +1,12 @@
-<%= render 'optimadmin/shared/header/main_title', title: 'Manage Patrons' %>
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Articles' %>
 
 <div class="main-content">
   <div class="row module-header collapse">
-    <%= render 'optimadmin/shared/module/index/new_item', title: 'Patron', object: Patron, path: new_patron_path %>
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Article', object: Article, path: new_article_path %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
     <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
-    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @patrons.size, path: root_url %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @articles.size, path: root_url %>
   </div>
 
   <div class="row collapse module-list-index header">
@@ -25,5 +25,6 @@
     <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
   </div>
 
-  <%= render_object @patrons %>
+  <%= render_object @articles %>
+  <%= paginate @articles %>
 </div>
