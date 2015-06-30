@@ -1,0 +1,26 @@
+<footer>
+  <div class="row">
+    <div class="large-2 columns">
+      <%= image_tag 'layout/footer/chambers-logo.png', alt: 'British Chambers of Commerce' %>
+    </div>
+
+    <div class="large-10 columns">
+      <div class="growing-businesses">
+        Growing your business, building our economy
+      </div>
+
+      <div class="footer-information">
+        <span class="copyright">
+          &copy; <%= global_site_settings['Name'] %> <%= Date.today.year %>
+        </span>
+        <nav class="footer-navigation">
+          <ul>
+            <%= nested_menu_items(menu_items: @footer_menu.menu_items) %>
+          </ul>
+        </nav>
+        <span class="site-authorship">
+          Site by <%= link_to 'Optimised', 'http://optimised.today' %>
+        </span>
+      </div>
+  </div>
+</footer>

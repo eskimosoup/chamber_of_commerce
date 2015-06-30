@@ -1,0 +1,73 @@
+.social-wrap {
+  margin: em(30px) 0;
+
+  .leaderboard {
+    margin: em(40px) auto 0;
+  }
+}
+
+.social-widget {
+  background: $white;
+  margin: 0 0 em(40px);
+  padding: em(30px);
+
+  .fb-follow {
+    margin-bottom: em(10px);
+  }
+}
+
+.small-social-widget {
+  background: $white;
+  padding: em(36px) em(20px);
+  line-height: 1.25;
+  text-align: center;
+
+  .linkedin {
+    border-right: 1px solid $light-grey;
+    padding-right: em(10px);
+  }
+
+  .linkedin-group {
+    padding-left: em(10px);
+  }
+}
+
+.newsletter-widget {
+  background: $deep-blue;
+  padding: em(30px) em(25px);
+  color: $bronze;
+
+  .title {
+    font-size: em(16px);
+    line-height: 1.25;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .last-word {
+    color: $white;
+  }
+
+  input[type='text'] {
+    border-radius: 12px;
+    padding: em(7px) em(12px);
+  }
+
+  .ghost-submit {
+    background: transparent;
+    border-radius: 0;
+    border: 3px solid $bronze;
+    color: $bronze;
+    letter-spacing: 1px;
+    outline: 0;
+    padding: em(7px) em(12px);
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+
+    &:hover {
+      background: $bronze;
+      color: $white;
+    }
+  }
+}

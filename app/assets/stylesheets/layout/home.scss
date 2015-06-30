@@ -22,7 +22,6 @@
     background: $bronze;
     color: $white;
     float: left;
-    font-family: $proxima-nova;
     font-size: em(22px);
     font-weight: $semibold;
     line-height: 1.1;
@@ -33,7 +32,6 @@
   .date {
     bottom: 0;
     color: $bronze;
-    font-family: $proxima-nova;
     font-weight: $bold;
     line-height: 1;
     position: absolute;
@@ -69,7 +67,6 @@
     border-top-right-radius: 10px;
     color: $white;
     display: inline-block;
-    font-family: $proxima-nova;
     font-size: em(16px);
     font-weight: $semibold;
     line-height: 1;
@@ -126,4 +123,84 @@
   &.small {
     margin-bottom: em(33px);
   }
+}
+
+.home-member-buttons {
+  position: relative;
+  text-align: right;
+  top: -13px;
+  margin-bottom: em(9px);
+
+  .member-register {
+    background: $grey;
+  }
+}
+
+.members-information {
+  position: relative;
+  min-height: 411px;
+
+  .preview-members-directory {
+    top: 0;
+    position: absolute;
+  }
+
+  .preview-second-home-item {
+    bottom: 0;
+    position: absolute;
+  }
+}
+
+
+.chamber-information {
+  position: relative;
+  min-height: 360px;
+
+  .preview-first-home-item {
+    top: 0;
+    position: absolute;
+  }
+
+  .preview-second-home-item {
+    bottom: 0;
+    position: absolute;
+  }
+}
+
+%preview-home-item {
+  .content {
+    color: $white;
+    padding: em(15px);
+  }
+
+  .title {
+    border-bottom: 4px solid $bronze;
+    display: block;
+    font-size: em(16px);
+    font-weight: $bold;
+    line-height: 1.25;
+    text-transform: uppercase;
+    padding-bottom: em(7px, 16px);
+
+    span {
+      font-weight: $black;
+    }
+  }
+
+  .summary {
+    font-size: em(12px);
+    line-height: 1.25;
+    margin: em(16px, 12px) 0;
+    padding: 0;
+  }
+}
+
+.preview-second-home-item {
+  @extend %preview-home-item;
+  background: $deep-blue;
+}
+
+.preview-first-home-item {
+  @extend %preview-home-item;
+  background: $light-blue;
 }

@@ -10,7 +10,6 @@ header {
 %header-user-link {
   color: $white;
   display: inline-block;
-  font-family: $proxima-nova;
   font-size: em(14px);
   font-weight: $semibold;
   padding: em(4px) em(9px);
@@ -28,13 +27,13 @@ header {
   }
 }
 
-.user-action {
+.member-action {
   @extend %header-user-link;
   background: $deep-blue;
   border-bottom-left-radius: 10px;
 }
 
-.user-register {
+.member-register {
   @extend %header-user-link;
   background: $bronze;
   border-bottom-right-radius: 10px;
@@ -46,22 +45,23 @@ header {
   overflow: hidden;
 }
 
-.menu-link {
-  float: left;
-  margin: 0 em(10px);
-  text-decoration: none;
-
-  &:link,
-  &:visited {
-    color: $grey;
-    font-family: $proxima-nova;
-    font-weight: $semibold;
-  }
-
-  &.active,
-  &:hover {
-    border-bottom: 2px solid $bronze;
-    color: $light-blue;
+.header-navigation {
+  .menu-link {
+    float: left;
+    margin: 0 em(10px);
     text-decoration: none;
+
+    &:link,
+    &:visited {
+      color: $grey;
+      font-weight: $semibold;
+    }
+
+    &.active,
+    &:hover {
+      border-bottom: 2px solid $bronze;
+      color: $light-blue;
+      text-decoration: none;
+    }
   }
 }

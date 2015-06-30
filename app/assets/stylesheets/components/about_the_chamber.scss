@@ -1,0 +1,48 @@
+.about-the-chamber {
+  background: $deep-blue;
+  color: $white;
+  padding: em(47px) 0 em(30px);
+
+  .full-header div {
+    background: $deep-blue;
+    color: $white;
+  }
+
+  p {
+    font-size: em(14px);
+  }
+
+  .highlight {
+    color: $bronze;
+    font-size: em(16px, 14px);
+    line-height: 2;
+    text-align: center;
+    padding: em(30px, 16px) em(40px, 16px);
+  }
+
+  .leaderboard {
+    margin-top: em(45px);
+  }
+}
+
+.chamber-slide {
+  h2 {
+    font-size: em(16px);
+    font-weight: $semibold;
+    color: $bronze;
+    letter-spacing: 1px;
+    line-height: 1.25;
+  }
+
+  .middle {
+    border-left: 1px solid $grey;
+    border-right: 1px solid $grey;
+    padding-left: em(20px);
+    padding-right: em(20px);
+  }
+
+  .columns {
+    padding-top: em(20px);
+    padding-bottom: em(20px);
+  }
+}
