@@ -1,12 +1,12 @@
 module ApplicationHelper
-  def content_box_area_title(title)
+  def two_tone_title(title)
     size = title.scan(/[\w-]+/).size
 
     if size > 1
-      half = (size / 2) - 1
-      first_half  = title.split(' ')[0..half].join(' ')
-      second_half = title.split(' ')[half + 1..-1].join(' ')
-      "#{first_half} <span class='secondary'>#{second_half}</span>".html_safe
+      length = size - 1
+      first_words  = title.split(' ')[0..length - 1].join(' ')
+      last_word = title.split(' ').last
+      "#{first_words} <span class='last-word'>#{last_word}</span>".html_safe
     else
       "#{title}"
     end

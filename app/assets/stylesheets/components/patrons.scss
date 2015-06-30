@@ -1,0 +1,13 @@
+.home-patrons {
+  background: $white;
+  padding: em(40px) 0;
+
+  .full-header div {
+    background: $white;
+    color: $bronze;
+  }
+
+  .patron-logos img {
+    margin: 0 em(40px);
+  }
+}

@@ -1,0 +1,75 @@
+<div class="social-wrap">
+  <div class="row">
+    <div class="small-12 columns">
+      <h2 class="full-header"><div>We're Social</div></h2>
+    </div>
+  </div>
+
+  <div class="row" data-equalizer="social-area">
+    <div class="large-6 columns">
+      <div class="social-widget" data-equalizer-watch="social-area">
+        <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hhchamber" data-widget-id="615835637162356737">Tweets by @hhchamber</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+    </div>
+
+    <div class="large-6 columns">
+      <div class="social-widget" data-equalizer-watch="social-area">
+        <%= content_for :footer do %>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <% end %>
+
+        <div class="fb-follow" data-href="https://www.facebook.com/pages/Hull-Humber-Chamber-of-Commerce/578285605536152" data-width="500" data-layout="standard" data-show-faces="false"></div>
+
+        <div class="fb-page" data-href="https://www.facebook.com/pages/Hull-Humber-Chamber-of-Commerce/578285605536152" data-width="500" data-height="560" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/pages/Hull-Humber-Chamber-of-Commerce/578285605536152"><a href="https://www.facebook.com/pages/Hull-Humber-Chamber-of-Commerce/578285605536152">Hull &amp; Humber Chamber of Commerce</a></blockquote></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-4 columns">
+      <div class="small-social-widget">
+        <%= link_to 'http://www.linkedin.com/company/hull-&-humber-chamber-of-commerce', title: 'LinkedIn', class: 'linkedin' do %>
+          <%= image_tag 'components/social-media/linked-in.jpg', alt: 'LinkedIn' %>
+        <% end %>
+
+        <%= link_to 'https://www.linkedin.com/groups?gid=2941393&goback=%2Ebzo_*1_*1_*1_*1_*1_*1_*1_*1_hull*5%26*5humber*5chamber*5of*5commerce&trk=rr_grp_name', title: 'Join our Group on LinkedIn', class: 'linkedin-group' do %>
+          <%= image_tag 'components/social-media/linked-in-group.jpg', alt: 'Join our Group on  LinkedIn' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="small-8 columns">
+      <div class="newsletter-widget">
+        <div class="row">
+          <div class="large-3 small-12 title columns">
+            <%= two_tone_title 'Sign Up to Our Newsletter' %>
+          </div>
+
+          <%= form_tag do %>
+            <div class="large-6 small-12 columns">
+              <%= text_field_tag :email, nil, placeholder: 'Your email address' %>
+            </div>
+
+            <div class="large-3 columns">
+              <%= submit_tag 'Submit', class: 'ghost-submit' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-10 columns leaderboard small-centered">
+      <%= image_tag 'http://placehold.it/728x90' %>
+    </div>
+  </div>
+</div>

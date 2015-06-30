@@ -1,0 +1,57 @@
+footer {
+  background: $light-blue;
+  color: $pale-blue;
+  padding: em(40px) 0 0;
+
+  a {
+    &:link,
+    &:visited {
+      color: $pale-blue;
+    }
+
+    &:hover,
+    &:active {
+      color: $white;
+    }
+  }
+}
+
+.growing-businesses {
+  color: $white;
+  font-size: em(21px);
+  font-weight: $light;
+  margin-bottom: em(30px, 21px);
+  text-align: center;
+}
+
+.footer-navigation {
+  ul {
+    border-left: 1px solid $pale-blue;
+    list-style: none;
+    overflow: hidden;
+    padding-left: em(5px);
+  }
+
+  li {
+    float: left;
+
+    &:last-of-type .menu-link {
+      margin-right: 0;
+    }
+  }
+
+  .menu-link {
+    border-right: 1px solid $pale-blue;
+    margin-right: em(5px);
+    padding-right: em(5px);
+  }
+}
+
+.footer-information {
+  overflow: hidden;
+
+  .footer-navigation {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+}

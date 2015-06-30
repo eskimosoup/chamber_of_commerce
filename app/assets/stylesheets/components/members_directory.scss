@@ -1,0 +1,21 @@
+.preview-members-directory {
+  background: $light-blue;
+  text-align: center;
+  padding: em(25px);
+  width: 100%;
+
+  .title {
+    color: $bronze;
+    display: block;
+    font-size: em(16px);
+    font-weight: $bold;
+    margin: em(25px) 0 0;
+    text-align: center;
+    text-transform: uppercase;
+
+    span {
+      color: $white;
+      font-weight: $black;
+    }
+  }
+}

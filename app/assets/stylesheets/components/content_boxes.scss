@@ -3,7 +3,8 @@
   padding: em(22px);
 
   .inner {
-    padding: 0 em(8px);
+    padding: 0 em(8px) em(71px);
+    position: relative;;
   }
 
   .news a {
@@ -11,12 +12,18 @@
     padding: em(5px);
     border-bottom: 1px solid $light-grey;
   }
+
+  .button-text-center {
+    bottom: em(22px);
+    text-align: center;
+    position: absolute;
+    width: 80%;
+  }
 }
 
 .content-box-area-title {
   border-bottom: 4px solid $bronze;
   color: $bronze;
-  font-family: $proxima-nova;
   font-size: em(16px);
   font-weight: $bold;
   margin-bottom: em(25, 16px);
@@ -27,5 +34,26 @@
   span {
     color: $deep-blue;
     font-weight: $black;
+  }
+}
+
+.content-box-ghost-button {
+  border: 3px solid $light-blue;
+  display: inline-block;
+  font-size: em(12px);
+  letter-spacing: 1px;
+  padding: em(8px, 12px) em(26px, 12px);
+  text-transform: uppercase;
+
+  &:hover,
+  &:active {
+    background: $light-blue;
+    color: $white;
+    text-decoration: none;
+  }
+
+  &.small {
+    padding-left: em(7px, 12px);
+    padding-right: em(7px, 12px);
   }
 }

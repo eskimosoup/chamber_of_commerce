@@ -3,7 +3,6 @@
   <head>
     <title><%= global_site_settings['Name'] %></title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <script src="//use.typekit.net/jhn0hwh.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
@@ -15,5 +14,9 @@
     <%= yield %>
 
     <%= render 'layouts/footer' %>
+
+    <%= javascript_include_tag 'application' %>
+
+    <%= yield :footer %>
   </body>
 </html>

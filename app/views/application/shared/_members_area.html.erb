@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="small-12 section large columns" data-equalizer="row-content-box">
+    <h2 class="full-header members-header"><div>Members' Area</div></h2>
+
+    <div class="home-member-buttons">
+      <%= render 'shared/member_buttons' %>
+    </div>
+
+    <div class="row">
+      <div class="small-4 columns">
+        <div class="content-box"  data-equalizer-watch="row-content-box">
+          <div class="content-box-area-title">
+            <%= two_tone_title "Members' News" %>
+          </div>
+
+          <div class="inner">
+            <ul class="plain-list news">
+              <li>
+                <%= link_to 'Google', '#' %>
+              </li>
+            </ul>
+          </div>
+
+          <div class="button-text-center">
+            <%= link_to 'See All', '#', class: 'content-box-ghost-button' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="small-4 columns">
+        <div class="content-box" data-equalizer-watch="row-content-box">
+          <div class="content-box-area-title">
+            <%= two_tone_title "Members' Services" %>
+          </div>
+
+          <div class="inner text-center">
+            <ul class="plain-list">
+              <li>
+                <%= link_to 'Google', '#' %>
+              </li>
+            </ul>
+          </div>
+
+          <div class="button-text-center">
+            <%= link_to 'See All', '#', class: 'content-box-ghost-button' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="small-4 columns">
+        <div class="members-information"  data-equalizer-watch="row-content-box">
+          <div class="preview-members-directory">
+            <%= link_to (image_tag 'components/members/directory-a-z.png', alt: 'Members A to Z'), '#', title: 'Members A to Z' %>
+
+
+            <%= link_to (two_tone_title "Members' Directory"), '#', title: "Members' Directory", class: 'title' %>
+          </div>
+
+          <div class="preview-second-home-item">
+            <div class="row collapse">
+              <div class="small-6 columns">
+                <%= image_tag 'http://placehold.it/162x183' %>
+              </div>
+
+              <div class="small-6 columns">
+                <div class="content">
+                  <div class="title">
+                    <%= two_tone_title "Business Intelligence Magazine" %>
+                  </div>
+
+                  <p class="summary">
+                    Publicise your business with free articles inside
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
