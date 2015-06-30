@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_category, only: [:show, :edit, :update, :destroy]
 
     def index
-      @categories = Category.all
+      @categories = Category.order(title: :asc).map{|x| Optimadmin::CategoryPresenter.new(object: x, view_template: view_context) }
     end
 
     def show
@@ -42,7 +42,7 @@ module Optimadmin
 
 
     def set_category
-      @category = @category.find(params[:id])
+      @category = Category.find(params[:id])
     end
 
     def category_params

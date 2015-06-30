@@ -12,6 +12,14 @@ module Optimadmin
       end
     end
 
+    def edit_link
+      h.link_to pencil, h.polymorphic_url([:edit, @object]), class: 'menu-item-control'
+    end
+
+    def delete_link
+      h.link_to trash_can, h.polymorphic_url(@object), method: :delete, data: { confirm: 'Are you sure?' }, class: 'menu-item-control'
+    end
+
     private
 
     def h
