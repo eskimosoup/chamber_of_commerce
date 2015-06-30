@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_patron, only: [:show, :edit, :update, :destroy]
 
     def index
-      @patrons = Patron.page(params[:page]).per(15)
+      @patrons = Patron.order(:position)
     end
 
     def show
