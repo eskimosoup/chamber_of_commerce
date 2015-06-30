@@ -24,6 +24,7 @@
       </div>
 
       <ul id="modules" class="content-category-list">
+        <%= module_link(content: "Internal Promotions", model: InternalPromotion, path: internal_promotions_path) %>
         <%= module_link(model: Category, path: categories_path) %>
         <%= module_link(model: Article, path: articles_path) %>
         <%= module_link(model: Page, path: pages_path) %>
