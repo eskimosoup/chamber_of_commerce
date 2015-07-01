@@ -7,3 +7,5 @@
 
 * Fix view link in base presenter
 * Fix page select in navigation
+
+* Add search into admin controllers

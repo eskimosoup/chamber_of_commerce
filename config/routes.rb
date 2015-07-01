@@ -4,12 +4,21 @@ Rails.application.routes.draw do
 
   resources :magazines, only: [:index]
   resources :pages, only: [:show]
+  resources :newsletter_signups, only: [:new, :create]
 
   root to: 'application#index'
 
   mount Optimadmin::Engine => '/admin'
 end
 Optimadmin::Engine.routes.draw do
+  resources :newsletter_signups, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+    end
+  end
   resources :additional_contents, except: [:show] do
     collection do
       post 'order'
