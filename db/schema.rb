@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701141814) do
+ActiveRecord::Schema.define(version: 20150701151112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,28 @@ ActiveRecord::Schema.define(version: 20150701141814) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "event_categories", force: :cascade do |t|
+    t.integer  "parent_id"
+    t.string   "name",                         null: false
+    t.boolean  "has_tables"
+    t.boolean  "food_event"
+    t.boolean  "bookable",      default: true
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.integer  "position"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "event_category_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "event_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "event_category_anc_desc_idx", unique: true, using: :btree
+  add_index "event_category_hierarchies", ["descendant_id"], name: "event_category_desc_idx", using: :btree
 
   create_table "event_locations", force: :cascade do |t|
     t.string   "address_line_1", null: false

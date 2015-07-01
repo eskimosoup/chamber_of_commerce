@@ -1,0 +1,37 @@
+<div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= event_category_presenter.id %>">
+  <div class="large-1 small-2 columns" data-equalizer-watch="module-list">
+    <%= event_category_presenter.detail_toggle_link %>
+  </div>
+
+  <div class="large-9 small-6 columns" data-equalizer-watch="module-list">
+    <%= event_category_presenter.name %>
+  </div>
+
+  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+    <%= event_category_presenter.edit_link %>
+  </div>
+
+  <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
+    <%= event_category_presenter.delete_link %>
+  </div>
+
+  <div class="row module-list-detail hide" id="index-list-<%= event_category_presenter.id %>">
+    <div class="small-12 columns module-list-summary last">
+      <ul>
+        <li>Bookable: <%= event_category_presenter.bookable %></li>
+        <li>Has tables: <%= event_category_presenter.has_tables %></li>
+        <li>Food event: <%= event_category_presenter.food_event %></li>
+      </ul>
+    </div>
+  </div>
+
+  <% if event_category_presenter.children.present? %>
+    <div class="row">
+      <div class="small-12 small-centered columns">
+        <% event_category_presenter.children.each do |child| %>
+          <%= render partial: 'event_category', locals: { event_category_presenter: Optimadmin::EventCategoryPresenter.new(object: child, view_template: self) } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
