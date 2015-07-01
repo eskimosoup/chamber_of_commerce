@@ -6,7 +6,7 @@ class Article < ActiveRecord::Base
   belongs_to :category
   mount_uploader :image, ArticleUploader
 
-  validates :title, :content, :date, presence: true
+  validates :title, :content, :date, :category_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }
 
   def slug_candidates
