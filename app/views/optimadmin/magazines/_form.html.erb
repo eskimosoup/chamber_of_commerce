@@ -1,0 +1,56 @@
+<%= form_for(magazine) do |f| %>
+<% if magazine.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(magazine.errors.count, "error") %> prohibited this magazine from being saved:</h2>
+
+    <ul>
+      <% magazine.errors.full_messages.each do |message| %> %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+  <div class="tabs prevent-flash">
+    <ul class="tab-list">
+      <li><a href="#tabs-1">Content</a></li>
+      <li><a href="#tabs-2">Media</a></li>
+      <li><a href="#tabs-3">Settings</a></li>
+      <li>
+        <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+          <%= octicon('chevron-down') %>
+        <% end %>
+      </li>
+    </ul>
+
+    <%= field_set_tag nil, id: 'tabs-1' do %>
+            <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+            <div class="field">
+        <%= f.label :date %><br>
+        <%= f.text_field :date, class: 'datepicker' %>
+      </div>
+          <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-2' do %>
+            <%= f.image_field :image %>
+
+            <%= f.document_field :file %>
+          <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-3' do %>
+            <div class="field">
+        <%= f.label :display %><br>
+        <%= f.check_box :display %>
+      </div>
+          <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

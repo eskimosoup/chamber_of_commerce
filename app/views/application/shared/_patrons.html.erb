@@ -8,11 +8,7 @@
   <div class="row">
     <div class="small-12 columns">
       <div class="patron-logos text-center">
-        <%= image_tag 'http://placehold.it/87x57' %>
-        <%= image_tag 'http://placehold.it/110x60' %>
-        <%= image_tag 'http://placehold.it/110x60' %>
-        <%= image_tag 'http://placehold.it/87x57' %>
-        <%= image_tag 'http://placehold.it/87x57' %>
+        <%= render partial: 'patrons/patron', collection: @patrons, as: :patron_presenter %>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@ module Optimadmin
   class PatronsController < Optimadmin::ApplicationController
     before_action :set_patron, only: [:show, :edit, :update, :destroy]
 
-    edit_images_for Patron, [[:image, { homepage: ['fill', 118, 60] }]]
+    edit_images_for Patron, [[:image, { show: ['fill', 118, 60] }]]
 
     def index
       @patrons = Patron.order(position: :asc).map{|x| Optimadmin::PatronPresenter.new(object: x, view_template: view_context) }
@@ -44,7 +44,7 @@ module Optimadmin
 
 
     def set_patron
-      @patron = @patron.find(params[:id])
+      @patron = Patron.find(params[:id])
     end
 
     def patron_params

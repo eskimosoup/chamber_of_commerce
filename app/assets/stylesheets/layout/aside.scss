@@ -1,0 +1,31 @@
+.aside-content-wrap {
+  background: $white;
+  padding: em(20px);
+  margin: 0 0 em(20px);
+
+  h3 {
+    border-bottom: 4px solid $bronze;
+    font-size: em(16px);
+    font-weight: $bold;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: em(8px, 16px);
+    margin-bottom: em(11px, 16px);
+  }
+}
+
+.aside-item {
+  border-bottom: 1px solid $light-grey;
+  margin: em(8px) em(1px);
+  padding: 0 em(5px) em(16px);
+
+  .date {
+    color: $bronze;
+    font-weight: $light;
+  }
+
+  .title {
+    font-weight: $semibold;
+    line-height: 1.25;
+  }
+}

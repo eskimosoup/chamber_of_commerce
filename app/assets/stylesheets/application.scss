@@ -1,3 +1,16 @@
+/*
+ *= require_self
+ *= require slick.js/slick.scss
+ *= require slick.js/slick-theme.scss
+ */
+
+
+// Use this: http://dev.ghost.org/css-at-ghost/#namingthings
+// vendor: third-party styles
+// lib: SASS libraries, variables
+// global: can be used on sites that use this admin system (i.e. reset, editor)
+// layout: global layout (e.g. header, footer)
+// components: individual global elements (i.e. forms)
 @import 'vendor/foundation',
 'vendor/normalize',
 'lib/variables',
@@ -6,7 +19,11 @@
 'layout/header',
 'layout/home',
 'layout/footer',
+'layout/aside',
+'layout/content',
 'components/typography',
+'components/magazines',
+'components/pagination',
 'components/content_boxes',
 'components/members_directory',
 'components/business_intelligence_magazine',
