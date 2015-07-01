@@ -53,6 +53,7 @@ header {
 
     &:link,
     &:visited {
+      border-bottom: 2px solid $white; // prevent 2px jump on hover when no active
       color: $grey;
       font-weight: $semibold;
     }

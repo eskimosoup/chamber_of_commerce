@@ -1,0 +1,29 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Event Categories' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Event Category', object: EventCategory, path: new_event_category_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%#= render 'optimadmin/shared/module/index/pagination' %>
+    <%#= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
+    <%#= render 'optimadmin/shared/module/index/recycle_bin', items: @event_categories.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 small-2' do %>
+      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+    <% end %>
+
+    <%= list_item 'large-9 small-4' do 'Name' end %>
+
+    <%= list_item { 'Edit' } %>
+    <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
+  </div>
+
+  <div class='module-sortable' data-module="EventCategory">
+    <% @event_categories.each do |event_category_presenter| %>
+      <%= render partial: 'event_category', locals: { event_category_presenter: event_category_presenter } %>
+    <% end %>
+  </div>
+  <%= paginate @event_categories %>
+</div>

@@ -1,6 +1,6 @@
 GIT
-  remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: 63e8a87b50dd19fc73f221e164144dbebc137417
+  remote: git@github-pauleskimosoup:eskimosoup/optimadmin_generators.git
+  revision: fe39d0d78301979d1cfb2a64aad65fa1b416b95a
   specs:
     optimadmin_generators (0.3.1)
       rails
@@ -109,6 +109,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    geocoder (1.2.9)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     google-api-client (0.8.6)
@@ -266,6 +267,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   factory_girl_rails
   friendly_id (~> 5.1.0)
+  geocoder
   jbuilder (~> 2.0)
   jquery-rails
   minitest-reporters
