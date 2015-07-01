@@ -1,0 +1,28 @@
+@import 'optimadmin/lib/mixins';
+@import 'optimadmin/global/additional_reset';
+@import 'lib/variables';
+
+.image-left {
+  float: left;
+  margin: em(16px) em(16px) em(16px) 0;
+}
+
+.image-right {
+  float: right;
+  margin: em(16px) 0 em(16px) em(16px);
+}
+
+#tinymce,
+.main-content-wrap {
+  p,
+  ul,
+  ol {
+    font-size: em(14px);
+  }
+
+  .paragraph-highlight {
+    color: $bronze;
+    font-size: em(22px);
+    line-height: 1.25;
+  }
+}

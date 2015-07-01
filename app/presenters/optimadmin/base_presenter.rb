@@ -16,6 +16,10 @@ module Optimadmin
       h.it_edit_images(image).call(@object)
     end
 
+    def view_link
+      h.link_to eye, h.polymorphic_url(@object), class: 'menu-item-control'
+    end
+
     def edit_link
       h.link_to pencil, h.polymorphic_url([:edit, @object]), class: 'menu-item-control'
     end

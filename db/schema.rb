@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701111631) do
+ActiveRecord::Schema.define(version: 20150701130111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,12 @@ ActiveRecord::Schema.define(version: 20150701111631) do
     t.boolean  "display",    default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "newsletter_signups", force: :cascade do |t|
+    t.string   "email_address"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "optimadmin_administrators", force: :cascade do |t|
@@ -165,12 +171,14 @@ ActiveRecord::Schema.define(version: 20150701111631) do
   end
 
   create_table "pages", force: :cascade do |t|
-    t.string   "title",                     null: false
+    t.string   "title",                        null: false
     t.text     "content"
     t.string   "image"
-    t.boolean  "display",    default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "slug"
+    t.string   "suggested_url"
   end
 
   create_table "patrons", force: :cascade do |t|

@@ -1,0 +1,23 @@
+<div class="newsletter-widget">
+  <div class="row">
+    <div class="large-3 small-12 title columns">
+      <%= two_tone_title 'Sign Up to Our Newsletter' %>
+    </div>
+
+    <%= form_for @newsletter_signup, remote: true do |f| %>
+      <div class="large-6 small-12 columns">
+        <% if @newsletter_signup.errors.any? %>
+          <% @newsletter_signup.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        <% end %>
+
+        <%= f.text_field :email_address, placeholder: 'Your email address' %>
+      </div>
+
+      <div class="large-3 columns">
+        <%= f.submit 'Submit', class: 'ghost-submit' %>
+      </div>
+    <% end %>
+  </div>
+</div>

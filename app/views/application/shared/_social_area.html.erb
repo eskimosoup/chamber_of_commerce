@@ -47,23 +47,7 @@
     </div>
 
     <div class="small-8 columns">
-      <div class="newsletter-widget">
-        <div class="row">
-          <div class="large-3 small-12 title columns">
-            <%= two_tone_title 'Sign Up to Our Newsletter' %>
-          </div>
-
-          <%= form_tag do %>
-            <div class="large-6 small-12 columns">
-              <%= text_field_tag :email, nil, placeholder: 'Your email address' %>
-            </div>
-
-            <div class="large-3 columns">
-              <%= submit_tag 'Submit', class: 'ghost-submit' %>
-            </div>
-          <% end %>
-        </div>
-      </div>
+      <%= render 'newsletter_signups/form' %>
     </div>
   </div>
 

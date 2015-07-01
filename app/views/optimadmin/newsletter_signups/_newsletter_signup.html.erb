@@ -1,0 +1,9 @@
+<div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= newsletter_signup_presenter.id %>">
+  <div class="large-11 small-12 columns" data-equalizer-watch="module-list">
+    <%= newsletter_signup_presenter.email_address %>
+  </div>
+
+  <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
+    <%= newsletter_signup_presenter.delete_link %>
+  </div>
+</div>

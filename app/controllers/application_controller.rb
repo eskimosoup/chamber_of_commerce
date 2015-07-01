@@ -21,5 +21,6 @@ class ApplicationController < ActionController::Base
     @internal_promotions = InternalPromotionPresenter.new(object: InternalPromotion.where(display: true).order(created_at: :desc), view_template: view_context)
     @header_menu = Optimadmin::Menu.new(name: "header")
     @footer_menu = Optimadmin::Menu.new(name: "footer")
+    @newsletter_signup = NewsletterSignup.new
   end
 end

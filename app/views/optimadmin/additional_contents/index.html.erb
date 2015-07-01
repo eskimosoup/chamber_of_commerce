@@ -5,7 +5,7 @@
     <%= render 'optimadmin/shared/module/index/new_item', title: 'Additional Content', object: AdditionalContent, path: new_additional_content_path %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
-    <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
+    <%= render 'optimadmin/shared/module/index/order', options: [['Area', 'area']] %>
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @additional_contents.size, path: root_url %>
   </div>
 
@@ -23,7 +23,7 @@
     <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
   </div>
 
-  
+
   <% @additional_contents.each do |additional_content_presenter| %>
     <%= render partial: 'additional_content', locals: { additional_content_presenter: additional_content_presenter } %>
   <% end %>
