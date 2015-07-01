@@ -1,6 +1,7 @@
 NavigationMenus = %w( header footer )
 
 NavigationLinks = {
-  'Module Page' => 'Optimadmin::ModulePage',
-  'External Link' => 'Optimadmin::ExternalLink'
+  'Page' => 'Page',
+  'External Link' => 'Optimadmin::ExternalLink',
+  'Module Page' => 'Optimadmin::ModulePage'
 }
