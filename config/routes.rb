@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'test', to: 'application#index', as: 'alternative'
-
+  resources :articles, only: [:index, :show]
   resources :magazines, only: [:index]
   resources :pages, only: [:show]
   resources :newsletter_signups, only: [:new, :create]
