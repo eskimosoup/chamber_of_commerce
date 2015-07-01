@@ -25,6 +25,9 @@
     <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
   </div>
 
-  <%= render_object @articles %>
+  <% @articles.each do |article_presenter| %>
+    <%= render partial: 'article', locals: { article_presenter: article_presenter } %>
+  <% end %>
+  <%#= render partial: 'article', collection: @articles, as: :article_presenter %>
   <%= paginate @articles %>
 </div>
