@@ -11,12 +11,12 @@
   </div>
 <% end %>
 
-  
+
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  
+
 
   <div class="tabs prevent-flash">
     <ul class="tab-list">
@@ -31,35 +31,37 @@
     </ul>
 
     <%= field_set_tag nil, id: 'tabs-1' do %>
-            <div class="field">
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
-      </div>
-            <div class="field">
+      <div class="field">
         <%= f.label :category_id %><br>
-        <%= f.text_field :category_id %>
+        <%= f.select :category_id, Category.order(title: :asc).pluck(:title, :id) %>
       </div>
-            <div class="field">
+
+      <div class="field">
         <%= f.label :summary %><br>
         <%= f.text_area :summary, class: 'tinymce' %>
       </div>
-            <div class="field">
+
+      <div class="field">
         <%= f.label :content %><br>
         <%= f.text_area :content, class: 'tinymce' %>
       </div>
-            <div class="field">
+
+      <div class="field">
         <%= f.label :date %><br>
-        <%= f.date_select :date %>
+        <%= f.text_field :date, class: 'datepicker' %>
       </div>
-          <% end %>
+    <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>
-            <%= f.image_field :image %>
-      
-          <% end %>
+      <%= f.image_field :image %>
+    <% end %>
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
-          <% end %>
+      <div class="field">
+        <%= f.label :display %><br>
+        <%= f.check_box :display %>
+      </div>
+    <% end %>
   </div>
 
   <div class="actions">

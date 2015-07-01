@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_article, only: [:show, :edit, :update, :destroy]
 
     def index
-      @articles = Article.order(date: :desc).page(params[:page]).per(15)
+      @articles = Optimadmin::BaseCollectionPresenter.new(collection: Article.page(params[:page]).per(15), view_template: view_context, presenter: Optimadmin::ArticlePresenter)
     end
 
     def show
@@ -42,11 +42,11 @@ module Optimadmin
 
 
     def set_article
-      @article = @article.find(params[:id])
+      @article = Article.find(params[:id])
     end
 
     def article_params
-      params.require(:article).permit(:title, :category_id, :summary, :content, :image, :date)
+      params.require(:article).permit(:title, :category_id, :summary, :content, :image, :date, :display)
     end
   end
 end
