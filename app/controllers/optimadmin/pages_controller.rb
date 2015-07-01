@@ -2,6 +2,8 @@ module Optimadmin
   class PagesController < Optimadmin::ApplicationController
     before_action :set_page, only: [:show, :edit, :update, :destroy]
 
+    edit_images_for Page, [[:image, { show: ['fit', 218, 135] }]]
+
     def index
       @pages = Optimadmin::BaseCollectionPresenter.new(collection: Page.page(params[:page]).per(15), view_template: view_context, presenter: Optimadmin::PagePresenter)
     end
@@ -19,7 +21,7 @@ module Optimadmin
     def create
       @page = Page.new(page_params)
       if @page.save
-        redirect_to @page, notice: 'Page was successfully created.'
+        redirect_to pages_url, notice: 'Page was successfully created.'
       else
         render :new
       end
@@ -27,7 +29,7 @@ module Optimadmin
 
     def update
       if @page.update(page_params)
-        redirect_to @page, notice: 'Page was successfully updated.'
+        redirect_to pages_url, notice: 'Page was successfully updated.'
       else
         render :edit
       end
@@ -42,11 +44,11 @@ module Optimadmin
 
 
     def set_page
-      @page = @page.find(params[:id])
+      @page = Page.friendly.find(params[:id])
     end
 
     def page_params
-      params.require(:page).permit(:title, :content, :image, :display)
+      params.require(:page).permit(:title, :content, :image, :image_cache, :remove_image, :display, :suggested_url)
     end
   end
 end

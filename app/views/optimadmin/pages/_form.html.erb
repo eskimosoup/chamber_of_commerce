@@ -11,12 +11,12 @@
   </div>
 <% end %>
 
-  
+
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  
+
 
   <div class="tabs prevent-flash">
     <ul class="tab-list">
@@ -32,10 +32,6 @@
 
     <%= field_set_tag nil, id: 'tabs-1' do %>
             <div class="field">
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
-      </div>
-            <div class="field">
         <%= f.label :content %><br>
         <%= f.text_area :content, class: 'tinymce' %>
       </div>
@@ -43,10 +39,15 @@
 
     <%= field_set_tag nil, id: 'tabs-2' do %>
             <%= f.image_field :image %>
-      
+
           <% end %>
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
+            <div class="field">
+              <%= f.label :suggested_url %><br />
+              <%= f.text_field :suggested_url %>
+            </div>
+
             <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>

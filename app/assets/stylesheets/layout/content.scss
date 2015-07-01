@@ -8,6 +8,13 @@
   background: $white;
   padding: em(20px);
 
+  .content {
+    overflow: hidden;
+    padding: 0 em(10px);
+  }
+
+  // define styles for editable elements in editor.scss
+
   h1 {
     border-bottom: 4px solid $bronze;
     color: $light-blue;
@@ -16,13 +23,7 @@
     padding: 0 0 em(5px, 38px) em(10px, 38px);
   }
 
-  p,
-  ul,
-  ol {
-    font-size: em(14px);
-  }
-
-  .content {
-    padding: 0 em(10px);
+  .page-image {
+    border: 4px solid $deep-grey;
   }
 }

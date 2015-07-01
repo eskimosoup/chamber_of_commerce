@@ -6,3 +6,4 @@
 
 
 * Fix view link in base presenter
+* Fix page select in navigation
