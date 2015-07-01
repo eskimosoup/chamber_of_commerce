@@ -37,6 +37,14 @@
           <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <% end %>
       </ul>
+
+      <div class="content-category-type">
+        Manage Events
+      </div>
+
+      <ul class="content-category-list"
+        <%= module_link(content: "Event Locaions", model: EventLocation, path: event_locations_path) %>
+      </ul>
     </div>
   </div>
 </div>

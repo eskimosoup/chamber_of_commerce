@@ -1,0 +1,7 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Edit Event Location' %>
+
+<div class="main-content">
+  <%= render 'optimadmin/shared/module/form/back', path: event_locations_path, title: 'Event Location' %>
+
+  <%= render 'form', event_location: @event_location %>
+</div>

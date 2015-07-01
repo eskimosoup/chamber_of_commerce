@@ -1,15 +1,25 @@
 Rails.application.routes.draw do
-
   resources :articles, only: [:index, :show]
   resources :magazines, only: [:index]
   resources :pages, only: [:show]
   resources :newsletter_signups, only: [:new, :create]
+  resources :event_locations, only: [:show], path: 'event-locations'
 
   root to: 'application#index'
 
   mount Optimadmin::Engine => '/admin'
 end
 Optimadmin::Engine.routes.draw do
+  get 'event_locations/show'
+
+  resources :event_locations, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+    end
+  end
   resources :newsletter_signups, except: [:show] do
     collection do
       post 'order'
