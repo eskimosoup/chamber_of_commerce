@@ -2,8 +2,10 @@ module Optimadmin
   class PatronsController < Optimadmin::ApplicationController
     before_action :set_patron, only: [:show, :edit, :update, :destroy]
 
+    edit_images_for Patron, [[:image, { homepage: ['fill', 118, 60] }]]
+
     def index
-      @patrons = Patron.order(:position)
+      @patrons = Patron.order(position: :asc).map{|x| Optimadmin::PatronPresenter.new(object: x, view_template: view_context) }
     end
 
     def show
@@ -19,7 +21,7 @@ module Optimadmin
     def create
       @patron = Patron.new(patron_params)
       if @patron.save
-        redirect_to @patron, notice: 'Patron was successfully created.'
+        redirect_to patrons_url, notice: 'Patron was successfully created.'
       else
         render :new
       end
@@ -27,7 +29,7 @@ module Optimadmin
 
     def update
       if @patron.update(patron_params)
-        redirect_to @patron, notice: 'Patron was successfully updated.'
+        redirect_to patrons_url, notice: 'Patron was successfully updated.'
       else
         render :edit
       end
