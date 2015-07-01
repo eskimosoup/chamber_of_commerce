@@ -1,5 +1,5 @@
 module Optimadmin
-  class PatronPresenter < BasePresenter
+  class PatronPresenter < Optimadmin::BasePresenter
     presents :patron
 
     def id

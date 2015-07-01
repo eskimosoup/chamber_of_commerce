@@ -9,5 +9,6 @@ FactoryGirl.define do
     content "Some content"
     date Date.today
     sequence(:suggested_url) {|n| "my-article-#{ n }" }
+    image { File.open(File.join(Rails.root, "test/support/images/landscape_image.jpg")) }
   end
 end
