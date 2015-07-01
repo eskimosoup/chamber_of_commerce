@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def index
     @internal_promotions = InternalPromotionPresenter.new(object: InternalPromotion.where(display: true).order(created_at: :desc), view_template: view_context)
+    @patrons = Patron.where(display: true).order(position: :asc).map{|x| PatronPresenter.new(object: x, view_template: view_context) }
   end
 
   private

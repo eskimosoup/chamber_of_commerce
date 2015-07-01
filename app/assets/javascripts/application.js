@@ -15,7 +15,9 @@
 //= require_tree ./vendor/foundation/libraries
 //= require vendor/foundation/foundation.js
 //= require vendor/foundation/foundation.equalizer.js
+//= require slick.js.js
 // require_tree .
+
 $(document).foundation({
   equalizer : {
     // Specify if Equalizer should make elements equal height once they become stacked.
@@ -23,4 +25,39 @@ $(document).foundation({
     // Allow equalizer to resize hidden elements
     act_on_hidden_el: false
   }
+});
+
+$('.patron-logos').slick({
+  autoplay: true,
+  autoplaySpeed: 2000,
+  dots: false,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
 });

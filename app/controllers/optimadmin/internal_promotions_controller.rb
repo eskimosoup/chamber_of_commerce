@@ -2,7 +2,7 @@ module Optimadmin
   class InternalPromotionsController < Optimadmin::ApplicationController
     before_action :set_internal_promotion, only: [:show, :edit, :update, :destroy]
 
-    edit_images_for InternalPromotion, [[:image, { homepage: ['default', 728, 90] }]]
+    edit_images_for InternalPromotion, [[:image, { homepage: ['limit', 728, 90] }]]
 
     def index
       @internal_promotions = InternalPromotion.order(area: :asc).map{|x| Optimadmin::InternalPromotionPresenter.new(object: x, view_template: view_context) }
