@@ -9,3 +9,5 @@
 * Fix page select in navigation
 
 * Add search into admin controllers
+
+* Fix/tidy sub categories for EventCategories

@@ -1,0 +1,25 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Event Locations' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Event Location', object: EventLocation, path: new_event_location_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @event_locations.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-2 small-4' do 'Location name' end %>
+    <%= list_item 'large-8 small-4' do 'Address' end %>
+
+    <%= list_item { 'Edit' } %>
+
+    <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
+  </div>
+
+  <% @event_locations.each do |event_location_presenter| %>
+    <%= render partial: 'event_location', locals: { event_location_presenter: event_location_presenter } %>
+  <% end %>
+  <%= paginate @event_locations %>
+</div>

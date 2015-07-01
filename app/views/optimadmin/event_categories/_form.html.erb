@@ -1,0 +1,62 @@
+<%= form_for(event_category) do |f| %>
+<% if event_category.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(event_category.errors.count, "error") %> prohibited this event_category from being saved:</h2>
+
+    <ul>
+      <% event_category.errors.full_messages.each do |message| %> %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+  <div class="tabs prevent-flash">
+    <ul class="tab-list">
+      <li><a href="#tabs-1">Content</a></li>
+      <li><a href="#tabs-3">Settings</a></li>
+      <li>
+        <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+          <%= octicon('chevron-down') %>
+        <% end %>
+      </li>
+    </ul>
+
+    <%= field_set_tag nil, id: 'tabs-1' do %>
+            <div class="field">
+        <%= f.label :parent_id %><br>
+        <%= f.select :parent_id, EventCategory.roots.map{|x| [x.name, x.id]}, include_blank: 'No parent category' %>
+      </div>
+            <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+            <div class="field">
+        <%= f.label :suggested_url %><br>
+        <%= f.text_field :suggested_url %>
+      </div>
+          <% end %>
+
+
+    <%= field_set_tag nil, id: 'tabs-3' do %>
+            <div class="field">
+        <%= f.label :has_tables %><br>
+        <%= f.check_box :has_tables %>
+      </div>
+            <div class="field">
+        <%= f.label :food_event %><br>
+        <%= f.check_box :food_event %>
+      </div>
+            <div class="field">
+        <%= f.label :bookable %><br>
+        <%= f.check_box :bookable %>
+      </div>
+          <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
