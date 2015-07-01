@@ -1,0 +1,31 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Additional Contents' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Additional Content', object: AdditionalContent, path: new_additional_content_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @additional_contents.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 small-2' do %>
+      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+    <% end %>
+
+    <%= list_item 'large-4 small-4' do 'Area' end %>
+
+    <%= list_item 'large-4 small-4' do 'Title' end %>
+
+    <%= list_item { 'Edit' } %>
+
+    <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
+  </div>
+
+  
+  <% @additional_contents.each do |additional_content_presenter| %>
+    <%= render partial: 'additional_content', locals: { additional_content_presenter: additional_content_presenter } %>
+  <% end %>
+  <%= paginate @additional_contents %>
+</div>

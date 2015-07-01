@@ -1,0 +1,28 @@
+.content-area {
+  background: $turquoise image-url('layout/home/background.jpg') no-repeat;
+  padding: em(26px) 0;;
+  min-height: 586px;
+}
+
+.main-content-wrap {
+  background: $white;
+  padding: em(20px);
+
+  h1 {
+    border-bottom: 4px solid $bronze;
+    color: $light-blue;
+    font-size: em(38px);
+    font-weight: $extra-bold;
+    padding: 0 0 em(5px, 38px) em(10px, 38px);
+  }
+
+  p,
+  ul,
+  ol {
+    font-size: em(14px);
+  }
+
+  .content {
+    padding: 0 em(10px);
+  }
+}

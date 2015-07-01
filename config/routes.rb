@@ -1,10 +1,24 @@
 Rails.application.routes.draw do
+
   get 'test', to: 'application#index', as: 'alternative'
+
+  resources :magazines, only: [:index]
+
   root to: 'application#index'
 
   mount Optimadmin::Engine => '/admin'
 end
 Optimadmin::Engine.routes.draw do
+  resources :additional_contents, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+    end
+  end
+  get 'magazines/index'
+
   resources :magazines, except: [:show] do
     collection do
       post 'order'

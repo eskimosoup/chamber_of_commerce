@@ -1,30 +1,18 @@
-<div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= magazine.id %>">
-  <div class="large-1 small-2 columns" data-equalizer-watch="module-list">
-    <%= magazine_presenter.detail_toggle_link %>
-  </div>
-
+<div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= magazine_presenter.id %>">
   <div class="large-5 small-6 columns" data-equalizer-watch="module-list">
-    <%= magazine_presenter.title %>
+    <%= magazine_presenter.name %>
   </div>
 
-  
-    <div class="large-2 hide-for-medium-down columns" data-equalizer-watch="module-list">
-      <%= it_edit_images(:image).call(page) %>
-    </div>
+  <div class="large-2 small-6 columns" data-equalizer-watch="module-list">
+    <%= magazine_presenter.date %>
+  </div>
 
-    <!--
-    <div class="large-2 hide-for-medium-down columns" data-equalizer-watch="module-list">
-      <%= cropper(object: page, image_attr: :image) %>
-    </div>
-    -->
-  
+  <div class="large-2 hide-for-medium-down columns" data-equalizer-watch="module-list">
+    <%= magazine_presenter.edit_image(:image) %>
+  </div>
 
   <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
     <%= magazine_presenter.toggle_link %>
-  </div>
-
-  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
-    <%= magazine_presenter.show_link %>
   </div>
 
   <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
@@ -33,11 +21,5 @@
 
   <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
     <%= magazine_presenter.delete_link %>
-  </div>
-
-  <div class="row module-list-detail hide" id="index-list-<%= magazine.id %>">
-    <div class="small-12 columns module-list-summary last">
-
-    </div>
   </div>
 </div>

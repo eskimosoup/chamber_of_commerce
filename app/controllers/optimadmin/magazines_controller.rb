@@ -2,10 +2,10 @@ module Optimadmin
   class MagazinesController < Optimadmin::ApplicationController
     before_action :set_magazine, only: [:show, :edit, :update, :destroy]
 
-    edit_images_for Magazine, [[:image, { show: ['limit', 162, 183] }]]
+    edit_images_for Magazine, [[:image, { show: ['fit', 162, 183] }]]
 
     def index
-      @magazines = Magazine.page(params[:page]).per(15)
+      @magazines = Optimadmin::BaseCollectionPresenter.new(collection: Magazine.order(date: :desc).page(params[:page]).per(25), view_template: view_context, presenter: Optimadmin::MagazinePresenter)
     end
 
     def show

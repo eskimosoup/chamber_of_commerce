@@ -1,0 +1,18 @@
+.magazine-publication-thumbnail {
+  border-top: 1px solid $light-grey;
+  padding: em(20px) 0;
+
+  .magazine-publication-name {
+    font-weight: $bold;
+    font-size: em(22px);
+  }
+
+  .magazine-publication-date {
+    font-weight: $light;
+    font-size: em(12px);
+  }
+
+  .magazine-publication-view {
+    
+  }
+}

@@ -1,0 +1,22 @@
+<section class="content-area">
+  <div class="row">
+    <div class="large-8 small-12 columns">
+      <div class="main-content-wrap">
+        <%= @additional_content.title %>
+
+        <div class="content">
+          <%= @additional_content.content %>
+
+          <% @magazines.each do |magazine_presenter| %>
+            <%= render partial: 'magazine', locals: { magazine_presenter: magazine_presenter } %>
+          <% end %>
+          <%= paginate @magazines %>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 small-12 columns">
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>

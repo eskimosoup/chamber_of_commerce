@@ -10,21 +10,19 @@
   </div>
 
   <div class="row collapse module-list-index header">
-    <%= list_item 'large-1 small-2' do %>
-      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
-    <% end %>
-
-    <%= list_item 'large-5 small-4' do 'Title' end %>
+    <%= list_item 'large-5 small-4' do 'Name' end %>
+    <%= list_item 'large-2 small-4' do 'Date' end %>
 
     <%= list_item 'large-2 hide-for-medium-down' do 'Image' end %>
 
     <%= list_item { 'Display' } %>
-    <%= list_item { 'View' } %>
     <%= list_item { 'Edit' } %>
 
     <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
   </div>
 
-  <%= render partial: 'magazine', collection: @magazines, as: :magazine_presenter %>
+  <% @magazines.each do |magazine_presenter| %>
+    <%= render partial: 'magazine', locals: { magazine_presenter: magazine_presenter } %>
+  <% end %>
   <%= paginate @magazines %>
 </div>
