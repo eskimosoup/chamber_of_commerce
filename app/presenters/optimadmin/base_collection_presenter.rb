@@ -1,6 +1,5 @@
 module Optimadmin
   class BaseCollectionPresenter
-    include Enumerable
 
     delegate :current_page, :total_pages, :limit_value, to: :collection
     delegate :size, to: :presented_collection
