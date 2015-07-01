@@ -5,7 +5,7 @@
     <%= render 'optimadmin/shared/module/index/new_item', title: 'Magazine', object: Magazine, path: new_magazine_path %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
-    <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
+    <%= render 'optimadmin/shared/module/index/order', options: [['Name', 'name'], ['Date', 'date']] %>
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @magazines.size, path: root_url %>
   </div>
 

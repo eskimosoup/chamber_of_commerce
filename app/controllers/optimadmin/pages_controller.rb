@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_page, only: [:show, :edit, :update, :destroy]
 
     def index
-      @pages = Page.page(params[:page]).per(15)
+      @pages = Optimadmin::BaseCollectionPresenter.new(collection: Page.page(params[:page]).per(15), view_template: view_context, presenter: Optimadmin::PagePresenter)
     end
 
     def show
