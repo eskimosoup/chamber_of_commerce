@@ -56,4 +56,9 @@
     padding-left: em(7px, 12px);
     padding-right: em(7px, 12px);
   }
+
+  &.aside {
+    margin-top: em(13px, 12px);
+    padding: em(5px, 12px) em(20px, 12px);
+  }
 }
