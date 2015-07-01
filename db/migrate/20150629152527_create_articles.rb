@@ -7,7 +7,7 @@ class CreateArticles < ActiveRecord::Migration
       t.text :content
       t.string :image
       t.date :date
-
+      t.boolean :display, default: true
       t.timestamps null: false
     end
   end
