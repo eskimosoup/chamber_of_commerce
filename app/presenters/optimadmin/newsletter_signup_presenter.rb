@@ -1,5 +1,5 @@
 module Optimadmin
-  class NewsletterSignupPresenter < BasePresenter
+  class NewsletterSignupPresenter < Optimadmin::BasePresenter
     presents :newsletter_signup
 
     def id

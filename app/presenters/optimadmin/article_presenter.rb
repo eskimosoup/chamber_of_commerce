@@ -1,5 +1,5 @@
 module Optimadmin
-  class ArticlePresenter < BasePresenter
+  class ArticlePresenter < Optimadmin::BasePresenter
     presents :article
 
     def id

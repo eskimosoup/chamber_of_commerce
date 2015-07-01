@@ -1,5 +1,5 @@
 module Optimadmin
-  class PagePresenter < BasePresenter
+  class PagePresenter < Optimadmin::BasePresenter
     presents :page
 
     def id

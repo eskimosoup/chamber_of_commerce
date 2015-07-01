@@ -1,6 +1,7 @@
 module Optimadmin
   class BasePresenter
 
+    attr_reader :partial_path
     def initialize(object:, view_template:)
       @object = object
       @view_template = view_template
@@ -10,6 +11,12 @@ module Optimadmin
       define_method(name) do
         @object
       end
+      #instance_variable_set(:@partial_path, "optimadmin/#{name.to_s.pluralize}/#{name.to_s}")
+    end
+
+    # https://robots.thoughtbot.com/rendering-collections-in-rails
+    def to_partial_path
+      @object.to_partial_path
     end
 
     def edit_image(image)
