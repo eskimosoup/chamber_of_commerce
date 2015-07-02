@@ -48,7 +48,7 @@ module Optimadmin
     end
 
     def internal_promotion_params
-      params.require(:internal_promotion).permit(:name, :image, :link, :area, :display)
+      params.require(:internal_promotion).permit(:name, :image, :image_cache, :remove_image, :remote_image_url, :link, :area, :display)
     end
   end
 end
