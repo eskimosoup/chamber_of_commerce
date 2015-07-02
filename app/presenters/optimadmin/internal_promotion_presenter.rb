@@ -1,5 +1,5 @@
 module Optimadmin
-  class InternalPromotionPresenter < BasePresenter
+  class InternalPromotionPresenter < Optimadmin::BasePresenter
     presents :internal_promotion
 
     def id

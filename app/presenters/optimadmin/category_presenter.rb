@@ -1,5 +1,5 @@
 module Optimadmin
-  class CategoryPresenter < BasePresenter
+  class CategoryPresenter < Optimadmin::BasePresenter
     presents :category
 
     def id

@@ -1,5 +1,5 @@
 module Optimadmin
-  class AdditionalContentPresenter < BasePresenter
+  class AdditionalContentPresenter < Optimadmin::BasePresenter
     presents :additional_content
 
     def id
