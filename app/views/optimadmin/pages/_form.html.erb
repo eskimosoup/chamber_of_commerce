@@ -43,6 +43,20 @@
           <% end %>
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
+      <% if Page.layouts.size > 1 %>
+        <div class="field">
+          <%= f.label :layout %><br />
+          <%= f.select :layout, Page.layouts.map{ |x| [t(x), x] } %>
+        </div>
+      <% end %>
+
+      <% if Page.styles.size > 1 %>
+        <div class="field">
+          <%= f.label :style %><br />
+          <%= f.select :style, Page.styles.map{ |x| [t(x), x] } %>
+        </div>
+      <% end %>
+
             <div class="field">
               <%= f.label :suggested_url %><br />
               <%= f.text_field :suggested_url %>
