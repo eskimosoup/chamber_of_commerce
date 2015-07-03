@@ -4,7 +4,7 @@
     <h2><%= pluralize(event_agenda.errors.count, "error") %> prohibited this event_agenda from being saved:</h2>
 
     <ul>
-      <% event_agenda.errors.full_messages.each do |message| %> %>
+      <% event_agenda.errors.full_messages.each do |message| %>
       <li><%= message %></li>
       <% end %>
     </ul>

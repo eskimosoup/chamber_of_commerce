@@ -4,7 +4,7 @@
     <h2><%= pluralize(magazine.errors.count, "error") %> prohibited this magazine from being saved:</h2>
 
     <ul>
-      <% magazine.errors.full_messages.each do |message| %> %>
+      <% magazine.errors.full_messages.each do |message| %>
       <li><%= message %></li>
       <% end %>
     </ul>
