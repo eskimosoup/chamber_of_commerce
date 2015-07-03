@@ -3,7 +3,7 @@ class Article < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
-  belongs_to :category
+  belongs_to :article_category
   mount_uploader :image, ArticleUploader
 
   validates :title, :content, :date, :category_id, presence: true

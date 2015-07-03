@@ -1,7 +1,9 @@
 class MagazinePresenter < BasePresenter
   presents :magazine
 
+
   def preview
+    return if magazine.blank?
     h.link_to magazine.file.url, target: '_blank', title: magazine.name, class: 'magazine-preview' do
       h.image_tag magazine.image.show
     end

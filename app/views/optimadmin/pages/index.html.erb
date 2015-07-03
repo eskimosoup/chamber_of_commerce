@@ -5,7 +5,7 @@
     <%= render 'optimadmin/shared/module/index/new_item', title: 'Page', object: Page, path: new_page_path %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
-    <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
+    <%= render 'optimadmin/shared/module/index/order', options: [['Title', 'title'], ['Display', 'display']] %>
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @pages.size, path: root_url %>
   </div>
 

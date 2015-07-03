@@ -7,6 +7,8 @@ class EventCategory < ActiveRecord::Base
   validates :name, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }
 
+  has_many :event_agendas
+
   def slug_candidates
     [
       :suggested_url,

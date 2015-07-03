@@ -2,9 +2,7 @@ class EventLocationPresenter < BasePresenter
   presents :event_location
 
   def location_name
-    h.content_tag :h1 do
-      event_location.location_name
-    end
+    event_location.location_name
   end
 
   def map

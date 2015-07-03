@@ -4,7 +4,7 @@
     <h2><%= pluralize(internal_promotion.errors.count, "error") %> prohibited this internal_promotion from being saved:</h2>
 
     <ul>
-      <% internal_promotion.errors.full_messages.each do |message| %> %>
+      <% internal_promotion.errors.full_messages.each do |message| %>
       <li><%= message %></li>
       <% end %>
     </ul>

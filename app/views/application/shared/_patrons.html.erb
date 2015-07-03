@@ -1,15 +1,17 @@
-<div class="home-patrons">
-  <div class="row">
-    <div class="small-12 columns">
-      <h2 class="full-header"><div>Patrons</div></h2>
+<% if @patrons.present? %>
+  <div class="home-patrons">
+    <div class="row">
+      <div class="small-12 columns">
+        <h2 class="full-header"><div>Patrons</div></h2>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="small-12 columns">
-      <div class="patron-logos text-center">
-        <%= render partial: 'patrons/patron', collection: @patrons, as: :patron_presenter %>
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="patron-logos text-center">
+          <%= render partial: 'patrons/patron', collection: @patrons, as: :patron_presenter %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

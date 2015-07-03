@@ -5,7 +5,7 @@ module Optimadmin
     before_action :set_article, only: [:show, :edit, :update, :destroy]
 
     def index
-      @articles = Optimadmin::BaseCollectionPresenter.new(collection: Article.page(params[:page]).per(15), view_template: view_context, presenter: Optimadmin::ArticlePresenter)
+      @articles = Optimadmin::BaseCollectionPresenter.new(collection: Article.where('title LIKE ?', "#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15).order(params[:order]), view_template: view_context, presenter: Optimadmin::ArticlePresenter)
     end
 
     def show
@@ -48,7 +48,7 @@ module Optimadmin
     end
 
     def article_params
-      params.require(:article).permit(:title, :category_id, :summary, :content, :image, :image_cache, :remote_image_url, :date, :display, :suggested_url)
+      params.require(:article).permit(:title, :article_category_id, :summary, :content, :image, :image_cache, :remote_image_url, :date, :display, :suggested_url)
     end
   end
 end

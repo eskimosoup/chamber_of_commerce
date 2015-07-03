@@ -4,7 +4,7 @@
     <h2><%= pluralize(event_category.errors.count, "error") %> prohibited this event_category from being saved:</h2>
 
     <ul>
-      <% event_category.errors.full_messages.each do |message| %> %>
+      <% event_category.errors.full_messages.each do |message| %>
       <li><%= message %></li>
       <% end %>
     </ul>

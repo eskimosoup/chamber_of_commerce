@@ -1,0 +1,41 @@
+<div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= event_presenter.id %>">
+  <div class="large-1 small-2 columns" data-equalizer-watch="module-list">
+    <%= event_presenter.detail_toggle_link %>
+  </div>
+
+  <div class="large-3 small-6 columns" data-equalizer-watch="module-list">
+    <%= event_presenter.name %>
+  </div>
+
+  <div class="large-2 small-6 columns" data-equalizer-watch="module-list">
+    <%= event_presenter.event_agendas %>
+  </div>
+
+  <div class="large-2 small-6 columns" data-equalizer-watch="module-list">
+    <%= event_presenter.edit_image(:image) %>
+  </div>
+
+
+  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+    <%= event_presenter.toggle_link %>
+  </div>
+
+  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+    <%= event_presenter.show_link %>
+  </div>
+
+  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+    <%= event_presenter.edit_link %>
+  </div>
+
+  <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
+    <%= event_presenter.delete_link %>
+  </div>
+
+  <div class="row module-list-detail hide" id="index-list-<%= event_presenter.id %>">
+    <div class="small-12 columns module-list-summary last">
+      <strong>Location: <%= event_presenter.location %></strong>
+      <%= event_presenter.description %>
+    </div>
+  </div>
+</div>

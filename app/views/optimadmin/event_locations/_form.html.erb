@@ -4,7 +4,7 @@
     <h2><%= pluralize(event_location.errors.count, "error") %> prohibited this event_location from being saved:</h2>
 
     <ul>
-      <% event_location.errors.full_messages.each do |message| %> %>
+      <% event_location.errors.full_messages.each do |message| %>
       <li><%= message %></li>
       <% end %>
     </ul>
@@ -16,8 +16,6 @@
   <div class="tabs prevent-flash">
     <ul class="tab-list">
       <li><a href="#tabs-1">Content</a></li>
-      <li><a href="#tabs-2">Media</a></li>
-      <li><a href="#tabs-3">Settings</a></li>
       <li>
         <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
           <%= octicon('chevron-down') %>
@@ -50,13 +48,6 @@
         <%= f.label :post_code %><br>
         <%= f.text_field :post_code %>
       </div>
-          <% end %>
-
-    <%= field_set_tag nil, id: 'tabs-2' do %>
-
-          <% end %>
-
-    <%= field_set_tag nil, id: 'tabs-3' do %>
           <% end %>
   </div>
 

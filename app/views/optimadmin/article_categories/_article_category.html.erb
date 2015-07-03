@@ -1,0 +1,13 @@
+<div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= article_category_presenter.id %>">
+  <div class="large-10 small-6 columns" data-equalizer-watch="module-list">
+    <%= article_category_presenter.title %>
+  </div>
+
+  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+    <%= article_category_presenter.edit_link %>
+  </div>
+
+  <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
+    <%= article_category_presenter.delete_link %>
+  </div>
+</div>
