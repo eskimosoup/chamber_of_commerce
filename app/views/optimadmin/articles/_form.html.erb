@@ -32,8 +32,8 @@
 
     <%= field_set_tag nil, id: 'tabs-1' do %>
       <div class="field">
-        <%= f.label :category_id %><br>
-        <%= f.select :category_id, Category.order(title: :asc).pluck(:title, :id) %>
+        <%= f.label :article_category_id %><br>
+        <%= f.select :article_category_id, ArticleCategory.order(title: :asc).pluck(:title, :id) %>
       </div>
 
       <div class="field">
