@@ -2,9 +2,7 @@ class PagePresenter < BasePresenter
   presents :page
 
   def title
-    h.content_tag :h1 do
-      page.title
-    end
+    page.title
   end
 
   def content

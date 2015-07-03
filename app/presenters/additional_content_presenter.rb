@@ -1,13 +1,11 @@
 class AdditionalContentPresenter < BasePresenter
   presents :additional_content
 
-  def title
-    h.content_tag :h1 do
-      additional_content.title
-    end
+  def title(placeholder = '')
+    additional_content.present? ? additional_content.title : placeholder
   end
 
   def content
-    h.raw additional_content.content
+    additional_content.present? ? (h.raw additional_content.content) : nil
   end
 end
