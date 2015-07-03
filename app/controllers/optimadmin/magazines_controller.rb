@@ -5,7 +5,7 @@ module Optimadmin
     edit_images_for Magazine, [[:image, { show: ['fit', 162, 183] }]]
 
     def index
-      @magazines = Optimadmin::BaseCollectionPresenter.new(collection: Magazine.order(date: :desc).page(params[:page]).per(25), view_template: view_context, presenter: Optimadmin::MagazinePresenter)
+      @magazines = Optimadmin::BaseCollectionPresenter.new(collection: Magazine.where('name LIKE ?', "#{params[:search]}%").order(date: :desc).page(params[:page]).per(25), view_template: view_context, presenter: Optimadmin::MagazinePresenter)
     end
 
     def show

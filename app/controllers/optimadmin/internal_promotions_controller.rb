@@ -5,7 +5,7 @@ module Optimadmin
     edit_images_for InternalPromotion, [[:image, { homepage: ['limit', 728, 90] }]]
 
     def index
-      @internal_promotions = InternalPromotion.order(area: :asc).map{|x| Optimadmin::InternalPromotionPresenter.new(object: x, view_template: view_context) }
+      @internal_promotions = InternalPromotion.where('name LIKE ?', "#{params[:search]}%").order(area: :asc).map{|x| Optimadmin::InternalPromotionPresenter.new(object: x, view_template: view_context) }
     end
 
     def show
