@@ -4,7 +4,7 @@ module Optimadmin
     before_action :set_event_agenda, only: [:show, :edit, :update, :destroy]
 
     def index
-      @event_agendas = Optimadmin::BaseCollectionPresenter.new(collection: EventAgenda.where(event_id: @event.id).order(start_time: :desc).page(params[:page]).per(15), view_template: view_context, presenter: Optimadmin::EventAgendaPresenter)
+      @event_agendas = Optimadmin::BaseCollectionPresenter.new(collection: EventAgenda.where(event_id: @event.id).order(start_time: :desc).page(params[:page]).per(params[:per_page] || 15).order(params[:order]), view_template: view_context, presenter: Optimadmin::EventAgendaPresenter)
     end
 
     def show

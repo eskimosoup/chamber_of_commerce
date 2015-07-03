@@ -4,7 +4,7 @@ module Optimadmin
     before_action :set_event, only: [:show, :edit, :update, :destroy]
 
     def index
-      @events = Optimadmin::BaseCollectionPresenter.new(collection: Event.order(start_date: :desc).page(params[:page]).per(15), view_template: view_context, presenter: Optimadmin::EventPresenter)
+      @events = Optimadmin::BaseCollectionPresenter.new(collection: Event.order(start_date: :desc).page(params[:page]).per(params[:per_page] || 15).order(params[:order]), view_template: view_context, presenter: Optimadmin::EventPresenter)
     end
 
     def show

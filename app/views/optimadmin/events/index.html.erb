@@ -5,7 +5,7 @@
     <%= render 'optimadmin/shared/module/index/new_item', title: 'Event', object: Event, path: new_event_path %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
-    <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
+    <%= render 'optimadmin/shared/module/index/order', options: [['Name', 'name'], ['Start Date', 'start_date']] %>
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @events.size, path: root_url %>
   </div>
 
