@@ -1,6 +1,6 @@
 module Optimadmin
   class EventAgendasController < Optimadmin::ApplicationController
-    before_action :set_event, except: [:edit, :update, :destroy]
+    before_action :set_event, except: [:create, :edit, :update, :destroy]
     before_action :set_event_agenda, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -20,9 +20,9 @@ module Optimadmin
 
     def create
       @event_agenda = EventAgenda.new(event_agenda_params)
-      @event_agenda.event_id = @event.id
+      @event = Event.find(event_agenda_params[:event_id])
       if @event_agenda.save
-        redirect_to event_agendas_url(event_id: @event.id), notice: 'Event agenda was successfully created.'
+        redirect_to event_agendas_url(event_id: @event_agenda.event_id), notice: 'Event agenda was successfully created.'
       else
         render :new
       end
@@ -53,7 +53,7 @@ module Optimadmin
     end
 
     def event_agenda_params
-      params.require(:event_agenda).permit(:name, :event_category_id, :start_time, :end_time, :description, :maximum_capacity)
+      params.require(:event_agenda).permit(:event_id, :name, :event_category_id, :start_time, :end_time, :description, :maximum_capacity)
     end
   end
 end

@@ -2,12 +2,17 @@
 
 <div class="main-content">
   <div class="row module-header collapse">
-    <%= render 'optimadmin/shared/module/index/new_item', title: 'Event', object: Event, path: new_event_path %>
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Event', object: Event, path: new_event_path if EventLocation.count >= 1 %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
     <%= render 'optimadmin/shared/module/index/order', options: [['Name', 'name'], ['Start Date', 'start_date']] %>
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @events.size, path: root_url %>
   </div>
+
+  <% unless EventLocation.count >= 1 %>
+    <p>Please create an <%= link_to 'event location', event_locations_path %> before creating an event.</p>
+  <% end %>
+
 
   <div class="row collapse module-list-index header">
     <%= list_item 'large-1 small-2' do %>

@@ -40,7 +40,7 @@
       </div>
             <div class="field">
         <%= f.label :event_location_id %><br>
-        <%= f.select :event_location_id, EventLocation.all.map{|x| [x.location_name, x.id]} %>
+        <%= f.select :event_location_id, EventLocation.all.map{|x| [x.location_name, x.id]}, prompt: "Please select an event location" %>
       </div>
             <div class="field">
         <%= f.label :description %><br>
@@ -61,6 +61,8 @@
         <%= f.label :display %><br>
         <%= f.check_box :display %>
       </div>
+
+      
           <% end %>
   </div>
 

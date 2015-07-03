@@ -16,8 +16,6 @@
   <div class="tabs prevent-flash">
     <ul class="tab-list">
       <li><a href="#tabs-1">Content</a></li>
-      <li><a href="#tabs-2">Media</a></li>
-      <li><a href="#tabs-3">Settings</a></li>
       <li>
         <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
           <%= octicon('chevron-down') %>
@@ -51,16 +49,10 @@
         <%= f.number_field :maximum_capacity %>
       </div>
           <% end %>
-
-    <%= field_set_tag nil, id: 'tabs-2' do %>
-
-          <% end %>
-
-    <%= field_set_tag nil, id: 'tabs-3' do %>
-          <% end %>
   </div>
 
   <div class="actions">
+    <%= f.hidden_field :event_id, value: (params[:event_id] || @event.id) %>
     <%= f.submit %>
   </div>
 <% end %>

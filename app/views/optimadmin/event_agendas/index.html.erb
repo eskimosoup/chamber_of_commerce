@@ -2,12 +2,16 @@
 
 <div class="main-content">
   <div class="row module-header collapse">
-    <%= render 'optimadmin/shared/module/index/new_item', title: 'Event Agenda', object: EventAgenda, path: new_event_agenda_path(event_id: @event.id) %>
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Event Agenda', object: EventAgenda, path: new_event_agenda_path(event_id: @event.id) if EventCategory.count >= 1 %>
     <%#= render 'optimadmin/shared/search_form' %>
     <%#= render 'optimadmin/shared/module/index/pagination' %>
     <%#= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
     <%#= render 'optimadmin/shared/module/index/recycle_bin', items: @event_agendas.size, path: root_url %>
   </div>
+
+  <% unless EventCategory.count >= 1 %>
+    <p>Please create an <%= link_to 'event category', event_categories_path %> before creating an event agenda.</p>
+  <% end %>
 
   <div class="row collapse module-list-index header">
     <%= list_item 'large-1 small-2' do %>
