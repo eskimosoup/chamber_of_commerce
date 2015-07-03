@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702090738) do
+ActiveRecord::Schema.define(version: 20150703134308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,28 +24,43 @@ ActiveRecord::Schema.define(version: 20150702090738) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "articles", force: :cascade do |t|
-    t.string   "title",                        null: false
-    t.integer  "category_id"
-    t.text     "summary"
-    t.text     "content"
-    t.string   "image"
-    t.date     "date"
-    t.boolean  "display",       default: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "suggested_url"
-    t.string   "slug"
-  end
-
-  add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
-  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
-
-  create_table "categories", force: :cascade do |t|
+  create_table "article_categories", force: :cascade do |t|
     t.string   "title",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title",                              null: false
+    t.integer  "article_category_id"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "image"
+    t.date     "date"
+    t.boolean  "display",             default: true
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+  end
+
+  add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
+  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
+
+  create_table "event_agendas", force: :cascade do |t|
+    t.string   "name",              null: false
+    t.integer  "event_category_id"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.text     "description"
+    t.integer  "maximum_capacity"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "event_id"
+  end
+
+  add_index "event_agendas", ["event_category_id"], name: "index_event_agendas_on_event_category_id", using: :btree
+  add_index "event_agendas", ["event_id"], name: "index_event_agendas_on_event_id", using: :btree
 
   create_table "event_categories", force: :cascade do |t|
     t.integer  "parent_id"
@@ -82,6 +97,25 @@ ActiveRecord::Schema.define(version: 20150702090738) do
     t.string   "location_name"
     t.string   "slug"
   end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name",                            null: false
+    t.integer  "event_agendas_id"
+    t.date     "start_date",                      null: false
+    t.date     "end_date",                        null: false
+    t.string   "image"
+    t.integer  "event_location_id"
+    t.text     "description"
+    t.boolean  "display"
+    t.integer  "event_agendas_count", default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+  end
+
+  add_index "events", ["event_agendas_id"], name: "index_events_on_event_agendas_id", using: :btree
+  add_index "events", ["event_location_id"], name: "index_events_on_event_location_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -228,5 +262,7 @@ ActiveRecord::Schema.define(version: 20150702090738) do
     t.datetime "updated_at",                null: false
   end
 
-  add_foreign_key "articles", "categories"
+  add_foreign_key "articles", "article_categories"
+  add_foreign_key "event_agendas", "event_categories"
+  add_foreign_key "event_agendas", "events"
 end

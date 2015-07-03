@@ -1,0 +1,35 @@
+<div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= event_agenda_presenter.id %>">
+  <div class="large-1 small-2 columns" data-equalizer-watch="module-list">
+    <%= event_agenda_presenter.detail_toggle_link %>
+  </div>
+
+  <div class="large-4 small-6 columns" data-equalizer-watch="module-list">
+    <%= event_agenda_presenter.name %>
+  </div>
+
+  <div class="large-3 small-6 columns" data-equalizer-watch="module-list">
+    <%= event_agenda_presenter.category %>
+  </div>
+
+  <div class="large-1 small-3 columns" data-equalizer-watch="module-list">
+    <%= event_agenda_presenter.start_time %>
+  </div>
+
+  <div class="large-1 small-3 columns" data-equalizer-watch="module-list">
+    <%= event_agenda_presenter.end_time %>
+  </div>
+
+  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+    <%= event_agenda_presenter.edit_link %>
+  </div>
+
+  <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
+    <%= event_agenda_presenter.delete_link %>
+  </div>
+
+  <div class="row module-list-detail hide" id="index-list-<%= event_agenda_presenter.id %>">
+    <div class="small-12 columns module-list-summary last">
+
+    </div>
+  </div>
+</div>

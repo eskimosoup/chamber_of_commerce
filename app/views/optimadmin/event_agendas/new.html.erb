@@ -1,0 +1,7 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'New Event Agenda' %>
+
+<div class="main-content">
+  <%= render 'optimadmin/shared/module/form/back', path: event_agendas_path(event_id: @event.id), title: 'Event Agenda' %>
+
+  <%= render 'form', event_agenda: @event_agenda, event: @event %>
+</div>
