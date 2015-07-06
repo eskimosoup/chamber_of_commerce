@@ -1,5 +1,5 @@
 module Optimadmin
-  class BaseCollectionPresenter
+  class BaseCollectionPresenter < BasePresenter
     include Enumerable
 
     array_methods = Array.instance_methods - Object.instance_methods

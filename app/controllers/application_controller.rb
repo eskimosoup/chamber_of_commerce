@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def load_objects
     @presented_articles = BaseCollectionPresenter.new(collection: Article.published, view_template: view_context, presenter: ArticlePresenter)
-    @presented_events   = BaseCollectionPresenter.new(collection: Event.upcoming_bookable, view_template: view_context, presenter: EventPresenter)
+    @presented_events   = BaseCollectionPresenter.new(collection: Event.upcoming.bookable, view_template: view_context, presenter: EventPresenter)
     # TODO: Add members offers here
     #@presented_members_offers   = BaseCollectionPresenter.new(collection:, view_template: view_context, presenter: MemberOfferPresenter)
 
