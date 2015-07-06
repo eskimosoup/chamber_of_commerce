@@ -51,5 +51,5 @@
     </div>
   </div>
 
-  <%= @internal_promotions.leaderboard("Home - We're Social", 'leaderboard') %>
+  <%= @internal_promotions.leaderboard("Home - We're Social", 'leaderboard') if @internal_promotions.present? %>
 </div>

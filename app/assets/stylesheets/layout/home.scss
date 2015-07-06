@@ -16,6 +16,7 @@
     overflow: hidden;
     position: absolute;
     top: 220px;
+    width: 100%;
   }
 
   .title {
@@ -25,8 +26,14 @@
     font-size: em(22px);
     font-weight: $semibold;
     line-height: 1.1;
+    min-height: 108px;
     padding: em(30px, 22px) em(20px, 22px) em(30px, 22px) em(54px, 22px);
     width: 81%;
+
+    a {
+      color: $white;
+      display: block;
+    }
   }
 
   .date {
@@ -59,6 +66,11 @@
     display: inline;
     margin-right: em(8px);
     text-align: center;
+
+    &.active a {
+      background: $white;
+      color: $deep-blue;
+    }
   }
 
   a {
@@ -71,11 +83,6 @@
     font-weight: $semibold;
     line-height: 1;
     padding: em(9px, 16px) em(20px, 16px) em(10px, 16px);
-
-    &.active {
-      background: $white;
-      color: $deep-blue;
-    }
   }
 }
 

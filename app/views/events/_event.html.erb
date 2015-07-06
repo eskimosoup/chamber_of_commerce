@@ -1,0 +1,19 @@
+<div class="list-item-with-image">
+  <div class="row">
+    <div class="large-4 columns">
+      <%= event_presenter.linked_index_image %>
+    </div>
+
+    <div class="large-8 columns">
+      <%= event_presenter.linked_title(class: 'list-item-with-image-title') %>
+
+      <p>
+        <strong>Start</strong> <%= event_presenter.start_date %>
+        <strong>End</strong> <%= event_presenter.end_date %>
+        <strong>Location</strong> <%= event_presenter.location %>
+      </p>
+
+      <%= event_presenter.summary %>
+    </div>
+  </div>
+</div>

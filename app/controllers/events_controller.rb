@@ -2,7 +2,10 @@ class EventsController < ApplicationController
   before_action :set_event, only: :show
 
   def index
-    @presented_events = BaseCollectionPresenter.new(collection: Event.where('display = ? AND end_date <= ?', true, Date.today), view_template: view_context, presenter: EventPresenter)
+    @additional_content = AdditionalContentPresenter.new(object: AdditionalContent.find_by(area: 'Events - Index'), view_template: view_context)
+    @presented_events = BaseCollectionPresenter.new(collection:
+                        Event.upcoming.joins(:event_agendas).filter(params.slice(:event_location_id, :event_categories_id, :bookable, :has_tables, :food_event)).page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: EventPresenter
+                        )
   end
 
   def show
@@ -13,6 +16,6 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.where('display = ? AND end_date <= ?', true, Date.today).friendly.find(params[:id])
+    @event = Event.where('display = ? AND end_date >= ?', true, Date.today).friendly.find(params[:id])
   end
 end

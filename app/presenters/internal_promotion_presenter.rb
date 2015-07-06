@@ -18,17 +18,18 @@ class InternalPromotionPresenter < BasePresenter
   end
 
   def leaderboard(area, classes = '')
-    item = internal_promotion.where(area: area).order(created_at: :desc).first
-    return unless item.present?
+    return
+    #item = internal_promotion.where(area: area).order(created_at: :desc).first
+    #return unless item.present?
 
     h.content_tag :div, class: 'row' do
       h.content_tag :div, class: "small-10 columns small-centered #{classes}" do
         if item.link.present?
           h.link_to item.link, title: item.name do
-            image(item)
+            h.image_tag item.image.homepage, alt: item.name
           end
         else
-          image(item)
+          h.image_tag item.image.homepage, alt: item.name
         end
       end
     end

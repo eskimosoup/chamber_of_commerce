@@ -17,8 +17,13 @@ class ApplicationController < ActionController::Base
   helper_method :global_site_settings
 
   def load_objects
-    @patrons = Patron.where(display: true).order(position: :asc).map{|x| PatronPresenter.new(object: x, view_template: view_context) }
-    @internal_promotions = InternalPromotionPresenter.new(object: InternalPromotion.where(display: true).order(created_at: :desc), view_template: view_context)
+    @presented_articles = BaseCollectionPresenter.new(collection: Article.published, view_template: view_context, presenter: ArticlePresenter)
+    @presented_events   = BaseCollectionPresenter.new(collection: Event.upcoming.bookable, view_template: view_context, presenter: EventPresenter)
+    # TODO: Add members offers here
+    #@presented_members_offers   = BaseCollectionPresenter.new(collection:, view_template: view_context, presenter: MemberOfferPresenter)
+
+    @patrons = BaseCollectionPresenter.new(collection: Patron.where(display: true).order(position: :asc), view_template: view_context, presenter: PatronPresenter)
+    #@internal_promotions = InternalPromotionPresenter.new(object: InternalPromotion.where(display: true).order(created_at: :desc), view_template: view_context)
     @header_menu = Optimadmin::Menu.new(name: "header")
     @footer_menu = Optimadmin::Menu.new(name: "footer")
     @newsletter_signup = NewsletterSignup.new

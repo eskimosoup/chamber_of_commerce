@@ -1,5 +1,6 @@
 class EventLocationPresenter < BasePresenter
   presents :event_location
+  delegate :event, to: :event
 
   def location_name
     event_location.location_name
@@ -15,6 +16,10 @@ class EventLocationPresenter < BasePresenter
         address('<br />')
       end
     end
+  end
+
+  def events
+    event_location.events
   end
 
   def address(separator = ', ')

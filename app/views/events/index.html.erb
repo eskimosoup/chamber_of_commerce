@@ -1,2 +1,40 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<section class="content-area">
+  <div class="row">
+    <div class="large-8 small-12 columns">
+      <div class="main-content-wrap">
+        <h1><%= @additional_content.title('Events') %></h1>
+
+        <div class="filters">
+          <%= form_tag events_path, method: :get do %>
+            <%= select_tag :event_location_id, options_for_select(EventLocation.all.map{|x| [x.location_name, x.id]}, params[:event_location_id]), prompt: "Any location" %>
+
+            <%= select_tag :event_categories_id, options_for_select(closure_tree_select(EventCategory.select(:name, :id)), params[:event_location_id]), include_blank: "Any event category" %>
+
+            <%= label_tag :bookable, "Bookable?" %>
+            <%= check_box_tag :bookable, 1, params[:bookable] %>
+
+            <%= label_tag :has_tables, "Tables?" %>
+            <%= check_box_tag :has_tables, 1, params[:has_tables] %>
+
+            <%= label_tag :food_event, "Food event" %>
+            <%= check_box_tag :food_event, 1, params[:food_event] %>
+
+            <%= submit_tag "Filter Events" %>
+          <% end %>
+        </div>
+
+        <div class="content">
+          <%= @additional_content.content %>
+
+          <%= render(partial: 'events/event', collection: @presented_events, as: :event_presenter) || 'There are no events to show.' %>
+
+          <%= paginate @presented_events %>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 small-12 columns">
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>

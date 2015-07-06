@@ -1,2 +1,24 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<section class="content-area">
+  <div class="row">
+    <div class="large-8 small-12 columns">
+      <div class="main-content-wrap">
+        <h1><%= @presented_event.name %></h1>
+
+        <p>
+          <strong>Start</strong> <%= @presented_event.start_date %>
+          <strong>End</strong> <%= @presented_event.end_date %>
+          <strong>Location</strong> <%= @presented_event.location %>
+        </p>
+
+        <div class="content">
+          <%= @presented_event.image %>
+          <%= @presented_event.description %>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 small-12 columns">
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>

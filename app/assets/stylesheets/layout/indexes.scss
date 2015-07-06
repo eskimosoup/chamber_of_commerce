@@ -1,0 +1,10 @@
+.list-item-with-image {
+  border-bottom: 1px solid $grey;
+  margin: em(10px) 0;
+  padding: em(10px) 0;
+}
+
+.list-item-with-image-title {
+  font-size: em(22px);
+  font-weight: $bold;
+}

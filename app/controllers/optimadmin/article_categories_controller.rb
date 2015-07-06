@@ -1,6 +1,6 @@
 module Optimadmin
   class ArticleCategoriesController < Optimadmin::ApplicationController
-    before_action :set_category, only: [:show, :edit, :update, :destroy]
+    before_action :set_article_category, only: [:show, :edit, :update, :destroy]
 
     def index
       @article_categories = Optimadmin::BaseCollectionPresenter.new(collection: ArticleCategory.where('title LIKE ?', "#{params[:search]}%").order(:title), view_template: view_context, presenter: Optimadmin::ArticleCategoryPresenter)
