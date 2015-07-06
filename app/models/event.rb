@@ -1,10 +1,18 @@
 class Event < ActiveRecord::Base
+  include Filterable
+
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
   has_many :event_agendas, dependent: :destroy
   has_many :event_categories, through: :event_agendas
   belongs_to :event_location
+
+  scope :event_location_id, -> (location_id) { where event_location_id: location_id }
+  scope :event_categories_id, -> (event_categories_id) { where event_categories: { id: event_categories_id } }
+  scope :bookable, -> (bookable) { where event_categories: { bookable: bookable } }
+  scope :has_tables, -> (has_tables) { where event_categories: { has_tables: has_tables } }
+  scope :food_event, -> (food_event) { where event_categories: { food_event: food_event } }
 
   mount_uploader :image, EventUploader
 

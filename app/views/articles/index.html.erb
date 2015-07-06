@@ -6,6 +6,7 @@
 
         <%= render(partial: 'article', collection: @presented_articles, as: :article_presenter) || "Currently no articles" %>
 
+        <%= pagination @presented_articles %>
       </div>
     </div>
 

@@ -64,7 +64,7 @@ class EventPresenter < BasePresenter
     h.link_to event, title: event.name do
       if event.image?
         h.image_tag event.image.index, alt: event.name
-      elsif placeholder.present?
+      else
         h.image_tag 'placeholders/home-slider.jpg', alt: event.name
       end
     end

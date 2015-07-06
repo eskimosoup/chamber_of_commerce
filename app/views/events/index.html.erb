@@ -4,10 +4,31 @@
       <div class="main-content-wrap">
         <h1><%= @additional_content.title('Events') %></h1>
 
+        <div class="filters">
+          <%= form_tag events_path, method: :get do %>
+            <%= select_tag :event_location_id, options_for_select(EventLocation.all.map{|x| [x.location_name, x.id]}), prompt: "Any location" %>
+
+            <%= select_tag :event_category_id, options_for_select(closure_tree_select(EventCategory.select(:name, :id))), include_blank: "Any event category" %>
+
+            <%= label_tag :bookable, "Bookable?" %>
+            <%= check_box_tag :bookable, 1, params[:bookable] %>
+
+            <%= label_tag :has_tables, "Tables?" %>
+            <%= check_box_tag :has_tables, 1, params[:has_tables] %>
+
+            <%= label_tag :food_event, "Food event" %>
+            <%= check_box_tag :food_event, 1, params[:food_event] %>
+
+            <%= submit_tag "Filter Events" %>
+          <% end %>
+        </div>
+
         <div class="content">
           <%= @additional_content.content %>
 
           <%= render partial: 'events/event', collection: @presented_events, as: :event_presenter %>
+
+          <%= paginate @presented_events %>
         </div>
       </div>
     </div>
