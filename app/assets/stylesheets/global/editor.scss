@@ -18,6 +18,14 @@
   ul,
   ol {
     font-size: em(14px);
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 
   .paragraph-highlight {

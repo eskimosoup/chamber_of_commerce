@@ -2,7 +2,8 @@ class Event < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
-  has_many :event_agendas
+  has_many :event_agendas, dependent: :destroy
+  has_many :event_categories, through: :event_agendas
   belongs_to :event_location
 
   mount_uploader :image, EventUploader
@@ -25,5 +26,9 @@ class Event < ActiveRecord::Base
 
   def sensible_dates
     errors.add(:end_date, 'cannot be before the start date') if self.end_date.present? && self.start_date.present? && self.end_date < self.start_date
+  end
+
+  def self.upcoming_bookable
+    joins(:event_categories).where('display = ? AND event_categories.bookable = ? AND end_date >= ?', true, true, Date.today).order(start_date: :asc)
   end
 end

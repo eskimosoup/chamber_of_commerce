@@ -1,2 +1,19 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<section class="content-area">
+  <div class="row">
+    <div class="large-8 small-12 columns">
+      <div class="main-content-wrap">
+        <h1><%= @additional_content.title('Events') %></h1>
+
+        <div class="content">
+          <%= @additional_content.content %>
+
+          <%= render partial: 'events/event', collection: @presented_events, as: :event_presenter %>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 small-12 columns">
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>

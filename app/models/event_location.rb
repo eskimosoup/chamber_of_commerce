@@ -2,7 +2,7 @@ class EventLocation < ActiveRecord::Base
   extend FriendlyId
   friendly_id :location_name, use: [:slugged, :history]
 
-  has_many :event
+  has_many :events
 
   validates :location_name, :address_line_1, :city, presence: true
   geocoded_by :address

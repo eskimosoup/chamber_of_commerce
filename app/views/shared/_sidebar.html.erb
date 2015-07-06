@@ -1,57 +1,29 @@
 <aside class="aside-content-wrap">
-  <h3>Events</h3>
+  <h3><span>Events</span></h3>
 
-
-  <div class="aside-item">
-    <div class="date">
-      01/07/2015
-    </div>
-
-    <div class="title">
-      <%= link_to 'Britain in South East Asia', '#' %>
-    </div>
-  </div>
-
-  <div class="aside-item">
-    <div class="date">
-      01/07/2015
-    </div>
-
-    <div class="title">
-      <%= link_to 'Britain in South East Asia', '#' %>
-    </div>
-  </div>
+  <%= render partial: 'shared/aside_link_list', collection: @presented_events, as: :module_presenter %>
 
   <div class="text-center">
-    <%= link_to 'See All', '#', class: 'content-box-ghost-button aside' %>
+    <%= link_to 'See All', events_path, class: 'content-box-ghost-button aside' %>
   </div>
 </aside>
 
 <aside class="aside-content-wrap">
-  <h3>Events</h3>
+  <h3><span>News</span></h3>
 
-
-  <div class="aside-item">
-    <div class="date">
-      01/07/2015
-    </div>
-
-    <div class="title">
-      <%= link_to 'Britain in South East Asia', '#' %>
-    </div>
-  </div>
-
-  <div class="aside-item">
-    <div class="date">
-      01/07/2015
-    </div>
-
-    <div class="title">
-      <%= link_to 'Britain in South East Asia', '#' %>
-    </div>
-  </div>
+  <%= render partial: 'shared/aside_link_list', collection: @presented_articles, as: :module_presenter %>
 
   <div class="text-center">
-    <%= link_to 'See All', '#', class: 'content-box-ghost-button aside' %>
+    <%= link_to 'See All', articles_path, class: 'content-box-ghost-button aside' %>
+  </div>
+</aside>
+
+<aside class="aside-content-wrap">
+  <h3><%= two_tone_title "Members' Offers" %></h3>
+
+  <%= render partial: 'shared/aside_link_list', collection: @presented_members_offers, as: :module_presenter %>
+
+  <div class="text-center">
+    <%#= link_to 'See All', members_offers_path, class: 'content-box-ghost-button aside' %>
   </div>
 </aside>

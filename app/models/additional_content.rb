@@ -1,6 +1,7 @@
 class AdditionalContent < ActiveRecord::Base
   AREAS = [
-              'Magazines - Index'
+              'Magazines - Index',
+              'Events - Index'
             ]
 
   validates :area, uniqueness: true

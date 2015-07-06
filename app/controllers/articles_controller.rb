@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show]
 
   def index
-    @presented_articles = BaseCollectionPresenter.new(collection: Article.where(display: true).where("date <= ?", Date.today), view_template: view_context, presenter: ArticlePresenter)
+    @presented_articles = BaseCollectionPresenter.new(collection: Article.published, view_template: view_context, presenter: ArticlePresenter)
   end
 
   def show

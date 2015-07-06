@@ -16,6 +16,7 @@
 //= require vendor/foundation/foundation.js
 //= require vendor/foundation/foundation.equalizer.js
 //= require components/google_maps.js
+//= require components/home_slider.js
 //= require slick.js.js
 // require_tree .
 

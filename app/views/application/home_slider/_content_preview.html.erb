@@ -1,0 +1,19 @@
+<div class="banner-focus hide" id="<%= module_presenter.class_name %>-<%= module_presenter.id %>">
+  <div class="image">
+    <%= module_presenter.linked_home_image %>
+  </div>
+
+  <div class="item-entry">
+    <div class="title">
+      <%= module_presenter.linked_title %>
+    </div>
+
+    <div class="date">
+      <%= module_presenter.date(:short) %>
+    </div>
+  </div>
+
+  <div class="summary">
+    <%= module_presenter.summary %>
+  </div>
+</div>

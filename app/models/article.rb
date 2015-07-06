@@ -6,7 +6,7 @@ class Article < ActiveRecord::Base
   belongs_to :article_category
   mount_uploader :image, ArticleUploader
 
-  validates :title, :content, :date, :category_id, presence: true
+  validates :title, :content, :date, :article_category_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }
 
   def slug_candidates
@@ -21,4 +21,7 @@ class Article < ActiveRecord::Base
     suggested_url_changed? || title_changed?
   end
 
+  def self.published
+    joins(:article_category).where(display: true).where("date <= ? AND article_categories.title != ?", Date.today, "Member News").order(date: :desc)
+  end
 end

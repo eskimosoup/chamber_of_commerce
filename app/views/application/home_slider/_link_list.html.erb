@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="small-2 columns date">
+    <%= module_presenter.date(:short) %>
+  </div>
+
+  <div class="small-10 columns title">
+    <%= module_presenter.linked_title(data: { item: module_presenter.class_name, id: module_presenter.id }) %>
+  </div>
+</div>
