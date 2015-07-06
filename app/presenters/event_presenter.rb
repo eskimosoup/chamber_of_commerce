@@ -65,7 +65,7 @@ class EventPresenter < BasePresenter
       if event.image?
         h.image_tag event.image.index, alt: event.name
       else
-        h.image_tag 'placeholders/home-slider.jpg', alt: event.name
+        h.image_tag 'placeholders/list-image.jpg', alt: event.name
       end
     end
   end
