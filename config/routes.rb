@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'events/index'
-
-  get 'events/show'
-
   resources :articles, only: [:index, :show]
   resources :events, only: [:index, :show]
   resources :magazines, only: [:index]
@@ -15,10 +11,6 @@ Rails.application.routes.draw do
   mount Optimadmin::Engine => '/admin'
 end
 Optimadmin::Engine.routes.draw do
-  get 'events/index'
-
-  get 'events/show'
-
   resources :events, except: [:show] do
     collection do
       post 'order'
@@ -73,8 +65,14 @@ Optimadmin::Engine.routes.draw do
       get 'toggle'
     end
   end
-  get 'magazines/index'
-
+  resources :articles, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+    end
+  end
   resources :magazines, except: [:show] do
     collection do
       post 'order'

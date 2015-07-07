@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150706092906) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "additional_contents", force: :cascade do |t|
     t.string   "area"
     t.string   "title"
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 20150706092906) do
     t.string   "slug"
   end
 
-  add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id"
-  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true
+  add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
+  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
 
   create_table "event_agendas", force: :cascade do |t|
     t.string   "name",              null: false
@@ -56,8 +59,8 @@ ActiveRecord::Schema.define(version: 20150706092906) do
     t.integer  "event_id"
   end
 
-  add_index "event_agendas", ["event_category_id"], name: "index_event_agendas_on_event_category_id"
-  add_index "event_agendas", ["event_id"], name: "index_event_agendas_on_event_id"
+  add_index "event_agendas", ["event_category_id"], name: "index_event_agendas_on_event_category_id", using: :btree
+  add_index "event_agendas", ["event_id"], name: "index_event_agendas_on_event_id", using: :btree
 
   create_table "event_categories", force: :cascade do |t|
     t.integer  "parent_id"
@@ -78,8 +81,8 @@ ActiveRecord::Schema.define(version: 20150706092906) do
     t.integer "generations",   null: false
   end
 
-  add_index "event_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "event_category_anc_desc_idx", unique: true
-  add_index "event_category_hierarchies", ["descendant_id"], name: "event_category_desc_idx"
+  add_index "event_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "event_category_anc_desc_idx", unique: true, using: :btree
+  add_index "event_category_hierarchies", ["descendant_id"], name: "event_category_desc_idx", using: :btree
 
   create_table "event_locations", force: :cascade do |t|
     t.string   "address_line_1", null: false
@@ -96,24 +99,24 @@ ActiveRecord::Schema.define(version: 20150706092906) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",                               null: false
+    t.string   "name",                            null: false
     t.integer  "event_agendas_id"
-    t.date     "start_date",                         null: false
-    t.date     "end_date",                           null: false
+    t.date     "start_date",                      null: false
+    t.date     "end_date",                        null: false
     t.string   "image"
     t.integer  "event_location_id"
     t.text     "description"
-    t.boolean  "display",             default: true
+    t.boolean  "display"
     t.integer  "event_agendas_count", default: 0
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "suggested_url"
     t.string   "slug"
     t.text     "summary"
   end
 
-  add_index "events", ["event_agendas_id"], name: "index_events_on_event_agendas_id"
-  add_index "events", ["event_location_id"], name: "index_events_on_event_location_id"
+  add_index "events", ["event_agendas_id"], name: "index_events_on_event_agendas_id", using: :btree
+  add_index "events", ["event_location_id"], name: "index_events_on_event_location_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -123,10 +126,10 @@ ActiveRecord::Schema.define(version: 20150706092906) do
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "internal_promotions", force: :cascade do |t|
     t.string   "name",                      null: false
@@ -166,9 +169,9 @@ ActiveRecord::Schema.define(version: 20150706092906) do
     t.datetime "updated_at",             null: false
   end
 
-  add_index "optimadmin_administrators", ["auth_token"], name: "index_optimadmin_administrators_on_auth_token"
-  add_index "optimadmin_administrators", ["email"], name: "index_optimadmin_administrators_on_email"
-  add_index "optimadmin_administrators", ["username"], name: "index_optimadmin_administrators_on_username"
+  add_index "optimadmin_administrators", ["auth_token"], name: "index_optimadmin_administrators_on_auth_token", using: :btree
+  add_index "optimadmin_administrators", ["email"], name: "index_optimadmin_administrators_on_email", using: :btree
+  add_index "optimadmin_administrators", ["username"], name: "index_optimadmin_administrators_on_username", using: :btree
 
   create_table "optimadmin_documents", force: :cascade do |t|
     t.string   "name",        null: false
@@ -186,11 +189,13 @@ ActiveRecord::Schema.define(version: 20150706092906) do
   end
 
   create_table "optimadmin_images", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "image",      null: false
+    t.string   "name",        null: false
+    t.string   "image",       null: false
+    t.string   "string"
     t.integer  "module_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "module_name"
   end
 
   create_table "optimadmin_links", force: :cascade do |t|
@@ -206,8 +211,8 @@ ActiveRecord::Schema.define(version: 20150706092906) do
     t.integer "generations",   null: false
   end
 
-  add_index "optimadmin_menu_item_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "menu_item_anc_desc_idx", unique: true
-  add_index "optimadmin_menu_item_hierarchies", ["descendant_id"], name: "menu_item_desc_idx"
+  add_index "optimadmin_menu_item_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "menu_item_anc_desc_idx", unique: true, using: :btree
+  add_index "optimadmin_menu_item_hierarchies", ["descendant_id"], name: "menu_item_desc_idx", using: :btree
 
   create_table "optimadmin_menu_items", force: :cascade do |t|
     t.string   "menu_name",       limit: 100
@@ -222,7 +227,7 @@ ActiveRecord::Schema.define(version: 20150706092906) do
     t.datetime "updated_at",                                  null: false
   end
 
-  add_index "optimadmin_menu_items", ["link_id"], name: "index_optimadmin_menu_items_on_link_id"
+  add_index "optimadmin_menu_items", ["link_id"], name: "index_optimadmin_menu_items_on_link_id", using: :btree
 
   create_table "optimadmin_module_pages", force: :cascade do |t|
     t.string   "name"
@@ -258,4 +263,7 @@ ActiveRecord::Schema.define(version: 20150706092906) do
     t.datetime "updated_at",                null: false
   end
 
+  add_foreign_key "articles", "article_categories"
+  add_foreign_key "event_agendas", "event_categories"
+  add_foreign_key "event_agendas", "events"
 end

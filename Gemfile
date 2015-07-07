@@ -42,18 +42,18 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  # gem 'spring'
+  gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'shoulda'
   gem 'capybara'
   gem 'minitest-reporters'
-  gem 'factory_girl_rails'
 end
 
 group :development do
-  gem 'optimadmin_generators', git: 'git@github-pauleskimosoup:eskimosoup/optimadmin_generators.git'
+  gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
 end
 
 source 'https://rails-assets.org' do
