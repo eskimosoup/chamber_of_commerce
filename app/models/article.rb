@@ -24,4 +24,5 @@ class Article < ActiveRecord::Base
   def self.published
     joins(:article_category).where(display: true).where("date <= ? AND article_categories.title != ?", Date.today, "Member News").order(date: :desc)
   end
+
 end
