@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :articles, only: [:index, :show]
   resources :events, only: [:index, :show]
   resources :magazines, only: [:index]
@@ -59,6 +58,13 @@ Optimadmin::Engine.routes.draw do
     end
   end
   resources :additional_contents, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+    end
+  end
   resources :articles, except: [:show] do
     collection do
       post 'order'
@@ -67,8 +73,6 @@ Optimadmin::Engine.routes.draw do
       get 'toggle'
     end
   end
-  get 'magazines/index'
-
   resources :magazines, except: [:show] do
     collection do
       post 'order'

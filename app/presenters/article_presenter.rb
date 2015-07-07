@@ -9,6 +9,10 @@ class ArticlePresenter < BasePresenter
     article.class.name.downcase
   end
 
+  def title
+    article.title
+  end
+
   def linked_title(options = {})
     h.link_to article.title, article, options
   end
@@ -21,8 +25,8 @@ class ArticlePresenter < BasePresenter
     h.raw article.summary
   end
 
-  def description
-    h.raw article.description
+  def content
+    h.raw article.content
   end
 
   def image
