@@ -10,8 +10,7 @@ module Optimadmin
     def self.presents(name)
       define_method(name) do
         @object
-      end
-      #instance_variable_set(:@partial_path, "optimadmin/#{name.to_s.pluralize}/#{name.to_s}")
+      end      
     end
 
     # https://robots.thoughtbot.com/rendering-collections-in-rails
@@ -39,9 +38,9 @@ module Optimadmin
       h.link_to(chevron_down, "#index-list-#{@object.id}", class: 'toggle-module-list-index helper-link', data: { container: "index-list-#{@object.id}", class: 'hide', return: 'true', this_class: 'octicon-chevron-up octicon-chevron-down' }) # if can?(:read, @object)
     end
 
-    def toggle_link
-      return nil unless @object.respond_to?(:display)
-      h.link_to((@object.display? ? 'Yes' : 'No'), h.toggle_path(model: @object.class.name.demodulize, id: @object.id, toggle: :display), id: "display-#{@object.id}", class: "helper-link display #{ @object.display? ? 'true' : 'false' }", remote: true)
+    def toggle_link(attribute = :display)
+      return nil unless @object.respond_to?(attribute)
+      h.link_to((@object.send("#{attribute}?") ? 'Yes' : 'No'), h.toggle_path(model: @object.class.name.demodulize, id: @object.id, toggle: attribute), id: "display-#{@object.id}", class: "helper-link display #{ @object.send("#{attribute}?") ? 'true' : 'false' }", remote: true)
     end
 
     def show_link

@@ -2,9 +2,15 @@
   <div class="row">
     <div class="large-8 small-12 columns">
       <div class="main-content-wrap">
-        <h1>News</h1>
+        <h1><%= @presented_article_category.present? ? @presented_article_category.title : "News" %></h1>
 
-        <%= render(partial: 'article', collection: @presented_articles, as: :article_presenter) || "Currently no articles" %>
+        <ul>
+          <li><%= link_to "Main News", articles_path %></li>
+          <%= render partial: 'article_categories/article_category', collection: @presented_article_categories, as: :article_category_presenter %>
+        </ul>
+
+
+        <%= render(partial: 'articles/article', collection: @presented_articles, as: :article_presenter) || "Currently no articles" %>
 
         <%= paginate @presented_articles %>
       </div>

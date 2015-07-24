@@ -42,11 +42,11 @@ module Optimadmin
 
 
     def set_article_category
-      @article_category = ArticleCategory.find(params[:id])
+      @article_category = ArticleCategory.friendly.find(params[:id])
     end
 
     def article_category_params
-      params.require(:article_category).permit(:title)
+      params.require(:article_category).permit(:title, :member_related)
     end
   end
 end
