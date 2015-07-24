@@ -10,11 +10,12 @@
   </div>
 
   <div class="row collapse module-list-index header">
-    <%= list_item 'large-10 small-4' do 'Title' end %>
+    <%= list_item 'large-9 small-4' do 'Title' end %>
+    <%= list_item { 'Member Related' } %>
     <%= list_item { 'Edit' } %>
 
     <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
   </div>
-  
+
   <%= render partial: 'article_category', collection: @article_categories, as: :article_category_presenter %>
 </div>

@@ -48,7 +48,7 @@ end
 
 group :test do
   gem 'shoulda'
-  gem 'capybara'
+  gem "minitest-rails-capybara"
   gem 'minitest-reporters'
 end
 

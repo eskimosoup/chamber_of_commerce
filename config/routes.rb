@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :article_categories, path: "article-category", only: :show
   resources :articles, only: [:index, :show]
   resources :events, only: [:index, :show]
   resources :magazines, only: [:index]
