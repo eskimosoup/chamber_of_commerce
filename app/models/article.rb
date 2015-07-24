@@ -6,6 +6,10 @@ class Article < ActiveRecord::Base
   belongs_to :article_category
   mount_uploader :image, ArticleUploader
 
+  scope :published, -> { where("display = ? and date <= ?", true, Date.today) }
+  scope :member_news, -> { joins(:article_category).where(article_categories: { member_related: true }) }
+  scope :non_member_news, -> { joins(:article_category).where(article_categories: { member_related: false }) }
+
   validates :title, :content, :date, :article_category_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }
 
@@ -19,10 +23,6 @@ class Article < ActiveRecord::Base
 
   def should_generate_new_friendly_id?
     suggested_url_changed? || title_changed?
-  end
-
-  def self.published
-    joins(:article_category).where(display: true).where("date <= ? AND article_categories.title != ?", Date.today, "Member News").order(date: :desc)
   end
 
 end

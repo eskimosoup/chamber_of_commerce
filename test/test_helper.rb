@@ -4,6 +4,7 @@ require 'rails/test_help'
 require 'shoulda'
 require 'minitest/pride'
 require "minitest/reporters"
+require "minitest/rails/capybara"
 
 Minitest::Reporters.use!(
     Minitest::Reporters::DefaultReporter.new,
@@ -14,6 +15,12 @@ Minitest::Reporters.use!(
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
+  include ActionView::TestCase::Behavior
+
+  def teardown
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
+  end
 end
 
 class ActiveSupport::TestCase

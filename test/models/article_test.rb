@@ -5,8 +5,8 @@ class ArticleTest < ActiveSupport::TestCase
   should validate_presence_of(:title)
   should validate_presence_of(:content)
   should validate_presence_of(:date)
-  should validate_presence_of(:category_id)
-  should belong_to(:category)
+  should validate_presence_of(:article_category_id)
+  should belong_to(:article_category)
 
   should "validate uniqueness" do
     build(:article)
