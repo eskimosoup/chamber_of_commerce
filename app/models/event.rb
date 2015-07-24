@@ -13,6 +13,7 @@ class Event < ActiveRecord::Base
   scope :bookable, -> (bookable) { joins(:event_categories).where event_categories: { bookable: bookable } }
   scope :has_tables, -> (has_tables) { joins(:event_categories).where event_categories: { has_tables: has_tables } }
   scope :food_event, -> (food_event) { joins(:event_categories).where event_categories: { food_event: food_event } }
+  scope :upcoming, -> { where('display = ? AND end_date >= ?', true, Date.today).order(start_date: :asc) }
 
   mount_uploader :image, EventUploader
 
@@ -34,13 +35,5 @@ class Event < ActiveRecord::Base
 
   def sensible_dates
     errors.add(:end_date, 'cannot be before the start date') if self.end_date.present? && self.start_date.present? && self.end_date < self.start_date
-  end
-
-  def self.upcoming
-    where('display = ? AND end_date >= ?', true, Date.today).order(start_date: :asc)
-  end
-
-  def self.bookable(bookable = true)
-    joins(:event_categories).where(event_categories: { bookable: bookable })
   end
 end

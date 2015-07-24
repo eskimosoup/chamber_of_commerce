@@ -17,8 +17,8 @@ class ApplicationController < ActionController::Base
   helper_method :global_site_settings
 
   def load_objects
-    @presented_articles = BaseCollectionPresenter.new(collection: Article.published, view_template: view_context, presenter: ArticlePresenter)
-    @presented_events   = BaseCollectionPresenter.new(collection: Event.upcoming.bookable, view_template: view_context, presenter: EventPresenter)
+    @presented_articles = BaseCollectionPresenter.new(collection: Article.non_member_news, view_template: view_context, presenter: ArticlePresenter)
+    @presented_events   = BaseCollectionPresenter.new(collection: Event.upcoming.bookable(true), view_template: view_context, presenter: EventPresenter)
     # TODO: Add members offers here
     #@presented_members_offers   = BaseCollectionPresenter.new(collection:, view_template: view_context, presenter: MemberOfferPresenter)
 

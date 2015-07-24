@@ -4,16 +4,29 @@
       <div class="main-content-wrap">
         <h1><%= @presented_event.name %></h1>
 
-        <p>
-          <strong>Start</strong> <%= @presented_event.start_date %>
-          <strong>End</strong> <%= @presented_event.end_date %>
-          <strong>Location</strong> <%= @presented_event.location %>
-        </p>
+        <div class="main-details">
+          Start <strong><%= @presented_event.start_date %></strong>
+          End <strong><%= @presented_event.end_date %></strong>
+          Location <strong><%= @presented_event.location %></strong>
+        </div>
+
+        <div class="small-details">
+          <% @presented_event.event_categories.each do |event_category| %>
+            <%= link_to event_category.name, events_path(event_categories_id: event_category.id) %><%= ', ' unless event_category == @presented_event.event_categories.last %>
+          <% end %>
+        </div>
 
         <div class="content">
           <%= @presented_event.image %>
           <%= @presented_event.description %>
         </div>
+
+        <%# @event.event_agendas.order(:start_time).each do |event_agenda| %>
+          <%#= event_agenda.name %>
+          <%#= event_agenda.event_category.name %>
+          <%#= l event_agenda.start_time, format: :short %>
+          <%#= l event_agenda.end_time, format: :short %>
+        <%# end %>
       </div>
     </div>
 
