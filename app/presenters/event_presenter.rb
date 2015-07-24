@@ -2,6 +2,14 @@ class EventPresenter < BasePresenter
   presents :event
   delegate :event_location, to: :event_location
 
+  def event_categories
+    event.event_categories
+  end
+
+  def event_agendas
+    event.event_agendas
+  end
+
   def id
     event.id
   end
@@ -28,10 +36,6 @@ class EventPresenter < BasePresenter
 
   def end_date
     h.l event.start_date, format: :long
-  end
-
-  def event_agendas
-    h.link_to "Event Agendas (#{event.event_agendas.count})", h.event_agendas_path(event_id: event.id)
   end
 
   def location
@@ -68,5 +72,9 @@ class EventPresenter < BasePresenter
         h.image_tag 'placeholders/list-image.jpg', alt: event.name
       end
     end
+  end
+
+  def read_more
+    h.link_to 'Read more', event, class: 'content-box-ghost-button'
   end
 end

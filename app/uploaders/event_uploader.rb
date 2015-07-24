@@ -5,7 +5,7 @@ class EventUploader < Optimadmin::ImageUploader
   end
 
   version :index do
-    process resize_to_fill: [218, 135]
+    process resize_to_fill: [223, 223]
   end
 
   version :show do

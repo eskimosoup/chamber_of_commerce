@@ -44,7 +44,13 @@ class ArticlePresenter < BasePresenter
   end
 
   def linked_index_image
-    h.image_tag article.image.index, alt: article.title if article.image?
+    h.link_to article, title: article.title do
+      if article.image?
+        h.image_tag article.image.homepage, alt: article.title
+      else
+        h.image_tag 'placeholders/list-image.jpg', alt: article.title
+      end
+    end
   end
 
   def linked_home_image

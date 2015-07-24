@@ -1,19 +1,27 @@
 <div class="list-item-with-image">
   <div class="row">
-    <div class="large-4 columns">
+    <div class="small-12 medium-4 columns">
       <%= event_presenter.linked_index_image %>
     </div>
 
-    <div class="large-8 columns">
+    <div class="small-12 medium-8 columns">
       <%= event_presenter.linked_title(class: 'list-item-with-image-title') %>
 
-      <p>
-        <strong>Start</strong> <%= event_presenter.start_date %>
-        <strong>End</strong> <%= event_presenter.end_date %>
-        <strong>Location</strong> <%= event_presenter.location %>
-      </p>
+      <div class="main-details">
+        Start <strong><%= event_presenter.start_date %></strong>
+        End <strong><%= event_presenter.end_date %></strong>
+        Location <strong><%= event_presenter.location %></strong>
+      </div>
+
+      <div class="small-details">
+        <% event_presenter.event_categories.each do |event_category| %>
+          <%= link_to event_category.name, events_path(event_categories_id: event_category.id) %><%= ', ' unless event_category == event_presenter.event_categories.last %>
+        <% end %>
+      </div>
 
       <%= event_presenter.summary %>
+
+      <%= event_presenter.read_more %>
     </div>
   </div>
 </div>
