@@ -53,7 +53,8 @@ group :test do
 end
 
 group :development do
-  gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
+  #gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
+  gem 'optimadmin_generators', git: 'git@github-pauleskimosoup:eskimosoup/optimadmin_generators.git'
 end
 
 source 'https://rails-assets.org' do
@@ -62,6 +63,3 @@ end
 
 gem 'geocoder'
 gem 'optimadmin', path: '../optimadmin'
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-#gem 'sqlite3', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
