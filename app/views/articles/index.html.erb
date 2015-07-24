@@ -1,23 +1,21 @@
 <section class="content-area">
   <div class="row">
-    <div class="large-8 small-12 columns">
+    <div class="large-3 small-12 columns">
+      <aside class="aside-content-wrap">
+        <h3><span>News Categories</span></h3>
+
+        <%= render partial: 'shared/category_link_list', collection: @presented_article_categories, as: :module_presenter %>
+      </aside>
+    </div>
+
+    <div class="large-9 small-12 columns">
       <div class="main-content-wrap">
         <h1><%= @presented_article_category.present? ? @presented_article_category.title : "News" %></h1>
-
-        <ul>
-          <li><%= link_to "Main News", articles_path %></li>
-          <%= render partial: 'article_categories/article_category', collection: @presented_article_categories, as: :article_category_presenter %>
-        </ul>
-
 
         <%= render(partial: 'articles/article', collection: @presented_articles, as: :article_presenter) || "Currently no articles" %>
 
         <%= paginate @presented_articles %>
       </div>
-    </div>
-
-    <div class="large-4 small-12 columns">
-      <%= render 'shared/sidebar' %>
     </div>
   </div>
 </section>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :article_categories, path: "article-category", only: :show
   resources :articles, only: [:index, :show]
+  resources :article_categories, only: [:show], path: 'article-categories'
   resources :events, only: [:index, :show]
   resources :magazines, only: [:index]
   resources :pages, only: [:show]
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
   mount Optimadmin::Engine => '/admin'
 end
 Optimadmin::Engine.routes.draw do
+  get 'article_category/show'
+
   resources :events, except: [:show] do
     collection do
       post 'order'

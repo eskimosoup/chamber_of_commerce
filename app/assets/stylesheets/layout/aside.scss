@@ -35,3 +35,20 @@
     line-height: 1.25;
   }
 }
+
+
+.category-item {
+  border-bottom: 1px solid $light-grey;
+  margin: em(8px) em(1px);
+  padding: em(8px) em(5px);
+
+  .date {
+    color: $bronze;
+    font-weight: $light;
+  }
+
+  .title {
+    font-weight: $semibold;
+    line-height: 1.25;
+  }
+}

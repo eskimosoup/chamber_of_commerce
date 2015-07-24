@@ -42,7 +42,7 @@ module Optimadmin
 
 
     def set_event_category
-      @event_category = EventCategory.friendly.find(params[:id])
+      @event_category = EventCategory.find(params[:id])
     end
 
     def event_category_params

@@ -44,7 +44,7 @@ module Optimadmin
 
 
     def set_page
-      @page = Page.friendly.find(params[:id])
+      @page = Page.find(params[:id])
     end
 
     def page_params
