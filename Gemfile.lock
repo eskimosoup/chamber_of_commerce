@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: 8b4c115cf54e88dce83f754f310ac617ddc95180
+  revision: 6c38370c4bd101617943252125620a696bfd4281
   specs:
     optimadmin_generators (0.3.4)
 
@@ -61,12 +61,12 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     ansi (1.5.0)
-    arel (6.0.0)
+    arel (6.0.2)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
-    bcrypt (3.1.10)
+    bcrypt (3.1.10-x86-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -146,7 +146,6 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    libv8 (3.16.14.11)
     little-plugger (1.1.3)
     logging (2.0.0)
       little-plugger (~> 1.1)
@@ -160,16 +159,16 @@ GEM
     mini_magick (4.2.7)
     mini_portile (0.6.2)
     minitest (5.7.0)
-    minitest-reporters (1.0.18)
+    minitest-reporters (1.0.17)
       ansi
       builder
       minitest (>= 5.0)
       ruby-progressbar
     multi_json (1.11.0)
     multipart-post (2.0.0)
-    nokogiri (1.6.6.2)
+    nokogiri (1.6.6.2-x86-mingw32)
       mini_portile (~> 0.6.0)
-    pg (0.18.2)
+    pg (0.18.2-x86-mingw32)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -185,7 +184,7 @@ GEM
       railties (= 4.2.3)
       sprockets-rails
     rails-assets-jquery (2.1.4)
-    rails-assets-slick.js (1.5.5)
+    rails-assets-slick.js (1.5.7)
       rails-assets-jquery (>= 1.7)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -202,10 +201,10 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
-    ref (1.0.5)
+      json (~> 1.4)
     retriable (1.4.1)
     ruby-progressbar (1.7.5)
-    sass (3.4.15)
+    sass (3.4.16)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -233,18 +232,17 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    therubyracer (0.12.2)
-      libv8 (~> 3.16.14.0)
-      ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2015.5)
+      tzinfo (>= 1.0.0)
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    web-console (2.1.3)
+    web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
@@ -256,7 +254,7 @@ GEM
       nokogiri (~> 1.3)
 
 PLATFORMS
-  ruby
+  x86-mingw32
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)

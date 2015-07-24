@@ -16,6 +16,6 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.where('display = ? AND end_date >= ?', true, Date.today).friendly.find(params[:id])
+    @event = Event.where('display = ? AND end_date >= ?', true, Date.today).find(params[:id])
   end
 end

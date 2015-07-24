@@ -18,7 +18,17 @@ class ArticlePresenter < BasePresenter
   end
 
   def date(format = :long)
-    h.l article.date, format: format
+    h.content_tag :span, class: 'date' do
+      h.l article.date, format: format
+    end
+  end
+
+  def linked_category
+    h.link_to article.article_category, title: article.article_category.title do
+      h.content_tag :span, class: 'article-category' do
+        article.article_category.title
+      end
+    end
   end
 
   def summary
@@ -33,6 +43,10 @@ class ArticlePresenter < BasePresenter
     h.image_tag article.image.show, alt: article.title, class: 'page-image image-right' if article.image?
   end
 
+  def linked_index_image
+    h.image_tag article.image.index, alt: article.title if article.image?
+  end
+
   def linked_home_image
     h.link_to article, title: article.title do
       if article.image?
@@ -41,5 +55,9 @@ class ArticlePresenter < BasePresenter
         h.image_tag 'placeholders/home-slider.jpg', alt: article.title
       end
     end
+  end
+
+  def read_more
+    h.link_to 'Read more', article, class: 'content-box-ghost-button'
   end
 end

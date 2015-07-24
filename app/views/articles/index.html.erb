@@ -1,6 +1,14 @@
 <section class="content-area">
   <div class="row">
-    <div class="large-8 small-12 columns">
+    <div class="large-3 small-12 columns">
+      <aside class="aside-content-wrap">
+        <h3><span>News Categories</span></h3>
+
+        <%= render partial: 'shared/category_link_list', collection: @presented_article_categories, as: :module_presenter %>
+      </aside>
+    </div>
+
+    <div class="large-9 small-12 columns">
       <div class="main-content-wrap">
         <h1>News</h1>
 
@@ -8,10 +16,6 @@
 
         <%= paginate @presented_articles %>
       </div>
-    </div>
-
-    <div class="large-4 small-12 columns">
-      <%= render 'shared/sidebar' %>
     </div>
   </div>
 </section>

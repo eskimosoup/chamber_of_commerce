@@ -1,5 +1,21 @@
 <div class="article">
-  <h2>
-    <%= article_presenter.linked_title %>
-  </h2>
+  <div class="row">
+    <div class="small-12 medium-4 columns">
+      <%= article_presenter.linked_index_image %>
+    </div>
+
+    <div class="small-12 medium-8 columns">
+      <h2>
+        <%= article_presenter.linked_title %>
+      </h2>
+
+      <div class="small-details">
+        Published on <%= article_presenter.date %> in <%= article_presenter.linked_category %>.
+      </div>
+
+      <%= article_presenter.summary %>
+
+      <%= article_presenter.read_more %>
+    </div>
+  </div>
 </div>
