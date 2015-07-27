@@ -13,6 +13,14 @@
   }
 
   .magazine-publication-view {
-    
+
   }
+
+  &:first-of-type {
+    border-top: 0;
+  }
+}
+
+.magazines-title a {
+  color: $white;
 }
