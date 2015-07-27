@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     # TODO: Add members offers here
     #@presented_members_offers   = BaseCollectionPresenter.new(collection:, view_template: view_context, presenter: MemberOfferPresenter)
 
-    @patrons = BaseCollectionPresenter.new(collection: Patron.where(display: true).order(position: :asc), view_template: view_context, presenter: PatronPresenter)
+    @patrons = BaseCollectionPresenter.new(collection: Patron.display, view_template: view_context, presenter: PatronPresenter)
     #@internal_promotions = InternalPromotionPresenter.new(object: InternalPromotion.where(display: true).order(created_at: :desc), view_template: view_context)
     @header_menu = Optimadmin::Menu.new(name: "header")
     @footer_menu = Optimadmin::Menu.new(name: "footer")

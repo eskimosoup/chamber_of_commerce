@@ -11,3 +11,14 @@
     margin: 0 em(40px);
   }
 }
+
+.inline-patrons {
+  @extend %clearfix;
+  text-align: center;
+  
+  div {
+    float: left;
+    width: 25%;
+    margin: em(10px) 0;
+  }
+}
