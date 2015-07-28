@@ -43,17 +43,18 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
-  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.0'
+  gem "factory_girl_rails"
+  gem 'shoulda-matchers'
 end
 
 group :test do
-  gem 'shoulda'
-  gem "minitest-rails-capybara"
-  gem 'minitest-reporters'
+  gem 'database_cleaner', '~> 1.4.1'
+  gem "capybara"
+  gem 'launchy', '~> 2.4.3'
 end
 
 group :development do
-  #gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
 end
 
