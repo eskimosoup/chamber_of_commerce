@@ -1,0 +1,28 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Members' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Member', object: Member, path: new_member_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <%= render 'optimadmin/shared/module/index/order', options: [['Company name', 'company_name'], ['Verified', 'verified']] %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @members.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 small-2' do %>
+      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+    <% end %>
+
+    <%= list_item 'large-7 small-4' do 'Company Name' end %>
+
+    <%= list_item { 'Verified' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+
+    <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
+  </div>
+
+  <%= render partial: 'member', collection: @members, as: :member_presenter %>
+  <%= paginate @members %>
+</div>

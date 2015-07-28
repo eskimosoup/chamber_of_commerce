@@ -1,0 +1,3 @@
+class MemberSession
+  
+end

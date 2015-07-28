@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727140933) do
+ActiveRecord::Schema.define(version: 20150728123410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,36 @@ ActiveRecord::Schema.define(version: 20150727140933) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "member_logins", force: :cascade do |t|
+    t.integer  "member_id"
+    t.string   "username"
+    t.string   "password_digest"
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.boolean  "active"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "member_logins", ["member_id"], name: "index_member_logins_on_member_id", using: :btree
+
+  create_table "members", force: :cascade do |t|
+    t.string   "company_name"
+    t.string   "industry"
+    t.text     "address"
+    t.string   "telephone"
+    t.string   "website"
+    t.string   "email"
+    t.boolean  "verified"
+    t.text     "nature_of_business"
+    t.integer  "member_login_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "slug"
+  end
+
+  add_index "members", ["member_login_id"], name: "index_members_on_member_login_id", using: :btree
+
   create_table "newsletter_signups", force: :cascade do |t|
     t.string   "email_address"
     t.datetime "created_at",    null: false
@@ -272,4 +302,5 @@ ActiveRecord::Schema.define(version: 20150727140933) do
   add_foreign_key "articles", "article_categories"
   add_foreign_key "event_agendas", "event_categories"
   add_foreign_key "event_agendas", "events"
+  add_foreign_key "member_logins", "members"
 end
