@@ -1,0 +1,70 @@
+<html lang="en">
+  <body>
+
+    <p>
+      <strong>Current company name:</strong>
+      <br />
+      <%= @member.company_name %>
+    </p>
+
+    <hr />
+
+    <h2>New details</h2>
+
+    <% unless @new_details.company_name == @member.company_name %>
+      <p>
+        <strong>New company name:</strong>
+        <br />
+        <%= @new_details.company_name %>
+      </p>
+    <% end %>
+
+    <% unless @new_details.industry == @member.industry %>
+      <p>
+        <strong>Industry:</strong>
+        <br />
+        <%= @new_details.industry %>
+      </p>
+    <% end %>
+
+    <% unless @new_details.address == @member.address %>
+      <p>
+        <strong>Address:</strong>
+        <br />
+        <%= simple_format @new_details.address %>
+      </p>
+    <% end %>
+
+    <% unless @new_details.telephone == @member.telephone %>
+      <p>
+        <strong>Telephone:</strong>
+        <br />
+        <%= @new_details.telephone %>
+      </p>
+    <% end %>
+
+    <% unless @new_details.website == @member.website %>
+      <p>
+        <strong>Website:</strong>
+        <br />
+        <%= @new_details.website %>
+      </p>
+    <% end %>
+
+    <% unless @new_details.email == @member.email %>
+      <p>
+        <strong>Email:</strong>
+        <br />
+        <%= @new_details.email %>
+      </p>
+    <% end %>
+
+    <% unless @new_details.nature_of_business == @member.nature_of_business %>
+      <p>
+        <strong>Nature of business:</strong>
+        <br />
+        <%= simple_format @new_details.nature_of_business %>
+      </p>
+    <% end %>
+  </body>
+</html>
