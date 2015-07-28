@@ -1,6 +1,11 @@
 GIT
-  remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 5e8571c4cb2720bb87238fc87bdfbff1c6cd086e
+  remote: git@github.com:eskimosoup/optimadmin_generators.git
+  revision: 9f57f12dde05e9013a05ec28e276fc1e838bd0c6
+  specs:
+    optimadmin_generators (0.3.4)
+
+PATH
+  remote: ../optimadmin
   specs:
     optimadmin (0.0.1)
       bcrypt
@@ -14,12 +19,6 @@ GIT
       mini_magick
       rails
       sass-rails
-
-GIT
-  remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: 9f57f12dde05e9013a05ec28e276fc1e838bd0c6
-  specs:
-    optimadmin_generators (0.3.4)
 
 GEM
   remote: https://rubygems.org/

@@ -62,3 +62,4 @@ end
 
 gem 'geocoder'
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git'
+#gem 'optimadmin', path: '../optimadmin'
