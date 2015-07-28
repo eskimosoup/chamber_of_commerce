@@ -19,16 +19,4 @@ FactoryGirl.define do
     factory :article_category_with_articles, traits: [:with_articles]
     factory :member_related_article_category_with_articles, traits: [:member_related, :with_articles]
   end
-
-  factory :article do
-    article_category
-    sequence(:title) {|n| "My article title #{n}" }
-    content "Some content"
-    date Date.today
-    sequence(:suggested_url) {|n| "my-article-#{ n }" }
-    trait :with_image do
-      image { File.open(File.join(Rails.root, "test/support/images/landscape_image.jpg")) }
-    end
-    factory :article_with_image, traits: [:with_image]
-  end
 end
