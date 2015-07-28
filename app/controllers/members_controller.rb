@@ -12,11 +12,10 @@ class MembersController < ApplicationController
   end
 
   def update
-    #raise member_params.to_yaml
     @member = current_member
     @member.assign_attributes(member_params)
     if @member.valid?
-      MemberMailer.new(global_site_settings, @member).deliver_now
+      MemberMailer.update_details(global_site_settings, current_member, @member).deliver_now
       redirect_to edit_members_path, notice: 'Request sent successfully'
     else
       render :edit
