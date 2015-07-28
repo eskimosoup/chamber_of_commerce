@@ -1,0 +1,25 @@
+<section class="content-area">
+  <div class="row">
+    <div class="large-8 small-12 columns">
+      <div class="main-content-wrap">
+        <h1><%= @page.title %></h1>
+
+        <div class="content">
+          <%= @page.image %>
+          <%= @page.content %>
+
+          <% if @patrons.present? %>
+            <div class="inline-patrons">
+              <%= render partial: 'patrons/patron', collection: @patrons, as: :patron_presenter %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 small-12 columns">
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>

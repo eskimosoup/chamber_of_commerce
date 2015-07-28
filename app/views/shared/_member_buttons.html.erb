@@ -1,2 +1,6 @@
 <% # Please skip over this 'hacky' method to remove the space that inline-block creates %>
-<%= link_to 'Sign In', '#', class: 'member-action' %><%= link_to 'Join', '#', class: 'member-register' %>
+<% unless current_member %>
+  <%= link_to 'Sign In', login_member_sessions_path, class: 'member-action' %><%= link_to 'Join', new_member_login_path, class: 'member-register' %>
+<% else %>
+  <%= link_to 'Update Details', edit_members_path, class: 'member-update-details' %><%= link_to 'Logout', logout_member_sessions_path, class: 'member-logout' %>
+<% end %>

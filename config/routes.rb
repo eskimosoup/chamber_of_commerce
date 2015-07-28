@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :article_categories, path: "article-category", only: :show
   resources :articles, only: [:index, :show]
   resources :article_categories, only: [:show], path: 'article-categories'
@@ -7,12 +8,54 @@ Rails.application.routes.draw do
   resources :pages, only: [:show]
   resources :newsletter_signups, only: [:new, :create]
   resources :event_locations, only: [:show], path: 'event-locations'
+  resources :member_logins, only: [:new, :create], path: 'members-login' do
+    collection do
+      get 'edit'
+      patch 'update', as: 'update'
+    end
+  end
+  resources :members, only: [:index, :show] do
+    collection do
+      get 'edit'
+      patch 'update'
+    end
+  end
+  resources :member_sessions, only: [], path: 'members-area' do
+    collection do
+      get 'login'
+      post 'authenticate'
+      get 'logout'
+      get 'edit'
+    end
+  end
+
+
+  # resources :members, only: :show do
+  #  resources :member_offers
+  # end
+
 
   root to: 'application#index'
 
   mount Optimadmin::Engine => '/admin'
 end
 Optimadmin::Engine.routes.draw do
+  resources :members, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+      resources :member_logins, except: [:show] do
+        collection do
+          post 'order'
+        end
+        member do
+          get 'toggle'
+        end
+      end
+    end
+  end
   get 'article_category/show'
 
   resources :events, except: [:show] do

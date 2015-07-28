@@ -12,4 +12,5 @@ class PagePresenter < BasePresenter
   def image
     h.image_tag page.image.show, alt: page.title, class: 'page-image image-right' if page.image?
   end
+
 end

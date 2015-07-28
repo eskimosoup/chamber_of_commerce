@@ -1,0 +1,30 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Member Logins' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Member Login', object: MemberLogin, path: new_member_login_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @member_logins.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 small-2' do %>
+      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+    <% end %>
+
+    <%= list_item 'large-5 small-4' do 'Title' end %>
+
+    <%= list_item 'large-2 hide-for-medium-down' do 'Image' end %>
+
+    <%= list_item { 'Display' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+
+    <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
+  </div>
+
+  <%= render partial: 'member_login', collection: @member_logins, as: :member_login_presenter %>
+  <%= paginate @member_logins %>
+</div>

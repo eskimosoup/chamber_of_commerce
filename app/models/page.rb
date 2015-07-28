@@ -31,7 +31,7 @@ class Page < ActiveRecord::Base
   end
 
   def self.styles
-    %w{ basic }
+    %w{ basic patrons }
   end
 
   def store_image

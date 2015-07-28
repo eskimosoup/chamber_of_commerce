@@ -8,4 +8,21 @@ input[type='submit'].submit-button {
   padding: em(12px);
   text-transform: uppercase;
   width: 100%;
+
+  &:hover {
+    background: $deep-grey;
+  }
+}
+
+fieldset {
+  padding: em(15px);
+
+  legend {
+    padding: 0 em(10px);
+    text-transform: uppercase;
+  }
+
+  .fields {
+    margin: em(20px) 0;
+  }
 }

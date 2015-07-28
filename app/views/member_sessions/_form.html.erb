@@ -1,0 +1,25 @@
+<%= form_for(:member_sessions, url: authenticate_member_sessions_path)  do |f| %>
+  <%= render 'shared/flash_messages' %>
+
+  <%= field_set_tag 'Login' do %>
+    <div class="fields">
+      <div class="row">
+        <div class="small-12 medium-6 columns">
+          <%= f.label :username %>
+          <%= f.text_field :username, placeholder: 'Username' %>
+        </div>
+
+        <div class="small-12 medium-6 columns">
+          <%= f.label :password %>
+          <%= f.password_field :password, placeholder: 'Password' %>
+        </div>
+      </div>
+    </div>
+
+    <%= f.label :remember_me %>
+    <%= f.check_box :remember_me %>
+
+
+    <%= f.submit 'Login', class: 'submit-button' %>
+  <% end %>
+<% end %>
