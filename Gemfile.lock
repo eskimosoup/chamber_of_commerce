@@ -1,11 +1,6 @@
 GIT
-  remote: git@github-pauleskimosoup:eskimosoup/optimadmin_generators.git
-  revision: 6c38370c4bd101617943252125620a696bfd4281
-  specs:
-    optimadmin_generators (0.3.4)
-
-PATH
-  remote: ../optimadmin
+  remote: git@github.com:eskimosoup/Optimadmin.git
+  revision: 5e8571c4cb2720bb87238fc87bdfbff1c6cd086e
   specs:
     optimadmin (0.0.1)
       bcrypt
@@ -19,6 +14,12 @@ PATH
       mini_magick
       rails
       sass-rails
+
+GIT
+  remote: git@github.com:eskimosoup/optimadmin_generators.git
+  revision: 9f57f12dde05e9013a05ec28e276fc1e838bd0c6
+  specs:
+    optimadmin_generators (0.3.4)
 
 GEM
   remote: https://rubygems.org/
@@ -199,7 +200,7 @@ GEM
       railties (= 4.2.3)
       sprockets-rails
     rails-assets-jquery (2.1.4)
-    rails-assets-slick.js (1.5.7)
+    rails-assets-slick.js (1.5.8)
       rails-assets-jquery (>= 1.7)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
