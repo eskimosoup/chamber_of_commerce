@@ -2,6 +2,8 @@ class EventAgenda < ActiveRecord::Base
   belongs_to :event_category
   belongs_to :event, counter_cache: true
 
+  scope :order_by_start_time, ->{ order(start_time: :asc) }
+
   validates :name, :event_category, :description, presence: true
   validate :sensible_times
 
