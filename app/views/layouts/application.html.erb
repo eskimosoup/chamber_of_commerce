@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= global_site_settings['Name'] %></title>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= csrf_meta_tags %>
-    <script src="//use.typekit.net/jhn0hwh.js"></script>
-    <script>try{Typekit.load();}catch(e){}</script>
-  </head>
+  <%= render 'layouts/head' %>
 
   <body>
     <%= render 'layouts/header' %>
