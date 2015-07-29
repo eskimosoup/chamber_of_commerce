@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :pages, only: [:show]
   resources :newsletter_signups, only: [:new, :create]
   resources :event_locations, only: [:show], path: 'event-locations'
+  resources :member_password_resets, only: [:new, :create, :show], path: 'members-password-reset'
   resources :member_logins, only: [:new, :create], path: 'members-login' do
     collection do
       get 'edit'

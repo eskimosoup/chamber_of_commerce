@@ -12,6 +12,11 @@ class MemberLogin < ActiveRecord::Base
     update_attribute(:auth_token, secure_auth_token)
   end
 
+  def generate_reset_token
+    self.password_reset_token = Digest::SHA1.hexdigest([Time.now, rand].join)[0..15]
+    update_attribute(:password_reset_token, password_reset_token)
+  end
+
   private
 
     def secure_auth_token

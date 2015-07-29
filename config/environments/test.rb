@@ -1,4 +1,6 @@
 Rails.application.configure do
+  Rails.application.routes.default_url_options[:host] = '192.168.0.26:5034'
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's
@@ -30,6 +32,7 @@ Rails.application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
+  config.action_mailer.raise_delivery_errors = false
 
   # Randomize the order test cases are executed.
   config.active_support.test_order = :random
