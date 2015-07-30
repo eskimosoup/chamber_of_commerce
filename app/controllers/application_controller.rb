@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
 
   def index
     @magazine = MagazinePresenter.new(object: Magazine.where("date <= ? AND display = ?", Date.today, true).order(date: :desc).first, view_template: view_context)
-    @members_services_page = Page.find_by(style: "members_services", display: true)
-    @members_services_menu = Optimadmin::Menu.new(name: "members_services")
+    @page_links = Page.select(:slug).where(display: true)
+    @members_services_menu  = Optimadmin::Menu.new(name: "members_services")
   end
 
   private
@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
       @header_menu = Optimadmin::Menu.new(name: "header")
       @footer_menu = Optimadmin::Menu.new(name: "footer")
       @newsletter_signup = NewsletterSignup.new
+      @page_types = Page.where(page_type: ["members_services", "international_trade", "patrons", "policy_and_representation"], display: true).group_by(&:title)
     end
 
     def current_member

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730101750) do
+ActiveRecord::Schema.define(version: 20150730141941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -287,6 +287,7 @@ ActiveRecord::Schema.define(version: 20150730101750) do
     t.string   "suggested_url"
     t.string   "style"
     t.string   "layout"
+    t.string   "page_type"
   end
 
   create_table "patrons", force: :cascade do |t|
