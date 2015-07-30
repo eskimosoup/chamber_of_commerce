@@ -9,7 +9,6 @@ class Page < ActiveRecord::Base
 
   validates :title, :content, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }
-  validates :style, uniqueness: { message: "exists on Members' Services (only one page is allowed for this style)" }, if: Proc.new{|page| page.style == 'members_services' }
 
   def slug_candidates
     [
@@ -32,7 +31,7 @@ class Page < ActiveRecord::Base
   end
 
   def self.styles
-    %w{ basic patrons members_services }
+    %w{ basic patrons navigation }
   end
 
   def store_image

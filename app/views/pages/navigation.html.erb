@@ -8,15 +8,19 @@
           <%= @page.image %>
 
           <%= @page.content %>
-
-          <ul>
-            <%= nested_menu_items(menu_items: @members_services_menu.menu_items) %>
-          </ul>
         </div>
       </div>
     </div>
 
     <div class="large-4 small-12 columns">
+      <aside class="aside-content-wrap">
+        <h3><span>Events</span></h3>
+
+        <ul>
+          <%= nested_menu_items(menu_items: @header_menu.menu_items) %>
+        </ul>
+      </aside>
+
       <%= render 'shared/sidebar' %>
     </div>
   </div>
