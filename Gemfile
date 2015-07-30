@@ -55,6 +55,7 @@ group :test do
 end
 
 group :development do
+  gem 'guard-rspec', require: false
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
 end
 
