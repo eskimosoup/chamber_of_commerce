@@ -6,7 +6,12 @@
 
         <div class="content">
           <%= @page.image %>
+
           <%= @page.content %>
+
+          <ul>
+            <%= nested_menu_items(menu_items: @members_services_menu.menu_items) %>
+          </ul>
         </div>
       </div>
     </div>
