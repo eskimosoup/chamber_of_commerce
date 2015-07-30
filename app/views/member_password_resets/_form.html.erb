@@ -1,0 +1,14 @@
+<%= form_tag member_password_resets_path do %>
+  <%= field_set_tag 'Reset password' do %>
+    <div class="fields">
+      <div class="row">
+        <div class="small-12 medium-12 columns">
+          <%= label_tag :username %>
+          <%= text_field_tag :username, nil, placeholder: 'Username' %>
+        </div>
+      </div>
+    </div>
+
+    <%= submit_tag 'Reset password', class: 'submit-button' %>
+  <% end %>
+<% end %>

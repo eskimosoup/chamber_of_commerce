@@ -16,6 +16,7 @@ RSpec.feature "Article Pages", type: :feature do
 
     it "has articles displayed on index" do
       expect_articles_index
+      #save_and_open_page
       expect(page).to have_link(article.title)
       expect(page).to have_selector(".list-item-with-image", count: 1)
     end

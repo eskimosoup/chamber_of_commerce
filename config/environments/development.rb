@@ -1,5 +1,5 @@
 Rails.application.configure do
-  Rails.application.routes.default_url_options[:host] = '192.168.0.37:3000'
+  Rails.application.routes.default_url_options[:host] = '192.168.0.26:5034'
   config.action_mailer.smtp_settings = {:enable_starttls_auto => false}
 
   ActionMailer::Base.delivery_method = :smtp
