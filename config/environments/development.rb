@@ -9,7 +9,6 @@ Rails.application.configure do
     g.assets false
     g.stylesheets  false
     g.helper false
-    g.test_framework false
   end
 
   config.logger = Logger.new(config.paths['log'].first, 3, 5242880)
