@@ -55,6 +55,7 @@ group :test do
 end
 
 group :development do
+  gem 'guard-rspec', require: false
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
 end
 
@@ -63,5 +64,5 @@ source 'https://rails-assets.org' do
 end
 
 gem 'geocoder'
-#gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git'
-gem 'optimadmin', path: '../optimadmin'
+gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git'
+#gem 'optimadmin', path: '../optimadmin'
