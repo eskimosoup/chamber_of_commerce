@@ -21,12 +21,39 @@
           <%= @presented_event.description %>
         </div>
 
-        <%# @event.event_agendas.order(:start_time).each do |event_agenda| %>
-          <%#= event_agenda.name %>
-          <%#= event_agenda.event_category.name %>
-          <%#= l event_agenda.start_time, format: :short %>
-          <%#= l event_agenda.end_time, format: :short %>
-        <%# end %>
+        <% unless @presented_event_agendas.blank? %>
+          <h3>Agenda</h3>
+          <div class="row">
+            <div class="small-8 medium-4 columns">
+              Name
+            </div>
+            <div class="medium-4 hide-for-small-only columns">
+              Category
+            </div>
+            <div class="small-2 columns">
+              Start Time
+            </div>
+            <div class="small-2 columns">
+              End Time
+            </div>
+          </div>
+          <% @presented_event_agendas.each do |event_agenda_presenter| %>
+            <div class="row event-agenda">
+              <div class="small-8 medium-4 columns">
+                <%= event_agenda_presenter.name %>
+              </div>
+              <div class="medium-4 hide-for-small-only columns">
+                <%= event_agenda_presenter.event_category_name %>
+              </div>
+              <div class="small-2 columns">
+                <%= event_agenda_presenter.start_time(:short) %>
+              </div>
+              <div class="small-2 columns">
+                <%= event_agenda_presenter.end_time(:short) %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
 
@@ -35,3 +62,4 @@
     </div>
   </div>
 </section>
+
