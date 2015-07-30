@@ -1,4 +1,4 @@
-<%= form_for(member_login) do |f| %>
+<%= form_for([member, member_login]) do |f| %>
 <% if member_login.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(member_login.errors.count, "error") %> prohibited this member_login from being saved:</h2>
@@ -11,12 +11,11 @@
   </div>
 <% end %>
 
-  
+
 
   <div class="tabs prevent-flash">
     <ul class="tab-list">
       <li><a href="#tabs-1">Content</a></li>
-      <li><a href="#tabs-2">Media</a></li>
       <li><a href="#tabs-3">Settings</a></li>
       <li>
         <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
@@ -40,11 +39,11 @@
       </div>
           <% end %>
 
-    <%= field_set_tag nil, id: 'tabs-2' do %>
-      
-          <% end %>
-
     <%= field_set_tag nil, id: 'tabs-3' do %>
+    <div class="field">
+<%= f.label :active %><br>
+<%= f.check_box :active %>
+</div>
           <% end %>
   </div>
 

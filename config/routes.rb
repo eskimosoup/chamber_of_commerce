@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   resources :pages, only: [:show]
   resources :newsletter_signups, only: [:new, :create]
   resources :event_locations, only: [:show], path: 'event-locations'
-  resources :member_password_resets, only: [:new, :create, :show], path: 'members-password-reset'
+  resources :member_password_resets, only: [:new, :create, :show], path: 'members-password-reset' do
+    member do
+      patch 'update', as: 'update'
+    end
+  end
   resources :member_logins, only: [:new, :create], path: 'members-login' do
     collection do
       get 'edit'
@@ -42,19 +46,19 @@ Rails.application.routes.draw do
 end
 Optimadmin::Engine.routes.draw do
   resources :members, except: [:show] do
+    resources :member_logins, except: [:show] do
+      collection do
+        post 'order'
+      end
+      member do
+        get 'toggle'
+      end
+    end
     collection do
       post 'order'
     end
     member do
       get 'toggle'
-      resources :member_logins, except: [:show] do
-        collection do
-          post 'order'
-        end
-        member do
-          get 'toggle'
-        end
-      end
     end
   end
   get 'article_category/show'

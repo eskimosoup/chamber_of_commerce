@@ -17,9 +17,7 @@
 
           <div class="inner">
             <ul class="plain-list news">
-              <li>
-                <%= link_to 'Google', '#' %>
-              </li>
+              <%= render partial: 'articles/simple_list', collection: @member_news, as: :article_presenter %>
             </ul>
           </div>
 
@@ -37,14 +35,12 @@
 
           <div class="inner text-center">
             <ul class="plain-list">
-              <li>
-                <%= link_to 'Google', '#' %>
-              </li>
+              <%= nested_menu_items(menu_items: @members_services_menu.menu_items.first(12)) %>
             </ul>
           </div>
 
           <div class="button-text-center">
-            <%= link_to 'See All', '#', class: 'content-box-ghost-button' %>
+            <%= link_to 'See All', @members_services_page, class: 'content-box-ghost-button' if @members_services_page.present? %>
           </div>
         </div>
       </div>

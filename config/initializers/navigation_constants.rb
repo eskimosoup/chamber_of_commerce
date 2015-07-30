@@ -1,4 +1,4 @@
-NavigationMenus = %w( header footer )
+NavigationMenus = %w( header footer members_services )
 
 NavigationLinks = {
   'Page' => 'Page',

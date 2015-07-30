@@ -8,6 +8,7 @@ class Member < ActiveRecord::Base
             :nature_of_business, presence: true
 
   validates :company_name, uniqueness: true
+  validates :email, email: true
 
   extend FriendlyId
   friendly_id :company_name, use: [:slugged, :history]

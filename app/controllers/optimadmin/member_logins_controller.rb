@@ -1,5 +1,6 @@
 module Optimadmin
   class MemberLoginsController < Optimadmin::ApplicationController
+    before_action :set_member
     before_action :set_member_login, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -19,7 +20,7 @@ module Optimadmin
     def create
       @member_login = MemberLogin.new(member_login_params)
       if @member_login.save
-        redirect_to member_logins_url, notice: 'Member login was successfully created.'
+        redirect_to members_url, notice: 'Member login was successfully created.'
       else
         render :new
       end
@@ -27,7 +28,7 @@ module Optimadmin
 
     def update
       if @member_login.update(member_login_params)
-        redirect_to member_logins_url, notice: 'Member login was successfully updated.'
+        redirect_to members_url, notice: 'Member login was successfully updated.'
       else
         render :edit
       end
@@ -39,14 +40,16 @@ module Optimadmin
     end
 
   private
-
+    def set_member
+      @member = Member.find(params[:member_id])
+    end
 
     def set_member_login
       @member_login = MemberLogin.find(params[:id])
     end
 
     def member_login_params
-      params.require(:member_login).permit(:username, :password, :password_confirmation)
+      params.require(:member_login).permit(:username, :password, :password_confirmation, :active)
     end
   end
 end

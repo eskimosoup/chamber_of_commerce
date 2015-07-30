@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
 
   def index
     @magazine = MagazinePresenter.new(object: Magazine.where("date <= ? AND display = ?", Date.today, true).order(date: :desc).first, view_template: view_context)
+    @members_services_page = Page.find_by(style: "members_services", display: true)
+    @members_services_menu = Optimadmin::Menu.new(name: "members_services")
   end
 
   private
@@ -20,8 +22,10 @@ class ApplicationController < ActionController::Base
 
     def load_objects
       @presented_articles = BaseCollectionPresenter.new(collection: Article.non_member_news, view_template: view_context, presenter: ArticlePresenter)
+      @presented_member_news = BaseCollectionPresenter.new(collection: Article.member_news, view_template: view_context, presenter: ArticlePresenter)
       @presented_events   = BaseCollectionPresenter.new(collection: Event.upcoming.bookable(true), view_template: view_context, presenter: EventPresenter)
       # TODO: Add members offers here
+      @presented_members_offers = nil
       #@presented_members_offers   = BaseCollectionPresenter.new(collection:, view_template: view_context, presenter: MemberOfferPresenter)
 
       @patrons = BaseCollectionPresenter.new(collection: Patron.display, view_template: view_context, presenter: PatronPresenter)
@@ -42,7 +46,6 @@ class ApplicationController < ActionController::Base
     def members_only
       return if current_member
       session[:return_to] = request.fullpath unless blacklist_redirect_member_session.include?(request.fullpath)
-      flash[:error] = 'You must be logged into to view this page.'
-      redirect_to login_member_sessions_url
+      redirect_to login_member_sessions_url, flash: { error: 'You must be logged into to view this page.' }
     end
 end
