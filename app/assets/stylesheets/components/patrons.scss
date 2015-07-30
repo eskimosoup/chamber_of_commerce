@@ -5,6 +5,10 @@
   .full-header div {
     background: $white;
     color: $bronze;
+
+    a {
+      color: $bronze;
+    }
   }
 
   .patron-logos img {
@@ -15,7 +19,7 @@
 .inline-patrons {
   @extend %clearfix;
   text-align: center;
-  
+
   div {
     float: left;
     width: 25%;

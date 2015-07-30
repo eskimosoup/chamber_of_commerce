@@ -11,6 +11,7 @@ class Page < ActiveRecord::Base
 
   validates :title, :content, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }
+  validates :page_type, uniqueness: true, allow_blank: true
 
   def slug_candidates
     [
@@ -34,6 +35,10 @@ class Page < ActiveRecord::Base
 
   def self.styles
     %w{ basic patrons }
+  end
+
+  def self.types
+    %w{ members_services patrons international_trade policy_and_representation }
   end
 
   def store_image

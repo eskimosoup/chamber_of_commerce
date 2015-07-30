@@ -12,7 +12,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20150730154501) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -178,9 +177,9 @@ ActiveRecord::Schema.define(version: 20150730154501) do
     t.string   "password_digest"
     t.string   "auth_token"
     t.string   "password_reset_token"
-    t.boolean  "active"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.boolean  "active",               default: true
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "member_logins", ["member_id"], name: "index_member_logins_on_member_id", using: :btree
@@ -304,6 +303,7 @@ ActiveRecord::Schema.define(version: 20150730154501) do
     t.string   "suggested_url"
     t.string   "style"
     t.string   "layout"
+    t.string   "page_type"
   end
 
   create_table "patrons", force: :cascade do |t|

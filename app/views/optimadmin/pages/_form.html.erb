@@ -57,6 +57,15 @@
         </div>
       <% end %>
 
+
+            <% if Page.types.size > 1 %>
+              <div class="field">
+                <p>A type is used to find links on hard coded pages, e.g. linking to the "Patrons" page.</p>
+                <%= f.label :page_type %><br />
+                <%= f.select :page_type, Page.types.map{ |x| [t(x), x] }, include_blank: 'Standard' %>
+              </div>
+            <% end %>
+
             <div class="field">
               <%= f.label :suggested_url %><br />
               <%= f.text_field :suggested_url %>

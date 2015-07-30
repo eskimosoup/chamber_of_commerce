@@ -13,7 +13,7 @@ class MemberLogin < ActiveRecord::Base
   end
 
   def generate_reset_token
-    self.password_reset_token = Digest::SHA1.hexdigest([Time.now, rand].join)[0..15]
+    self.password_reset_token = Digest::SHA1.hexdigest([Time.now, rand].join)[0..25]
     update_attribute(:password_reset_token, password_reset_token)
   end
 

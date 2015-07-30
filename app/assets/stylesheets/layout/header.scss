@@ -44,6 +44,10 @@ header {
   @extend %header-user-link;
   background: $light-grey;
   border-bottom-right-radius: 10px;
+
+  &:hover {
+    color: $offset-black;
+  }
 }
 
 

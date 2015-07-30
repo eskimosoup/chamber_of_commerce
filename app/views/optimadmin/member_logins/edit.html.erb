@@ -1,7 +1,6 @@
 <%= render 'optimadmin/shared/header/main_title', title: 'Edit Member Login' %>
 
 <div class="main-content">
-  <%= render 'optimadmin/shared/module/form/back', path: member_logins_path, title: 'Member Login' %>
-
-  <%= render 'form', member_login: @member_login %>
+  <%= render 'optimadmin/shared/module/form/back', path: members_path, title: 'Member' %>
+  <%= render partial: 'form', locals: { member_login: @member_login, member: @member } %>
 </div>

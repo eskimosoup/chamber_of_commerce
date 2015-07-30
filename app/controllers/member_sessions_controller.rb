@@ -10,23 +10,22 @@ class MemberSessionsController < ApplicationController
 
   def authenticate
     member = MemberLogin.find_by(username: member_sessions_params[:username])
-    if member && member.authenticate(member_sessions_params[:password])
+    if member && member.authenticate(member_sessions_params[:password]) && member.active.present?
       authenticate_member_session member
       remember_member_session member if member_sessions_params[:remember_me] == '1'
       return_to = redirect_member_session
-      flash[:message] = 'Logged in!'
-      redirect_to return_to
+      redirect_to return_to, notice: 'Welcome back'
     else
       flash[:error] = 'The username and password are incorrect'
-      flash[:error] = 'The password is incorrect' if member
+      flash[:error] = 'The password is incorrect' if member && member.active.present?
+      flash[:error] = 'Your account is inactive, please contact us' if member && member.active.blank?
       render :login
     end
   end
 
   def logout
     logout_member_session(current_member)
-    flash[:message] = 'You are now logged out'
-    redirect_to root_url
+    redirect_to root_url, notice: 'You are now logged out'
   end
 
   private

@@ -9,7 +9,8 @@ class MemberLoginsController < ApplicationController
   def create
     @member_login = MemberLogin.new(member_login_params)
     if @member_login.save
-      redirect_to member_logins_url, notice: 'Member login was successfully created.'
+      MemberMailer.new_member_login(global_site_settings, @member_login).deliver_now
+      redirect_to login_member_sessions_path, notice: 'Member login was successfully created.'
     else
       render :new
     end

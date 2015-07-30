@@ -3,11 +3,13 @@
     <%= member_presenter.detail_toggle_link %>
   </div>
 
-  <div class="large-7 small-6 columns" data-equalizer-watch="module-list">
+  <div class="large-4 small-4 columns" data-equalizer-watch="module-list">
     <%= member_presenter.title %>
   </div>
 
-
+  <div class="large-3 hide-for-small columns" data-equalizer-watch="module-list">
+    <%= member_presenter.edit_member_login %>
+  </div>
 
   <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
     <%= member_presenter.toggle_link(:verified) %>

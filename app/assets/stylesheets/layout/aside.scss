@@ -18,6 +18,16 @@
       font-weight: $bold;
     }
   }
+
+  .sidebar a {
+    display: block;
+    padding: em(5px);
+    border-bottom: 1px solid $light-grey;
+
+    &.active {
+      font-weight: $bold;
+    }
+  }
 }
 
 .aside-item {

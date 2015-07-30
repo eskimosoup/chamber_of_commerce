@@ -11,4 +11,10 @@ class MemberMailer < ApplicationMailer
     @member = member
     mail to: @member.member.email, from: @site_settings['Email'], subject: "Reset password - #{@site_settings['Name']}"
   end
+
+  def new_member_login(site_settings, member_login)
+    @site_settings = site_settings
+    @member_login = member_login
+    mail to: @site_settings['Email'], from: @site_settings['Email'], subject: "Member login created - #{@site_settings['Name']}"
+  end
 end
