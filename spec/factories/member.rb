@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :member do
     email "paul@optimised.today"
-    company_name "example"
+    sequence(:company_name) { |n| "Company #{n}" }
     industry "industry"
     address "address"
     telephone "telephone"

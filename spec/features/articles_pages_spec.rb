@@ -5,9 +5,9 @@ RSpec.feature "Article Pages", type: :feature do
     it "has no articles message" do
       expect_articles_index
       within("h1") do
-        assert has_content? "News"
+        expect(page).to have_content("News")
       end
-      assert has_content? "Currently no articles"
+      expect(page).to have_content("Currently no articles")
     end
   end
 
