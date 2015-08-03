@@ -5,13 +5,15 @@
         <h1>Edit Your Details</h1>
 
         <div class="content">
+          <%= link_to 'Manage your offers', member_member_offers_path(current_member), class: 'content-box-ghost-button' %>
+
           <p>Please note that editing your details will be verified by an administrator before it is reflected on the website.</p>
 
           <p>If you want to change your password, you should <%= link_to 'use the password reset page', edit_member_logins_path %>.</p>
 
           <%= render 'shared/flash_messages', locales: { flash: flash } %>
 
-          <%= form_for @member, url: members_path do |f| %>
+          <%= form_for @member, url: update_members_path do |f| %>
             <% if @member.errors.any? %>
               <div id="error_explanation">
                 <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>

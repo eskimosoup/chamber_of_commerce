@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :article_categories, path: "article-category", only: :show
   resources :articles, only: [:index, :show]
   resources :article_categories, only: [:show], path: 'article-categories'
@@ -22,9 +21,12 @@ Rails.application.routes.draw do
     end
   end
   resources :members, only: [:index, :show] do
+    resources :member_offers, path: 'offers'
+
     collection do
+      get 'a-to-z-directroy', to: 'members#directory', as: 'directory'
       get 'edit'
-      patch 'update'
+      patch 'update', as: 'update'
     end
   end
   resources :member_sessions, only: [], path: 'members-area' do
@@ -47,6 +49,30 @@ Rails.application.routes.draw do
   mount Optimadmin::Engine => '/admin'
 end
 Optimadmin::Engine.routes.draw do
+  get 'members_offers/new'
+
+  get 'members_offers/create'
+
+  get 'members_offers/edit'
+
+  get 'members_offers/update'
+
+  get 'members_offers/show'
+
+  get 'members_offers/destroy'
+
+  resources :member_offers, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
   resources :members, except: [:show] do
     resources :member_logins, except: [:show] do
       collection do

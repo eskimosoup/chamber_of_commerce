@@ -21,12 +21,10 @@ class ApplicationController < ActionController::Base
     helper_method :global_site_settings
 
     def load_objects
-      @presented_articles = BaseCollectionPresenter.new(collection: Article.non_member_news, view_template: view_context, presenter: ArticlePresenter)
-      @presented_member_news = BaseCollectionPresenter.new(collection: Article.member_news, view_template: view_context, presenter: ArticlePresenter)
-      @presented_events   = BaseCollectionPresenter.new(collection: Event.upcoming.bookable(true), view_template: view_context, presenter: EventPresenter)
-      # TODO: Add members offers here
-      @presented_members_offers = nil
-      #@presented_members_offers   = BaseCollectionPresenter.new(collection:, view_template: view_context, presenter: MemberOfferPresenter)
+      @presented_articles       = BaseCollectionPresenter.new(collection: Article.non_member_news, view_template: view_context, presenter: ArticlePresenter)
+      @presented_member_news    = BaseCollectionPresenter.new(collection: Article.member_news, view_template: view_context, presenter: ArticlePresenter)
+      @presented_events         = BaseCollectionPresenter.new(collection: Event.upcoming.bookable(true), view_template: view_context, presenter: EventPresenter)
+      @presented_members_offers = BaseCollectionPresenter.new(collection: MemberOffer.current.verified, view_template: view_context, presenter: MemberOfferPresenter)
 
       @patrons = BaseCollectionPresenter.new(collection: Patron.display, view_template: view_context, presenter: PatronPresenter)
       #@internal_promotions = InternalPromotionPresenter.new(object: InternalPromotion.where(display: true).order(created_at: :desc), view_template: view_context)

@@ -1,10 +1,21 @@
 class MembersController < ApplicationController
   before_action :members_only, only: [:edit, :update]
+  before_action :set_member, only: :show
 
   def index
+    @additional_content = AdditionalContentPresenter.new(object: AdditionalContent.find_by(area: 'Members - Index'), view_template: view_context)
+    @presented_members = BaseCollectionPresenter.new(collection:
+                        Member.filter(params.slice(:company_name, :industry, :nature_of_business)).page(params[:page]).per(params[:per_page] || 15),
+                                                    view_template: view_context, presenter: MemberPresenter)
   end
 
   def show
+    redirect_to @member_object, status: :moved_permanently if request.path != member_path(@member_object)
+  end
+
+  def directory
+    @additional_content = AdditionalContentPresenter.new(object: AdditionalContent.find_by(area: 'Members - Directroy'), view_template: view_context)
+    @presented_members = Member.order(:company_name).group_by{|x| x.company_name.titleize.first}
   end
 
   def edit
@@ -23,6 +34,10 @@ class MembersController < ApplicationController
   end
 
   private
+    def set_member
+      @member_object = Member.find(params[:id])
+      @presented_member = MemberPresenter.new(object: @member_object, view_template: view_context)
+    end
 
     def member_params
       params.require(:member).permit(:company_name, :industry, :address, :telephone, :website, :email, :verified, :nature_of_business)
