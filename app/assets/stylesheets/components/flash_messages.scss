@@ -41,3 +41,11 @@
     font-weight: normal;
   }
 }
+
+.member-offer-expired {
+  background: $pale-blue;
+  color: $white;
+  font-weight: $bold;
+  font-size: em(20px);
+  padding: em(15px, 20px);
+}

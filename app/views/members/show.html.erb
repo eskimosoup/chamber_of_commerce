@@ -1,2 +1,29 @@
-<h1>Members#show</h1>
-<p>Find me in app/views/members/show.html.erb</p>
+<section class="content-area">
+  <div class="row">
+    <div class="large-8 small-12 columns">
+      <div class="main-content-wrap">
+        <h1><%= @presented_member.company_name %></h1>
+
+        <div class="content">
+          <strong><%= @presented_member.website %></strong>
+          Telephone <strong><%= @presented_member.telephone %></strong>
+          Email <strong><%= @presented_member.email %></strong>
+
+          <%= @presented_member.address %>
+
+          <% if @presented_member.member_offers.present? %>
+            <h2>Offers</h2>
+          <% end %>
+
+          <%= render partial: 'member_offers/member_offer',
+              collection: BaseCollectionPresenter.new(collection: @presented_member.member_offers, view_template: self, presenter: MemberOfferPresenter),
+              as: :presented_member_offer %>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 small-12 columns">
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>

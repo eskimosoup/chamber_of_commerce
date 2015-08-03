@@ -32,3 +32,61 @@
   font-size: em(22px);
   font-weight: $bold;
 }
+
+.list-item-without-image-title {
+  font-size: em(22px);
+  font-weight: $bold;
+}
+
+.list-item-without-image {
+  margin: em(10px) 0;
+  padding: em(10px) 0;
+
+  &:not(:first-of-type) {
+    border-top: 1px solid $light-grey;
+  }
+
+  .content-box-ghost-button {
+    padding: em(10px) em(20px);
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .date,
+  .article-category {
+    font-weight: $bold;
+  }
+}
+
+.members-alphabetical-list-heading {
+  border-bottom: 2px solid $bronze;
+  color: $light-blue;
+  font-size: em(18px);
+  font-weight: $bold;
+  padding: 0 em(5px, 38px) em(10px, 38px);
+}
+
+.content-area .members-alphabetical-list {
+  list-style: none;
+  margin: em(5px) 0 em(15px);
+  padding: 0;
+
+  a {
+    border: 1px solid $light-blue;
+    display: block;
+    font-size: em(12px);
+    letter-spacing: 1px;
+    padding: em(4px, 12px);
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      background: $light-blue;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}

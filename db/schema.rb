@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803081024) do
+ActiveRecord::Schema.define(version: 20150803110250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,6 +185,23 @@ ActiveRecord::Schema.define(version: 20150803081024) do
 
   add_index "member_logins", ["member_id"], name: "index_member_logins_on_member_id", using: :btree
 
+  create_table "member_offers", force: :cascade do |t|
+    t.integer  "member_id"
+    t.string   "title",        null: false
+    t.text     "summary",      null: false
+    t.text     "description"
+    t.string   "website_link"
+    t.string   "image"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.boolean  "verified"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "slug"
+  end
+
+  add_index "member_offers", ["member_id"], name: "index_member_offers_on_member_id", using: :btree
+
   create_table "members", force: :cascade do |t|
     t.string   "company_name"
     t.string   "industry"
@@ -195,9 +212,10 @@ ActiveRecord::Schema.define(version: 20150803081024) do
     t.boolean  "verified"
     t.text     "nature_of_business"
     t.integer  "member_login_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "slug"
+    t.integer  "member_offers_count", default: 0
   end
 
   add_index "members", ["member_login_id"], name: "index_members_on_member_login_id", using: :btree
@@ -322,4 +340,5 @@ ActiveRecord::Schema.define(version: 20150803081024) do
   add_foreign_key "event_agendas", "events"
   add_foreign_key "event_bookings", "events"
   add_foreign_key "member_logins", "members"
+  add_foreign_key "member_offers", "members"
 end
