@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
 
   has_many :event_agendas, dependent: :destroy
   has_many :event_categories, through: :event_agendas
+  has_many :event_bookings, dependent: :nullify
   belongs_to :event_location
 
   scope :event_location_id, -> (location_id) { where event_location_id: location_id }
