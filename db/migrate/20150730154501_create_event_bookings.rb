@@ -4,7 +4,7 @@ class CreateEventBookings < ActiveRecord::Migration
       t.belongs_to :event, index: true, foreign_key: true
       t.string :name, null: false
       t.string :company_name
-      t.string :industry_type
+      t.string :industry
       t.string :nature_of_business
       t.text :address
       t.string :phone_number

@@ -10,6 +10,10 @@ class EventPresenter < BasePresenter
     event.event_agendas
   end
 
+  def event_bookings
+    event.event_bookings
+  end
+
   def id
     event.id
   end
@@ -76,5 +80,9 @@ class EventPresenter < BasePresenter
 
   def read_more
     h.link_to 'Read more', event, class: 'content-box-ghost-button'
+  end
+
+  def booking_button
+    h.link_to "Book now", h.new_event_event_booking_path(event), id: "book-event", class: "button"
   end
 end

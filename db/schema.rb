@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730154501) do
+ActiveRecord::Schema.define(version: 20150803081024) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,7 +70,7 @@ ActiveRecord::Schema.define(version: 20150730154501) do
     t.integer  "event_id"
     t.string   "name",                               null: false
     t.string   "company_name"
-    t.string   "industry_type"
+    t.string   "industry"
     t.string   "nature_of_business"
     t.text     "address"
     t.string   "phone_number"
@@ -119,17 +120,17 @@ ActiveRecord::Schema.define(version: 20150730154501) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",                            null: false
+    t.string   "name",                               null: false
     t.integer  "event_agendas_id"
-    t.date     "start_date",                      null: false
-    t.date     "end_date",                        null: false
+    t.date     "start_date",                         null: false
+    t.date     "end_date",                           null: false
     t.string   "image"
     t.integer  "event_location_id"
     t.text     "description"
-    t.boolean  "display"
+    t.boolean  "display",             default: true
     t.integer  "event_agendas_count", default: 0
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "suggested_url"
     t.string   "slug"
     t.text     "summary"
