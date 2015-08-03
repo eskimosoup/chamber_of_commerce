@@ -29,3 +29,19 @@ a {
     color: $light-blue;
   }
 }
+
+.button {
+  background: $bronze;
+  border: 0;
+  color: $white;
+  display: block;
+  letter-spacing: 1px;
+  outline: none;
+  padding: em(12px);
+  text-transform: uppercase;
+  width: 100%;
+
+  &:hover {
+    background: $deep-grey;
+  }
+}
