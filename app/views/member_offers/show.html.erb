@@ -27,6 +27,8 @@
               </p>
             <% end %>
 
+            <p>This offer is provided by <%= @presented_member_offer.member_link %>.</p>
+
             <%= @presented_member_offer.description %>
 
             <%= @presented_member_offer.website(class: 'content-box-ghost-button') %>
@@ -36,7 +38,6 @@
     </div>
 
     <div class="large-4 small-12 columns">
-      <% render 'side_menus' if @side_menus.present? %>
       <%= render 'shared/sidebar' %>
     </div>
   </div>

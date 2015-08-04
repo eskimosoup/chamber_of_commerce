@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'member-offers', as: 'member_offers', to: 'member_offers#main_index'
-  
+  get 'member-offers', as: 'members_offers', to: 'member_offers#main_index'
+
   resources :members, only: [:index, :show] do
     resources :member_offers, path: 'offers'
 

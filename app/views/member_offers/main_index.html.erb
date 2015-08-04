@@ -5,7 +5,7 @@
         <h3><span>Member Offers Filter</span></h3>
 
         <div class="filters">
-          <%= form_tag member_offers_path, method: :get do %>
+          <%= form_tag members_offers_path, method: :get do %>
             <div class="field">
               <%= label_tag :member_id, 'Member' %>
               <%= select_tag :member_id, options_for_select(Member.verified.map{|x| [x.company_name, x.id]}, params[:member_id]), prompt: "All Members" %>

@@ -13,8 +13,8 @@ class MemberPresenter < BasePresenter
     h.link_to member.company_name, member, options
   end
 
-  def website
-    h.link_to "View Website", member.website, target: '_blank', title: "#{member.company_name} Website"
+  def website(options = {})
+    h.link_to member.website, member.website, options
   end
 
   def email

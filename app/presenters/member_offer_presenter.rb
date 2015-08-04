@@ -101,6 +101,10 @@ class MemberOfferPresenter < BasePresenter
     member_offer.member
   end
 
+  def member_link(options = {})
+    h.link_to member_offer.member.company_name, member_offer.member, options
+  end
+
   def edit_link(current_member)
     #h.content_tag :div, class: 'small-details' do
       h.link_to 'Edit this offer', edit_member_member_offer_path(current_member, member_offer), class: 'edit-button' if current_member == member_offer.member

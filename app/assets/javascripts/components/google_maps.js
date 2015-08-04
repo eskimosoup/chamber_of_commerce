@@ -28,12 +28,12 @@ function initialize() {
       content: $('#map-info-window').html()
     });
 
-    var image = '/assets/pin.png';
+    var image = '/pin.png';
 
     var marker = new google.maps.Marker({
       position: myLatLng,
       map: map,
-      //icon: image,
+      icon: image,
       title: $('#map-canvas').data('title'),
       zIndex: 0
     });

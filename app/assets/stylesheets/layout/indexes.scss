@@ -90,16 +90,3 @@
     }
   }
 }
-
-.edit-button {
-  &:link,
-  &:visited {
-    color: $light-blue;
-    text-decoration: underline;
-  }
-
-  &:hover,
-  &:active {
-    text-decoration: none;
-  }
-}

@@ -5,11 +5,23 @@
         <h1><%= @presented_member.company_name %></h1>
 
         <div class="content">
-          <strong><%= @presented_member.website %></strong>
-          Telephone <strong><%= @presented_member.telephone %></strong>
-          Email <strong><%= @presented_member.email %></strong>
+          <div class="row">
+            <div class="small-6 columns address">
+              <strong class="display-block">Address</strong>
+              <%= @presented_member.address %>
+            </div>
 
-          <%= @presented_member.address %>
+            <div class="small-6 columns">
+              <strong class="display-block">Telephone</strong>
+              <%= @presented_member.telephone %>
+
+              <strong class="display-block">Email</strong>
+              <%= @presented_member.email %>
+
+              <strong class="display-block">Website</strong>
+              <%= @presented_member.website(target: '_blank') %>
+            </div>
+          </div>
 
           <% if @presented_member.member_offers.present? %>
             <h2>Offers</h2>
