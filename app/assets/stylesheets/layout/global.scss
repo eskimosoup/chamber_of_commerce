@@ -30,7 +30,8 @@ a {
   }
 }
 
-.button {
+.button,
+input[type='submit'].button {
   background: $bronze;
   border: 0;
   color: $white;

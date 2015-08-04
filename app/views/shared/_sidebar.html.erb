@@ -21,9 +21,9 @@
 <aside class="aside-content-wrap">
   <h3><%= two_tone_title "Members' Offers" %></h3>
 
-  <%= render partial: 'shared/aside_link_list', collection: @presented_members_offers, as: :module_presenter %>
+  <%= render partial: 'shared/aside_member_offers_list', collection: @presented_members_offers, as: :module_presenter %>
 
   <div class="text-center">
-    <%#= link_to 'See All', members_offers_path, class: 'content-box-ghost-button aside' %>
+    <%= link_to 'See All', members_offers_path, class: 'content-box-ghost-button aside' %>
   </div>
 </aside>

@@ -1,0 +1,92 @@
+<%= content_for :footer do %>
+  <script>
+    $(function() {
+      $('.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+
+    tinyMCE.baseURL = "<%= root_url %>assets/tinymce/";
+
+    tinymce.init({
+      selector: "textarea",
+      menubar: false,
+      plugins: [
+        "advlist autolink lists link anchor",
+      ],
+      toolbar: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
+    });
+  </script>
+<% end %>
+<%= form_for([@member, @member_offer]) do |f| %>
+  <% if @member_offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@member_offer.errors.count, "error") %> prohibited this member_offer from being saved:</h2>
+
+      <ul>
+        <% @member_offer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :summary %><br>
+    <%= f.text_area :summary, class: 'tinymce' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: 'tinymce' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :website_link %><br>
+    <%= f.text_field :website_link %>
+  </div>
+
+  <p>An offer with no dates will run indefinitely.</p>
+
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <div class="field">
+        <%= f.label :start_date %><br>
+        <%= f.text_field :start_date, class: 'datepicker' %>
+      </div>
+    </div>
+
+    <div class="small-12 medium-6 columns">
+      <div class="field">
+        <%= f.label :end_date %><br>
+        <%= f.text_field :end_date, class: 'datepicker' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+
+    <% if @member_offer.image.present? %>
+      <div class="row">
+        <div class="small-12 medium-8 columns">
+          <%= f.label :remove_image %><br />
+          <%= f.check_box :remove_image %>
+        </div>
+
+        <div class="small-12 medium-4 columns">
+          <%= image_tag @member_offer.image.small %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'button' %>
+  </div>
+<% end %>

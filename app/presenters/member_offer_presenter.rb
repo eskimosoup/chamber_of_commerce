@@ -55,12 +55,18 @@ class MemberOfferPresenter < BasePresenter
     h.link_to 'Read more', member_member_offer_path(member_offer.member, member_offer), class: 'content-box-ghost-button'
   end
 
-  def expiry_message
-    h.content_tag :div, 'This offer has now expired.', class: 'member-offer-expired' if member_offer.end_date < Date.today
+  def information_message
+    content = h.content_tag :div, 'This offer has now expired.', class: 'member-offer-information-message' if member_offer.end_date && member_offer.end_date < Date.today && member_offer.verified.present?
+    content = h.content_tag :div, 'This offer is upcoming and is only viewable after its start date.', class: 'member-offer-information-message' if member_offer.start_date && member_offer.start_date > Date.today && member_offer.verified.present?
+    content = h.content_tag :div, 'This offer is not yet verified.', class: 'member-offer-information-message' unless member_offer.verified.present?
+    content
+  end
+
+  def unverified_message
   end
 
   def member_offer_validity_class
-    member_offer.end_date < Date.today ? 'member-offer-expired-opacity' : 'member-offer-valid'
+    ( member_offer.end_date && member_offer.end_date < Date.today ) ? 'member-offer-expired-opacity' : 'member-offer-valid'
   end
 
   def website(options = {})
@@ -74,18 +80,30 @@ class MemberOfferPresenter < BasePresenter
   end
 
   def start_date(format = :long)
+    return unless member_offer.start_date
     h.content_tag :span, class: 'date' do
       h.l member_offer.start_date, format: format
     end
   end
 
   def end_date(format = :long)
+    return unless member_offer.end_date
     h.content_tag :span, class: 'date' do
       h.l member_offer.end_date, format: format
     end
   end
 
+  def verification_message
+    h.content_tag :strong, 'This offer is not yet verified.' unless member_offer.verified.present?
+  end
+
   def member
     member_offer.member
+  end
+
+  def edit_link(current_member)
+    #h.content_tag :div, class: 'small-details' do
+      h.link_to 'Edit this offer', edit_member_member_offer_path(current_member, member_offer), class: 'edit-button' if current_member == member_offer.member
+    #end
   end
 end

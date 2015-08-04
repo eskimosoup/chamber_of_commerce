@@ -2,10 +2,14 @@
   <div class="row">
     <div class="large-8 small-12 columns">
       <div class="main-content-wrap">
-        <%= @presented_member_offer.expiry_message %>
+        <%= @presented_member_offer.information_message %>
 
         <div class="<%= @presented_member_offer.member_offer_validity_class %>">
           <h1><%= @presented_member_offer.title %></h1>
+
+          <%= @presented_member_offer.edit_link(current_member) %>
+
+          <%= render 'shared/flash_messages', locales: { flash: flash } %>
 
           <div class="content">
             <%= @presented_member_offer.image %>

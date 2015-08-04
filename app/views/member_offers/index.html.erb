@@ -1,0 +1,63 @@
+<section class="content-area">
+  <div class="row">
+    <div class="large-8 small-12 columns">
+      <div class="main-content-wrap">
+        <h1><%= @presented_member.company_name %> offers</h1>
+
+        <div class="content">
+          <% if current_member.present? %>
+            <%= link_to 'Post New Offer', new_member_member_offer_path(current_member), class: 'content-box-ghost-button' %>
+          <% end %>
+
+          <%= render 'shared/flash_messages', locales: { flash: flash } %>
+
+          <%= render partial: 'member_offers/member_offer',
+              collection: @member_offers,
+              as: :presented_member_offer %>
+
+          <% if current_member.present? %>
+            <h3>
+              <%= link_to '#awaiting-verification', class: 'toggle-class', data: { container: '#awaiting-verification', class: 'hide', return: 'false' } do %>
+                Awaiting verification (<%= @unverified_member_offers.size %>)
+              <% end %>
+            </h3>
+
+            <div id="awaiting-verification" class="hide">
+              <%= render(partial: 'member_offers/member_offer',
+                  collection: @unverified_member_offers,
+                  as: :presented_member_offer) || 'There are 0 offers awaiting verification.' %>
+            </div>
+
+            <h4>
+              <%= link_to '#upcoming-offers', class: 'toggle-class', data: { container: '#upcoming-offers', class: 'hide', return: 'false' } do %>
+                Upcoming (<%= @upcoming_member_offers.size %>)
+              <% end %>
+            </h4>
+
+            <div id="upcoming-offers" class="hide">
+              <%= render(partial: 'member_offers/member_offer',
+                  collection: @upcoming_member_offers,
+                  as: :presented_member_offer) || 'There are 0 offers upcoming.' %>
+            </div>
+
+            <h5>
+              <%= link_to '#expired', class: 'toggle-class', data: { container: '#expired', class: 'hide', return: 'false' } do %>
+                Expired (<%= @unverified_member_offers.size %>)
+              <% end %>
+            </h5>
+
+            <div id="expired" class="hide">
+              <%= render(partial: 'member_offers/member_offer',
+                  collection: @expired_member_offers,
+                  as: :presented_member_offer) || 'There are 0 expired offers.' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 small-12 columns">
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>

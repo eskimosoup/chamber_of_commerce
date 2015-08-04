@@ -1,0 +1,11 @@
+<div class="aside-item">
+  <div class="date">
+    <%= module_presenter.start_date(:short) %>
+    <%= '-' if module_presenter.start_date.present? && module_presenter.end_date.present? %>
+    <%= module_presenter.end_date(:short) %>
+  </div>
+
+  <div class="title">
+    <%= module_presenter.linked_title %>
+  </div>
+</div>

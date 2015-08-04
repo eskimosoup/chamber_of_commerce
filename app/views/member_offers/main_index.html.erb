@@ -1,0 +1,38 @@
+<section class="content-area">
+  <div class="row">
+    <div class="large-3 small-12 columns">
+      <aside class="aside-content-wrap">
+        <h3><span>Member Offers Filter</span></h3>
+
+        <div class="filters">
+          <%= form_tag member_offers_path, method: :get do %>
+            <div class="field">
+              <%= label_tag :member_id, 'Member' %>
+              <%= select_tag :member_id, options_for_select(Member.verified.map{|x| [x.company_name, x.id]}, params[:member_id]), prompt: "All Members" %>
+            </div>
+
+            <%= hidden_field_tag :filter, 1 %>
+
+            <%= submit_tag "Filter Member Offers", class: 'button' %>
+          <% end %>
+        </div>
+      </aside>
+    </div>
+
+    <div class="large-9 small-12 columns">
+      <div class="main-content-wrap">
+        <h1><%= @additional_content.title('Member Offers') %></h1>
+
+        <div class="content">
+          <%= @additional_content.content %>
+
+          <%= render partial: 'member_offers/member_offer',
+              collection: @presented_member_offers,
+              as: :presented_member_offer %>
+
+          <%= paginate @presented_member_offers %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

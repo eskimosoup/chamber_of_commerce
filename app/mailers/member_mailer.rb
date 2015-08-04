@@ -17,4 +17,16 @@ class MemberMailer < ApplicationMailer
     @member_login = member_login
     mail to: @site_settings['Email'], from: @site_settings['Email'], subject: "Member login created - #{@site_settings['Name']}"
   end
+
+  def new_member_offer(site_settings, member_offer)
+    @site_settings = site_settings
+    @member_offer = member_offer
+    mail to: @site_settings['Email'], from: @site_settings['Email'], subject: "Member offer created - #{@site_settings['Name']}"
+  end
+
+  def edited_member_offer(site_settings, member_offer)
+    @site_settings = site_settings
+    @member_offer = member_offer
+    mail to: @site_settings['Email'], from: @site_settings['Email'], subject: "Member offer edited - #{@site_settings['Name']}"
+  end
 end

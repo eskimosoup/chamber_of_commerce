@@ -1,2 +1,19 @@
-<h1>MembersOffers#edit</h1>
-<p>Find me in app/views/members_offers/edit.html.erb</p>
+<section class="content-area">
+  <div class="row">
+    <div class="large-8 small-12 columns">
+      <div class="main-content-wrap">
+        <h1>Edit Offer</h1>
+
+        <div class="content">
+          <%= render 'form' %>
+
+          <%= link_to 'Delete', member_member_offer_path(@member, @member_offer), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: 'content-box-ghost-button right' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 small-12 columns">
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>

@@ -17,6 +17,9 @@
 //= require vendor/foundation/foundation.equalizer.js
 //= require components/google_maps.js
 //= require components/home_slider.js
+//= require components/toggles
+//= require jquery-ui/datepicker
+//= require tinymce
 //= require slick.js.js
 // require_tree .
 
