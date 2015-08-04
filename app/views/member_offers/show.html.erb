@@ -1,0 +1,39 @@
+<section class="content-area">
+  <div class="row">
+    <div class="large-8 small-12 columns">
+      <div class="main-content-wrap">
+        <%= @presented_member_offer.expiry_message %>
+
+        <div class="<%= @presented_member_offer.member_offer_validity_class %>">
+          <h1><%= @presented_member_offer.title %></h1>
+
+          <div class="content">
+            <%= @presented_member_offer.image %>
+
+            <% if @presented_member_offer.start_date.present? || @presented_member_offer.end_date.present? %>
+              <p>
+                Offer available
+                <% if @presented_member_offer.start_date.present? %>
+                  from <strong><%= @presented_member_offer.start_date %></strong>
+                <% end %>
+
+                <% if @presented_member_offer.end_date.present? %>
+                  until <strong><%= @presented_member_offer.end_date %></strong>
+                <% end %>
+              </p>
+            <% end %>
+
+            <%= @presented_member_offer.description %>
+
+            <%= @presented_member_offer.website(class: 'content-box-ghost-button') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 small-12 columns">
+      <% render 'side_menus' if @side_menus.present? %>
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>

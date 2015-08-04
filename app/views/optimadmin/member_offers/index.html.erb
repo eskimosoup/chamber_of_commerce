@@ -1,0 +1,32 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Member Offers' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Member Offer', object: MemberOffer, path: new_member_offer_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <%= render 'optimadmin/shared/module/index/order', options: [['Member', 'member_id'], ['Verified', 'verified']] %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @member_offers.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 small-2' do %>
+      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+    <% end %>
+
+    <%= list_item 'large-2 small-4' do 'Member' end %>
+
+    <%= list_item 'large-3 small-4' do 'Title' end %>
+
+    <%= list_item 'large-2 hide-for-medium-down' do 'Image' end %>
+
+    <%= list_item { 'Verified' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+
+    <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
+  </div>
+
+  <%= render partial: 'member_offer', collection: @member_offers, as: :member_offer_presenter %>
+  <%= paginate @member_offers %>
+</div>
