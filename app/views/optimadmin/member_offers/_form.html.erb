@@ -1,0 +1,76 @@
+<%= form_for(member_offer) do |f| %>
+<% if member_offer.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(member_offer.errors.count, "error") %> prohibited this member_offer from being saved:</h2>
+
+    <ul>
+      <% member_offer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  
+
+  <div class="tabs prevent-flash">
+    <ul class="tab-list">
+      <li><a href="#tabs-1">Content</a></li>
+      <li><a href="#tabs-2">Media</a></li>
+      <li><a href="#tabs-3">Settings</a></li>
+      <li>
+        <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+          <%= octicon('chevron-down') %>
+        <% end %>
+      </li>
+    </ul>
+
+    <%= field_set_tag nil, id: 'tabs-1' do %>
+            <div class="field">
+        <%= f.label :member_id %><br>
+        <%= f.text_field :member_id %>
+      </div>
+            <div class="field">
+        <%= f.label :summary %><br>
+        <%= f.text_area :summary, class: 'tinymce' %>
+      </div>
+            <div class="field">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, class: 'tinymce' %>
+      </div>
+            <div class="field">
+        <%= f.label :website_link %><br>
+        <%= f.text_field :website_link %>
+      </div>
+            <div class="field">
+        <%= f.label :start_date %><br>
+        <%= f.date_select :start_date %>
+      </div>
+            <div class="field">
+        <%= f.label :end_date %><br>
+        <%= f.date_select :end_date %>
+      </div>
+          <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-2' do %>
+            <%= f.image_field :image %>
+      
+          <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-3' do %>
+            <div class="field">
+        <%= f.label :verified %><br>
+        <%= f.check_box :verified %>
+      </div>
+          <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

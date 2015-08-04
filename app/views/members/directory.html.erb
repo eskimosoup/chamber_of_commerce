@@ -1,0 +1,27 @@
+<section class="content-area">
+  <div class="row">
+    <div class="large-8 small-12 columns">
+      <div class="main-content-wrap">
+        <h1><%= @additional_content.title('Members') %></h1>
+
+        <div class="content">
+          <% unless @presented_members.blank? %>
+            <% @presented_members.each do |letter, members_for_letter|%>
+                <h2 class="members-alphabetical-list-heading"><%= letter %></h2>
+
+                <ul class="members-alphabetical-list">
+                <% members_for_letter.each do |member| %>
+                  <li><%= link_to member.company_name, member %></li>
+                <% end %>
+                </ul>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 small-12 columns">
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>
