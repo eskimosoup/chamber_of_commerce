@@ -32,6 +32,12 @@ $(document).foundation({
   }
 });
 
+$(function() {
+  setTimeout(function() {
+    $(document).foundation('equalizer','reflow');
+  }, 2000);
+});
+
 $('.patron-logos').slick({
   autoplay: true,
   autoplaySpeed: 2000,

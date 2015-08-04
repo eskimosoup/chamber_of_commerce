@@ -12,13 +12,13 @@
           <div class="inner text-center">
             <ul class="plain-list">
               <li>
-                <%= link_to 'Google', '#' %>
+
               </li>
             </ul>
           </div>
 
           <div class="text-center">
-            <%= link_to 'More on International Trade', '#', class: 'content-box-ghost-button' %>
+            <%= link_to 'More on International Trade', @page_types["international_trade"], class: 'content-box-ghost-button' if @page_types["international_trade"].present? %>
           </div>
 
           <div class="button-text-center">
@@ -37,13 +37,13 @@
           <div class="inner text-center">
             <ul class="plain-list">
               <li>
-                <%= link_to 'Google', '#' %>
+
               </li>
             </ul>
           </div>
 
           <div class="button-text-center">
-            <%= link_to 'More on Policy and Representation', '#', class: 'content-box-ghost-button small' %>
+            <%= link_to 'More on Policy and Representation', @page_types["policy_and_representation"], class: 'content-box-ghost-button' if @page_types["policy_and_representation"].present? %>
           </div>
         </div>
       </div>

@@ -38,7 +38,8 @@ class ApplicationController < ActionController::Base
       @header_menu = Optimadmin::Menu.new(name: "header")
       @footer_menu = Optimadmin::Menu.new(name: "footer")
       @newsletter_signup = NewsletterSignup.new
-      @page_types = Page.where(page_type: ["members_services", "international_trade", "patrons", "policy_and_representation"], display: true).group_by(&:title)
+      @page_types = Page.where(page_type: ["members_services", "international_trade", "patrons", "policy_and_representation"], display: true).group_by(&:page_type)
+      @member_news = ArticleCategory.find_by(member_related: true)
     end
 
     def current_member

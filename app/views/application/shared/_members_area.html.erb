@@ -22,7 +22,7 @@
           </div>
 
           <div class="button-text-center">
-            <%= link_to 'See All', '#', class: 'content-box-ghost-button' %>
+            <%= link_to 'See All', @member_news, class: 'content-box-ghost-button' %>
           </div>
         </div>
       </div>
@@ -38,9 +38,8 @@
               <%= nested_menu_items(menu_items: @members_services_menu.menu_items.first(12)) %>
             </ul>
           </div>
-
           <div class="button-text-center">
-            <%= link_to 'See All', @members_services_page, class: 'content-box-ghost-button' if @members_services_page.present? %>
+            <%= link_to 'See All', @page_types["members_services"], class: 'content-box-ghost-button' if @page_types["members_services"].present? %>
           </div>
         </div>
       </div>
