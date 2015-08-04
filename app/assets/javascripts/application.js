@@ -17,6 +17,9 @@
 //= require vendor/foundation/foundation.equalizer.js
 //= require components/google_maps.js
 //= require components/home_slider.js
+//= require components/toggles
+//= require jquery-ui/datepicker
+//= require tinymce
 //= require slick.js.js
 // require_tree .
 
@@ -27,6 +30,12 @@ $(document).foundation({
     // Allow equalizer to resize hidden elements
     act_on_hidden_el: false
   }
+});
+
+$(function() {
+  setTimeout(function() {
+    $(document).foundation('equalizer','reflow');
+  }, 2000);
 });
 
 $('.patron-logos').slick({

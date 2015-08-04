@@ -1,26 +1,27 @@
 <div class="list-item-without-image">
-  <div class="row">
-    <div class="small-12 medium-8 columns">
-      <%= presented_member_offer.linked_title(class: 'list-item-without-image-title') %>
+  <%= presented_member_offer.linked_title(class: 'list-item-without-image-title') %>
 
-      <div class="main-details">
-        <% if presented_member_offer.start_date.present? || presented_member_offer.end_date.present? %>
-          <p>
-            Offer available
-            <% if presented_member_offer.start_date.present? %>
-              from <strong><%= presented_member_offer.start_date %></strong>
-            <% end %>
+  <div class="main-details">
+    <%= presented_member_offer.edit_link(current_member) %>
 
-            <% if presented_member_offer.end_date.present? %>
-              until <strong><%= presented_member_offer.end_date %></strong>
-            <% end %>
-          </p>
+    <% if presented_member_offer.start_date.present? || presented_member_offer.end_date.present? %>
+      <p>
+        Offer available
+        <% if presented_member_offer.start_date.present? %>
+          from <strong><%= presented_member_offer.start_date %></strong>
         <% end %>
-      </div>
 
-      <%= presented_member_offer.summary %>
-
-      <%= presented_member_offer.read_more %>
-    </div>
+        <% if presented_member_offer.end_date.present? %>
+          until <strong><%= presented_member_offer.end_date %></strong>
+        <% end %>
+      </p>
+    <% end %>
   </div>
+
+
+  <%= presented_member_offer.verification_message %>
+
+  <%= presented_member_offer.summary %>
+
+  <%= presented_member_offer.read_more %>
 </div>

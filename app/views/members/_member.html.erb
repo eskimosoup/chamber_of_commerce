@@ -1,19 +1,15 @@
 <div class="list-item-without-image">
-  <div class="row">
-    <div class="small-12 medium-8 columns">
-      <%= member_presenter.linked_company_name(class: 'list-item-without-image-title') %>
+  <%= member_presenter.linked_company_name(class: 'list-item-without-image-title') %>
 
-      <div class="main-details">
-        <strong><%= member_presenter.website %></strong>
-        Telephone <strong><%= member_presenter.telephone %></strong>
-        Email <strong><%= member_presenter.email %></strong>
-      </div>
-
-      <% if member_presenter.member_offers_count > 0 %>
-        <p><%= member_presenter.company_name %> has <%= member_presenter.member_offers_count %> offers.</p>
-      <% end %>
-
-      <%= member_presenter.read_more %>
-    </div>
+  <div class="main-details">
+    <strong><%= member_presenter.website %></strong>
+    Telephone <strong><%= member_presenter.telephone %></strong>
+    Email <strong><%= member_presenter.email %></strong>
   </div>
+
+  <% if member_presenter.member_offers_count > 0 %>
+    <p><%= member_presenter.company_name %> has <%= member_presenter.member_offers_count %> offers.</p>
+  <% end %>
+
+  <%= member_presenter.read_more %>
 </div>

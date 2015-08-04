@@ -1,0 +1,43 @@
+<html lang="en">
+  <body>
+
+    <h1>New member offer</h1>
+
+    <p><%= @member_offer.member.company_name %> has created a new member offer.</p>
+
+    <p>
+      <strong>Title</strong><br />
+      <%= @member_offer.title %>
+    </p>
+
+    <p>
+      <strong>Summary</strong><br />
+      <%= @member_offer.summary %>
+    </p>
+
+    <p>
+      <strong>Description</strong><br />
+      <%= @member_offer.description %>
+    </p>
+
+    <p>
+      <strong>Website link</strong><br />
+      <%= link_to 'View website link', @member_offer.website_link %>
+    </p>
+
+    <p>
+      <strong>Start date</strong><br />
+      <%= @member_offer.start_date %>
+    </p>
+
+    <p>
+      <strong>End date</strong><br />
+      <%= @member_offer.end_date %>
+    </p>
+
+    <p>
+      <strong>Image</strong><br />
+      <%= link_to 'View image', "#{root_url}#{@member_offer.image.show.url}" if @member_offer.image.present? %>
+    </p>
+  </body>
+</html>

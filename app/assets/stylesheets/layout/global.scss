@@ -30,7 +30,8 @@ a {
   }
 }
 
-.button {
+.button,
+input[type='submit'].button {
   background: $bronze;
   border: 0;
   color: $white;
@@ -44,4 +45,8 @@ a {
   &:hover {
     background: $deep-grey;
   }
+}
+
+.display-block {
+  display: block;
 }

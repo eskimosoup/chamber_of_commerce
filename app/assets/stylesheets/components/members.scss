@@ -1,0 +1,18 @@
+.address {
+  p {
+    margin-top: 0;
+  }
+}
+
+.edit-button {
+  &:link,
+  &:visited {
+    color: $light-blue;
+    text-decoration: underline;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
