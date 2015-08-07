@@ -17,7 +17,7 @@ class MemberPasswordResetsController < ApplicationController
   def update
     @member_login = MemberLogin.find_by(password_reset_token: params[:id])
     if @member_login.update(member_login_params)
-      redirect_to login_member_sessions_path, notice: 'Member login was successfully updated.'
+      redirect_to login_member_sessions_url, notice: 'Member login was successfully updated.'
     else
       render :show
     end

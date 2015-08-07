@@ -27,7 +27,7 @@ class MembersController < ApplicationController
     @member.assign_attributes(member_params)
     if @member.valid?
       MemberMailer.update_details(global_site_settings, current_member, @member).deliver_now
-      redirect_to edit_members_path, notice: 'Request sent successfully'
+      redirect_to edit_members_url, notice: 'Request sent successfully'
     else
       render :edit
     end

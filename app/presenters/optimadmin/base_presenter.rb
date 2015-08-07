@@ -23,7 +23,8 @@ module Optimadmin
     end
 
     def view_link
-      h.link_to eye, h.polymorphic_url(@object), class: 'menu-item-control'
+      # FIXME this is hacky
+      h.link_to eye, h.polymorphic_url(@object).gsub('/admin', ''), class: 'menu-item-control', target: '_blank'
     end
 
     def edit_link
