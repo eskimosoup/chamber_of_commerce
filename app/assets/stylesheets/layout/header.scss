@@ -56,31 +56,3 @@ header {
   background: $pale-blue;
   border-bottom-left-radius: 10px;
 }
-
-.header-navigation {
-  list-style: none;
-  margin: em(12px) 0 em(20px);
-  overflow: hidden;
-}
-
-.header-navigation {
-  .menu-link {
-    float: left;
-    margin: 0 em(10px);
-    text-decoration: none;
-
-    &:link,
-    &:visited {
-      border-bottom: 2px solid $white; // prevent 2px jump on hover when no active
-      color: $grey;
-      font-weight: $semibold;
-    }
-
-    &.active,
-    &:hover {
-      border-bottom: 2px solid $bronze;
-      color: $light-blue;
-      text-decoration: none;
-    }
-  }
-}

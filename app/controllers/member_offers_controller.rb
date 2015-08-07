@@ -18,7 +18,7 @@ class MemberOffersController < ApplicationController
   end
 
   def show
-    redirect_to member_member_offer_path(@member, @member_offer), status: :moved_permanently if request.path != member_member_offer_path(@member, @member_offer)
+    redirect_to member_member_offer_url(@member, @member_offer), status: :moved_permanently if request.path != member_member_offer_path(@member, @member_offer)
   end
 
   def new
@@ -33,7 +33,7 @@ class MemberOffersController < ApplicationController
     @member_offer = current_member.member_offers.new(member_offer_params)
     if @member_offer.save
       MemberMailer.new_member_offer(global_site_settings, @member_offer).deliver_now
-      redirect_to member_member_offer_path(@member, @member_offer), notice: 'Member offer was successfully created.'
+      redirect_to member_member_offer_url(@member, @member_offer), notice: 'Member offer was successfully created.'
     else
       render :new
     end
@@ -43,7 +43,7 @@ class MemberOffersController < ApplicationController
     @member_offer = @member.member_offers.find(params[:id])
     if @member_offer.update(member_offer_params)
       MemberMailer.edited_member_offer(global_site_settings, @member_offer).deliver_now if @member_offer.verified
-      redirect_to member_member_offer_path(@member, @member_offer), notice: 'Member offer was successfully updated.'
+      redirect_to member_member_offer_url(@member, @member_offer), notice: 'Member offer was successfully updated.'
     else
       render :edit
     end
@@ -52,7 +52,7 @@ class MemberOffersController < ApplicationController
   def destroy
     @member_offer = @member.member_offers.find(params[:id])
     @member_offer.destroy
-    redirect_to member_member_offers_path(@member), notice: 'Member offer was successfully destroyed.'
+    redirect_to member_member_offers_url(@member), notice: 'Member offer was successfully destroyed.'
   end
 
   private
