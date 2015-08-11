@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rspec'
+require 'capybara/poltergeist'
 require 'shoulda-matchers'
 require 'database_cleaner'
 require 'support/mailer_macros'
@@ -30,6 +31,8 @@ require 'support/geocoder'
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
+
+Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -65,6 +68,9 @@ RSpec.configure do |config|
   end
   config.before(:all, type: :model) { setup_geocoder }
   config.before(:all, type: :feature)  { setup_geocoder }
+  config.before(:each, js: true) do
+    page.driver.browser.url_blacklist = ["https://maps.googleapis.com", "connect.facebook.net"]
+  end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

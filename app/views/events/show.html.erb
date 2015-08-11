@@ -4,6 +4,8 @@
       <div class="main-content-wrap">
         <h1><%= @presented_event.name %></h1>
 
+        <%= render "shared/flash_messages" %>
+
         <div class="main-details">
           Start <strong><%= @presented_event.start_date %></strong>
           End <strong><%= @presented_event.end_date %></strong>

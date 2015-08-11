@@ -84,6 +84,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    cliver (0.3.2)
     closure_tree (5.2.0)
       activerecord (>= 3.2.0)
       with_advisory_lock (>= 3.0.0)
@@ -193,6 +194,11 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     pg (0.18.2)
+    poltergeist (1.6.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -298,6 +304,9 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    websocket-driver (0.5.4)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
     with_advisory_lock (3.0.0)
       activerecord (>= 3.2)
       thread_safe
@@ -324,6 +333,7 @@ DEPENDENCIES
   optimadmin!
   optimadmin_generators!
   pg
+  poltergeist
   rails (= 4.2.3)
   rails-assets-slick.js!
   rails-assets-tinymce!

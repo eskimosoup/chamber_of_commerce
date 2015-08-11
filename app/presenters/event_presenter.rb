@@ -85,4 +85,8 @@ class EventPresenter < BasePresenter
   def booking_button
     h.link_to "Book now", h.new_event_event_booking_path(event), id: "book-event", class: "button"
   end
+
+  def booking_title
+    "Book #{ name }"
+  end
 end

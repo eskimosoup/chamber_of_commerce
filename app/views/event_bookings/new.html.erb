@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="small-12 columns">
+    <h1><%= @presented_event.booking_title %></h1>
+
+    <%= form_for [@event, @event_booking] do |f| %>
+      <div class="field">
+        <%= f.label :name %><br/>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :company_name %><br/>
+        <%= f.text_field :company_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :industry %><br/>
+        <%= f.text_field :industry %>
+      </div>
+
+      <div class="field">
+        <%= f.label :nature_of_business %><br/>
+        <%= f.text_field :nature_of_business %>
+      </div>
+
+      <div class="field">
+        <%= f.label :address %><br/>
+        <%= f.text_area :address %>
+      </div>
+
+      <div class="field">
+        <%= f.label :phone_number %><br/>
+        <%= f.telephone_field :phone_number %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %><br/>
+        <%= f.email_field :email %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Create Booking" %>
+      </div>
+    <% end %>
+  </div>
+</div>
