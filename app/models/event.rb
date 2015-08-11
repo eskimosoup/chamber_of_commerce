@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
-  has_many :event_agendas, dependent: :destroy
+  has_many :event_agendas, dependent: :nullify
   has_many :event_categories, through: :event_agendas
   has_many :event_bookings, dependent: :nullify
   belongs_to :event_location

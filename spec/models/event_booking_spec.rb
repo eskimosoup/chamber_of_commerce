@@ -9,6 +9,8 @@ RSpec.describe EventBooking, type: :model do
 
   describe "associations", :association do
     it { should belong_to(:event) }
+    it { should have_many(:attendees).dependent(:destroy) }
+    it { should accept_nested_attributes_for(:attendees) }
   end
 
 

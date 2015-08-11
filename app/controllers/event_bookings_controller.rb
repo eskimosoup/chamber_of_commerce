@@ -3,18 +3,28 @@ class EventBookingsController < ApplicationController
   before_action :set_event_and_agendas
 
   def new
-    @event_booking = @presented_event.event_bookings.new
+    @event_booking = @event.event_bookings.new
   end
 
   def create
-
+    @event_booking = @event.event_bookings.new(event_booking_params)
+    if @event_booking.save
+      redirect_to @event, notice: "Booking Created"
+    else
+      render :new
+    end
   end
 
   private
 
   def set_event_and_agendas
-    @presented_event = EventPresenter.new(object: Event.upcoming.find(params[:id]), view_template: view_context)
+    @event = Event.upcoming.friendly.find(params[:event_id])
+    @presented_event = EventPresenter.new(object: @event, view_template: view_context)
+  end
 
+  def event_booking_params
+    params.require(:event_booking).permit(:name, :company_name, :industry, :nature_of_business, :address, :phone_number, :email,
+    attendees_attributes: [:id, :event_booking_id, :phone_number, :email, :dietary_requirements, :_destroy])
   end
 
 end
