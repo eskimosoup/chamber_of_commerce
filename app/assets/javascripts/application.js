@@ -21,6 +21,7 @@
 //= require jquery-ui/datepicker
 //= require tinymce
 //= require slick.js.js
+//= require cocoon
 // require_tree .
 
 $(document).foundation({
