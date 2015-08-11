@@ -25,13 +25,20 @@ RSpec.feature "Booking An Event", type: :feature do
       fill_in "event_booking_email", with: "wile.e@coyote.co.uk"
 
       click_link "Add Attendee"
-      fill_in "phone_number", with: "01482 666999"
-      fill_in "email", with: "test@example.com"
+
+      #save_and_open_page
+      expect(page).to have_selector("#event-attendees .nested-fields", count: 1)
+      within(all("#event-attendees .nested-fields").last) do
+        fill_in "Phone number", with: "01482 666999"
+        fill_in "Email", with: "test@example.com"
+      end
 
       click_button "Create Booking"
 
       on_current_event_path(event)
       expect(page).to have_content("Booking Created")
+      expect(EventBooking.last.name).to eq("Joe Bloggs")
+      expect(EventBooking.last.attendees.count).to eq(1)
     end
   end
 
