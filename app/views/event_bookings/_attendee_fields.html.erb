@@ -1,0 +1,19 @@
+<div class="nested-fields">
+  <%= f.hidden_field :id %>
+  <div class="field">
+    <%= f.label :phone_number %><br/>
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br/>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dietary_requirements %><br/>
+    <%= f.text_area :dietary_requirements %>
+  </div>
+
+  <%= link_to_remove_association "Remove Attendee", f %>
+</div>

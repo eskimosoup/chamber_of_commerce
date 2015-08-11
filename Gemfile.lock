@@ -88,6 +88,7 @@ GEM
     closure_tree (5.2.0)
       activerecord (>= 3.2.0)
       with_advisory_lock (>= 3.0.0)
+    cocoon (1.2.6)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -203,6 +204,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -320,11 +323,12 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   capybara
+  cocoon (~> 1.2.6)
   coffee-rails (~> 4.1.0)
   database_cleaner (~> 1.4.1)
   factory_girl_rails
   friendly_id (~> 5.1.0)
-  geocoder
+  geocoder (~> 1.2.9)
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
@@ -334,6 +338,7 @@ DEPENDENCIES
   optimadmin_generators!
   pg
   poltergeist
+  quiet_assets (~> 1.1.0)
   rails (= 4.2.3)
   rails-assets-slick.js!
   rails-assets-tinymce!

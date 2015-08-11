@@ -57,6 +57,7 @@ group :test do
 end
 
 group :development do
+  gem 'quiet_assets', '~> 1.1.0'
   gem 'guard-rspec', require: false
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
 end
@@ -66,6 +67,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tinymce'
 end
 
-gem 'geocoder'
+gem 'geocoder', '~> 1.2.9'
+gem 'cocoon', '~> 1.2.6'
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git'
 #gem 'optimadmin', path: '../optimadmin'
