@@ -53,7 +53,7 @@ module Optimadmin
     end
 
     def event_agenda_params
-      params.require(:event_agenda).permit(:event_id, :name, :event_category_id, :start_time, :end_time, :description, :maximum_capacity)
+      params.require(:event_agenda).permit(:event_id, :name, :event_category_id, :start_time, :end_time, :description, :maximum_capacity, :price)
     end
   end
 end

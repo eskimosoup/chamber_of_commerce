@@ -24,31 +24,41 @@
     </ul>
 
     <%= field_set_tag nil, id: 'tabs-1' do %>
-            <div class="field">
+      <div class="field">
         <%= f.label :name %><br>
         <%= f.text_field :name %>
       </div>
-            <div class="field">
+
+      <div class="field">
         <%= f.label :event_category_id, "Category" %><br>
         <%= f.select :event_category_id, closure_tree_select(EventCategory.select(:name, :id)) %>
       </div>
-            <div class="field">
+
+      <div class="field">
         <%= f.label :start_time %><br>
         <%= f.time_select :start_time, { start_hour: 7, end_hour: 19 }, class: 'display-inline width-auto' %>
       </div>
-            <div class="field">
+
+      <div class="field">
         <%= f.label :end_time %><br>
         <%= f.time_select :end_time, { start_hour: 7, end_hour: 19 }, class: 'display-inline width-auto' %>
       </div>
-            <div class="field">
+
+      <div class="field">
         <%= f.label :description %><br>
         <%= f.text_area :description, class: 'tinymce' %>
       </div>
-            <div class="field">
+
+      <div class="field">
         <%= f.label :maximum_capacity %><br>
         <%= f.number_field :maximum_capacity %>
       </div>
-          <% end %>
+
+      <div class="field">
+        <%= f.label :price %><br>
+        <%= f.number_field :price, step: 0.01 %>
+      </div>
+    <% end %>
   </div>
 
   <div class="actions">

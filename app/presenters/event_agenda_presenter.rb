@@ -20,6 +20,11 @@ class EventAgendaPresenter < BasePresenter
     event_category.name
   end
 
+  def price
+    return "Free" if event_agenda.price.zero?
+    h.number_to_currency event_agenda.price
+  end
+
   private
 
   def event_category

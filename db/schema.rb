@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804101259) do
+ActiveRecord::Schema.define(version: 20150812085015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,15 +63,16 @@ ActiveRecord::Schema.define(version: 20150804101259) do
   add_index "attendees", ["event_booking_id"], name: "index_attendees_on_event_booking_id", using: :btree
 
   create_table "event_agendas", force: :cascade do |t|
-    t.string   "name",              null: false
+    t.string   "name",                                                    null: false
     t.integer  "event_category_id"
     t.time     "start_time"
     t.time     "end_time"
     t.text     "description"
     t.integer  "maximum_capacity"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
     t.integer  "event_id"
+    t.decimal  "price",             precision: 8, scale: 2, default: 0.0
   end
 
   add_index "event_agendas", ["event_category_id"], name: "index_event_agendas_on_event_category_id", using: :btree

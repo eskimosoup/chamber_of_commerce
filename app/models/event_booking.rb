@@ -4,5 +4,5 @@ class EventBooking < ActiveRecord::Base
   accepts_nested_attributes_for :attendees, reject_if: :all_blank, allow_destroy: true
 
   validates :name, :email, :phone_number, presence: true
-  validates :attendees, length: { minimum: 1 }
+  validates :attendees, presence: true
 end

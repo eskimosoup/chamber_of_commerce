@@ -25,5 +25,9 @@ module Optimadmin
     def content
       h.raw event_agenda.content
     end
+
+    def price
+      h.number_to_currency event_agenda.price
+    end
   end
 end

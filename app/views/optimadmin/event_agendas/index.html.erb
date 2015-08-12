@@ -20,11 +20,12 @@
       <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
     <% end %>
 
-    <%= list_item 'large-4 small-4' do 'Name' end %>
+    <%= list_item 'large-3 small-4' do 'Name' end %>
 
-    <%= list_item 'large-3 small-4' do 'Category' end %>
-    <%= list_item 'large-1 small-4' do 'Start' end %>
-    <%= list_item 'large-1 small-4' do 'End' end %>
+    <%= list_item('large-3 small-4') { 'Category' } %>
+    <%= list_item('large-1 small-4') { 'Start' } %>
+    <%= list_item('large-1 small-4') { 'End' } %>
+    <%= list_item('large-1 small-4') { 'Price' } %>
 
     <%= list_item { 'Edit' } %>
 

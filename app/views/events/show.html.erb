@@ -26,10 +26,10 @@
         <% unless @presented_event_agendas.blank? %>
           <h3>Agenda</h3>
           <div class="row">
-            <div class="small-8 medium-4 columns">
+            <div class="small-6 medium-3 columns">
               Name
             </div>
-            <div class="medium-4 hide-for-small-only columns">
+            <div class="medium-3 hide-for-small-only columns">
               Category
             </div>
             <div class="small-2 columns">
@@ -38,13 +38,16 @@
             <div class="small-2 columns">
               End Time
             </div>
+            <div class="small-2 columns">
+              Price
+            </div>
           </div>
           <% @presented_event_agendas.each do |event_agenda_presenter| %>
             <div class="row event-agenda">
-              <div class="small-8 medium-4 columns">
+              <div class="small-6 medium-3 columns">
                 <%= event_agenda_presenter.name %>
               </div>
-              <div class="medium-4 hide-for-small-only columns">
+              <div class="medium-3 hide-for-small-only columns">
                 <%= event_agenda_presenter.event_category_name %>
               </div>
               <div class="small-2 columns">
@@ -52,6 +55,9 @@
               </div>
               <div class="small-2 columns">
                 <%= event_agenda_presenter.end_time(:short) %>
+              </div>
+              <div class="small-2 columns">
+                <%= event_agenda_presenter.price %>
               </div>
             </div>
           <% end %>
