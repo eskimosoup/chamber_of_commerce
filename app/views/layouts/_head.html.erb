@@ -3,6 +3,8 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all' %>
 
+  <%= yield :head %>
+
   <%= csrf_meta_tags %>
   <script src="//use.typekit.net/jhn0hwh.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
