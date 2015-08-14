@@ -45,7 +45,7 @@ module Optimadmin
     end
 
     def show_link
-
+      view_link
     end
 
     private

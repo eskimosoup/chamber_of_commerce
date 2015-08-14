@@ -1,7 +1,7 @@
 
 .header-navigation {
   list-style: none;
-  margin: em(12px) 0 em(20px);
+  margin: em(24px) 0;
 
   li {
     display: inline-block;
@@ -15,12 +15,12 @@
   }
 
   ul {
-    -webkit-border-bottom-right-radius: 10px;
-    -webkit-border-bottom-left-radius: 10px;
-    -moz-border-radius-bottomright: 10px;
-    -moz-border-radius-bottomleft: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    -webkit-border-bottom-right-radius: 2px;
+    -webkit-border-bottom-left-radius: 2px;
+    -moz-border-radius-bottomright: 2px;
+    -moz-border-radius-bottomleft: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
     background: $white;
     display: none;
     margin: 0;
@@ -32,13 +32,30 @@
     li {
       display: block;
       line-height: 1;
-      margin: em(7px) 0;
+      font-size: em(12px);
+      margin: em(14px, 12px) 0;
+    }
+
+    .menu-link {
+      padding: 0 em(6px, 12px);
+
+      &:link,
+      &:visited {
+        color: $accent-blue;
+        border: 0;
+      }
+
+
+      &:hover {
+        color: $bronze;
+        border: 0;
+      }
     }
   }
 
   .menu-link {
     display: block;
-    margin: 0 em(10px);
+    margin: 0 em(10px) 0 0;
     text-decoration: none;
 
     &:link,
