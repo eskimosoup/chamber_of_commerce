@@ -9,13 +9,14 @@
 .banner-focus {
   background: $white;
   padding: em(10px);
-  position: relative;
+  //position: relative;
 
   .item-entry {
     left: -30px;
     overflow: hidden;
-    position: absolute;
-    top: 220px;
+    position: relative;
+    top: -30px;
+    float: left;
     width: 100%;
   }
 
@@ -26,8 +27,8 @@
     font-size: em(22px);
     font-weight: $semibold;
     line-height: 1.1;
-    min-height: 108px;
-    padding: em(30px, 22px) em(20px, 22px) em(30px, 22px) em(54px, 22px);
+    //min-height: 108px;
+    padding: em(20px, 22px) em(10px, 22px) em(20px, 22px) em(54px, 22px);
     width: 81%;
 
     a {
