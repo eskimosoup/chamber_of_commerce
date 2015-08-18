@@ -9,12 +9,12 @@
 </aside>
 
 <aside class="aside-content-wrap">
-  <h3><span>News</span></h3>
+  <h3><%= @article.present? ? two_tone_title(@article.article_category.title) : '<span>News</span>'.html_safe %></h3>
 
   <%= render partial: 'shared/aside_link_list', collection: @presented_articles, as: :module_presenter %>
 
   <div class="text-center">
-    <%= link_to 'See All', articles_path, class: 'content-box-ghost-button aside' %>
+    <%= link_to 'See All', (@article.present? ? @article.article_category : articles_path), class: 'content-box-ghost-button aside' %>
   </div>
 </aside>
 
