@@ -15,7 +15,9 @@
   }
 
   &.members-header {
-    margin-bottom: 0;
+    @include responsive-to(large) {
+      margin-bottom: 0;
+    }
   }
 }
 

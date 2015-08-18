@@ -13,7 +13,7 @@
         </div>
 
         <div class="small-details">
-          <% @presented_event.event_categories.each do |event_category| %>
+          <% @presented_event.event_categories.uniq.each do |event_category| %>
             <%= link_to event_category.name, events_path(event_categories_id: event_category.id) %><%= ', ' unless event_category == @presented_event.event_categories.last %>
           <% end %>
         </div>
@@ -72,4 +72,3 @@
     </div>
   </div>
 </section>
-

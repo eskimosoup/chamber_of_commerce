@@ -18,9 +18,9 @@ class InternalPromotionPresenter < BasePresenter
   end
 
   def leaderboard(area, classes = '')
-    return
-    #item = internal_promotion.where(area: area).order(created_at: :desc).first
-    #return unless item.present?
+    #return
+    item = internal_promotion.where(area: area).order(created_at: :desc).first
+    return unless item.present?
 
     h.content_tag :div, class: 'row' do
       h.content_tag :div, class: "small-10 columns small-centered #{classes}" do

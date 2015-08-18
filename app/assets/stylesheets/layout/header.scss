@@ -16,6 +16,11 @@ header {
   text-decoration: none;
   vertical-align: top;
 
+  @include responsive-to(small) {
+    width: 50%;
+    text-align: center;
+  }
+
   &:link,
   &:visited {
     color: $white;
