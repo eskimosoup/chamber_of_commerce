@@ -13,6 +13,7 @@ require 'database_cleaner'
 require 'support/mailer_macros'
 require 'support/geocoder'
 require 'support/share_db_connection'
+require 'support/wait_for_ajax'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -61,15 +62,12 @@ RSpec.configure do |config|
   config.include ActionView::TestCase::Behavior, type: :presenter
   config.include Capybara::DSL, type: :feature
   config.include(MailerMacros)
-  config.include(GeocoderSetup)
   config.before(:each, type: :feature) { reset_email }
   config.before(:each, type: :feature) do
     create(:site_setting_name)
     create(:site_setting_email)
   end
-  config.before(:each, type: :model) { setup_geocoder }
-  config.before(:each, type: :feature)  { setup_geocoder }
-  config.before(:each, type: :presenter)  { setup_geocoder }
+
   config.before(:each, js: true) do
     page.driver.browser.url_blacklist = ["https://maps.googleapis.com", "connect.facebook.net"]
   end
