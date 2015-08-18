@@ -18,6 +18,10 @@
   background: $white;
   padding: em(20px);
 
+  @include responsive-to(small) {
+    margin-bottom: em(20px);
+  }
+
   .content {
     overflow: hidden;
     padding: 0 em(10px);

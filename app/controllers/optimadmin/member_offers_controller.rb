@@ -5,7 +5,7 @@ module Optimadmin
     before_action :set_member_offer, only: [:show, :edit, :update, :destroy]
 
     def index
-      @member_offers = Optimadmin::BaseCollectionPresenter.new(collection: MemberOffer.where('title LIKE ?', "#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15).order(params[:order] || "verified asc"), view_template: view_context, presenter: Optimadmin::MemberOfferPresenter)
+      @member_offers = Optimadmin::BaseCollectionPresenter.new(collection: MemberOffer.where('title ILIKE ?', "#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15).order(params[:order] || "verified asc"), view_template: view_context, presenter: Optimadmin::MemberOfferPresenter)
     end
 
     def show

@@ -1,12 +1,12 @@
 <header>
   <div class="row">
-    <div class="small-8 columns">
+    <div class="small-5 medium-8 columns">
       <%= link_to root_path, title: global_site_settings['Name'], class: 'logo' do %>
         <%= image_tag 'layout/header/logo.png', alt: global_site_settings['Name'] %>
       <% end %>
     </div>
 
-    <div class="small-4 columns">
+    <div class="small-7 medium-4 columns">
       <div class="text-right">
         <%= render 'shared/member_buttons' %>
       </div>
@@ -16,7 +16,10 @@
   <div class="row">
     <div class="small-12 columns">
       <nav>
-        <ul class="header-navigation">
+        <%= link_to '#header-navigation', class: 'toggle-class navigation-toggle show-for-small', title: 'Navigation', data: { container: '.header-navigation', class: 'hide-for-small', return: 'false' } do %>
+          <%= image_tag 'components/icons/hamburger.png', alt: 'Navigation' %>
+        <% end %>
+        <ul class="header-navigation hide-for-small" id="header-navigation">
           <%= nested_menu_items(menu_items: @header_menu.menu_items) %>
         </ul>
       </nav>

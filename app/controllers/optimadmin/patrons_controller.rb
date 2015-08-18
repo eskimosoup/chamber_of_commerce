@@ -5,7 +5,7 @@ module Optimadmin
     edit_images_for Patron, [[:image, { show: ['fill', 118, 60] }]]
 
     def index
-      @patrons = Patron.where('name LIKE ?', "#{params[:search]}%").order(position: :asc).map{|x| Optimadmin::PatronPresenter.new(object: x, view_template: view_context) }
+      @patrons = Patron.where('name ILIKE ?', "#{params[:search]}%").order(position: :asc).map{|x| Optimadmin::PatronPresenter.new(object: x, view_template: view_context) }
     end
 
     def show

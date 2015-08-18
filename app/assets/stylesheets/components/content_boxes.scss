@@ -2,6 +2,10 @@
   background: $white;
   padding: em(22px);
 
+  @include responsive-to(small) {
+    margin: 0 0 em(10px);
+  }
+
   .inner {
     padding: 0 em(8px) em(71px);
     position: relative;;
@@ -18,6 +22,19 @@
     text-align: center;
     position: absolute;
     width: 80%;
+
+    @include responsive-to(small) {
+      margin: 0 auto;
+      position: static;
+    }
+
+    @include responsive-to(medium) {
+      width: 73%;
+
+      img {
+        margin-top: em(5px);
+      }
+    }
   }
 }
 

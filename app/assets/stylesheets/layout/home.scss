@@ -4,6 +4,11 @@
   overflow: hidden;
   padding: em(58px) 0 em(42px);
   margin: 0 0 em(46px);
+
+  @include responsive-to(small) {
+    max-height: none;
+    padding: em(20px) 0;
+  }
 }
 
 .banner-focus {
@@ -31,6 +36,17 @@
     padding: em(20px, 22px) em(10px, 22px) em(20px, 22px) em(54px, 22px);
     width: 81%;
 
+    @include responsive-to(small) {
+      float: none;
+      width: 100%;
+      padding: em(10px, 22px);
+    }
+
+    @include responsive-to(medium) {
+      font-size: em(18px);
+      padding: em(20px, 18px) em(25px, 18px);
+    }
+
     a {
       color: $white;
       display: block;
@@ -46,11 +62,25 @@
     right: em(10px);
     text-align: right;
     width: 60px;
+
+    @include responsive-to(small) {
+      position: static;
+      width: auto;
+    }
+
+    @include responsive-to(medium) {
+      position: static;
+      width: auto;
+    }
   }
 
   .summary {
     margin: em(40px) 0 0;
     padding: em(20px);
+
+    @include responsive-to(small) {
+      margin-top: 0;
+    }
   }
 
   p {
@@ -60,9 +90,21 @@
   }
 }
 
+@include responsive-to(small) {
+  .slider-focus {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .content-focus-tabs {
   list-style: none;
   margin-left: em(30px);
+
+  @include responsive-to(small) {
+    margin: em(5px) 0 0 em(30px);
+  }
 
   li {
     display: inline;
@@ -85,6 +127,11 @@
     font-weight: $semibold;
     line-height: 1;
     padding: em(9px, 16px) em(20px, 16px) em(10px, 16px);
+
+    @include responsive-to(small) {
+      font-size: em(14px);
+      padding: em(9px, 14px) em(10px, 14px);
+    }
   }
 }
 
@@ -143,6 +190,10 @@
   .member-register {
     background: $grey;
   }
+
+  @include responsive-to(medium) {
+    display: none !important; // Oh dear.
+  }
 }
 
 .members-information {
@@ -152,11 +203,20 @@
   .preview-members-directory {
     top: 0;
     position: absolute;
+
+    @include responsive-to(small) {
+      position: static;
+      margin-bottom: em(20px);
+    }
   }
 
   .preview-second-home-item {
     bottom: 0;
     position: absolute;
+
+    @include responsive-to(small) {
+      position: static;
+    }
   }
 }
 
@@ -168,11 +228,19 @@
   .preview-first-home-item {
     top: 0;
     position: absolute;
+
+    @include responsive-to(small) {
+      position: static;
+    }
   }
 
   .preview-second-home-item {
     bottom: 0;
     position: absolute;
+
+    @include responsive-to(small) {
+      position: static;
+    }
   }
 }
 
@@ -190,6 +258,11 @@
     line-height: 1.25;
     text-transform: uppercase;
     padding-bottom: em(7px, 16px);
+
+    @include responsive-to(medium) {
+      font-size: em(13px);
+      padding-bottom: em(5px, 13px);
+    }
 
     span {
       font-weight: $black;

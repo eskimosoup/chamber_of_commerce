@@ -1,6 +1,6 @@
 <section class="home">
   <div class="row collapse">
-    <div class="small-5 columns">
+    <div class="small-11 slider-focus medium-5 columns">
       <div class="home-events">
         <%= render partial: 'application/home_slider/content_preview', collection: @presented_events, as: :module_presenter %>
       </div>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="small-7 columns">
+    <div class="small-12 medium-7 columns">
       <ul class="content-focus-tabs">
         <li class="active">
           <%= link_to 'Events', '#', data: { slider: '.home-events' } %>

@@ -22,6 +22,10 @@
   line-height: 1.25;
   text-align: center;
 
+  @include responsive-to(small) {
+    margin-bottom: em(40px);
+  }
+
   .linkedin {
     border-right: 1px solid $light-grey;
     padding-right: em(10px);
@@ -42,6 +46,14 @@
     line-height: 1.25;
     text-align: center;
     text-transform: uppercase;
+
+    @include responsive-to(small) {
+      margin: 0 0 em(12px);
+    }
+
+    @include responsive-to(medium) {
+      font-size: em(15px);
+    }
   }
 
   .last-word {
@@ -64,6 +76,10 @@
     text-align: center;
     text-transform: uppercase;
     width: 100%;
+
+    @include responsive-to(small) {
+      margin: em(12px) 0 0;
+    }
 
     &:hover {
       background: $bronze;

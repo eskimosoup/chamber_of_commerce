@@ -4,7 +4,7 @@ module Optimadmin
     before_action :set_member_login, only: [:show, :edit, :update, :destroy]
 
     def index
-      @member_logins = Optimadmin::BaseCollectionPresenter.new(collection: MemberLogin.where('title LIKE ?', "#{params[:search]}").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::MemberLoginPresenter)
+      @member_logins = Optimadmin::BaseCollectionPresenter.new(collection: MemberLogin.where('title ILIKE ?', "#{params[:search]}").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::MemberLoginPresenter)
     end
 
     def show
