@@ -61,9 +61,9 @@
 
       <%= field_set_tag "Attendees", id: "event-attendees" do %>
         <%= f.fields_for :attendees do |attendee| %>
-          <%= render "attendee_fields", f: attendee %>
+          <%= render "attendees/attendee_fields", f: attendee %>
         <% end %>
-        <%= link_to_add_association "Add Attendee", f, :attendees %>
+        <%= link_to_add_association "Add Attendee", f, :attendees, partial: "attendees/attendee_fields" %>
       <% end %>
 
       <div class="actions">

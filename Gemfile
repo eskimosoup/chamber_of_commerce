@@ -60,6 +60,9 @@ group :development do
   gem 'quiet_assets', '~> 1.1.0'
   gem 'guard-rspec', require: false
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
+  gem 'rack-mini-profiler'
+  gem 'flamegraph'
+  gem "bullet"
 end
 
 source 'https://rails-assets.org' do

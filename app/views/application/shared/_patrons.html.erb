@@ -2,7 +2,7 @@
   <div class="home-patrons">
     <div class="row">
       <div class="small-12 columns">
-        <% if @page_types['Patrons'].present? %>
+        <% if @page_types && @page_types['Patrons'] %>
           <h2 class="full-header"><div><%= link_to 'Patrons', @page_types['Patrons'] %></div></h2>
         <% else %>
           <h2 class="full-header"><div>Patrons</div></h2>

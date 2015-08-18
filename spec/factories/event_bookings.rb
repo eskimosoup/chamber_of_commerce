@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :event_booking do
-    event nil
+    event
     name "MyString"
     company_name "MyString"
-    industry_type "MyString"
+    industry "MyString"
     nature_of_business "MyString"
     address "MyText"
     phone_number "MyString"

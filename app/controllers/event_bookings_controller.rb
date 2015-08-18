@@ -9,7 +9,7 @@ class EventBookingsController < ApplicationController
   def create
     @event_booking = @event.event_bookings.new(event_booking_params)
     if @event_booking.save
-      redirect_to @event, notice: "Booking Created"
+      redirect_to new_event_booking_charge_path(@event_booking)
     else
       render :new
     end
@@ -24,7 +24,7 @@ class EventBookingsController < ApplicationController
 
   def event_booking_params
     params.require(:event_booking).permit(:name, :company_name, :industry, :nature_of_business, :address, :phone_number, :email,
-    attendees_attributes: [:id, :event_booking_id, :phone_number, :email, :dietary_requirements, :_destroy])
+    attendees_attributes: [:id, :event_booking_id, :phone_number, :email, :dietary_requirements, :_destroy, event_agenda_ids: []])
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812085015) do
+ActiveRecord::Schema.define(version: 20150812100420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(version: 20150812085015) do
 
   add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
+
+  create_table "attendee_event_agendas", force: :cascade do |t|
+    t.integer  "attendee_id"
+    t.integer  "event_agenda_id"
+    t.decimal  "price",           precision: 8, scale: 2, default: 0.0
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+  end
+
+  add_index "attendee_event_agendas", ["attendee_id"], name: "index_attendee_event_agendas_on_attendee_id", using: :btree
+  add_index "attendee_event_agendas", ["event_agenda_id"], name: "index_attendee_event_agendas_on_event_agenda_id", using: :btree
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "event_booking_id"
@@ -348,6 +359,8 @@ ActiveRecord::Schema.define(version: 20150812085015) do
   end
 
   add_foreign_key "articles", "article_categories"
+  add_foreign_key "attendee_event_agendas", "attendees"
+  add_foreign_key "attendee_event_agendas", "event_agendas"
   add_foreign_key "attendees", "event_bookings"
   add_foreign_key "event_agendas", "event_categories"
   add_foreign_key "event_agendas", "events"

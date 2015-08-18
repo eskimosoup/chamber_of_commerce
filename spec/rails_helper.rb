@@ -67,8 +67,9 @@ RSpec.configure do |config|
     create(:site_setting_name)
     create(:site_setting_email)
   end
-  config.before(:all, type: :model) { setup_geocoder }
-  config.before(:all, type: :feature)  { setup_geocoder }
+  config.before(:each, type: :model) { setup_geocoder }
+  config.before(:each, type: :feature)  { setup_geocoder }
+  config.before(:each, type: :presenter)  { setup_geocoder }
   config.before(:each, js: true) do
     page.driver.browser.url_blacklist = ["https://maps.googleapis.com", "connect.facebook.net"]
   end
