@@ -18,8 +18,11 @@ class ChargesController < ApplicationController
       description: "Booking for #{ @presented_event.name }",
       currency: "gbp"
     )
-    @event_booking.update_attribute(:paid, true)
-    redirect_to @presented_event, notice: "Thank you for your payment"
+    if @event_booking.update(paid: true, stripe_charge_id: charge.id)
+      redirect_to @presented_event, notice: "Thank you for your payment"
+    else
+      render :new
+    end
   rescue Stripe::CardError => e
     logger.error "Stripe error while creating customer: #{e.message}"
     flash[:error] = e.message

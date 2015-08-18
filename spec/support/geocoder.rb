@@ -27,3 +27,10 @@ module GeocoderSetup
     )
   end
 end
+
+RSpec.configure do |config|
+  config.include(GeocoderSetup)
+  config.before(:each, type: :model) { setup_geocoder }
+  config.before(:each, type: :feature)  { setup_geocoder }
+  config.before(:each, type: :presenter)  { setup_geocoder }
+end

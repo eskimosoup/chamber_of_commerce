@@ -5,6 +5,10 @@ class EventAgendaPresenter < BasePresenter
     event_agenda.name
   end
 
+  def description
+    h.raw event_agenda.description
+  end
+
   def start_time(format)
     return nil if event_agenda.start_time.nil?
     h.l event_agenda.start_time, format: format

@@ -5,6 +5,7 @@ RSpec.describe EventBooking, type: :model do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:phone_number) }
+    it { should validate_presence_of(:stripe_charge_id).on(:update) }
   end
 
   describe "associations", :association do

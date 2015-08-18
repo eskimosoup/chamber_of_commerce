@@ -8,6 +8,7 @@ class EventBooking < ActiveRecord::Base
 
   validates :name, :email, :phone_number, presence: true
   validates :attendees, presence: true
+  validates :stripe_charge_id, presence: true, on: :update
 
   def price
     attendee_prices.reduce(:+)

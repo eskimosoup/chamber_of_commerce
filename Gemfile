@@ -62,6 +62,7 @@ group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
   gem 'rack-mini-profiler'
   gem 'flamegraph'
+  gem 'stackprof', '~> 0.2.7'
   gem "bullet"
 end
 
