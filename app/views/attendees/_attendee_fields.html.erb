@@ -15,5 +15,14 @@
     <%= f.text_area :dietary_requirements %>
   </div>
 
+  <div class="field">
+    <%= f.collection_check_boxes(:event_agenda_ids, @event.event_agendas, :id, :name, {}) do |b| %>
+      <%= b.label(for: "event-agenda-checkbox-#{ b.object.id }") do %>
+        <%= "#{ b.object.name } - #{ event_agenda_price(b.object.price) }" %>
+      <% end %>
+      <%= b.check_box(id: "event-agenda-checkbox-#{ b.object.id }") %><br/>
+    <% end %>
+  </div>
+
   <%= link_to_remove_association "Remove Attendee", f %>
 </div>

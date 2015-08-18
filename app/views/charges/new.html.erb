@@ -1,2 +1,62 @@
-<h1>Charges#new</h1>
-<p>Find me in app/views/charges/new.html.erb</p>
+<section class="content-area">
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="main-content-wrap">
+        <h1>Pay for your booking</h1>
+
+        <%= render "shared/flash_messages" %>
+
+        <div class="row">
+          <div class="small-6 columns">
+            <h2>Event Details</h2>
+
+            <h3><%= @presented_event.name %></h3>
+
+            <div class="main-details">
+              Start <strong><%= @presented_event.start_date %></strong>
+              End <strong><%= @presented_event.end_date %></strong>
+              Location <strong><%= @presented_event.location %></strong>
+            </div>
+
+            <%= @presented_event.description %>
+          </div>
+          <div class="small-6 columns">
+            <%= render partial: "event_bookings/booking_details", object: @presented_event_booking, as: :presented_event_booking %>
+          </div>
+        </div>
+
+        <h2>Attendee Details</h2>
+        <div class="row">
+          <div class="small-3 columns">
+            Phone Number
+          </div>
+          <div class="small-3 columns">
+            Email
+          </div>
+          <div class="small-3 columns">
+            Dietary Requirements
+          </div>
+          <div class="small-3 columns">
+            Event Agendas
+          </div>
+        </div>
+        <%= render partial: "attendees/attendee", collection: @presented_attendees, as: :presented_attendee %>
+
+        <%= form_tag event_booking_charges_path(@presented_event_booking) do %>
+          <article>
+            <label class="amount">
+              <span>Amount: <%= number_to_currency @presented_event_booking.price %></span>
+            </label>
+          </article>
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-description="<%= "Booking for #{ @presented_event.name }" %>"
+                  data-amount="<%= @presented_event_booking.stripe_price %>"
+                  data-email="<%= @presented_event_booking.email %>"
+                  data-currency="gbp"></script>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

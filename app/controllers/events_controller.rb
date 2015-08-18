@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 
   def show
     redirect_to @presented_event, status: :moved_permanently if event_path(@presented_event) != request.path
-    @presented_event_agendas = BaseCollectionPresenter.new(collection: @presented_event.event_agendas.order_by_start_time,
+    @presented_event_agendas = BaseCollectionPresenter.new(collection: @presented_event.event_agendas.includes(:event_category).order_by_start_time,
                                                            view_template: view_context, presenter: EventAgendaPresenter)
   end
 
@@ -18,7 +18,5 @@ class EventsController < ApplicationController
 
   def set_event
     @presented_event = EventPresenter.new(object: Event.upcoming.find(params[:id]), view_template: view_context)
-    @presented_event_agendas = BaseCollectionPresenter.new(collection: @presented_event.event_agendas.order_by_start_time,
-                                                           view_template: view_context, presenter: EventAgendaPresenter)
   end
 end

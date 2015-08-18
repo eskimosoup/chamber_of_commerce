@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :article_categories, path: "article-category", only: :show
   resources :articles, only: [:index, :show]
   resources :article_categories, only: [:show], path: 'article-categories'
-  resources :charges, only: [:new, :create]
+  resources :event_bookings, only: [] do
+    resources :charges, only: [:new, :create]
+  end
   resources :events, only: [:index, :show] do
     resources :event_bookings, only: [:new, :create]
   end
@@ -54,22 +56,6 @@ Rails.application.routes.draw do
   mount Optimadmin::Engine => '/admin'
 end
 Optimadmin::Engine.routes.draw do
-  get 'charges/new'
-
-  get 'charges/create'
-
-  get 'members_offers/new'
-
-  get 'members_offers/create'
-
-  get 'members_offers/edit'
-
-  get 'members_offers/update'
-
-  get 'members_offers/show'
-
-  get 'members_offers/destroy'
-
   resources :member_offers, except: [:show] do
     collection do
       post 'order'

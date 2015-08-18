@@ -25,14 +25,31 @@ RSpec.feature "Booking An Event", type: :feature do
       within(all("#event-attendees .nested-fields").last) do
         fill_in "Phone number", with: "01482 666999"
         fill_in "Email", with: "test@example.com"
+        event_agendas.each do |event_agenda|
+          check("event-agenda-checkbox-#{ event_agenda.id }")
+        end
       end
 
       click_button "Create Booking"
 
-      on_current_event_path
-      expect(page).to have_content("Booking Created")
-      expect(EventBooking.last.name).to eq("Joe Bloggs")
-      expect(EventBooking.last.attendees.count).to eq(1)
+      within("h1") do
+        expect(page).to have_content("Pay for your booking")
+      end
+
+      expect(page).to have_content("Event Details")
+      expect(page).to have_content("Booking Details")
+      expect(page).to have_content("Attendee Details")
+
+      click_button("Pay with Card")
+
+      Capybara.within_frame "stripe_checkout_app" do
+        fill_in "card_number", with: "4242424242424242"
+        fill_in "cc-exp", with: "#{ (Date.today + 1.year).strftime("%m%y") }"
+        fill_in "cc-csc", with: "123"
+        click_button "submitButton"
+      end
+
+      expect(page).to have_content("Thank you for your payment")
     end
 
     it "will not allow a booking with no attendees" do
@@ -46,6 +63,8 @@ RSpec.feature "Booking An Event", type: :feature do
       fill_in "event_booking_phone_number", with: "01234 567890"
       fill_in "event_booking_email", with: "wile.e@coyote.co.uk"
       click_button "Create Booking"
+
+      expect(page).to have_content "Attendees can't be blank"
 
     end
   end
@@ -69,3 +88,4 @@ RSpec.feature "Booking An Event", type: :feature do
     expect(current_path).to eq(event_path(event))
   end
 end
+
