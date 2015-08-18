@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_event_location, only: [:show, :edit, :update, :destroy]
 
     def index
-      @event_locations = Optimadmin::BaseCollectionPresenter.new(collection: EventLocation.where('location_name LIKE ?', "#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15).order(params[:order]), view_template: view_context, presenter: Optimadmin::EventLocationPresenter)
+      @event_locations = Optimadmin::BaseCollectionPresenter.new(collection: EventLocation.where('location_name ILIKE ?', "#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15).order(params[:order]), view_template: view_context, presenter: Optimadmin::EventLocationPresenter)
     end
 
     def show
