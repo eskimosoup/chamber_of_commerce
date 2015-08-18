@@ -42,6 +42,11 @@
       padding: em(10px, 22px);
     }
 
+    @include responsive-to(medium) {
+      font-size: em(18px);
+      padding: em(20px, 18px) em(25px, 18px);
+    }
+
     a {
       color: $white;
       display: block;
@@ -62,11 +67,20 @@
       position: static;
       width: auto;
     }
+
+    @include responsive-to(medium) {
+      position: static;
+      width: auto;
+    }
   }
 
   .summary {
     margin: em(40px) 0 0;
     padding: em(20px);
+
+    @include responsive-to(small) {
+      margin-top: 0;
+    }
   }
 
   p {
@@ -176,6 +190,10 @@
   .member-register {
     background: $grey;
   }
+
+  @include responsive-to(medium) {
+    display: none !important; // Oh dear.
+  }
 }
 
 .members-information {
@@ -188,6 +206,7 @@
 
     @include responsive-to(small) {
       position: static;
+      margin-bottom: em(20px);
     }
   }
 
@@ -239,6 +258,11 @@
     line-height: 1.25;
     text-transform: uppercase;
     padding-bottom: em(7px, 16px);
+
+    @include responsive-to(medium) {
+      font-size: em(13px);
+      padding-bottom: em(5px, 13px);
+    }
 
     span {
       font-weight: $black;

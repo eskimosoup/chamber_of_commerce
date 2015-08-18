@@ -50,6 +50,10 @@
     @include responsive-to(small) {
       margin: 0 0 em(12px);
     }
+
+    @include responsive-to(medium) {
+      font-size: em(15px);
+    }
   }
 
   .last-word {

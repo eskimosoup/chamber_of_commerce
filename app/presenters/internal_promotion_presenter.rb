@@ -23,7 +23,7 @@ class InternalPromotionPresenter < BasePresenter
     return unless item.present?
 
     h.content_tag :div, class: 'row' do
-      h.content_tag :div, class: "small-10 columns small-centered #{classes}" do
+      h.content_tag :div, class: "small-12 medium-10 columns small-centered #{classes}" do
         if item.link.present?
           h.link_to item.link, title: item.name do
             h.image_tag item.image.homepage, alt: item.name

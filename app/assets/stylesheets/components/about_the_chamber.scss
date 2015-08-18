@@ -18,6 +18,10 @@
     line-height: 2;
     text-align: center;
     padding: em(30px, 16px) em(40px, 16px);
+
+    @include responsive-to(small) {
+      padding: 0;
+    }
   }
 
   .leaderboard {
@@ -39,6 +43,11 @@
     border-right: 1px solid $grey;
     padding-left: em(20px);
     padding-right: em(20px);
+
+    @include responsive-to(small) {
+      padding: 0;
+      border: 0;
+    }
   }
 
   .columns {
