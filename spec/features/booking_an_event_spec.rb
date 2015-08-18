@@ -1,12 +1,18 @@
 require 'rails_helper'
 
 RSpec.feature "Booking An Event", type: :feature do
+
+  before(:each) do
+    Capybara.default_wait_time = 7
+  end
+
   describe "Standard Event" do
     let!(:event) { create(:event) }
     let!(:event_category) { create(:event_category) }
     let!(:event_agendas) { create_list(:event_agenda, 4, event: event) }
 
     it "allows a booking to be made", js: true do
+
 
       go_to_event_booking_page
 
@@ -48,7 +54,7 @@ RSpec.feature "Booking An Event", type: :feature do
         fill_in "cc-csc", with: "123"
         click_button "submitButton"
       end
-
+      wait_for_ajax
       expect(page).to have_content("Thank you for your payment")
     end
 
@@ -65,7 +71,6 @@ RSpec.feature "Booking An Event", type: :feature do
       click_button "Create Booking"
 
       expect(page).to have_content "Attendees can't be blank"
-
     end
   end
 

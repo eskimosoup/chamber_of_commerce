@@ -1,0 +1,40 @@
+<div class="event-agenda">
+  <div class="row">
+    <div class="small-12 columns">
+      <%= event_agenda_presenter.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= event_agenda_presenter.description %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      Category
+    </div>
+    <div class="small-3 columns">
+      Start Time
+    </div>
+    <div class="small-3 columns">
+      End Time
+    </div>
+    <div class="small-3 columns">
+      Price
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <%= event_agenda_presenter.event_category_name %>
+    </div>
+    <div class="small-3 columns">
+      <%= event_agenda_presenter.start_time(:short) %>
+    </div>
+    <div class="small-3 columns">
+      <%= event_agenda_presenter.end_time(:short) %>
+    </div>
+    <div class="small-3 columns">
+      <%= event_agenda_presenter.price %>
+    </div>
+  </div>
+</div>

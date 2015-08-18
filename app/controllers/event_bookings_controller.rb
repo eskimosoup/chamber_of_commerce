@@ -18,7 +18,7 @@ class EventBookingsController < ApplicationController
   private
 
   def set_event_and_agendas
-    @event = Event.upcoming.friendly.find(params[:event_id])
+    @event = Event.includes(:event_agendas).upcoming.friendly.find(params[:event_id])
     @presented_event = EventPresenter.new(object: @event, view_template: view_context)
   end
 
