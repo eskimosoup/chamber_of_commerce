@@ -1,30 +1,39 @@
-<h2>Booking Details</h2>
+<div class="event-charges-company-summary" data-equalizer-watch="event-charges">
 
-<div class="row">
-  <div class="small-3 columns">
-    Name
+  <div class="event-charges-section-heading">Booking Details</div>
+
+  <h3>Company summary</h3>
+
+  <div class="row">
+    <div class="small-12 medium-4 columns">
+      Name
+    </div>
+    <div class="small-12 medium-8 columns">
+      <%= presented_event_booking.name %>
+    </div>
   </div>
-  <div class="small-9 columns">
-    <%= presented_event_booking.name %>
+
+  <%= presented_event_booking.company_name %>
+  <%= presented_event_booking.industry %>
+  <%= presented_event_booking.nature_of_business %>
+
+  <div class="row">
+    <div class="small-12 medium-4 columns">
+      Phone Number
+    </div>
+    <div class="small-12 medium-8 columns">
+      <%= presented_event_booking.phone_number %>
+    </div>
   </div>
-</div>
-<%= presented_event_booking.company_name %>
-<%= presented_event_booking.industry %>
-<%= presented_event_booking.nature_of_business %>
-<%= presented_event_booking.address %>
-<div class="row">
-  <div class="small-3 columns">
-    Phone Number
+
+  <div class="row">
+    <div class="small-12 medium-4 columns">
+      Email
+    </div>
+    <div class="small-12 medium-8 columns">
+      <%= presented_event_booking.email %>
+    </div>
   </div>
-  <div class="small-9 columns">
-    <%= presented_event_booking.phone_number %>
-  </div>
-</div>
-<div class="row">
-  <div class="small-3 columns">
-    Email
-  </div>
-  <div class="small-9 columns">
-    <%= presented_event_booking.email %>
-  </div>
+
+  <%= presented_event_booking.address %>
 </div>

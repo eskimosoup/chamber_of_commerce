@@ -1,5 +1,69 @@
 .event-agenda {
-  border: 3px solid $light-blue;
+  border: 3px solid $turquoise;
   margin: 10px auto;
   padding: 10px;
+}
+
+.event-agenda-title {
+  border-bottom: 1px solid $bronze;
+  color: $light-blue;
+  font-weight: $bold;
+  padding-bottom: em(5px);
+  text-transform: uppercase;
+}
+
+.event-agenda-description {
+  border-bottom: 1px solid $bronze;
+  margin-bottom: em(10px);
+
+  p {
+    margin: em(5px) 0;
+  }
+}
+
+.event-agenda-heading {
+  font-weight: $bold;
+  color: $bronze;
+}
+
+.event-agenda-checkbox-selects {
+  @extend %clearfix;
+
+  .event-agenda-checkbox-select {
+    float: left;
+    margin: em(15px) em(15px) em(15px) 0;
+  }
+}
+
+.event-agenda-attendee-fields {
+  @extend %clearfix;
+  border: 1px solid $pale-blue;
+  padding: em(10px);
+  margin: 0 0 em(10px);
+
+  .remove_fields {
+    font-weight: $bold;
+    color: $deep-grey;
+    float: right;
+    text-transform: uppercase;
+  }
+}
+
+.add_fields {
+  background: $pale-blue;
+  color: $white;
+  font-weight: $bold;
+  text-transform: uppercase;
+  padding: em(10px);
+
+  &:link,
+  &:visited {
+    color: $white;
+  }
+
+  &:hover,
+  &:active {
+    background: $light-blue;
+    text-decoration: none;
+  }
 }
