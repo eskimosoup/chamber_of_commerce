@@ -50,6 +50,12 @@
         <%= f.label :description %><br>
         <%= f.text_area :description, class: 'tinymce' %>
       </div>
+
+      <div class="field">
+        <p>This field appears on the 'thank you' page after booking so should be used to provide additional information, if needed.</p>
+  <%= f.label :booking_confirmation_information %><br>
+  <%= f.text_area :booking_confirmation_information, class: 'tinymce', style: 'height:70px' %>
+</div>
           <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>

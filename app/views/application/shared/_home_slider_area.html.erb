@@ -1,32 +1,44 @@
 <section class="home">
   <div class="row collapse">
     <div class="small-11 slider-focus medium-5 columns">
-      <div class="home-events">
-        <%= render partial: 'application/home_slider/content_preview', collection: @presented_events, as: :module_presenter %>
-      </div>
+      <% if @presented_events.present? %>
+        <div class="home-events">
+          <%= render partial: 'application/home_slider/content_preview', collection: @presented_events, as: :module_presenter %>
+        </div>
+      <% end %>
 
-      <div class="home-articles" class="hide">
-        <%= render partial: 'application/home_slider/content_preview', collection: @presented_articles, as: :module_presenter %>
-      </div>
+      <% if @presented_articles.present? %>
+        <div class="home-articles" class="hide">
+          <%= render partial: 'application/home_slider/content_preview', collection: @presented_articles, as: :module_presenter %>
+        </div>
+      <% end %>
 
-      <div class="home-members-offers" class="hide">
-        <%= render partial: 'application/home_slider/content_preview', collection: @presented_members_offers, as: :module_presenter %>
-      </div>
+      <% if @presented_members_offers.present? %>
+        <div class="home-members-offers" class="hide">
+          <%= render partial: 'application/home_slider/content_preview', collection: @presented_members_offers, as: :module_presenter %>
+        </div>
+      <% end %>
     </div>
 
     <div class="small-12 medium-7 columns">
       <ul class="content-focus-tabs">
-        <li class="active">
-          <%= link_to 'Events', '#', data: { slider: '.home-events' } %>
-        </li>
+        <% if @presented_events.present? %>
+          <li class="active">
+            <%= link_to 'Events', '#', data: { slider: '.home-events' } %>
+          </li>
+        <% end %>
 
-        <li>
-          <%= link_to 'News', '#', data: { slider: '.home-articles' } %>
-        </li>
+        <% if @presented_articles.present? %>
+          <li>
+            <%= link_to 'News', '#', data: { slider: '.home-articles' } %>
+          </li>
+        <% end %>
 
-        <li>
-          <%= link_to "Members' Offers", '#', data: { slider: '.home-members-offers' } %>
-        </li>
+        <% if @presented_members_offers.present? %>
+          <li>
+            <%= link_to "Members' Offers", '#', data: { slider: '.home-members-offers' } %>
+          </li>
+        <% end %>
       </ul>
 
       <div class="scrolling-slider">

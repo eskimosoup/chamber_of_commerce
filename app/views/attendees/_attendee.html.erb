@@ -1,14 +1,16 @@
-<div class="row <%= cycle("light", "dark") %>">
-  <div class="small-3 columns">
-    <%= presented_attendee.phone_number %>
-  </div>
-  <div class="small-3 columns">
-    <%= presented_attendee.email %>
-  </div>
-  <div class="small-3 columns">
-    <%= presented_attendee.dietary_requirements %>
-  </div>
-  <div class="small-3 columns">
-    <%= presented_attendee.event_agendas %>
+<div class="event-charges-attendee-details">
+  <div class="row <%= cycle("light", "dark") %>">
+    <div class="small-6 medium-3 columns">
+      <%= presented_attendee.phone_number %>
+    </div>
+    <div class="small-6 medium-3 columns">
+      <%= presented_attendee.email %>
+    </div>
+    <div class="small-6 medium-3 columns">
+      <%= presented_attendee.dietary_requirements %>
+    </div>
+    <div class="small-6 medium-3 columns">
+      <%= presented_attendee.event_agendas %>
+    </div>
   </div>
 </div>

@@ -1,53 +1,62 @@
 <section class="content-area">
   <div class="row">
     <div class="small-12 columns">
-      <div class="main-content-wrap">
+      <div class="main-content-wrap" data-equalizer="event-charges">
         <h1>Pay for your booking</h1>
 
         <%= render "shared/flash_messages" %>
 
         <div class="row">
-          <div class="small-6 columns">
-            <h2>Event Details</h2>
+          <div class="small-12 medium-6 columns">
+            <div class="event-charges-event-summary"  data-equalizer-watch="event-charges">
+              <div class="event-charges-section-heading">Event Details</div>
 
-            <h3><%= @presented_event.name %></h3>
+              <h3><%= @presented_event.name %></h3>
 
-            <div class="main-details">
-              Start <strong><%= @presented_event.start_date %></strong>
-              End <strong><%= @presented_event.end_date %></strong>
-              Location <strong><%= @presented_event.location %></strong>
+              <div class="main-details">
+                Start <strong><%= @presented_event.start_date %></strong>
+                End <strong><%= @presented_event.end_date %></strong>
+                Location <strong><%= @presented_event.location %></strong>
+              </div>
+
+              <%= @presented_event.summary %>
             </div>
-
-            <%= @presented_event.description %>
           </div>
-          <div class="small-6 columns">
+          <div class="small-12 medium-6 columns">
             <%= render partial: "event_bookings/booking_details", object: @presented_event_booking, as: :presented_event_booking %>
           </div>
         </div>
 
-        <h2>Attendee Details</h2>
-        <div class="row">
-          <div class="small-3 columns">
-            Phone Number
+        <div class="event-charges-attendee-summary">
+          <div class="event-charges-section-heading">Attendee Details</div>
+
+          <h3>Attendees summary</h3>
+
+          <div class="row event-charges-attendee-headings">
+            <div class="small-6 medium-3 columns">
+              Phone Number
+            </div>
+            <div class="small-6 medium-3 columns">
+              Email
+            </div>
+            <div class="small-6 medium-3 columns">
+              Dietary Requirements
+            </div>
+            <div class="small-6 medium-3 columns">
+              Event Agendas
+            </div>
           </div>
-          <div class="small-3 columns">
-            Email
-          </div>
-          <div class="small-3 columns">
-            Dietary Requirements
-          </div>
-          <div class="small-3 columns">
-            Event Agendas
-          </div>
+
+          <%= render partial: "attendees/attendee", collection: @presented_attendees, as: :presented_attendee %>
+          <%= render partial: "attendees/attendee", collection: @presented_attendees, as: :presented_attendee %>
         </div>
-        <%= render partial: "attendees/attendee", collection: @presented_attendees, as: :presented_attendee %>
 
         <%= form_tag event_booking_charges_path(@presented_event_booking) do %>
-          <article>
+          <div class="event-charges-payment-summary">
             <label class="amount">
               <span>Amount: <%= number_to_currency @presented_event_booking.price %></span>
             </label>
-          </article>
+          </div>
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                   data-description="<%= "Booking for #{ @presented_event.name }" %>"

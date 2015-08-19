@@ -1,0 +1,37 @@
+<section class="content-area">
+  <div class="row">
+    <div class="medium-8 small-12 columns">
+      <div class="main-content-wrap">
+        <h1>Thank you for booking</h1>
+
+        <div class="content">
+          <h2><%= @presented_event.name %></h2>
+
+          <%= render "shared/flash_messages" %>
+
+          <div class="main-details">
+            Start <strong><%= @presented_event.start_date %></strong>
+            End <strong><%= @presented_event.end_date %></strong>
+            Location <strong><%= @presented_event.location %></strong>
+          </div>
+
+          <div class="small-details">
+            <% @presented_event.event_categories.uniq.each do |event_category| %>
+              <%= link_to event_category.name, events_path(event_categories_id: event_category.id) %><%= ', ' unless event_category == @presented_event.event_categories.last %>
+            <% end %>
+          </div>
+
+          <%= @presented_event.image %>
+
+          <%= @presented_event.booking_confirmation_information %>
+
+          <%= @presented_event.summary %>
+        </div>
+      </div>
+    </div>
+
+    <div class="medium-4 small-12 columns">
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>

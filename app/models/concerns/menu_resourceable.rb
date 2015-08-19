@@ -15,6 +15,6 @@ module MenuResourceable
   end
 
   def side_menu_names
-    menu_names.reject{|x| %w(header footer).include?(x) }
+    menu_names#.reject{|x| %w(header footer).include?(x) }
   end
 end

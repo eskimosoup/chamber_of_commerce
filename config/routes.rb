@@ -3,11 +3,14 @@ Rails.application.routes.draw do
   resources :article_categories, path: "article-category", only: :show
   resources :articles, only: [:index, :show]
   resources :article_categories, only: [:show], path: 'article-categories'
-  resources :event_bookings, only: [] do
+  resources :event_bookings, only: [], path: 'event-bookings' do
     resources :charges, only: [:new, :create]
   end
   resources :events, only: [:index, :show] do
-    resources :event_bookings, only: [:new, :create]
+    resources :event_bookings, path: 'event-bookings', only: [:new, :create]
+    member do
+      get 'thank-you'
+    end
   end
   resources :magazines, only: [:index]
   resources :pages, only: [:show]

@@ -29,8 +29,8 @@ class EventBookingPresenter < BasePresenter
 
   def two_column_row(first_column_content:, second_column_content: )
     h.content_tag :div, class: "row" do
-      h.concat h.content_tag(:div, first_column_content, class: "small-3 columns")
-      h.concat h.content_tag(:div, second_column_content, class: "small-9 columns")
+      h.concat h.content_tag(:div, first_column_content, class: "small-12 medium-4 columns")
+      h.concat h.content_tag(:div, second_column_content, class: "small-12 medium-8 columns")
     end
   end
 end

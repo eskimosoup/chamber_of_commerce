@@ -7,8 +7,8 @@ class Article < ActiveRecord::Base
   mount_uploader :image, ArticleUploader
 
   scope :published, -> { where("display = ? and date <= ?", true, Date.today) }
-  scope :member_news, -> { joins(:article_category).where(article_categories: { member_related: true }).order(date: :desc) }
-  scope :non_member_news, -> { joins(:article_category).where(article_categories: { member_related: false }).order(date: :desc) }
+  scope :member_news, -> { joins(:article_category).where(article_categories: { member_related: true }).published.order(date: :desc) }
+  scope :non_member_news, -> { joins(:article_category).where(article_categories: { member_related: false }).published.order(date: :desc) }
 
   validates :title, :content, :date, :article_category, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }

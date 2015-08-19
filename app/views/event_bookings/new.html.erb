@@ -5,70 +5,105 @@
   <%= javascript_include_tag "components/event_booking_cocoon" %>
 <% end %>
 
-<div class="row">
-  <div class="small-12 columns">
-    <h1><%= @presented_event.booking_title %></h1>
+<section class="content-area">
+  <div class="row">
+    <div class="medium-8 small-12 columns">
+      <div class="main-content-wrap">
+        <h1><%= @presented_event.booking_title %></h1>
 
-    <%= form_for [@event, @event_booking] do |f| %>
+        <p>Please fill in your details and then add each attendee. If you wish to attend the event, you must add yourself as an attendee too.</p>
 
-      <% if @event_booking.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@event_booking.errors.count, 'error') %> prevented this booking from being made</h2>
-          <ul>
-            <% @event_booking.errors.full_messages.each do |msg| %>
-              <li>
-                <%= msg %>
-              </li>
+        <div class="content">
+          <%= form_for [@event, @event_booking] do |f| %>
+            <% if @event_booking.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@event_booking.errors.count, 'error') %> prevented this booking from being made</h2>
+                <ul>
+                  <% @event_booking.errors.full_messages.each do |msg| %>
+                    <li>
+                      <%= msg %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
             <% end %>
-          </ul>
+
+            <div class="row">
+              <div class="small-12 medium-6 columns">
+                <div class="field">
+                  <%= f.label :name %><br/>
+                  <%= f.text_field :name %>
+                </div>
+              </div>
+
+              <div class="small-12 medium-6 columns">
+                <div class="field">
+                  <%= f.label :company_name %><br/>
+                  <%= f.text_field :company_name %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="small-12 medium-6 columns">
+                <div class="field">
+                  <%= f.label :industry %><br/>
+                  <%= f.text_field :industry %>
+                </div>
+              </div>
+
+              <div class="small-12 medium-6 columns">
+                <div class="field">
+                  <%= f.label :nature_of_business %><br/>
+                  <%= f.text_field :nature_of_business %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="small-12 medium-6 columns">
+                <div class="row">
+                  <div class="small-12 medium-6 columns">
+                    <div class="field">
+                      <%= f.label :email %><br/>
+                      <%= f.email_field :email %>
+                    </div>
+                  </div>
+
+                  <div class="small-12 medium-6 columns">
+                    <div class="field">
+                      <%= f.label :phone_number %><br/>
+                      <%= f.telephone_field :phone_number %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="small-12 medium-6 columns">
+                <div class="field">
+                  <%= f.label :address %><br/>
+                  <%= f.text_area :address %>
+                </div>
+              </div>
+            </div>
+
+            <%= field_set_tag "Attendees", id: "event-attendees" do %>
+              <%= f.fields_for :attendees do |attendee| %>
+                <%= render "attendees/attendee_fields", f: attendee %>
+              <% end %>
+              <%= link_to_add_association "Add Attendee", f, :attendees, partial: "attendees/attendee_fields" %>
+            <% end %>
+
+            <div class="actions">
+              <%= f.submit "Create Booking", class: 'button' %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-
-      <div class="field">
-        <%= f.label :name %><br/>
-        <%= f.text_field :name %>
       </div>
+    </div>
 
-      <div class="field">
-        <%= f.label :company_name %><br/>
-        <%= f.text_field :company_name %>
-      </div>
-
-      <div class="field">
-        <%= f.label :industry %><br/>
-        <%= f.text_field :industry %>
-      </div>
-
-      <div class="field">
-        <%= f.label :nature_of_business %><br/>
-        <%= f.text_field :nature_of_business %>
-      </div>
-
-      <div class="field">
-        <%= f.label :address %><br/>
-        <%= f.text_area :address %>
-      </div>
-
-      <div class="field">
-        <%= f.label :phone_number %><br/>
-        <%= f.telephone_field :phone_number %>
-      </div>
-
-      <div class="field">
-        <%= f.label :email %><br/>
-        <%= f.email_field :email %>
-      </div>
-
-      <%= field_set_tag "Attendees", id: "event-attendees" do %>
-        <%= f.fields_for :attendees do |attendee| %>
-          <%= render "attendees/attendee_fields", f: attendee %>
-        <% end %>
-        <%= link_to_add_association "Add Attendee", f, :attendees, partial: "attendees/attendee_fields" %>
-      <% end %>
-
-      <div class="actions">
-        <%= f.submit "Create Booking" %>
-      </div>
-    <% end %>
+    <div class="medium-4 small-12 columns">
+      <%= render 'shared/sidebar' %>
+    </div>
   </div>
-</div>
+</section>

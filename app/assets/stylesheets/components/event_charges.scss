@@ -1,0 +1,70 @@
+%event-charges-main-heading {
+  color: $light-blue;
+  font-size: em(18px);
+  font-weight: $bold;
+}
+
+.event-charges-event-summary,
+.event-charges-attendee-summary,
+.event-charges-company-summary {
+  border-bottom: 1px solid $bronze;
+  margin: 0 0 em(15px);
+
+  h3 {
+    @extend %event-charges-main-heading;
+  }
+
+  p:last-of-type {
+    margin-bottom: em(5px);
+  }
+}
+
+.event-charges-company-summary {
+  .row {
+    margin-bottom: em(5px);
+  }
+}
+
+.event-charges-attendee-headings {
+  font-weight: $bold;
+}
+
+.event-charges-attendee-details {
+  padding: em(5px) 0;
+  border-bottom: 1px dotted $turquoise;
+
+  ul {
+    margin: 0;
+  }
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+}
+
+.event-charges-company-summary {
+  .medium-8 {
+    font-weight: $bold;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.event-charges-section-heading {
+  font-size: em(12px);
+  text-transform: uppercase;
+  border-bottom: 1px solid $turquoise;
+  color: $bronze;
+  font-weight: $bold;
+}
+
+.event-charges-payment-summary {
+  padding:  0 0 em(10px);
+
+  .amount {
+    font-size: em(16px);
+    font-weight: $bold;
+  }
+}

@@ -10,7 +10,7 @@ function initialize() {
                           $('#map-canvas').data('latitude'),
                           $('#map-canvas').data('longitude')
                     ),
-        zoom: 12,
+        zoom: 14,
         scrollwheel: false
     };
 

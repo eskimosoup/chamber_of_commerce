@@ -1,13 +1,20 @@
-<div class="nested-fields">
+<div class="event-agenda-attendee-fields nested-fields">
   <%= f.hidden_field :id %>
-  <div class="field">
-    <%= f.label :phone_number %><br/>
-    <%= f.text_field :phone_number %>
-  </div>
 
-  <div class="field">
-    <%= f.label :email %><br/>
-    <%= f.text_field :email %>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <div class="field">
+        <%= f.label :phone_number %><br/>
+        <%= f.text_field :phone_number %>
+      </div>
+    </div>
+
+    <div class="small-12 medium-6 columns">
+      <div class="field">
+        <%= f.label :email %><br/>
+        <%= f.text_field :email %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
@@ -15,12 +22,14 @@
     <%= f.text_area :dietary_requirements %>
   </div>
 
-  <div class="field">
+  <div class="field event-agenda-checkbox-selects">
     <%= f.collection_check_boxes(:event_agenda_ids, @event.event_agendas, :id, :name, {}) do |b| %>
-      <%= b.label(for: "event-agenda-checkbox-#{ b.object.id }") do %>
-        <%= "#{ b.object.name } - #{ event_agenda_price(b.object.price) }" %>
-      <% end %>
-      <%= b.check_box(id: "event-agenda-checkbox-#{ b.object.id }") %><br/>
+      <div class="event-agenda-checkbox-select">
+        <%= b.label(for: "event-agenda-checkbox-#{ b.object.id }") do %>
+          <%= "#{ b.object.name } - #{ event_agenda_price(b.object.price) }" %>
+        <% end %>
+        <%= b.check_box(id: "event-agenda-checkbox-#{ b.object.id }") %><br/>
+      </div>
     <% end %>
   </div>
 

@@ -145,21 +145,22 @@ ActiveRecord::Schema.define(version: 20150819094250) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",                                null: false
+    t.string   "name",                                            null: false
     t.integer  "event_agendas_id"
-    t.date     "start_date",                          null: false
-    t.date     "end_date",                            null: false
+    t.date     "start_date",                                      null: false
+    t.date     "end_date",                                        null: false
     t.string   "image"
     t.integer  "event_location_id"
     t.text     "description"
-    t.boolean  "display",              default: true
-    t.integer  "event_agendas_count",  default: 0
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.boolean  "display",                          default: true
+    t.integer  "event_agendas_count",              default: 0
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.string   "suggested_url"
     t.string   "slug"
     t.text     "summary"
-    t.integer  "event_bookings_count", default: 0
+    t.integer  "event_bookings_count",             default: 0
+    t.text     "booking_confirmation_information"
   end
 
   add_index "events", ["event_agendas_id"], name: "index_events_on_event_agendas_id", using: :btree
