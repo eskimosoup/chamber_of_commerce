@@ -3,16 +3,16 @@ module Optimadmin
     presents :event
     delegate :event_location, to: :event_location
 
-    def id
-      event.id
-    end
-
     def name
       event.name
     end
 
     def event_agendas
-      h.link_to "Event Agendas (#{event.event_agendas.count})", h.event_agendas_path(event_id: event.id)
+      h.link_to h.pluralize(event.event_agendas.count, "agenda"), h.event_agendas_path(event_id: event.id)
+    end
+
+    def event_bookings
+      h.link_to h.pluralize(event.event_bookings_count, "booking"), h.event_event_bookings_path(event)
     end
 
     def location
