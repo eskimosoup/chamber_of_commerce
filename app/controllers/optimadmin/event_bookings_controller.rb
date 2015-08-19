@@ -2,7 +2,7 @@ module Optimadmin
   class EventBookingsController < Optimadmin::ApplicationController
 
     before_action :set_event
-    before_action :set_event_booking, only: [:show, :edit, :update, :destroy]
+    before_action :set_event_booking, only: [:show, :refund]
 
     def index
       @event_bookings = Optimadmin::BaseCollectionPresenter.new(collection: @event.event_bookings.order(created_at: :desc).page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::EventBookingPresenter)
@@ -10,6 +10,16 @@ module Optimadmin
 
     def show
       @event_booking_presenter = Optimadmin::EventBookingPresenter.new(object: @event_booking, view_template: view_context)
+    end
+
+    def refund
+      redirect_to event_event_bookings_path(@event, @event_booking), notice: "Booking has already been refunded" if @event_booking.refunded?
+      refund = Stripe::Refund.create(params[:refund])
+      redirect_to event_event_bookings_path(@event), notice: "Successfully refunded"
+    rescue Stripe::InvalidRequestError, Stripe::APIError => e
+      logger.error "Stripe error while creating customer: #{e.message}"
+      flash[:error] = e.message
+      render :show
     end
 
   private

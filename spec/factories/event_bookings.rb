@@ -9,6 +9,12 @@ FactoryGirl.define do
     phone_number "MyString"
     email "MyString"
     paid false
+
+    factory :event_booking_with_attendees do
+      after(:build) do |event_booking|
+        event_booking.attendees = create_list(:attendee, rand(1..3), event_booking: event_booking)
+      end
+    end
   end
 
 end
