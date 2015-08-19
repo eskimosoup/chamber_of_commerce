@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_additional_content, only: [:show, :edit, :update, :destroy]
 
     def index
-      @additional_contents = Optimadmin::BaseCollectionPresenter.new(collection: AdditionalContent.where('title LIKE ?', "#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15).order(params[:order]), view_template: view_context, presenter: Optimadmin::AdditionalContentPresenter)
+      @additional_contents = Optimadmin::BaseCollectionPresenter.new(collection: AdditionalContent.where('title ILIKE ?', "#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15).order(params[:order]), view_template: view_context, presenter: Optimadmin::AdditionalContentPresenter)
     end
 
     def show

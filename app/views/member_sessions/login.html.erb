@@ -1,6 +1,6 @@
 <section class="content-area">
   <div class="row">
-    <div class="large-8 small-12 columns">
+    <div class="medium-8 small-12 columns">
       <div class="main-content-wrap">
         <h1><%= @additional_content.title("Members' Area") %></h1>
 
@@ -8,13 +8,13 @@
           <%= @additional_content.content %>
 
           <%= render 'form' %>
-          
+
           <p>If you do not know your password, <%= link_to 'use the password reset page', new_member_password_reset_path %>.</p>
         </div>
       </div>
     </div>
 
-    <div class="large-4 small-12 columns">
+    <div class="medium-4 small-12 columns">
       <%= render 'shared/sidebar' %>
     </div>
   </div>

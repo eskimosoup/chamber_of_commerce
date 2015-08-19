@@ -1,6 +1,6 @@
 <section class="content-area">
   <div class="row">
-    <div class="large-8 small-12 columns">
+    <div class="medium-8 small-12 columns">
       <div class="main-content-wrap">
         <h1><%= @presented_event.name %></h1>
 
@@ -13,7 +13,7 @@
         </div>
 
         <div class="small-details">
-          <% @presented_event.event_categories.each do |event_category| %>
+          <% @presented_event.event_categories.uniq.each do |event_category| %>
             <%= link_to event_category.name, events_path(event_categories_id: event_category.id) %><%= ', ' unless event_category == @presented_event.event_categories.last %>
           <% end %>
         </div>
@@ -33,9 +33,8 @@
       </div>
     </div>
 
-    <div class="large-4 small-12 columns">
+    <div class="medium-4 small-12 columns">
       <%= render 'shared/sidebar' %>
     </div>
   </div>
 </section>
-
