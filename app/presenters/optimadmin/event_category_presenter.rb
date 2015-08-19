@@ -2,10 +2,6 @@ module Optimadmin
   class EventCategoryPresenter < BasePresenter
     presents :event_category
 
-    def id
-      event_category.id
-    end
-
     def name
       event_category.name
     end

@@ -2,10 +2,6 @@ module Optimadmin
   class EventAgendaPresenter < Optimadmin::BasePresenter
     presents :event_agenda
 
-    def id
-      event_agenda.id
-    end
-
     def name
       event_agenda.name
     end

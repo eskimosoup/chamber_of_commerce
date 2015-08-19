@@ -97,6 +97,15 @@ Optimadmin::Engine.routes.draw do
       post 'update_image_fill'
       post 'update_image_fit'
     end
+    resources :event_bookings, only: [:index, :show] do
+      collection do
+        post 'order'
+      end
+      member do
+        get 'toggle'
+        post :refund
+      end
+    end
   end
   resources :event_agendas, except: [:show] do
     collection do

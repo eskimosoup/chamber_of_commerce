@@ -2,10 +2,6 @@ module Optimadmin
   class MagazinePresenter < Optimadmin::BasePresenter
     presents :magazine
 
-    def id
-      magazine.id
-    end
-
     def name
       magazine.name
     end

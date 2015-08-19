@@ -2,10 +2,6 @@ module Optimadmin
   class PagePresenter < Optimadmin::BasePresenter
     presents :page
 
-    def id
-      page.id
-    end
-
     def title
       page.title
     end
