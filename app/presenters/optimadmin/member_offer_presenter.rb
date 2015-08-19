@@ -2,10 +2,6 @@ module Optimadmin
   class MemberOfferPresenter < Optimadmin::BasePresenter
     presents :member_offer
 
-    def id
-      member_offer.id
-    end
-
     def title
       member_offer.title
     end

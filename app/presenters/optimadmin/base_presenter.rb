@@ -13,6 +13,10 @@ module Optimadmin
       end
     end
 
+    def id
+      @object.id
+    end
+
     # https://robots.thoughtbot.com/rendering-collections-in-rails
     def to_partial_path
       @object.to_partial_path
@@ -23,8 +27,7 @@ module Optimadmin
     end
 
     def view_link
-      # FIXME this is hacky
-      h.link_to eye, h.polymorphic_url(@object).gsub('/admin', ''), class: 'menu-item-control', target: '_blank'
+      h.link_to eye, h.main_app.polymorphic_url(@object), class: 'menu-item-control', target: '_blank'
     end
 
     def edit_link
@@ -40,7 +43,7 @@ module Optimadmin
     end
 
     def toggle_link(attribute = :display)
-      return nil unless @object.respond_to?(attribute)
+      return nil unless @object.has_attribute?(attribute)
       h.link_to((@object.send("#{attribute}?") ? 'Yes' : 'No'), h.toggle_path(model: @object.class.name.demodulize, id: @object.id, toggle: attribute), id: "#{attribute.to_s}-#{@object.id}", class: "helper-link display #{ @object.send("#{attribute}?") ? 'true' : 'false' }", remote: true)
     end
 

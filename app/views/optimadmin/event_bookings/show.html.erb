@@ -1,0 +1,148 @@
+<div class="main-content">
+  <h1><%= @event_presenter.name %> Booking</h1>
+
+  <div>
+    <h2>
+      Booker Details
+    </h2>
+
+    <div class="row">
+      <div class="small-3 columns">
+        Name
+      </div>
+      <div class="small-9 columns">
+        <%= @event_booking_presenter.name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-3 columns">
+        Phone Number
+      </div>
+      <div class="small-9 columns">
+        <%= @event_booking_presenter.phone_number %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-3 columns">
+        Email
+      </div>
+      <div class="small-9 columns">
+        <%= @event_booking_presenter.email %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2>
+      Company Details
+    </h2>
+
+    <div class="row">
+      <div class="small-3 columns">
+        Name
+      </div>
+      <div class="small-9 columns">
+        <%= @event_booking_presenter.company_name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-3 columns">
+        Industry
+      </div>
+      <div class="small-9 columns">
+        <%= @event_booking_presenter.industry %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-3 columns">
+        Nature of Business
+      </div>
+      <div class="small-9 columns">
+        <%= @event_booking_presenter.nature_of_business %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-3 columns">
+        Address
+      </div>
+      <div class="small-9 columns">
+        <%= @event_booking_presenter.address %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2>Attendee Details</h2>
+
+    <div class="row">
+      <div class="small-3 columns">
+        Agendas
+      </div>
+      <div class="small-3 columns">
+        Phone Number
+      </div>
+      <div class="small-3 columns">
+        Email
+      </div>
+      <div class="small-3 columns">
+        Dietary Requirements
+      </div>
+    </div>
+
+    <% @event_booking_presenter.attendees.each do |attendee_presenter| %>
+      <div class="row">
+        <div class="small-3 columns">
+          <ul>
+            <% attendee_presenter.event_agendas.each do |event_agenda_presenter| %>
+              <li><%= event_agenda_presenter.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="small-3 columns">
+          <%= attendee_presenter.phone_number %>
+        </div>
+        <div class="small-3 columns">
+          <%= attendee_presenter.email %>
+        </div>
+        <div class="small-3 columns">
+          <%= attendee_presenter.dietary_requirements %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <h2>
+      Payment Details
+    </h2>
+
+    <div class="row">
+      <div class="small-3 columns">
+        Cost
+      </div>
+      <div class="small-9 columns">
+        <%= @event_booking_presenter.price %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-3 columns">
+        Paid
+      </div>
+      <div class="small-9 columns">
+        <%= @event_booking_presenter.paid %>
+      </div>
+    </div>
+    <div class="row">
+      <% if @event_booking_presenter.refunded? %>
+        <div class="small-3 columns">
+          Refunded
+        </div>
+        <div class="small-9 columns">
+          <%= @event_booking_presenter.refunded %>
+        </div>
+      <% else %>
+        <%= @event_booking_presenter.refund_button %>
+      <% end %>
+    </div>
+  </div>
+</div>
