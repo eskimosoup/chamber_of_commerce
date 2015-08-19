@@ -11,7 +11,7 @@
 
           <div class="inner text-center">
             <ul class="plain-list">
-              <%= nested_menu_items(menu_items: @page_types["international_trade"].last.side_menus.last.child_menu_items(@page_types["international_trade"].first)) if @page_types["international_trade"].present? && @page_types["international_trade"].last.side_menus.present? %>
+              <%= nested_menu_items(menu_items: @page_types["international_trade"].last.side_menus.last.child_menu_items(@page_types["international_trade"].last)) if @page_types["international_trade"].present? && @page_types["international_trade"].last.side_menus.present? %>
             </ul>
           </div>
 
@@ -34,7 +34,7 @@
 
           <div class="inner text-center">
             <ul class="plain-list">
-              <%= nested_menu_items(menu_items: @page_types["policy_and_representation"].last.side_menus.last.child_menu_items(@page_types["policy_and_representation"].first)) if @page_types["policy_and_representation"].present? && @page_types["policy_and_representation"].last.side_menus.present?  %>
+              <%= nested_menu_items(menu_items: @page_types["policy_and_representation"].last.side_menus.last.child_menu_items(@page_types["policy_and_representation"].last)) if @page_types["policy_and_representation"].present? && @page_types["policy_and_representation"].last.side_menus.present?  %>
             </ul>
           </div>
 
