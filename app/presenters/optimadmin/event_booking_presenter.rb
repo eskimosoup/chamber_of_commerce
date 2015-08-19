@@ -10,11 +10,11 @@ module Optimadmin
     end
 
     def view_link
-      h.link_to eye, h.event_event_booking_path(event_slug, event_booking), class: 'menu-item-control', target: '_blank'
+      h.link_to eye, h.event_event_booking_path(event_slug, event_booking), class: 'menu-item-control', id: "event-booking-#{ event_booking.id }"
     end
 
     def paid
-      if event_booking.paid?
+      if paid?
         "Yes"
       else
         "No"
@@ -33,8 +33,20 @@ module Optimadmin
       event_booking.refunded?
     end
 
-    def refund_button
-      h.button_to "Refund", h.refund_event_event_booking_path(event_slug, event_booking), class: "refund button"
+    def paid?
+      event_booking.paid?
+    end
+
+    def stripe_charge_id
+      event_booking.stripe_charge_id
+    end
+
+    def stripe_price
+      event_booking.stripe_price
+    end
+
+    def refund_reasons
+      %w(requested_by_customer duplicate fraudulent).map{|x| [x.titleize, x] }
     end
 
     def attendees

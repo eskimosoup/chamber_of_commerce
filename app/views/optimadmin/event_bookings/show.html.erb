@@ -132,17 +132,33 @@
         <%= @event_booking_presenter.paid %>
       </div>
     </div>
-    <div class="row">
-      <% if @event_booking_presenter.refunded? %>
-        <div class="small-3 columns">
-          Refunded
-        </div>
-        <div class="small-9 columns">
-          <%= @event_booking_presenter.refunded %>
-        </div>
-      <% else %>
-        <%= @event_booking_presenter.refund_button %>
-      <% end %>
-    </div>
+    <% if @event_booking_presenter.paid? %>
+      <div class="row">
+        <% if @event_booking_presenter.refunded? %>
+          <div class="small-3 columns">
+            Refunded
+          </div>
+          <div class="small-9 columns">
+            <%= @event_booking_presenter.refunded %>
+          </div>
+        <% else %>
+          <div class="small-12 columns">
+            <h3>Refund</h3>
+            <%= form_for :refund, url: refund_event_event_booking_path(@event, @event_booking) do |f| %>
+              <%= f.hidden_field :charge, value: @event_booking_presenter.stripe_charge_id %>
+              <%= f.hidden_field :amount, value: @event_booking_presenter.stripe_price %>
+              <div class="field">
+                <%= f.label :reason %><br/>
+                <%= f.select :reason, options_for_select(@event_booking_presenter.refund_reasons) %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Refund" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
