@@ -29,6 +29,11 @@
           <%= render partial: "event_agendas/event_agenda", collection: @presented_event_agendas, as: :event_agenda_presenter %>
         <% end %>
 
+
+        <% if @presented_event_agendas.count > 1 %>
+          <p>You will be able to decide which event agendas you wish to attend during the event agendas.</p>
+        <% end %>
+
         <%= @presented_event.booking_button %>
       </div>
     </div>

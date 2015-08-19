@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: :show
+  before_action :set_event, except: :index
 
   def index
     @additional_content = AdditionalContentPresenter.new(object: AdditionalContent.find_by(area: 'Events - Index'), view_template: view_context)
@@ -12,6 +12,10 @@ class EventsController < ApplicationController
     redirect_to @presented_event, status: :moved_permanently if event_path(@presented_event) != request.path
     @presented_event_agendas = BaseCollectionPresenter.new(collection: @presented_event.event_agendas.includes(:event_category).order_by_start_time,
                                                            view_template: view_context, presenter: EventAgendaPresenter)
+  end
+
+  def thank_you
+    redirect_to @presented_event, status: :moved_permanently if thank_you_event_path(@presented_event) != request.path
   end
 
   private

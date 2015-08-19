@@ -54,6 +54,10 @@ class EventPresenter < BasePresenter
     h.raw event.description
   end
 
+  def booking_confirmation_information
+    h.raw event.booking_confirmation_information
+  end
+
   def image
     h.image_tag event.image.show, alt: event.name, class: 'page-image image-right' if event.image?
   end
