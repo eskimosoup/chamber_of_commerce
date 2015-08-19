@@ -12,8 +12,6 @@ RSpec.feature "Booking An Event", type: :feature do
     let!(:event_agendas) { create_list(:event_agenda, 4, event: event) }
 
     it "allows a booking to be made", js: true do
-
-
       go_to_event_booking_page
 
       fill_in "event_booking_name", with: "Joe Bloggs"
@@ -26,7 +24,6 @@ RSpec.feature "Booking An Event", type: :feature do
 
       click_link "Add Attendee"
 
-      #save_and_open_page
       expect(page).to have_selector("#event-attendees .nested-fields", count: 1)
       within(all("#event-attendees .nested-fields").last) do
         fill_in "Phone number", with: "01482 666999"
@@ -53,8 +50,8 @@ RSpec.feature "Booking An Event", type: :feature do
         fill_in "cc-exp", with: "#{ (Date.today + 1.year).strftime("%m%y") }"
         fill_in "cc-csc", with: "123"
         click_button "submitButton"
+        wait_for_ajax
       end
-      wait_for_ajax
       expect(page).to have_content("Thank you for your payment")
     end
 
