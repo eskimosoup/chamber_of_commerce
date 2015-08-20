@@ -1,0 +1,84 @@
+<h1><%= @event.name %></h1>
+
+<div class="main-details">
+  Start <strong><%= @event.start_date %></strong><br/>
+  End <strong><%= @event.end_date %></strong><br/>
+  Location <strong><%= @event.event_location.location_name %></strong><br/>
+</div>
+
+<%= @event.summary %>
+
+<h2>Booking Details</h2>
+
+<h3>Company summary</h3>
+
+<p>
+  Name <strong><%= @event_booking.name %></strong>
+</p>
+<p>
+  Company Name <strong><%= @event_booking.company_name %></strong>
+</p>
+<p>
+  Industry <strong><%= @event_booking.industry %></strong>
+</p>
+<p>
+  Nature of Business <strong><%= @event_booking.nature_of_business %></strong>
+</p>
+
+<p>
+  Phone Number <strong><%= @event_booking.phone_number %></strong>
+</p>
+
+
+<p>
+  Phone Number <strong><%= @event_booking.email %></strong>
+</p>
+
+<p>
+  Address
+</p>
+<%= simple_format @event_booking.address %>
+</div>
+
+<h3>Attendees summary</h3>
+
+<table>
+  <th>
+    <td>
+      Phone Number
+    </td>
+    <td>
+      Email
+    </td>
+    <td>
+      Dietary Requirements
+    </td>
+    <td>
+      Event Agendas
+    </td>
+  </th>
+  <% @event_booking.attendees.each do |attendee| %>
+    <tr>
+      <td>
+        <%= attendee.phone_number %>
+      </td>
+      <td>
+        <%= attendee.email %>
+      </td>
+      <td>
+        <%= attendee.dietary_requirements %>
+      </td>
+      <td>
+        <ul>
+          <% attendee.event_agendas.pluck(:name).each do |event_agenda| %>
+            <li><%= event_agenda %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  Price <strong><%= number_to_currency @event_booking.price %></strong>
+</p>
