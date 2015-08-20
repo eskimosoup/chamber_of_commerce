@@ -1,7 +1,7 @@
 class EventBooking < ActiveRecord::Base
 
   belongs_to :event, counter_cache: true
-  has_many :event_agendas, through: :event
+
   has_many :attendees, dependent: :destroy
   accepts_nested_attributes_for :attendees, reject_if: :all_blank, allow_destroy: true
 
@@ -21,7 +21,7 @@ class EventBooking < ActiveRecord::Base
   end
 
   def agendas_available
-    event_agendas.each do |event_agenda|
+    event.event_agendas.each do |event_agenda|
       errors.add(:base, "#{ event_agenda.name } only has #{ event_agenda.open_spaces } spaces") if event_agenda.full?(agenda_id_frequency[event_agenda.id])
     end
   end
