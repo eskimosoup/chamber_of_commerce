@@ -3,6 +3,7 @@
 <div class="main-content">
   <div class="row module-header collapse">
     <%= @event_presenter.name %>
+    <%= link_to "Download CSV", event_event_bookings_path(format: :csv), target: "_blank", class: "button" %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
     <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
