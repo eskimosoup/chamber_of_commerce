@@ -19,4 +19,12 @@ RSpec.describe Attendee, type: :model do
       expect(attendee.agendas_total_price).to eq(total)
     end
   end
+
+  describe "agenda_ids method" do
+    subject(:attendee) { create(:attendee) }
+    it "should return the agenda ids" do
+      agenda_ids = attendee.attendee_event_agendas.map(&:event_agenda_id)
+      expect(attendee.agenda_ids).to eq(agenda_ids)
+    end
+  end
 end

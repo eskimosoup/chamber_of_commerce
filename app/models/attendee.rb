@@ -9,6 +9,10 @@ class Attendee < ActiveRecord::Base
     attendee_event_agenda_prices.reduce(:+)
   end
 
+  def agenda_ids
+    attendee_event_agendas.map(&:event_agenda_id)
+  end
+
   private
 
   def attendee_event_agenda_prices
