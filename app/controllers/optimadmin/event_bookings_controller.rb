@@ -5,7 +5,15 @@ module Optimadmin
     before_action :set_event_booking, only: [:show, :refund]
 
     def index
-      @event_bookings = Optimadmin::BaseCollectionPresenter.new(collection: @event.event_bookings.order(created_at: :desc).page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::EventBookingPresenter)
+      respond_to do |format|
+        format.html do
+          @event_bookings = Optimadmin::BaseCollectionPresenter.new(collection: @event.event_bookings.order(created_at: :desc).page(params[:page]).per(params[:per_page] || 15),
+                                                                    view_template: view_context, presenter: Optimadmin::EventBookingPresenter)
+        end
+        format.csv do
+          send_data EventBooking.to_csv(event_id: @event.id)
+        end
+      end
     end
 
     def show
@@ -21,6 +29,7 @@ module Optimadmin
       flash[:error] = e.message
       render :show
     end
+
 
   private
 
