@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819094250) do
+ActiveRecord::Schema.define(version: 20150821150810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,6 +179,13 @@ ActiveRecord::Schema.define(version: 20150819094250) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "industries", force: :cascade do |t|
+    t.string   "name",          null: false
+    t.integer  "chamber_db_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "internal_promotions", force: :cascade do |t|
     t.string   "name",                      null: false
     t.string   "image",                     null: false
@@ -198,6 +205,16 @@ ActiveRecord::Schema.define(version: 20150819094250) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  create_table "member_industries", force: :cascade do |t|
+    t.integer  "member_id"
+    t.integer  "industry_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "member_industries", ["industry_id"], name: "index_member_industries_on_industry_id", using: :btree
+  add_index "member_industries", ["member_id"], name: "index_member_industries_on_member_id", using: :btree
 
   create_table "member_logins", force: :cascade do |t|
     t.integer  "member_id"
@@ -231,7 +248,6 @@ ActiveRecord::Schema.define(version: 20150819094250) do
 
   create_table "members", force: :cascade do |t|
     t.string   "company_name"
-    t.string   "industry"
     t.text     "address"
     t.string   "telephone"
     t.string   "website"
@@ -243,8 +259,12 @@ ActiveRecord::Schema.define(version: 20150819094250) do
     t.datetime "updated_at",                      null: false
     t.string   "slug"
     t.integer  "member_offers_count", default: 0
+    t.string   "fax"
+    t.string   "post_code"
+    t.integer  "chamber_db_id"
   end
 
+  add_index "members", ["chamber_db_id"], name: "index_members_on_chamber_db_id", using: :btree
   add_index "members", ["member_login_id"], name: "index_members_on_member_login_id", using: :btree
 
   create_table "newsletter_signups", force: :cascade do |t|
@@ -369,6 +389,8 @@ ActiveRecord::Schema.define(version: 20150819094250) do
   add_foreign_key "event_agendas", "event_categories"
   add_foreign_key "event_agendas", "events"
   add_foreign_key "event_bookings", "events"
+  add_foreign_key "member_industries", "industries"
+  add_foreign_key "member_industries", "members"
   add_foreign_key "member_logins", "members"
   add_foreign_key "member_offers", "members"
 end

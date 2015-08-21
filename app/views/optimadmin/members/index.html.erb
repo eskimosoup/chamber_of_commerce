@@ -2,11 +2,16 @@
 
 <div class="main-content">
   <div class="row module-header collapse">
-    <%= render 'optimadmin/shared/module/index/new_item', title: 'Member', object: Member, path: new_member_path %>
-    <%= render 'optimadmin/shared/search_form' %>
-    <%= render 'optimadmin/shared/module/index/pagination' %>
-    <%= render 'optimadmin/shared/module/index/order', options: [['Company name', 'company_name'], ['Verified', 'verified']] %>
-    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @members.size, path: root_url %>
+    <div class="small-4 columns">
+      <%= render 'optimadmin/shared/module/index/new_item', title: 'Member', object: Member, path: new_member_path %>
+      <%= link_to "Import Members", import_csv_members_path, class: "action-button" %>
+    </div>
+    <div class="small-8 columns">
+      <%= render 'optimadmin/shared/search_form' %>
+      <%= render 'optimadmin/shared/module/index/pagination' %>
+      <%= render 'optimadmin/shared/module/index/order', options: [['Company name', 'company_name'], ['Verified', 'verified']] %>
+      <%= render 'optimadmin/shared/module/index/recycle_bin', items: @members.size, path: root_url %>
+    </div>
   </div>
 
   <div class="row collapse module-list-index header">
