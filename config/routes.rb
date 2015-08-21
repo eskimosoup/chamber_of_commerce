@@ -81,7 +81,9 @@ Optimadmin::Engine.routes.draw do
       end
     end
     collection do
+      get :import_csv
       post 'order'
+      post :import
     end
     member do
       get 'toggle'
