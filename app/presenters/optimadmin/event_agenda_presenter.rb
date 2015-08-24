@@ -25,5 +25,13 @@ module Optimadmin
     def price
       h.number_to_currency event_agenda.price
     end
+
+    def table_size
+      event_agenda.table_size
+    end
+
+    def table_discount
+      h.number_to_percentage(event_agenda.table_discount, precision: 2)
+    end
   end
 end

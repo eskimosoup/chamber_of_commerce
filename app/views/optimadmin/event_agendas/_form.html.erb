@@ -63,6 +63,16 @@
         <%= f.label :price %><br>
         <%= f.number_field :price, step: 0.01 %>
       </div>
+
+      <div class="field">
+        <%= f.label :table_discount, "Table Discount (percentage)" %><br>
+        <%= f.number_field :table_discount, step: 0.01 %>
+      </div>
+
+      <div class="field">
+        <%= f.label :table_size %><br>
+        <%= f.number_field :table_size, step: 1 %>
+      </div>
     <% end %>
   </div>
 

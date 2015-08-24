@@ -5,6 +5,9 @@ RSpec.describe EventAgenda, type: :model do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:event_category) }
     it { should validate_presence_of(:description) }
+    it { should validate_presence_of(:table_size) }
+    it { should validate_numericality_of(:table_size).only_integer }
+    it { should validate_numericality_of(:table_discount).allow_nil }
   end
 
   describe "associations", :association do

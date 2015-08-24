@@ -86,7 +86,10 @@ ActiveRecord::Schema.define(version: 20150824142951) do
     t.decimal  "price",             precision: 8, scale: 2, default: 0.0
     t.integer  "table_size",                                default: 10
     t.decimal  "table_discount",    precision: 5, scale: 2, default: 0.0
+<<<<<<< HEAD
     t.boolean  "must_book"
+=======
+>>>>>>> upstream/master
   end
 
   add_index "event_agendas", ["event_category_id"], name: "index_event_agendas_on_event_category_id", using: :btree
