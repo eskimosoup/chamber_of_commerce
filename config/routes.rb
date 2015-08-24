@@ -59,6 +59,16 @@ Rails.application.routes.draw do
   mount Optimadmin::Engine => '/admin'
 end
 Optimadmin::Engine.routes.draw do
+  resources :industries, except: [:show] do
+    collection do
+      post :order
+      get :import_csv
+      post :import
+    end
+    member do
+      get 'toggle'
+    end
+  end
   resources :member_offers, except: [:show] do
     collection do
       post 'order'

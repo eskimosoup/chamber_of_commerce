@@ -1,0 +1,46 @@
+<%= form_for(industry) do |f| %>
+<% if industry.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(industry.errors.count, "error") %> prohibited this industry from being saved:</h2>
+
+    <ul>
+      <% industry.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  
+
+  <div class="tabs prevent-flash">
+    <ul class="tab-list">
+      <li><a href="#tabs-1">Content</a></li>
+      <li><a href="#tabs-2">Media</a></li>
+      <li><a href="#tabs-3">Settings</a></li>
+      <li>
+        <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+          <%= octicon('chevron-down') %>
+        <% end %>
+      </li>
+    </ul>
+
+    <%= field_set_tag nil, id: 'tabs-1' do %>
+            <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+          <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-2' do %>
+      
+          <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-3' do %>
+          <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

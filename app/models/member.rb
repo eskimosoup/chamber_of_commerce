@@ -9,7 +9,7 @@ class Member < ActiveRecord::Base
   has_many :industries, through: :member_industries
 
 
-  validates :company_name, :address, :post_code, :telephone, :website,
+  validates :company_name, :address, :post_code, :telephone,
             :email, :nature_of_business, presence: true
 
   validates :company_name, uniqueness: true

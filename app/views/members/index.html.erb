@@ -13,7 +13,7 @@
 
             <div class="field">
               <%= label_tag :industry, 'Industry' %>
-              <%= select_tag :industry, options_for_select(Member::INDUSTRIES, selected: params[:industry]), prompt: 'Any industry' %>
+              <%= select_tag :industry, options_for_select(Industry.pluck(:name, :id), selected: params[:industry]), prompt: 'Any industry' %>
             </div>
 
             <div class="field">

@@ -1,0 +1,31 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Import Members' %>
+
+<div class="main-content">
+  <%= form_for @industry_import, url: import_industries_path, multipart: true do |f| %>
+
+    <% if @industry_import.errors.any? %>
+      <div class="flash-wrap">
+        <div class="flash-message notice">
+          <%= @industry_import.imported_count %> records imported, <%= @industry_import.updated_count %> records updated
+        </div>
+      </div>
+      <div id="error_explanation">
+        <h2><%= pluralize(@industry_import.errors.count, "error") %> with your csv file:</h2>
+
+        <ul>
+          <% @industry_import.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.file_field :file %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Upload" %>
+    </div>
+  <% end %>
+</div>
