@@ -55,6 +55,11 @@
       </div>
 
       <div class="field">
+        <%= f.label :must_book %><br>
+        <%= f.check_box :must_book %>
+      </div>
+
+      <div class="field">
         <%= f.label :price %><br>
         <%= f.number_field :price, step: 0.01 %>
       </div>

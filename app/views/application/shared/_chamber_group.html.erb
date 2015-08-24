@@ -4,14 +4,14 @@
 
     <div class="row">
       <div class="medium-4 small-12 columns">
-        <div class="content-box"  data-equalizer-watch="row-content-box-1">
+        <div class="content-box international-trade"  data-equalizer-watch="row-content-box-1">
           <div class="content-box-area-title">
             <%= two_tone_title "International Trade" %>
           </div>
 
           <div class="inner text-center">
             <ul class="plain-list">
-              <%#= nested_menu_items(menu_items: @page_types["international_trade"].last.side_menus.last.child_menu_items(@page_types["international_trade"].last)) if @page_types["international_trade"].present? && @page_types["international_trade"].last.side_menus.present? %>
+              <%= child_menu_items(menu_items: @page_types["international_trade"].last.side_menus.last.child_menu_items(@page_types["international_trade"].last)) if @page_types["international_trade"].present? && @page_types["international_trade"].last.side_menus.present? %>
             </ul>
           </div>
 
@@ -34,7 +34,7 @@
 
           <div class="inner text-center">
             <ul class="plain-list">
-              <%#= nested_menu_items(menu_items: @page_types["policy_and_representation"].last.side_menus.last.child_menu_items(@page_types["policy_and_representation"].last)) if @page_types["policy_and_representation"].present? && @page_types["policy_and_representation"].last.side_menus.present?  %>
+              <%= child_menu_items(menu_items: @page_types["policy_and_representation"].last.side_menus.last.child_menu_items(@page_types["policy_and_representation"].last)) if @page_types["policy_and_representation"].present? && @page_types["policy_and_representation"].last.side_menus.present?  %>
             </ul>
           </div>
 
@@ -47,43 +47,47 @@
       <div class="medium-4 small-12 columns">
         <div class="chamber-information"  data-equalizer-watch="row-content-box-1">
           <div class="preview-first-home-item">
-            <div class="row collapse">
-              <div class="small-6 columns">
-                <%= image_tag 'components/training/photo.jpg' %>
-              </div>
+            <%= link_to '/pages/chamber-training-humber-ltd' do %>
+              <div class="row collapse">
+                <div class="small-6 columns">
+                  <%= image_tag 'components/training/photo.jpg' %>
+                </div>
 
-              <div class="small-6 columns">
-                <div class="content">
-                  <div class="title">
-                    <%= two_tone_title "Chamber Training" %>
+                <div class="small-6 columns">
+                  <div class="content">
+                    <div class="title">
+                      <%= two_tone_title "Chamber Training" %>
+                    </div>
+
+                    <p class="summary">
+                      Your new career starts here
+                    </p>
                   </div>
-
-                  <p class="summary">
-                    Your new career starts here
-                  </p>
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
 
           <div class="preview-second-home-item">
-            <div class="row collapse">
-              <div class="small-6 columns">
-                <%= image_tag 'components/acorn/logo.jpg', alt: 'Chamber Acorn Fund' %>
-              </div>
+            <%= link_to '/pages/chamber-training-humber-ltd' do %>
+              <div class="row collapse">
+                <div class="small-6 columns">
+                  <%= image_tag 'components/acorn/logo.jpg', alt: 'Chamber Acorn Fund' %>
+                </div>
 
-              <div class="small-6 columns">
-                <div class="content">
-                  <div class="title">
-                    Chamber <span class="secondary">Acorn Fund</span>
+                <div class="small-6 columns">
+                  <div class="content">
+                    <div class="title">
+                      Chamber <span class="secondary">Acorn Fund</span>
+                    </div>
+
+                    <p class="summary">
+                      Access to business and finance help
+                    </p>
                   </div>
-
-                  <p class="summary">
-                    Access to business and finance help
-                  </p>
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
