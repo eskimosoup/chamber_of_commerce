@@ -9,11 +9,15 @@
             <%= two_tone_title "International Trade" %>
           </div>
 
-          <div class="inner text-center">
-            <ul class="plain-list">
-              <%= nested_menu_items(menu_items: @page_types["international_trade"].last.side_menus.last.child_menu_items(@page_types["international_trade"].last)) if @page_types["international_trade"].present? && @page_types["international_trade"].last.side_menus.present? %>
-            </ul>
-          </div>
+          <%# raise @page_types["international_trade"].last.side_menus.last.child_menu_items.to_yaml %>
+
+          <% if @page_types["international_trade"].present? && @page_types["international_trade"].last.side_menus.present? %>
+            <div class="inner text-center">
+              <ul class="plain-list">
+                <%= nested_menu_items(menu_items: @page_types["international_trade"].last.side_menus.last.child_menu_items(@page_types["international_trade"].last)) %>
+              </ul>
+            </div>
+          <% end %>
 
           <div class="text-center">
             <%= link_to 'More on International Trade', @page_types["international_trade"], class: 'content-box-ghost-button' if @page_types["international_trade"].present? %>

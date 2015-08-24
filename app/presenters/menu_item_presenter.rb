@@ -31,6 +31,7 @@ class MenuItemPresenter < BasePresenter
   end
 
   def build_descendants_array
+    return [] if @descendants_hash.blank?
     flatten_nested_hash(@descendants_hash)
   end
 
