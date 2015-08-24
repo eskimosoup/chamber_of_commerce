@@ -13,14 +13,15 @@ class EventBooking < ActiveRecord::Base
   validates :stripe_charge_id, presence: true, on: :update
 
   def price
-    attendee_prices.reduce(:+)
+    price_calculator.price
   end
 
   def stripe_price
-    (price * 100).to_i
+    price_calculator.stripe_price
   end
 
   def agendas_available
+    return nil if event.blank? || event.event_agendas.blank?
     event.event_agendas.each do |event_agenda|
       errors.add(:base, "#{ event_agenda.name } only has #{ event_agenda.open_spaces } spaces") if event_agenda.full?(agenda_id_frequency[event_agenda.id])
     end
@@ -58,8 +59,8 @@ class EventBooking < ActiveRecord::Base
 
   private
 
-  def attendee_prices
-    attendees.map(&:agendas_total_price)
+  def price_calculator
+    EventBooking::PriceCalculator.new(attendees: attendees)
   end
 
 end

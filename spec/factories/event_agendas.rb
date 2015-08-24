@@ -9,5 +9,7 @@ FactoryGirl.define do
 
     description "Some text"
     maximum_capacity 5
+    table_size 2
+    table_discount 5.0
   end
 end
