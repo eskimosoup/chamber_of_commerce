@@ -1,0 +1,25 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Industries' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <div class="small-4 columns">
+      <%= render 'optimadmin/shared/module/index/new_item', title: 'Industry', object: Industry, path: new_industry_path %>
+      <%= link_to "Import Industries", import_csv_industries_path, class: "action-button" %>
+    </div>
+    <div class="small-8 columns">
+      <%= render 'optimadmin/shared/search_form' %>
+      <%= render 'optimadmin/shared/module/index/pagination' %>
+      <%= render 'optimadmin/shared/module/index/recycle_bin', items: @industries.size, path: root_url %>
+    </div>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item('small-10') { 'Title' } %>
+    <%= list_item { 'Edit' } %>
+
+    <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
+  </div>
+
+  <%= render partial: 'industry', collection: @industries, as: :industry_presenter %>
+  <%= paginate @industries %>
+</div>

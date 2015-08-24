@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_member, only: [:show, :edit, :update, :destroy]
 
     def index
-      @members = Optimadmin::BaseCollectionPresenter.new(collection: Member.where('company_name ILIKE ?', "#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::MemberPresenter)
+      @members = Optimadmin::BaseCollectionPresenter.new(collection: Member.includes(:member_login).where('company_name ILIKE ?', "#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::MemberPresenter)
     end
 
     def new

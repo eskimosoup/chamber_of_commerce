@@ -14,6 +14,7 @@ class MemberPresenter < BasePresenter
   end
 
   def website(options = {})
+    return nil if member.website.blank?
     h.link_to member.website, member.website, options
   end
 
