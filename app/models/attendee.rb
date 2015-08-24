@@ -9,6 +9,18 @@ class Attendee < ActiveRecord::Base
     attendee_event_agenda_prices.reduce(:+)
   end
 
+  def agenda_ids
+    attendee_event_agendas.map(&:event_agenda_id)
+  end
+
+  def csv_attributes
+    %w{ phone_number email dietary_requirements event_agenda_names }.map{|attr| send(attr) }
+  end
+
+  def event_agenda_names
+    event_agendas.pluck(:name).join(", ")
+  end
+
   private
 
   def attendee_event_agenda_prices

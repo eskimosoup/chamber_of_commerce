@@ -2,11 +2,16 @@
 
 <div class="main-content">
   <div class="row module-header collapse">
-    <%= @event_presenter.name %>
-    <%= render 'optimadmin/shared/search_form' %>
-    <%= render 'optimadmin/shared/module/index/pagination' %>
-    <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
-    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @event_bookings.size, path: root_url %>
+    <div class="small-3 columns">
+      <%= @event_presenter.name %><br/>
+      <%= link_to "Download CSV", event_event_bookings_path(format: :csv), target: "_blank", class: "button" %>
+    </div>
+    <div class="small-9 columns">
+      <%= render 'optimadmin/shared/search_form' %>
+      <%= render 'optimadmin/shared/module/index/pagination' %>
+      <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
+      <%= render 'optimadmin/shared/module/index/recycle_bin', items: @event_bookings.size, path: root_url %>
+    </div>
   </div>
 
   <div class="row collapse module-list-index header">

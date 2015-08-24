@@ -29,4 +29,23 @@ RSpec.describe EventBooking, type: :model do
       expect(event_booking.stripe_price).to eq(cost_array.reduce(:+) * 100)
     end
   end
+
+  describe "checking agendas attended by attendees" do
+    subject(:event_booking) { build(:event_booking) }
+    before(:each) do
+      attendees = [instance_double(Attendee, agenda_ids: [1, 2, 3]),
+                   instance_double(Attendee, agenda_ids: [1, 2, 3, 4]), instance_double(Attendee, agenda_ids: [2])]
+      allow(event_booking).to receive(:attendees) { attendees }
+    end
+
+    it "should correctly map the event agenda ids" do
+      expect(event_booking.attendee_event_agenda_ids).to eq([1,2,3,1,2,3,4,2])
+    end
+
+    it "should return a hash of the agenda id and the number of attendees attending" do
+      expect(event_booking.agenda_id_frequency).to eq({ 1 => 2, 2 => 3, 3 => 2, 4 => 1})
+    end
+  end
+
+
 end

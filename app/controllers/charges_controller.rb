@@ -19,6 +19,7 @@ class ChargesController < ApplicationController
       currency: "gbp"
     )
     if @event_booking.update(paid: true, stripe_charge_id: charge.id)
+      EventBookingMailer.booking_completed(@event_booking, @event_booking.event).deliver_now
       redirect_to @presented_event, notice: "Thank you for your payment"
     else
       render :new
