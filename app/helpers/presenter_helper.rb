@@ -13,4 +13,11 @@ module PresenterHelper
                        sub_menu_items: sub_menu_items, depth: depth }
     end.join.html_safe
   end
+
+  def child_menu_items(menu_items:)
+    menu_items.map do |menu_item|
+      render partial: "menu_items/child_menu_item",
+             locals: { menu_item_presenter: menu_item, depth: 0 }
+   end.join.html_safe
+  end
 end

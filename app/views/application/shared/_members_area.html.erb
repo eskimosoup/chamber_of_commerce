@@ -54,23 +54,25 @@
           </div>
 
           <div class="preview-second-home-item">
-            <div class="row collapse">
-              <div class="small-6 columns">
-                <%= @magazine.preview %>
-              </div>
+            <%= link_to magazines_path do %>
+              <div class="row collapse">
+                <div class="small-6 columns">
+                  <%= @magazine.preview %>
+                </div>
 
-              <div class="small-6 columns">
-                <div class="content">
-                  <div class="magazines-title title">
-                    <%= link_to ( two_tone_title "Business Intelligence Magazine" ), magazines_path %>
+                <div class="small-6 columns">
+                  <div class="content">
+                    <div class="magazines-title title">
+                      <%= two_tone_title "Business Intelligence Magazine" %>
+                    </div>
+
+                    <p class="summary">
+                      Publicise your business with free articles inside
+                    </p>
                   </div>
-
-                  <p class="summary">
-                    Publicise your business with free articles inside
-                  </p>
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>

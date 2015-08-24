@@ -28,6 +28,10 @@
       font-weight: $bold;
     }
   }
+
+  .plain-list ul {
+    list-style: none;
+  }
 }
 
 .aside-item {

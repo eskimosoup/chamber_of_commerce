@@ -10,10 +10,10 @@ class Event < ActiveRecord::Base
   belongs_to :event_location
 
   scope :event_location_id, -> (location_id) { where event_location_id: location_id }
-  scope :event_categories_id, -> (event_categories_id) { joins(:event_categories).where event_categories: { id: event_categories_id } }
-  scope :bookable, -> (bookable) { joins(:event_categories).where event_categories: { bookable: bookable } }
-  scope :has_tables, -> (has_tables) { joins(:event_categories).where event_categories: { has_tables: has_tables } }
-  scope :food_event, -> (food_event) { joins(:event_categories).where event_categories: { food_event: food_event } }
+  scope :event_categories_id, -> (event_categories_id) { includes(:event_categories).where event_categories: { id: event_categories_id } }
+  scope :bookable, -> (bookable) { includes(:event_categories).where event_categories: { bookable: bookable } }
+  scope :has_tables, -> (has_tables) { includes(:event_categories).where event_categories: { has_tables: has_tables } }
+  scope :food_event, -> (food_event) { includes(:event_categories).where event_categories: { food_event: food_event } }
   scope :upcoming, -> { where('display = ? AND end_date >= ?', true, Date.today).order(start_date: :asc) }
 
   mount_uploader :image, EventUploader

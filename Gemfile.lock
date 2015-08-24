@@ -1,6 +1,11 @@
 GIT
-  remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 84c6e48ed2ce25e67c86dd2b2e790a89492cf5e1
+  remote: git@github.com:eskimosoup/optimadmin_generators.git
+  revision: 7d032eec579e538269aaa7e0f2def67f368a8a99
+  specs:
+    optimadmin_generators (0.3.7)
+
+PATH
+  remote: ../optimadmin
   specs:
     optimadmin (0.0.2)
       bcrypt
@@ -14,12 +19,6 @@ GIT
       mini_magick
       rails
       sass-rails
-
-GIT
-  remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: 7d032eec579e538269aaa7e0f2def67f368a8a99
-  specs:
-    optimadmin_generators (0.3.7)
 
 GEM
   remote: https://rubygems.org/
@@ -73,7 +72,7 @@ GEM
     bullet (4.14.7)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
-    byebug (6.0.0)
+    byebug (6.0.2)
     cancancan (1.12.0)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -284,7 +283,7 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    sass (3.4.16)
+    sass (3.4.17)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -304,7 +303,7 @@ GEM
       jwt (~> 1.5)
       multi_json (~> 1.10)
     slop (3.6.0)
-    sprockets (3.3.1)
+    sprockets (3.3.3)
       rack (~> 1.0)
     sprockets-rails (2.3.2)
       actionpack (>= 3.0)

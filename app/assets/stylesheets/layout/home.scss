@@ -200,6 +200,7 @@
   position: relative;
   min-height: 411px;
 
+  /*
   .preview-members-directory {
     top: 0;
     position: absolute;
@@ -218,6 +219,11 @@
       position: static;
     }
   }
+  */
+
+  .preview-second-home-item {
+    margin: em(20px) 0 0;
+  }
 }
 
 
@@ -225,6 +231,7 @@
   position: relative;
   min-height: 360px;
 
+  /*
   .preview-first-home-item {
     top: 0;
     position: absolute;
@@ -241,6 +248,16 @@
     @include responsive-to(small) {
       position: static;
     }
+  }
+  */
+
+  .preview-second-home-item {
+    margin: em(20px) 0 0;
+  }
+
+  a {
+    color: $white;
+    display: block;
   }
 }
 
