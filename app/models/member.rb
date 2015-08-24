@@ -15,9 +15,9 @@ class Member < ActiveRecord::Base
   validates :company_name, uniqueness: true
   validates :email, email: true
 
-  scope :company_name, -> (company_name) { where("company_name LIKE ?", "#{company_name}%") }
-  scope :nature_of_business, -> (nature_of_business) { where("nature_of_business LIKE ?", "%#{nature_of_business}%") }
-  scope :industry, -> (industry) { where("industry = ?", industry) }
+  scope :company_name, -> (company_name) { where("company_name ILIKE ?", "#{company_name}%") }
+  scope :nature_of_business, -> (nature_of_business) { where("nature_of_business ILIKE ?", "%#{nature_of_business}%") }
+  scope :industry, -> (industry_id) { joins(:industries).where(industries: { id: industry_id }) }
   scope :verified, -> { where(verified: true) }
 
   def should_generate_new_friendly_id?
