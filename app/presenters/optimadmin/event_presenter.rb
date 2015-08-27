@@ -7,6 +7,10 @@ module Optimadmin
       event.name
     end
 
+    def toggle_title
+      inline_detail_toggle_link(name)
+    end
+
     def event_agendas
       h.link_to h.pluralize(event.event_agendas.count, "agenda"), h.event_agendas_path(event_id: event.id)
     end

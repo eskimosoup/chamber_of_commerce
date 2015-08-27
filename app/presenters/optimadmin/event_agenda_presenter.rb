@@ -6,6 +6,10 @@ module Optimadmin
       event_agenda.name
     end
 
+    def toggle_title
+      inline_detail_toggle_link(name)
+    end
+
     def start_time
       h.l event_agenda.start_time, format: :short
     end

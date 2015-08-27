@@ -6,5 +6,9 @@ module Optimadmin
       article_category.title
     end
 
+    def toggle_title
+      inline_detail_toggle_link(title)
+    end
+
   end
 end

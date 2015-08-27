@@ -6,6 +6,10 @@ module Optimadmin
       additional_content.title
     end
 
+    def toggle_title
+      inline_detail_toggle_link(area)
+    end
+
     def area
       additional_content.area
     end
