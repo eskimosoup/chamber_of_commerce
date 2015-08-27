@@ -6,6 +6,10 @@ module Optimadmin
       member_offer.title
     end
 
+    def toggle_title
+      inline_detail_toggle_link(member_offer.member.company_name)
+    end
+
     def image
       member_offer.image
     end
