@@ -3,6 +3,7 @@
  *= require slick.js/slick.scss
  *= require slick.js/slick-theme.scss
  *= require jquery-ui/datepicker
+ *= require colorbox
  */
 
 
@@ -38,4 +39,5 @@
 'components/flash_messages',
 'components/forms',
 'components/event_agendas',
+'components/internal_promotions',
 'components/event_charges';

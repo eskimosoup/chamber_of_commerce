@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-#ruby "2.2.3"
+ruby "2.2.3"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
@@ -69,10 +69,11 @@ end
 source 'https://rails-assets.org' do
   gem 'rails-assets-slick.js'
   gem 'rails-assets-tinymce'
+  gem 'rails-assets-colorbox'
 end
 
 gem 'geocoder', '~> 1.2.9'
 gem 'cocoon', '~> 1.2.6'
-#gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git'
+gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git'
 gem 'stripe', '~> 1.25.0'
-gem 'optimadmin', path: '../optimadmin'
+#gem 'optimadmin', path: '../optimadmin'

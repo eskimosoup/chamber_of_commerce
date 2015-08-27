@@ -22,6 +22,7 @@
 //= require tinymce
 //= require slick.js.js
 //= require cocoon
+//= require colorbox
 // require_tree .
 
 $(document).foundation({
@@ -37,6 +38,12 @@ $(function() {
   setTimeout(function() {
     $(document).foundation('equalizer','reflow');
   }, 2000);
+
+  $('.colorbox').colorbox({
+    iframe: true,
+    width: '675px',
+    height: '675px'
+  });
 });
 
 $('.patron-logos').slick({
