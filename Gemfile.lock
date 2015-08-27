@@ -232,6 +232,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.3)
       sprockets-rails
+    rails-assets-colorbox (1.6.3)
+      rails-assets-jquery (>= 1.3.2)
     rails-assets-jquery (2.1.4)
     rails-assets-slick.js (1.5.8)
       rails-assets-jquery (>= 1.7)
@@ -369,6 +371,7 @@ DEPENDENCIES
   quiet_assets (~> 1.1.0)
   rack-mini-profiler
   rails (= 4.2.3)
+  rails-assets-colorbox!
   rails-assets-slick.js!
   rails-assets-tinymce!
   rspec-rails (~> 3.0)

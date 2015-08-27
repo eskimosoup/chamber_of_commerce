@@ -38,6 +38,10 @@
         <%= f.label :area %><br>
         <%= f.select :area, InternalPromotion::AREAS %>
       </div>
+      <div class="field">
+  <%= f.label :text %><br>
+  <%= f.text_area :text, class: 'tinymce' %>
+</div>
           <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>

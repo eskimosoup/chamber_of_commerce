@@ -1,0 +1,22 @@
+<%= content_for :head do %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>
+    $(document).on('click', '.close-colorbox', function() {
+      parent.jQuery.colorbox.close();
+      return false;
+    });
+  </script>
+<% end %>
+
+<div class="row">
+  <div class="large-8 large-centered small-12 columns  text-center">
+    <div class="main-content-wrap">
+      <h1><%= @additional_content.title("Members' Area - Join") %></h1>
+
+      <div class="content">
+        <p>Your account has been successfully created. <br />
+          Please login using the form you see after <%= link_to 'closing this pop up', '#', class: 'close-colorbox' %>.</p>
+      </div>
+    </div>
+  </div>
+</div>

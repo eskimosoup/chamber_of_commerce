@@ -1,0 +1,12 @@
+.internal-promotion {
+  background: $white;
+  border: 3px solid $bronze;
+  color: $light-blue;
+  line-height: 1.25;
+  margin: em(10px) 0;
+  padding: 0 em(15px);
+
+  a {
+    font-weight: $bold;
+  }
+}
