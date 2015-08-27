@@ -6,6 +6,10 @@ module Optimadmin
       event_category.name
     end
 
+    def toggle_title
+      inline_detail_toggle_link(name)
+    end
+
     def bookable
       event_category.bookable.blank? ? 'No' : 'Yes'
     end

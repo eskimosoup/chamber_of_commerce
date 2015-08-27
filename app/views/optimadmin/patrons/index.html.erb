@@ -10,7 +10,11 @@
   </div>
 
   <div class="row collapse module-list-index header">
-    <%= list_item 'large-7 small-4' do 'Title' end %>
+    <%= list_item 'large-1 hide-for-medium-down' do %>
+        <%= link_to octicon('settings') %>
+    <% end %>
+
+    <%= list_item 'large-6 small-4' do 'Title' end %>
 
     <%= list_item 'large-2 hide-for-medium-down' do 'Image' end %>
 
