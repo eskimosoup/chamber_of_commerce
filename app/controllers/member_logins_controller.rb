@@ -1,20 +1,20 @@
 class MemberLoginsController < ApplicationController
   before_action :load_content
   before_action :members_only, only: [:edit, :update]
-  layout 'ajax'
 
   def new
     @member_login = MemberLogin.new
+    render layout: 'ajax'
   end
 
   def create
     @member_login = MemberLogin.new(member_login_params)
     if @member_login.save
       MemberMailer.new_member_login(global_site_settings, @member_login).deliver_now
-      render :create
+      render :create, layout: 'ajax'
       #redirect_to login_member_sessions_url, notice: 'Member login was successfully created.'
     else
-      render :new
+      render :new, layout: 'ajax'
     end
   end
 

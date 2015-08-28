@@ -13,7 +13,7 @@
 
   <%= field_set_tag 'Your Details' do %>
     <%= f.label :member_id, 'Select your company' %>
-    <%= f.select :member_id, options_for_select(Member.pluck(:company_name, :id), selected: (params[:member_login][:member_id] if params[:member_login].present?)), prompt: 'Please select your company' %>
+    <%= f.select :member_id, options_for_select(Member.all.map{|x| ["#{x.company_name} #{"- #{x.post_code}" if x.post_code}", x.id]}, selected: (params[:member_login][:member_id] if params[:member_login].present?)), prompt: 'Please select your company' %>
 
     <div class="fields">
       <div class="row">

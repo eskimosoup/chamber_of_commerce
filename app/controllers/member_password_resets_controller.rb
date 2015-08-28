@@ -6,8 +6,13 @@ class MemberPasswordResetsController < ApplicationController
     @member = MemberLogin.find_by(username: params[:username])
     if @member
       @member.generate_reset_token
-      MemberMailer.password_reset(global_site_settings, @member).deliver_now
-      redirect_to new_member_password_reset_url, notice: 'Please check your email for further instructions'
+      if @member.member.email.present?
+        MemberMailer.password_reset(global_site_settings, @member).deliver_now
+        notice = 'Please check your email for further instructions'
+      else
+        notice = 'We can not find an email associated with your login. Please contact us via the methods on the contact page to change your password.'
+      end
+      redirect_to new_member_password_reset_url, notice: notice
     else
       flash[:error] = "The given username doesn't exist"
       render :new
