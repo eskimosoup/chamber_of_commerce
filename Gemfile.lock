@@ -1,11 +1,6 @@
 GIT
-  remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: 7d032eec579e538269aaa7e0f2def67f368a8a99
-  specs:
-    optimadmin_generators (0.3.7)
-
-PATH
-  remote: ../optimadmin
+  remote: git@github.com:eskimosoup/Optimadmin.git
+  revision: 4fd1edc79be1ff004d919d8cbb76f890cc75be4f
   specs:
     optimadmin (0.0.2)
       bcrypt
@@ -19,6 +14,12 @@ PATH
       mini_magick
       rails
       sass-rails
+
+GIT
+  remote: git@github.com:eskimosoup/optimadmin_generators.git
+  revision: 7d032eec579e538269aaa7e0f2def67f368a8a99
+  specs:
+    optimadmin_generators (0.3.7)
 
 GEM
   remote: https://rubygems.org/
@@ -180,7 +181,7 @@ GEM
     listen (3.0.3)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
-    little-plugger (1.1.3)
+    little-plugger (1.1.4)
     logging (2.0.0)
       little-plugger (~> 1.1)
       multi_json (~> 1.10)

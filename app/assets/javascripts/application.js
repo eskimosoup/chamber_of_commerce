@@ -52,7 +52,7 @@ $('.patron-logos').slick({
   dots: false,
   infinite: true,
   speed: 300,
-  slidesToShow: 5,
+  slidesToShow: 6,
   slidesToScroll: 1,
   responsive: [
     {
