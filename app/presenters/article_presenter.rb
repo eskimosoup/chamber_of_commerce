@@ -63,6 +63,10 @@ class ArticlePresenter < BasePresenter
     end
   end
 
+  def has_image?
+    article.image? ? true : false
+  end
+
   def read_more
     h.link_to 'Read more', article, class: 'content-box-ghost-button'
   end

@@ -13,11 +13,11 @@ a {
   text-decoration: none;
 
   &:link {
-    color: $deep-blue;
+    color: $light-blue;
   }
 
   &:visited {
-    color: $accent-blue;
+    color: $light-blue;
   }
 
   &:hover {
@@ -26,7 +26,7 @@ a {
   }
 
   &:active {
-    color: $light-blue;
+    color: $accent-blue;
   }
 }
 
