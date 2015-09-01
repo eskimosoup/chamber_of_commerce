@@ -1,10 +1,12 @@
 <div class="list-item-with-image">
   <div class="row">
-    <div class="small-12 medium-4 columns">
-      <%= article_presenter.linked_index_image %>
-    </div>
+    <% if article_presenter.has_image? %>
+      <div class="small-12 medium-4 columns">
+        <%= article_presenter.linked_index_image %>
+      </div>
+    <% end %>
 
-    <div class="small-12 medium-8 columns">
+    <div class="small-12 medium-<%= article_presenter.has_image? ? '8' : '12' %> columns">
       <h2>
         <%= article_presenter.linked_title %>
       </h2>

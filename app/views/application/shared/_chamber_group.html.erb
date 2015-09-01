@@ -11,7 +11,7 @@
 
           <div class="inner text-center">
             <ul class="plain-list">
-              <%= child_menu_items(menu_items: @page_types["international_trade"].last.side_menus.last.child_menu_items(@page_types["international_trade"].last)) if @page_types["international_trade"].present? && @page_types["international_trade"].last.side_menus.present? %>
+              <%= child_menu_items(menu_items: @page_types["international_trade"].last.side_menus.last.child_menu_items(@page_types["international_trade"].last).limit(9)) if @page_types["international_trade"].present? && @page_types["international_trade"].last.side_menus.present? %>
             </ul>
           </div>
 
