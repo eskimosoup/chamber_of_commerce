@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   def index
     @additional_content = AdditionalContentPresenter.new(object: AdditionalContent.find_by(area: 'Members - Index'), view_template: view_context)
     @presented_members = BaseCollectionPresenter.new(collection:
-                        Member.filter(params.slice(:company_name, :industry, :nature_of_business)).page(params[:page]).per(params[:per_page] || 15),
+                        Member.filter(params.slice(:company_name, :industry, :nature_of_business)).page(params[:page]).per(params[:per_page] || 15).order(:company_name),
                                                     view_template: view_context, presenter: MemberPresenter)
   end
 
