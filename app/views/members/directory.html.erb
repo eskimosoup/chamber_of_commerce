@@ -5,6 +5,10 @@
         <h1><%= @additional_content.title('Members') %></h1>
 
         <div class="content">
+          <p>
+            This page is an A-Z list of all members. You can also view members as a <%= link_to 'searchable, paginated list', members_path %>.
+          </p>
+
           <% unless @presented_members.blank? %>
             <% @presented_members.each do |letter, members_for_letter|%>
                 <h2 class="members-alphabetical-list-heading"><%= letter %></h2>

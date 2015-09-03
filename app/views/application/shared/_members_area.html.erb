@@ -35,7 +35,7 @@
 
           <div class="inner text-center">
             <ul class="plain-list">
-              <%= nested_menu_items(menu_items: @members_services_menu.menu_items.first(12)) %>
+              <%= child_menu_items(menu_items: @page_types["members_services"].last.side_menus.last.child_menu_items(@page_types["members_services"].last).offset(2)) if @page_types["members_services"].last.side_menus.present? %>
             </ul>
           </div>
           <div class="button-text-center">
@@ -47,10 +47,10 @@
       <div class="medium-4 small-12 columns">
         <div class="members-information"  data-equalizer-watch="row-content-box">
           <div class="preview-members-directory">
-            <%= link_to (image_tag 'components/members/directory-a-z.png', alt: 'Members A to Z'), directory_members_path, title: 'Members A to Z' %>
+            <%= link_to (image_tag 'components/members/directory-a-z.png', alt: 'Members A to Z'), members_path, title: 'Members A to Z' %>
 
 
-            <%= link_to (two_tone_title "Members' Directory"), directory_members_path, title: "Members' Directory", class: 'title' %>
+            <%= link_to (two_tone_title "Members' Directory"), members_path, title: "Members' Directory", class: 'title' %>
           </div>
 
           <div class="preview-second-home-item">
