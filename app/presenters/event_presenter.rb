@@ -87,7 +87,12 @@ class EventPresenter < BasePresenter
   end
 
   def booking_button
-    h.link_to "Book now", h.new_event_event_booking_path(event), id: "book-event", class: "button"
+    h.link_to "Book now", booking_link, id: "book-event", class: "button"
+  end
+
+  def booking_link
+    return event.eventbrite_link if event.eventbrite_link
+    h.new_event_event_booking_path(event)
   end
 
   def booking_title

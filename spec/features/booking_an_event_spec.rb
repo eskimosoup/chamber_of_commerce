@@ -39,10 +39,6 @@ RSpec.feature "Booking An Event", type: :feature do
         expect(page).to have_content("Pay for your booking")
       end
 
-      expect(page).to have_content("Event Details")
-      expect(page).to have_content("Booking Details")
-      expect(page).to have_content("Attendee Details")
-
       click_button("Pay with Card")
 
       Capybara.within_frame "stripe_checkout_app" do
@@ -68,6 +64,23 @@ RSpec.feature "Booking An Event", type: :feature do
       click_button "Create Booking"
 
       expect(page).to have_content "Attendees can't be blank"
+    end
+  end
+
+  describe "eventbrite event" do
+    let!(:event) { create(:event, eventbrite_link: "http://www.google.co.uk/") }
+    let!(:event_category) { create(:event_category) }
+    let!(:event_agendas) { create_list(:event_agenda, 4, event: event) }
+
+    it "should go to eventbrite link on clicking book" do
+      visit events_path
+      expect(current_path).to eq(events_path)
+      expect(page).to have_content(event.summary)
+      first(:link, event.name).click
+      on_current_event_path
+      expect(page).to have_content(event.description)
+      click_link("book-event")
+      expect(current_url).to eq(event.eventbrite_link)
     end
   end
 
