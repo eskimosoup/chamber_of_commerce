@@ -16,6 +16,10 @@
   padding: em(10px);
   //position: relative;
 
+  @media screen and (min-width: 1024px) {
+    height: 478px;
+  }
+
   .item-entry {
     left: -30px;
     overflow: hidden;
