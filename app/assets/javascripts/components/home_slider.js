@@ -13,9 +13,38 @@ function slick() {
 }
 
 $(document).ready(function() {
+  $('.about-the-chamber-video-slider').slick({
+    dots: true,
+    arrows: false,
+    autoplay: false,
+    infinite: true
+  });
+
+  $('.internal-promotion').marquee({
+    //speed in milliseconds of the marquee
+    duration: 15000,
+    //time in milliseconds before the marquee will start animating
+    delayBeforeStart: 0,
+    //'left' or 'right'
+    direction: 'left',
+    pauseOnHover: true
+  });
+
   $('.content:not(.hide) .title:first a').mouseenter();
 
   slick();
+});
+
+
+$(document).on('click', '.about-the-chamber-arrow-left', function() {
+  $('.about-the-chamber-video-slider').slick('slickPrev');
+  return false;
+});
+
+
+$(document).on('click', '.about-the-chamber-arrow-right', function() {
+  $('.about-the-chamber-video-slider').slick('slickNext');
+  return false;
 });
 
 $(document).on('click', '.home-arrow-up', function() {

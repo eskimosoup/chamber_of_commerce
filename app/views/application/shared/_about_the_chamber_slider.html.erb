@@ -7,6 +7,8 @@
 
   <div class="row">
     <div class="small-11 small-centered columns">
+      <%= link_to 'Left', '#', class: "about-the-chamber-arrow-left hide-for-small" %>
+
       <div class="row chamber-slide" data-equalizer="slide-1">
         <div class="medium-4 small-12 columns" data-equalizer-watch="slide-1">
           <h2>
@@ -19,11 +21,28 @@
         </div>
 
         <div class="medium-4 small-12 columns middle" data-equalizer-watch="slide-1">
-          <div class="flex-video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/mrFsRGIpqQM" frameborder="0" allowfullscreen></iframe>
-          </div>
+          <div class="about-the-chamber-video-slider">
+            <div>
+              <div class="flex-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/mrFsRGIpqQM" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <div class="title">Your Chamber - The Hull and Humber Chamber of Commerce</div>
+            </div>
 
-          <h2>Your Chamber - The Hull and Humber Chamber of Commerce</h2>
+            <div>
+              <div class="flex-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ECKJ0F-HTSw" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <div class="title">New business opportunities - what's your big idea?</div>
+            </div>
+
+            <div>
+              <div class="flex-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/UfE9Xe6RDoo" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <div class="title">Hull and Humber Chamber Expo 2015 Promo</div>
+            </div>
+          </div>
         </div>
 
         <div class="medium-4 small-12 columns" data-equalizer-watch="slide-1">
@@ -32,8 +51,12 @@
           </p>
         </div>
       </div>
+
+      <div class="about-the-chamber-arrow-right hide-for-small"></div>
     </div>
   </div>
+</div>
 
+<div class="about-the-chamber-internal-promotion">
   <%= @internal_promotions.leaderboard('Home - About the Chamber', 'leaderboard')  if @internal_promotions.present? %>
 </div>
