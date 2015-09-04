@@ -3,6 +3,11 @@
   color: $white;
   padding: em(47px) 0 em(30px);
 
+  @media screen and (min-width: 1024px) {
+    max-height: 513px;
+    overflow: hidden;
+  }
+
   .full-header div {
     background: $deep-blue;
     color: $white;
@@ -24,12 +29,17 @@
     }
   }
 
-  .leaderboard {
-    margin-top: em(45px);
+  .slick-dots li button:before {
+    color: $complimentary-blue;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: $bronze;
   }
 }
 
 .chamber-slide {
+  .title,
   h2 {
     font-size: em(16px);
     font-weight: $semibold;
@@ -54,4 +64,26 @@
     padding-top: em(20px);
     padding-bottom: em(20px);
   }
+}
+
+%about-the-chamber-arrow {
+  display: block;
+  cursor: pointer;
+  height: 74px;
+  position: absolute;
+  top: 30%;
+  width: 13px;
+  text-indent: -999px;
+}
+
+.about-the-chamber-arrow-left {
+  @extend %about-the-chamber-arrow;
+  background: image-url('layout/home/about-the-chamber-arrow-left.png') no-repeat;
+  left: -40px;
+}
+
+.about-the-chamber-arrow-right {
+  @extend %about-the-chamber-arrow;
+  background: image-url('layout/home/about-the-chamber-arrow-right.png') no-repeat;
+  right: -40px;
 }
