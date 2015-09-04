@@ -27,22 +27,24 @@
         </div>
       </div>
 
-      <div class="medium-4 small-12 columns">
-        <div class="content-box" data-equalizer-watch="row-content-box">
-          <div class="content-box-area-title">
-            <%= two_tone_title "Members' Services" %>
-          </div>
+      <% if @page_types["members_services"].present? %>
+        <div class="medium-4 small-12 columns">
+          <div class="content-box" data-equalizer-watch="row-content-box">
+            <div class="content-box-area-title">
+              <%= two_tone_title "Members' Services" %>
+            </div>
 
-          <div class="inner text-center">
-            <ul class="plain-list">
-              <%= child_menu_items(menu_items: @page_types["members_services"].last.side_menus.last.child_menu_items(@page_types["members_services"].last).offset(2)) if @page_types["members_services"].last.side_menus.present? %>
-            </ul>
-          </div>
-          <div class="button-text-center">
-            <%= link_to 'See All', @page_types["members_services"], class: 'content-box-ghost-button' if @page_types["members_services"].present? %>
+            <div class="inner text-center">
+              <ul class="plain-list">
+                <%= child_menu_items(menu_items: @page_types["members_services"].last.side_menus.last.child_menu_items(@page_types["members_services"].last).offset(2)) if @page_types["members_services"].last.side_menus.present? %>
+              </ul>
+            </div>
+            <div class="button-text-center">
+              <%= link_to 'See All', @page_types["members_services"], class: 'content-box-ghost-button' %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
 
       <div class="medium-4 small-12 columns">
         <div class="members-information"  data-equalizer-watch="row-content-box">
