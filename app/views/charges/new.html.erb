@@ -53,7 +53,7 @@
         <%= form_tag event_booking_charges_path(@presented_event_booking) do %>
           <div class="event-charges-payment-summary">
             <label class="amount">
-              <span>Amount: <%= number_to_currency @presented_event_booking.price %></span>
+              <span>Amount (inc. VAT): <%= number_to_currency @presented_event_booking.price %></span>
             </label>
           </div>
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
