@@ -6,6 +6,7 @@ FactoryGirl.define do
     end_date { Date.today + 1.day }
     summary "My event summary"
     description "My event description"
+    eventbrite_link nil
     display true
   end
 end

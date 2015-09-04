@@ -5,7 +5,7 @@ class EventAgenda < ActiveRecord::Base
 
   scope :order_by_start_time, ->{ order(start_time: :asc) }
 
-  validates :name, :event_category, :description, presence: true
+  validates :name, :event_category, presence: true
   validate :sensible_times
 
   def open_spaces
