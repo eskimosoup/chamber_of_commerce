@@ -11,12 +11,12 @@
   </div>
 <% end %>
 
-  
+
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  
+
 
   <div class="tabs prevent-flash">
     <ul class="tab-list">
@@ -33,7 +33,7 @@
     <%= field_set_tag nil, id: 'tabs-1' do %>
             <div class="field">
         <%= f.label :member_id %><br>
-        <%= f.text_field :member_id %>
+        <%= f.select :member_id, Member.all.pluck(:company_name, :id) %>
       </div>
             <div class="field">
         <%= f.label :summary %><br>
@@ -49,17 +49,17 @@
       </div>
             <div class="field">
         <%= f.label :start_date %><br>
-        <%= f.date_select :start_date %>
+        <%= f.text_field :start_date, class: 'datepicker' %>
       </div>
             <div class="field">
         <%= f.label :end_date %><br>
-        <%= f.date_select :end_date %>
+        <%= f.text_field :end_date, class: 'datepicker' %>
       </div>
           <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>
             <%= f.image_field :image %>
-      
+
           <% end %>
 
     <%= field_set_tag nil, id: 'tabs-3' do %>

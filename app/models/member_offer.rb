@@ -7,6 +7,7 @@ class MemberOffer < ActiveRecord::Base
   validates :title, :summary, :description, :website_link, presence: true
   validates :title, uniqueness: { scope: :member_id }
   validate :end_date_is_after_start_date
+  validates :member_id, presence: true
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
