@@ -3,6 +3,8 @@ Rails.application.configure do
 
   Rails.application.routes.default_url_options[:host] = 'www.ludo5.co.uk'
 
+  config.action_mailer.asset_host = "http://www.hull-humber-chamber.co.uk"
+
   ActionMailer::Base.delivery_method = :sendmail
   ActionMailer::Base.sendmail_settings = { :location => '/usr/lib/sendmail', :arguments => '-i' }
 

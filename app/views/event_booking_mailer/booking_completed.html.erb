@@ -1,84 +1,256 @@
-<h1><%= @event.name %></h1>
-
-<div class="main-details">
-  Start <strong><%= @event.start_date %></strong><br/>
-  End <strong><%= @event.end_date %></strong><br/>
-  Location <strong><%= @event.event_location.location_name %></strong><br/>
-</div>
-
-<%= @event.summary %>
-
-<h2>Booking Details</h2>
-
-<h3>Company summary</h3>
-
-<p>
-  Name <strong><%= @event_booking.name %></strong>
-</p>
-<p>
-  Company Name <strong><%= @event_booking.company_name %></strong>
-</p>
-<p>
-  Industry <strong><%= @event_booking.industry %></strong>
-</p>
-<p>
-  Nature of Business <strong><%= @event_booking.nature_of_business %></strong>
-</p>
-
-<p>
-  Phone Number <strong><%= @event_booking.phone_number %></strong>
-</p>
-
-
-<p>
-  Phone Number <strong><%= @event_booking.email %></strong>
-</p>
-
-<p>
-  Address
-</p>
-<%= simple_format @event_booking.address %>
-</div>
-
-<h3>Attendees summary</h3>
-
-<table>
-  <th>
-    <td>
-      Phone Number
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+  <tr>
+    <td style="color: #27537f;
+          font-family: Arial, sans-serif;
+          font-size: 26px;
+          font-weight: 800;
+          border-bottom: 4px solid #a18a5e;
+          display: inline-block;
+          line-height: 26px;
+          margin: 0;
+          padding: 10px 0;
+      ">
+      <%= @event.name %>
     </td>
-    <td>
-      Email
+  </tr>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 10px 0 5px;">
+      Start: <strong><%= l @event.start_date, format: :long %></strong>
     </td>
-    <td>
-      Dietary Requirements
+  </tr>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      End: <strong><%= l @event.end_date, format: :long %></strong>
     </td>
-    <td>
-      Event Agendas
+  </tr>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      Location: <strong><%= @event.event_location.location_name %></strong>
     </td>
-  </th>
+  </tr>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      <%= @event.summary %>
+    </td>
+  </tr>
+  <tr>
+    <td style="color: #a18a5e;
+        font-family: Arial, sans-serif;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        line-height: 1.25;
+        margin: 0;
+        padding: 10px 0;
+    ">
+      Booking Details
+    </td>
+  </tr>
+  <tr>
+    <td style="color: #27537f;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 18px;
+        margin: 0;
+        padding: 10px 0;
+    ">
+      Company Summary
+    </td>
+  </tr>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      Name: <strong><%= @event_booking.name %></strong>
+    </td>
+  </tr>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      Company Name: <strong><%= @event_booking.company_name %></strong>
+    </td>
+  </tr>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      Industry: <strong><%= @event_booking.industry %></strong>
+    </td>
+  </tr>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      Nature of Business: <strong><%= @event_booking.nature_of_business %></strong>
+    </td>
+  </tr>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      Phone Number: <strong><%= @event_booking.phone_number %></strong>
+    </td>
+  </tr>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      Email: <strong><%= @event_booking.email %></strong>
+    </td>
+  </tr>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      Address
+    </td>
+  </tr>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      <%= @event_booking.address %>
+    </td>
+  </tr>
+  <tr>
+    <td style="color: #27537f;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 18px;
+        margin: 0;
+        padding: 10px 0;
+    ">
+      Attendees Summary
+    </td>
+  </tr>
   <% @event_booking.attendees.each do |attendee| %>
     <tr>
-      <td>
-        <%= attendee.phone_number %>
-      </td>
-      <td>
-        <%= attendee.email %>
-      </td>
-      <td>
-        <%= attendee.dietary_requirements %>
-      </td>
-      <td>
-        <ul>
-          <% attendee.event_agendas.pluck(:name).each do |event_agenda| %>
-            <li><%= event_agenda %></li>
-          <% end %>
-        </ul>
+      <td style="color: #33393e;
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+          line-height: 14px;
+          margin: 0;
+          padding: 0 0 5px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="600">
+          <tr>
+            <td style="padding: 0 5px 10px 0;">
+              Phone Number: <strong><%= attendee.phone_number %></strong>
+            </td>
+            <td style="padding: 0 0 5px 10px;">
+              Email: <strong><%= attendee.email %></strong>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"  style="padding-right: 10px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="290">
+                <tr>
+                  <td style="color: #33393e;
+                  font-family: Arial, sans-serif;
+                  font-size: 14px;
+                  line-height: 14px;
+                  margin: 0;
+                  padding: 0 0 5px;">
+                    Dietary Requirements
+                  </td>
+                </tr>
+                <tr>
+                  <td style="color: #33393e;
+                      font-family: Arial, sans-serif;
+                      font-size: 14px;
+                      line-height: 14px;
+                      margin: 0;
+                      padding: 0 0 5px;">
+                    <%= attendee.dietary_requirements %>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td valign="top" style="padding-left: 10px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="290">
+                <tr>
+                  <td style="color: #33393e;
+                      font-family: Arial, sans-serif;
+                      font-size: 14px;
+                      line-height: 14px;
+                      margin: 0;
+                      padding: 0 0 5px;">
+                    Event Agendas
+                  </td>
+                </tr>
+                <% attendee.event_agendas.pluck(:name).each do |event_agenda| %>
+                  <tr>
+                    <td style="color: #33393e;
+                        font-family: Arial, sans-serif;
+                        font-size: 14px;
+                        line-height: 14px;
+                        margin: 0;
+                        padding: 0 0 5px;">
+                      &bull; <%= event_agenda %>
+                    </td>
+                  </tr>
+                <% end %>
+              </table>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
   <% end %>
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      Price (inc. VAT): <strong><%= number_to_currency @event_booking.price %></strong>
+    </td>
+  </tr>
 </table>
-
-<p>
-  Price (inc. VAT) <strong><%= number_to_currency @event_booking.price %></strong>
-</p>
