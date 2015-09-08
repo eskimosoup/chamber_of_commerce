@@ -23,11 +23,7 @@
                 </div>
 
                 <div class="small-12 medium-4 columns text-right">
-                  <% if params[:filter].blank? %>
-                    <%= check_box_tag :bookable, 1, params[:bookable], checked: true  %>
-                  <% else %>
-                    <%= check_box_tag :bookable, 1, params[:bookable] %>
-                  <% end %>
+                  <%= check_box_tag :bookable, 1, params[:bookable]  %>                  
                 </div>
               </div>
             </div>
