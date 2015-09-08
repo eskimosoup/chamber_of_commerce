@@ -7,7 +7,7 @@ GIT
 PATH
   remote: ../optimadmin
   specs:
-    optimadmin (0.0.3)
+    optimadmin (0.0.4)
       bcrypt
       cancancan
       carrierwave
