@@ -1,6 +1,6 @@
 module Optimadmin
   class EventsController < Optimadmin::ApplicationController
-    edit_images_for Event, [[:image, { index: ['fill', 218, 135], show: ['fill', 218, 135], homepage: ['fill', 418, 280] }]]
+    edit_images_for Event, [[:image, { index: ['fill', 218, 135], show: ['fit', 218, 9999], homepage: ['fill', 418, 280] }]]
     before_action :set_event, only: [:show, :edit, :update, :destroy]
 
     def index
