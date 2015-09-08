@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
   before_action :aside_content, except: :index
 
   def index
-    @presented_articles       = BaseCollectionPresenter.new(collection: Article.non_member_news, view_template: view_context, presenter: ArticlePresenter)
-    @presented_member_news    = BaseCollectionPresenter.new(collection: Article.member_news.limit(5), view_template: view_context, presenter: ArticlePresenter)
-    @presented_events         = BaseCollectionPresenter.new(collection: Event.upcoming.bookable(true), view_template: view_context, presenter: EventPresenter)
+    @presented_articles       = BaseCollectionPresenter.new(collection: Article.non_member_news.limit(10), view_template: view_context, presenter: ArticlePresenter)
+    @presented_member_news    = BaseCollectionPresenter.new(collection: Article.member_news.limit(10), view_template: view_context, presenter: ArticlePresenter)
+    @presented_events         = BaseCollectionPresenter.new(collection: Event.upcoming.limit(10), view_template: view_context, presenter: EventPresenter)
     @presented_members_offers = BaseCollectionPresenter.new(collection: MemberOffer.includes(:member).current.verified, view_template: view_context, presenter: MemberOfferPresenter)
     @page_types = Page.where(page_type: ["members_services", "international_trade", "patrons", "policy_and_representation"], display: true).group_by(&:page_type)
     @member_news = ArticleCategory.find_by(member_related: true)
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     def aside_content
       @presented_articles       = BaseCollectionPresenter.new(collection: Article.non_member_news.limit(5), view_template: view_context, presenter: ArticlePresenter)
       @presented_member_news    = BaseCollectionPresenter.new(collection: Article.member_news.limit(5), view_template: view_context, presenter: ArticlePresenter)
-      @presented_events         = BaseCollectionPresenter.new(collection: Event.upcoming.bookable(true).limit(5), view_template: view_context, presenter: EventPresenter)
+      @presented_events         = BaseCollectionPresenter.new(collection: Event.upcoming.limit(5), view_template: view_context, presenter: EventPresenter)
       @presented_members_offers = BaseCollectionPresenter.new(collection: MemberOffer.includes(:member).current.verified.limit(5), view_template: view_context, presenter: MemberOfferPresenter)
     end
 
