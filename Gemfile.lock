@@ -1,6 +1,11 @@
 GIT
-  remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: ef3ad691736f3dd4e78ee26e49be75be73111423
+  remote: git@github.com:eskimosoup/optimadmin_generators.git
+  revision: adaf6395e30a5c576e76d420eec22fb9c47a090d
+  specs:
+    optimadmin_generators (0.3.8)
+
+PATH
+  remote: ../optimadmin
   specs:
     optimadmin (0.0.3)
       bcrypt
@@ -15,12 +20,6 @@ GIT
       rails
       sass-rails
       tinymce-rails
-
-GIT
-  remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: adaf6395e30a5c576e76d420eec22fb9c47a090d
-  specs:
-    optimadmin_generators (0.3.8)
 
 GEM
   remote: https://rubygems.org/
@@ -387,6 +386,3 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
-
-BUNDLED WITH
-   1.10.6
