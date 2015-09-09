@@ -1,7 +1,8 @@
 .about-the-chamber {
   background: $deep-blue;
   color: $white;
-  padding: em(47px) 0 em(30px);
+  padding: 0 0 em(26px);
+  margin: em(26px) 0 0;
 
   @media screen and (min-width: 1024px) {
     max-height: 513px;

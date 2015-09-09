@@ -57,6 +57,8 @@
   </div>
 </div>
 
-<div class="about-the-chamber-internal-promotion">
-  <%= @internal_promotions.leaderboard('Home - About the Chamber', 'leaderboard')  if @internal_promotions.present? %>
-</div>
+<% if @internal_promotions.present? && @internal_promotions.leaderboard('Home - About the Chamber', 'leaderboard').present? %>
+  <div class="about-the-chamber-internal-promotion">
+    <%= @internal_promotions.leaderboard('Home - About the Chamber', 'leaderboard') %>
+  </div>
+<% end %>

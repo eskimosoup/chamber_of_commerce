@@ -6,7 +6,7 @@ class MembersController < ApplicationController
     @additional_content = AdditionalContentPresenter.new(object: AdditionalContent.find_by(area: 'Members - Index'), view_template: view_context)
     @presented_members = BaseCollectionPresenter.new(collection:
                         Member.joins(:industries).filter(params.slice(:company_name))
-                              .where("nature_of_business ILIKE :search_terms OR industries.name ILIKE :search_terms", search_terms: "#{params[:search_terms]}%")
+                              .where("nature_of_business ILIKE :search_terms OR industries.name ILIKE :search_terms", search_terms: "% #{params[:search_terms]} %")
                               .page(params[:page]).per(params[:per_page] || 15).order(:company_name),
                                                     view_template: view_context, presenter: MemberPresenter)
   end
