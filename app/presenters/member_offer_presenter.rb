@@ -20,7 +20,7 @@ class MemberOfferPresenter < BasePresenter
   end
 
   def summary
-    h.raw member_offer.summary
+    h.simple_format member_offer.summary
   end
 
   def description
