@@ -3,7 +3,7 @@
   max-height: 586px;
   overflow: hidden;
   padding: em(58px) 0 em(42px);
-  margin: 0 0 em(46px);
+  margin: 0;
 
   @include responsive-to(small) {
     max-height: none;
@@ -184,13 +184,7 @@
 }
 
 .section {
-  &.large {
-    margin-bottom: em(53px);
-  }
-
-  &.small {
-    margin-bottom: em(33px);
-  }
+  margin: 0;
 }
 
 .home-member-buttons {
@@ -214,6 +208,7 @@
 
 
   .preview-members-directory {
+    height: 50%;
     top: 0;
     position: absolute;
 
@@ -225,19 +220,33 @@
 
   .preview-second-home-item {
     bottom: 0;
+    height: 50%;
+    padding-top: em(13px);
     position: absolute;
 
     @include responsive-to(small) {
       position: static;
     }
   }
-
-
-  .preview-second-home-item {
-    margin: em(20px) 0 0;
-  }
 }
 
+
+@include responsive-to(large) {
+  .separator {
+    background: $turquoise;
+    height: 13px;
+    position: absolute;
+    width: 100%;
+
+    &.top {
+      top: 0;
+    }
+
+    &.bottom {
+      bottom: 0;
+    }
+  }
+}
 
 .chamber-information {
   position: relative;
@@ -245,8 +254,9 @@
 
 
   .preview-first-home-item {
-    top: 0;
+    height: 50%;
     position: absolute;
+    top: 0;
 
     @include responsive-to(small) {
       position: static;
@@ -254,7 +264,10 @@
   }
 
   .preview-second-home-item {
+    overflow: hidden;
     bottom: 0;
+    height: 50%;
+    padding-top: em(13px);
     position: absolute;
 
     @include responsive-to(small) {

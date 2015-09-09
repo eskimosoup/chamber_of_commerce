@@ -3,8 +3,9 @@
   background: $white;
   border: 3px solid $bronze;
   color: $light-blue;
+  max-height: 56px;
   line-height: 1.25;
-  margin: em(10px) 0;
+  margin: em(26px) 0 0;
   overflow: hidden;
   padding: 0 em(15px);
 
@@ -14,5 +15,5 @@
 }
 
 .about-the-chamber-internal-promotion {
-  margin: em(40px) 0;
+  margin: 0 0 em(26px) 0;
 }
