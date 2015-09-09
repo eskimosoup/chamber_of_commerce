@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903110051) do
+ActiveRecord::Schema.define(version: 20150909150901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,7 @@ ActiveRecord::Schema.define(version: 20150903110051) do
     t.integer  "event_bookings_count",             default: 0
     t.text     "booking_confirmation_information"
     t.string   "eventbrite_link"
+    t.boolean  "allow_booking",                    default: true
   end
 
   add_index "events", ["event_agendas_id"], name: "index_events_on_event_agendas_id", using: :btree

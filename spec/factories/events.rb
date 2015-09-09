@@ -8,5 +8,6 @@ FactoryGirl.define do
     description "My event description"
     eventbrite_link nil
     display true
+    allow_booking true
   end
 end
