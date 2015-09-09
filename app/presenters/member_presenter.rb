@@ -6,7 +6,7 @@ class MemberPresenter < BasePresenter
   end
 
   def address
-    h.raw member.address
+    "#{h.raw member.address} #{member.post_code}"
   end
 
   def linked_company_name(options = {})
@@ -15,7 +15,7 @@ class MemberPresenter < BasePresenter
 
   def website(options = {})
     return nil if member.website.blank?
-    h.link_to member.website, member.website, options
+    h.link_to member.website, "http://#{member.website}", options
   end
 
   def email

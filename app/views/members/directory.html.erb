@@ -8,10 +8,20 @@
           <p>
             This page is an A-Z list of all members. You can also view members as a <%= link_to 'searchable, paginated list', members_path %>.
           </p>
+        </div>
 
+        <% unless @presented_members.blank? %>
+          <ul class="members-directory-navigation">
+            <% @presented_members.each do |letter, members_for_letter|%>
+              <li><%= link_to letter, "##{letter}" %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <div class="content">
           <% unless @presented_members.blank? %>
             <% @presented_members.each do |letter, members_for_letter|%>
-                <h2 class="members-alphabetical-list-heading"><%= letter %></h2>
+                <h2 class="members-alphabetical-list-heading" id="<%= letter %>"><%= letter %></h2>
 
                 <ul class="members-alphabetical-list">
                 <% members_for_letter.each do |member| %>

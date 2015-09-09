@@ -16,3 +16,30 @@
     text-decoration: none;
   }
 }
+
+.members-directory-navigation {
+  list-style: none;
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    background: $light-blue;
+    color: $white;
+    display: block;
+    font-size: em(12px);
+    padding: em(4px, 12px);
+    margin: 0 em(2px, 12px) 0 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 38px;
+
+    &:hover,
+    &:active {
+      background: $light-blue;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}
