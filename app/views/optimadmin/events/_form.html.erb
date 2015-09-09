@@ -55,19 +55,21 @@
     <%= field_set_tag nil, id: 'tabs-2' do %>
 
       <div class="field">
-  <%= f.label :image %><br>
-  <%= f.image_field :image %>
-</div>
+        <%= f.label :image %><br>
+        <%= f.image_field :image %>
+      </div>
           <% end %>
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
-            <div class="field">
+      <div class="field">
+        <%= f.label :eventbrite_link %>
+        <%= f.text_field :eventbrite_link %>
+      </div>
+      <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>
       </div>
-
-
-          <% end %>
+    <% end %>
   </div>
 
   <div class="actions">
