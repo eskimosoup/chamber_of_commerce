@@ -38,7 +38,7 @@
 
       <div class="field">
         <%= f.label :summary %><br>
-        <%= f.text_area :summary, class: 'tinymce' %>
+        <%= f.text_area :summary %>
       </div>
 
       <div class="field">
@@ -46,10 +46,8 @@
         <%= f.text_area :content, class: 'tinymce' %>
       </div>
 
-      <div class="field">
-        <%= f.label :date %><br>
-        <%= f.text_field :date, class: 'datepicker' %>
-      </div>
+
+      <%= f.datepicker_field :date %>
     <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>

@@ -17,6 +17,7 @@
 .main-content-wrap {
   background: $white;
   padding: em(20px);
+  margin: 0 0 em(26px);
 
   @include responsive-to(small) {
     margin-bottom: em(20px);

@@ -32,7 +32,7 @@ class ArticlePresenter < BasePresenter
   end
 
   def summary
-    h.raw article.summary
+    h.simple_format article.summary
   end
 
   def content
