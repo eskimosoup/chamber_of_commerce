@@ -273,6 +273,16 @@
     @include responsive-to(small) {
       position: static;
     }
+
+    a,
+    .row.collapse,
+    .acorn-logo {
+      height: 100%;
+    }
+
+    .acorn-logo {
+      background: $white;
+    }
   }
 
   .preview-second-home-item {
