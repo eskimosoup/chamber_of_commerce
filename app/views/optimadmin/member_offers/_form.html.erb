@@ -47,11 +47,8 @@
         <%= f.label :website_link %><br>
         <%= f.text_field :website_link %>
       </div>
-            <%= f.datepicker_field :date %>
-            <div class="field">
-        <%= f.label :end_date %><br>
-        <%= f.text_field :end_date, class: 'datepicker' %>
-      </div>
+            <%= f.datepicker_field :start_date %>
+            <%= f.datepicker_field :end_date %>
           <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>
