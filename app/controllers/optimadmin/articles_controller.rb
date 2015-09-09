@@ -5,7 +5,7 @@ module Optimadmin
     before_action :set_article, only: [:show, :edit, :update, :destroy]
 
     def index
-      @articles = Optimadmin::BaseCollectionPresenter.new(collection: Article.where('title ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15).order(params[:order] || "created_at desc"), view_template: view_context, presenter: Optimadmin::ArticlePresenter)
+      @articles = Optimadmin::BaseCollectionPresenter.new(collection: Article.where('title ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15).order(params[:order] || "date desc"), view_template: view_context, presenter: Optimadmin::ArticlePresenter)
     end
 
     def show
