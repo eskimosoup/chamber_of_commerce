@@ -1,13 +1,13 @@
 <%= content_for :footer do %>
   <script>
     $(function() {
-      $('.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
+      $('.datepicker').datepicker({ dateFormat: 'dd-mm-yy' });
     });
 
     tinyMCE.baseURL = "<%= root_url %>assets/tinymce/";
 
     tinymce.init({
-      selector: "textarea",
+      selector: ".tinymce",
       menubar: false,
       plugins: [
         "advlist autolink lists link anchor",
@@ -56,33 +56,45 @@
     <div class="small-12 medium-6 columns">
       <div class="field">
         <%= f.label :start_date %><br>
-        <%= f.text_field :start_date, class: 'datepicker' %>
+        <% if @member_offer.new_record? || @member_offer.start_date.blank? %>
+          <%= f.text_field :start_date, class: 'datepicker' %>
+        <% else %>
+          <%= f.text_field :start_date, class: 'datepicker', value: "#{@member_offer.start_date.strftime("%d-%m-%Y")}" %>
+        <% end %>
       </div>
     </div>
 
     <div class="small-12 medium-6 columns">
       <div class="field">
         <%= f.label :end_date %><br>
-        <%= f.text_field :end_date, class: 'datepicker' %>
+        <% if @member_offer.new_record? || @member_offer.end_date.blank? %>
+          <%= f.text_field :end_date, class: 'datepicker' %>
+        <% else %>
+          <%= f.text_field :end_date, class: 'datepicker', value: "#{@member_offer.end_date.strftime("%d-%m-%Y")}" %>
+        <% end %>
       </div>
     </div>
   </div>
 
   <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
+
 
     <% if @member_offer.image.present? %>
       <div class="row">
-        <div class="small-12 medium-8 columns">
-          <%= f.label :remove_image %><br />
-          <%= f.check_box :remove_image %>
+        <div class="small-12 medium-6 columns">
+          <%= f.label :image %><br>
+          <%= f.file_field :image %>
         </div>
 
-        <div class="small-12 medium-4 columns">
-          <%= image_tag @member_offer.image.small %>
+        <div class="small-12 medium-6 columns">
+          <%= image_tag @member_offer.image.small %><br />
+          <%= f.label :remove_image %>
+          <%= f.check_box :remove_image %>
         </div>
       </div>
+    <% else %>
+      <%= f.label :image %><br>
+      <%= f.file_field :image %>
     <% end %>
   </div>
 

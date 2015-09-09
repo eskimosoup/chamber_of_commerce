@@ -107,7 +107,7 @@ class MemberOfferPresenter < BasePresenter
 
   def edit_link(current_member)
     #h.content_tag :div, class: 'small-details' do
-      h.link_to 'Edit this offer', edit_member_member_offer_path(current_member, member_offer), class: 'edit-button' if current_member == member_offer.member
+      h.link_to 'Edit this offer', edit_member_member_offer_path(current_member, member_offer), class: 'edit-button' if current_member == member_offer.member && ( (member_offer.end_date && member_offer.end_date >= Date.today) || member_offer.end_date.blank? )
     #end
   end
 end

@@ -16,11 +16,13 @@
               as: :presented_member_offer %>
 
           <% if current_member.present? %>
-            <h3>
+            <hr />
+
+            <p>
               <%= link_to '#awaiting-verification', class: 'toggle-class', data: { container: '#awaiting-verification', class: 'hide', return: 'false' } do %>
                 Awaiting verification (<%= @unverified_member_offers.size %>)
               <% end %>
-            </h3>
+            </p>
 
             <div id="awaiting-verification" class="hide">
               <%= render(partial: 'member_offers/member_offer',
@@ -28,11 +30,12 @@
                   as: :presented_member_offer) || 'There are 0 offers awaiting verification.' %>
             </div>
 
-            <h4>
+            <p>
               <%= link_to '#upcoming-offers', class: 'toggle-class', data: { container: '#upcoming-offers', class: 'hide', return: 'false' } do %>
                 Upcoming (<%= @upcoming_member_offers.size %>)
               <% end %>
-            </h4>
+            </p>
+
 
             <div id="upcoming-offers" class="hide">
               <%= render(partial: 'member_offers/member_offer',
@@ -40,11 +43,11 @@
                   as: :presented_member_offer) || 'There are 0 offers upcoming.' %>
             </div>
 
-            <h5>
+            <p>
               <%= link_to '#expired', class: 'toggle-class', data: { container: '#expired', class: 'hide', return: 'false' } do %>
-                Expired (<%= @unverified_member_offers.size %>)
+                Expired (<%= @expired_member_offers.size %>)
               <% end %>
-            </h5>
+            </p>
 
             <div id="expired" class="hide">
               <%= render(partial: 'member_offers/member_offer',

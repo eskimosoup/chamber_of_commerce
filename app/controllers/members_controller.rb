@@ -7,7 +7,7 @@ class MembersController < ApplicationController
     @presented_members = BaseCollectionPresenter.new(collection:
                         Member.joins(:industries).filter(params.slice(:company_name))
                               .where("nature_of_business ILIKE :search_terms OR industries.name ILIKE :search_terms", search_terms: "% #{params[:search_terms]} %")
-                              .page(params[:page]).per(params[:per_page] || 15).order(:company_name),
+                              .page(params[:page]).per(params[:per_page] || 15).order(:company_name).group('members.id'),
                                                     view_template: view_context, presenter: MemberPresenter)
   end
 
