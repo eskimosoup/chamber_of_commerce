@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Booking An Event", type: :feature do
 
   before(:each) do
-    Capybara.default_wait_time = 7
+    Capybara.default_max_wait_time = 7
   end
 
   describe "Standard Event" do

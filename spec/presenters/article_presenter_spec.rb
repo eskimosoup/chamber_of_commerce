@@ -43,8 +43,8 @@ RSpec.describe ArticlePresenter, type: :presenter do
       expect(article_presenter.date(:short)).to eq(date)
     end
 
-    it "correctly escapes html on summary" do
-      summary = raw(article.summary)
+    it "wraps summary in simple_format" do
+      summary = simple_format(article.summary)
       expect(article_presenter.summary).to eq(summary)
     end
 
