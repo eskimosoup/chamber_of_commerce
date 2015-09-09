@@ -6,7 +6,7 @@ class MemberPresenter < BasePresenter
   end
 
   def address
-    "#{h.raw member.address} #{member.post_code}"
+    h.raw member.address + " " + member.post_code
   end
 
   def linked_company_name(options = {})
