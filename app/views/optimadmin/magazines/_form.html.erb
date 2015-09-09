@@ -30,10 +30,7 @@
         <%= f.label :name %><br>
         <%= f.text_field :name %>
       </div>
-            <div class="field">
-        <%= f.label :date %><br>
-        <%= f.text_field :date, class: 'datepicker' %>
-      </div>
+            <%= f.datepicker_field :date %>
           <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>

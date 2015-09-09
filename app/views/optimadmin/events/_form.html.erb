@@ -30,14 +30,8 @@
         <%= f.label :name %><br>
         <%= f.text_field :name %>
       </div>
-            <div class="field">
-        <%= f.label :start_date %><br>
-        <%= f.text_field :start_date, class: 'datepicker' %>
-      </div>
-            <div class="field">
-        <%= f.label :end_date %><br>
-        <%= f.text_field :end_date, class: 'datepicker' %>
-      </div>
+          <%= f.datepicker_field :start_date %>
+          <%= f.datepicker_field :end_date %>
             <div class="field">
         <%= f.label :event_location_id %><br>
         <%= f.select :event_location_id, EventLocation.all.map{|x| [x.location_name, x.id]}, prompt: "Please select an event location" %>
