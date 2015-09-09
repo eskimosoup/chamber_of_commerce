@@ -28,9 +28,9 @@ class ApplicationController < ActionController::Base
     helper_method :global_site_settings
 
     def aside_content
-      @presented_articles       = BaseCollectionPresenter.new(collection: Article.non_member_news.limit(5), view_template: view_context, presenter: ArticlePresenter)
-      @presented_member_news    = BaseCollectionPresenter.new(collection: Article.member_news.limit(5), view_template: view_context, presenter: ArticlePresenter)
-      @presented_events         = BaseCollectionPresenter.new(collection: Event.upcoming.limit(5), view_template: view_context, presenter: EventPresenter)
+      @presented_articles       = BaseCollectionPresenter.new(collection: Article.non_member_news.limit(3), view_template: view_context, presenter: ArticlePresenter)
+      @presented_member_news    = BaseCollectionPresenter.new(collection: Article.member_news.limit(3), view_template: view_context, presenter: ArticlePresenter)
+      @presented_events         = BaseCollectionPresenter.new(collection: Event.upcoming.limit(3), view_template: view_context, presenter: EventPresenter)
       @presented_members_offers = BaseCollectionPresenter.new(collection: MemberOffer.includes(:member).current.verified.limit(5), view_template: view_context, presenter: MemberOfferPresenter)
     end
 
