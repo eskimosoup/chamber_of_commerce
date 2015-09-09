@@ -26,31 +26,34 @@
     </ul>
 
     <%= field_set_tag nil, id: 'tabs-1' do %>
-            <div class="field">
+      <div class="field">
         <%= f.label :name %><br>
         <%= f.text_field :name %>
       </div>
-          <%= f.datepicker_field :start_date %>
-          <%= f.datepicker_field :end_date %>
-            <div class="field">
+
+      <%= f.datepicker_field :start_date %>
+      <%= f.datepicker_field :end_date %>
+
+      <div class="field">
         <%= f.label :event_location_id %><br>
         <%= f.select :event_location_id, EventLocation.all.map{|x| [x.location_name, x.id]}, prompt: "Please select an event location" %>
       </div>
       <div class="field">
-  <%= f.label :summary %><br>
-  <%= f.text_area :summary %>
-</div>
-            <div class="field">
+        <%= f.label :summary %><br>
+        <%= f.text_area :summary %>
+      </div>
+
+      <div class="field">
         <%= f.label :description %><br>
         <%= f.text_area :description, class: 'tinymce' %>
       </div>
 
       <div class="field">
         <p>This field appears on the 'thank you' page after booking so should be used to provide additional information, if needed.</p>
-  <%= f.label :booking_confirmation_information %><br>
-  <%= f.text_area :booking_confirmation_information, class: 'tinymce', style: 'height:70px' %>
-</div>
-          <% end %>
+        <%= f.label :booking_confirmation_information %><br>
+        <%= f.text_area :booking_confirmation_information, class: 'tinymce', style: 'height:70px' %>
+      </div>
+    <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>
 
@@ -58,13 +61,19 @@
         <%= f.label :image %><br>
         <%= f.image_field :image %>
       </div>
-          <% end %>
+    <% end %>
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
       <div class="field">
         <%= f.label :eventbrite_link %>
         <%= f.text_field :eventbrite_link %>
       </div>
+
+      <div class="field">
+        <%= f.label :allow_booking %><br>
+        <%= f.check_box :allow_booking %>
+      </div>
+
       <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>

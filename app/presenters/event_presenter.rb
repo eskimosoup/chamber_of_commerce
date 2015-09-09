@@ -1,5 +1,6 @@
 class EventPresenter < BasePresenter
   presents :event
+  delegate :id, :name, to: :event
   delegate :event_location, to: :event_location
 
   def event_categories
@@ -14,16 +15,8 @@ class EventPresenter < BasePresenter
     event.event_bookings
   end
 
-  def id
-    event.id
-  end
-
   def class_name
     event.class.name.downcase
-  end
-
-  def name
-    event.name
   end
 
   def linked_title(options = {})
@@ -87,15 +80,18 @@ class EventPresenter < BasePresenter
   end
 
   def booking_button
+    return nil unless event.allow_booking?
     h.link_to "Book now", booking_link, id: "book-event", class: "button"
-  end
-
-  def booking_link
-    return event.eventbrite_link if event.eventbrite_link
-    h.new_event_event_booking_path(event)
   end
 
   def booking_title
     "Book #{ name }"
+  end
+
+  private
+
+  def booking_link
+    return event.eventbrite_link if event.eventbrite_link
+    h.new_event_event_booking_path(event)
   end
 end
