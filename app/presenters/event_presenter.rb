@@ -23,6 +23,10 @@ class EventPresenter < BasePresenter
     h.link_to name, event, options
   end
 
+  def title
+    name
+  end
+
   def date(format = :long)
     h.l event.start_date, format: format
   end
