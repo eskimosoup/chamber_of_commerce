@@ -17,7 +17,7 @@ header {
   vertical-align: top;
 
   @include responsive-to(small) {
-    width: 61px;
+    margin-top: em(5px);
     text-align: center;
   }
 
