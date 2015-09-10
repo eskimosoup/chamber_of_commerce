@@ -32,6 +32,10 @@ class EventPresenter < BasePresenter
     name
   end
 
+  def date(format = :long)
+    h.l event.start_date, format: format
+  end
+
   def start_date(format = :long)
     h.l event.start_date, format: format
   end
