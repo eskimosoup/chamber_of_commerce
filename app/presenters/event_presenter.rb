@@ -28,6 +28,10 @@ class EventPresenter < BasePresenter
     [wrapped_start_date, wrapped_end_date].compact.join(" ")
   end
 
+  def title
+    name
+  end
+
   def start_date(format = :long)
     h.l event.start_date, format: format
   end

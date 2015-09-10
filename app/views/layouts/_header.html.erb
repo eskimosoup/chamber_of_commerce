@@ -1,12 +1,12 @@
 <header>
   <div class="row">
-    <div class="small-5 medium-8 columns">
+    <div class="small-12 medium-8 columns">
       <%= link_to root_path, title: global_site_settings['Name'], class: 'logo' do %>
         <%= image_tag 'layout/header/logo.png', alt: global_site_settings['Name'] %>
       <% end %>
     </div>
 
-    <div class="small-7 medium-4 columns">
+    <div class="small-12 medium-4 columns">
       <div class="text-right">
         <%= render 'shared/member_buttons' %>
       </div>

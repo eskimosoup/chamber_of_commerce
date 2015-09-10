@@ -15,7 +15,11 @@ class Member < ActiveRecord::Base
   #validates :company_name, uniqueness: true
   validates :email, email: true, allow_blank: true
 
-  scope :company_name, -> (company_name) { where("company_name ILIKE ?", "#{company_name}%") }
+  scope :company_name, -> (company_name) { where("company_name ~* ?", "\\y#{company_name}\\y") if company_name.present? }
+  # http://stackoverflow.com/a/29798772
+  scope :search_terms, -> (search_terms) {
+    joins(:industries).where("nature_of_business ~* :search_terms OR industries.name ~* :search_terms", search_terms: "\\y#{search_terms}\\y") if search_terms.present?
+  }
   #scope :nature_of_business, -> (nature_of_business) { where("nature_of_business ILIKE ?", "#{nature_of_business}%") }
   #scope :industry, -> (industry_id) { joins(:industries).where(industries: { id: industry_id }) }
   scope :verified, -> { where(verified: true) }
