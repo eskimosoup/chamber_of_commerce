@@ -7,8 +7,7 @@
         <%= render "shared/flash_messages" %>
 
         <div class="main-details">
-          Start <strong><%= @presented_event.start_date %></strong>
-          End <strong><%= @presented_event.end_date %></strong>
+          <%= @presented_event.dates %>
           Location <strong><%= @presented_event.location %></strong>
         </div>
 
