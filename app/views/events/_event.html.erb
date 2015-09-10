@@ -8,8 +8,7 @@
       <%= event_presenter.linked_title(class: 'list-item-with-image-title') %>
 
       <div class="main-details">
-        Start <strong><%= event_presenter.start_date %></strong>
-        End <strong><%= event_presenter.end_date %></strong>
+        <%= @presented_event.dates %>
         Location <strong><%= event_presenter.location %></strong>
       </div>
 
