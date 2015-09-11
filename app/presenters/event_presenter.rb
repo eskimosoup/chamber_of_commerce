@@ -24,8 +24,8 @@ class EventPresenter < BasePresenter
   end
 
   def dates
-    return h.content_tag(:strong, start_date) unless event.end_date
-    [wrapped_start_date, wrapped_end_date].compact.join(" ")
+    return h.raw h.content_tag(:strong, start_date) unless event.end_date
+    h.raw [wrapped_start_date, wrapped_end_date].compact.join(" ")
   end
 
   def title
