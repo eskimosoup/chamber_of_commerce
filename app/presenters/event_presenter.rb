@@ -23,6 +23,11 @@ class EventPresenter < BasePresenter
     h.link_to name, event, options
   end
 
+  def dates
+    return h.content_tag(:strong, start_date) unless event.end_date
+    [wrapped_start_date, wrapped_end_date].compact.join(" ")
+  end
+
   def title
     name
   end
@@ -35,8 +40,8 @@ class EventPresenter < BasePresenter
     h.l event.start_date, format: format
   end
 
-  def end_date
-    h.l event.end_date, format: :long
+  def end_date(format = :long)
+    h.l event.end_date, format: format
   end
 
   def location
@@ -97,5 +102,13 @@ class EventPresenter < BasePresenter
   def booking_link
     return event.eventbrite_link if event.eventbrite_link
     h.new_event_event_booking_path(event)
+  end
+
+  def wrapped_start_date
+    "Start " + h.content_tag(:strong, end_date)
+  end
+
+  def wrapped_end_date
+    "End " + h.content_tag(:strong, end_date)
   end
 end

@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
 
   mount_uploader :image, EventUploader
 
-  validates :name, :description, :start_date, :end_date, :event_location_id, presence: true
+  validates :name, :description, :start_date, :event_location_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }
   validate :sensible_dates
 

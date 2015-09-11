@@ -42,6 +42,27 @@ RSpec.describe EventPresenter, type: :presenter do
     end
   end
 
+  describe "event dates" do
+    describe "start date and end date" do
+      let(:event) { build(:event) }
+      subject(:event_presenter) { EventPresenter.new(object: event, view_template: view) }
+
+      it "should display start and end dates" do
+        content = "Start <strong>#{ l event.start_date, format: :long }</strong> End <strong>#{ l event.end_date, format: :long }</strong>"
+        expect(event_presenter.dates).to eq(content)
+      end
+    end
+
+    describe "no end date" do
+      let(:event) { build(:event, end_date: nil) }
+      subject(:event_presenter) { EventPresenter.new(object: event, view_template: view) }
+      it "should simply display the start date" do
+        content = "<strong>#{ l event.start_date, format: :long }</strong>"
+        expect(event_presenter.dates).to eq(content)
+      end
+    end
+  end
+
 
 
 
