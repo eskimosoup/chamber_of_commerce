@@ -8,6 +8,17 @@ class ApplicationController < ActionController::Base
   before_action :global_site_settings, :load_objects, :current_member
   before_action :aside_content
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    render_error 404
+  end
+
+  def render_error(status)
+    respond_to do |format|
+      format.html { render 'errors/404', status: status }
+      format.all { render nothing: true, status: status }
+    end
+  end
+
   def index
     @presented_articles       = BaseCollectionPresenter.new(collection: Article.non_member_news.limit(10), view_template: view_context, presenter: ArticlePresenter)
     @presented_member_news    = BaseCollectionPresenter.new(collection: Article.member_news.limit(5), view_template: view_context, presenter: ArticlePresenter)
