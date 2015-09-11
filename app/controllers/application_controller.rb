@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include MemberSessionsHelper
 
   before_action :global_site_settings, :load_objects, :current_member
-  before_action :aside_content, except: :index
+  before_action :aside_content
 
   def index
     @presented_articles       = BaseCollectionPresenter.new(collection: Article.non_member_news.limit(10), view_template: view_context, presenter: ArticlePresenter)
