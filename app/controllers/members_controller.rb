@@ -4,7 +4,7 @@ class MembersController < ApplicationController
 
   def index
     @additional_content = AdditionalContentPresenter.new(object: AdditionalContent.find_by(area: 'Members - Index'), view_template: view_context)
-    search_query = Member.filter(params.slice(:company_name, :search_terms)).page(params[:page]).per(params[:per_page] || 15).order(:company_name).group('members.id')
+    search_query = Member.filter(params.slice(:company_name, :search_terms)).page(params[:page]).per(params[:per_page] || 15).group('members.id').order("LOWER(company_name)")
     @presented_members = BaseCollectionPresenter.new(collection: search_query,
                                                     view_template: view_context, presenter: MemberPresenter)
   end
@@ -15,7 +15,7 @@ class MembersController < ApplicationController
 
   def directory
     @additional_content = AdditionalContentPresenter.new(object: AdditionalContent.find_by(area: 'Members - Directroy'), view_template: view_context)
-    @presented_members = Member.order(:company_name).group_by{|x| x.company_name.titleize.first}
+    @presented_members = Member.order("LOWER(company_name)").group_by{|x| x.company_name.titleize.first}
   end
 
   def edit
