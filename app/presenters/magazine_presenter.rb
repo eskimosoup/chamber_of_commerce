@@ -4,7 +4,7 @@ class MagazinePresenter < BasePresenter
 
   def preview
     return if magazine.blank?
-    h.image_tag magazine.image.show, width: '216'
+    h.image_tag magazine.image.show
   end
 
   def name
