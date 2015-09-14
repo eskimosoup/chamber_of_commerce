@@ -7,6 +7,8 @@
     <%= render 'optimadmin/shared/module/index/pagination' %>
     <%= render 'optimadmin/shared/module/index/order', options: [['Member', 'member_id'], ['Verified', 'verified']] %>
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @member_offers.size, path: root_url %>
+
+    <p>Please note that verifying an offer will automatically verify the member, if they are not already.</p>
   </div>
 
   <div class="row collapse module-list-index header">

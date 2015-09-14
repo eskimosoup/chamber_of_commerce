@@ -1,0 +1,8 @@
+<div class="datepicker-field">
+  <%= f.label date %>
+  <% if f.object.new_record? || f.object.send(date).blank? %>
+    <%= f.text_field date, class: 'datepicker' %>
+  <% else %>
+    <%= f.text_field date, class: 'datepicker', value: "#{f.object.send(date).to_date.strftime("%d-%m-%Y")}" %>
+  <% end %>
+</div>

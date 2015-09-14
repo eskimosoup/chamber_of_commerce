@@ -2,7 +2,7 @@ module Optimadmin
   class MagazinesController < Optimadmin::ApplicationController
     before_action :set_magazine, only: [:show, :edit, :update, :destroy]
 
-    edit_images_for Magazine, [[:image, { show: ['limit', 162, 193] }]]
+    edit_images_for Magazine, [[:image, { show: ['limit', 162, 216] }]]
 
     def index
       @magazines = Optimadmin::BaseCollectionPresenter.new(collection: Magazine.where('name ILIKE ?', "%#{params[:search]}%").order(date: :desc).page(params[:page]).per(25), view_template: view_context, presenter: Optimadmin::MagazinePresenter)

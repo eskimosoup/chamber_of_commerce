@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  include Filterable
+  include Filterable, NullifyBlanks
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
@@ -11,10 +11,10 @@ class Event < ActiveRecord::Base
 
   scope :event_location_id, -> (location_id) { where event_location_id: location_id }
   scope :event_categories_id, -> (event_categories_id) { includes(:event_categories).where event_categories: { id: event_categories_id } }
-  scope :bookable, -> (bookable) { includes(:event_categories).where event_categories: { bookable: bookable } }
+  #scope :bookable, -> (bookable) { where allow_booking: bookable }
   scope :has_tables, -> (has_tables) { includes(:event_categories).where event_categories: { has_tables: has_tables } }
   scope :food_event, -> (food_event) { includes(:event_categories).where event_categories: { food_event: food_event } }
-  scope :upcoming, -> { where('display = ? AND end_date >= ?', true, Date.today).order(start_date: :asc) }
+  scope :upcoming, -> { where('display = ? AND ( end_date >= ? OR end_date is NULL )', true, Date.today).order(start_date: :asc) }
 
   mount_uploader :image, EventUploader
 
