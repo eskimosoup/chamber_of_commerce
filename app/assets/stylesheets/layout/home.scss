@@ -224,6 +224,12 @@
     padding-top: em(13px);
     position: absolute;
 
+    .row,
+    .columns,
+    img {
+      height: 100%;
+    }
+
     @include responsive-to(small) {
       position: static;
     }
