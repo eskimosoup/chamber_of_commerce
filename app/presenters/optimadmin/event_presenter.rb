@@ -8,7 +8,7 @@ module Optimadmin
     end
 
     def toggle_title
-      inline_detail_toggle_link(name)
+      inline_detail_toggle_link("#{name} (#{h.l event.start_date, format: :short})")
     end
 
     def event_agendas

@@ -10,9 +10,9 @@ module Optimadmin
       inline_detail_toggle_link(name)
     end
 
-    def bookable
-      event_category.bookable.blank? ? 'No' : 'Yes'
-    end
+    #def bookable
+    #  event_category.bookable.blank? ? 'No' : 'Yes'
+    #end
 
     def food_event
       event_category.food_event.blank? ? 'No' : 'Yes'
