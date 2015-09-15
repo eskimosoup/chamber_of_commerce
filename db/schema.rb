@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914103809) do
+ActiveRecord::Schema.define(version: 20150915083614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,6 +147,13 @@ ActiveRecord::Schema.define(version: 20150914103809) do
     t.string   "slug"
   end
 
+  create_table "event_offices", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "name",                                            null: false
     t.integer  "event_agendas_id"
@@ -166,10 +173,12 @@ ActiveRecord::Schema.define(version: 20150914103809) do
     t.text     "booking_confirmation_information"
     t.string   "eventbrite_link"
     t.boolean  "allow_booking",                    default: true
+    t.integer  "event_office_id"
   end
 
   add_index "events", ["event_agendas_id"], name: "index_events_on_event_agendas_id", using: :btree
   add_index "events", ["event_location_id"], name: "index_events_on_event_location_id", using: :btree
+  add_index "events", ["event_office_id"], name: "index_events_on_event_office_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false

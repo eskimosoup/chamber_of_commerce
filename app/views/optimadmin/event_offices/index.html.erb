@@ -1,0 +1,39 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Event Offices' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Event Office', object: EventOffice, path: new_event_office_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <!--
+      <%= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
+    -->
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @event_offices.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+
+
+
+      <% # ADD TWO TO THE TITLE LARGE COLUMN SIZE BELOW TO ACCOUNT FOR NO IMAGE %>
+
+
+
+      <%= list_item 'large-10 small-12' do %>
+        <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+        Title
+      <% end %>
+
+
+
+
+    <%= list_item { 'Edit' } %>
+
+    <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
+  </div>
+
+  <!-- <div class='module-sortable' data-module="EventOffice"> -->
+  <%= render partial: 'event_office', collection: @event_offices, as: :event_office_presenter %>
+  <!-- </div> -->
+  <%= paginate @event_offices %>
+</div>

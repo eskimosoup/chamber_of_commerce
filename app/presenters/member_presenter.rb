@@ -6,7 +6,7 @@ class MemberPresenter < BasePresenter
   end
 
   def address
-    "#{member.address} #{member.post_code}".html_safe
+    "#{member.address.gsub("\n", '<br />')} #{member.post_code}".html_safe
   end
 
   def linked_company_name(options = {})
