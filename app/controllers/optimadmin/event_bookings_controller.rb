@@ -31,6 +31,9 @@ module Optimadmin
       render :show
     end
 
+    def event_agendas
+      @event_booking_agendas = @event.event_bookings.order(created_at: :desc).group_by(&:event_agendas)
+    end
 
   private
 

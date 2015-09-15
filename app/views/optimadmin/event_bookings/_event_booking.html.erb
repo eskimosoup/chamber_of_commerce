@@ -32,6 +32,7 @@
   </div>
 
   <div class="row module-list-detail hide" id="index-list-<%= event_booking_presenter.id %>">
+    <!--
     <div class="small-12 columns module-list-summary last">
       <div class="row">
         <div class="small-4 columns">
@@ -50,5 +51,42 @@
         </div>
       </div>
     </div>
+    -->
+
+    <div class="row">
+      <div class="small-3 columns">
+        <strong>Agendas</strong>
+      </div>
+      <div class="small-3 columns">
+        <strong>Phone Number</strong>
+      </div>
+      <div class="small-3 columns">
+        <strong>Email</strong>
+      </div>
+      <div class="small-3 columns">
+        <strong>Dietary Requirements</strong>
+      </div>
+    </div>
+
+    <% event_booking_presenter.attendees.each do |attendee_presenter| %>
+      <div class="row">
+        <div class="small-3 columns">
+          <ul>
+            <% attendee_presenter.event_agendas.each do |event_agenda_presenter| %>
+              <li><%= event_agenda_presenter.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="small-3 columns">
+          <%= attendee_presenter.phone_number %>
+        </div>
+        <div class="small-3 columns">
+          <%= attendee_presenter.email %>
+        </div>
+        <div class="small-3 columns">
+          <%= attendee_presenter.dietary_requirements %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

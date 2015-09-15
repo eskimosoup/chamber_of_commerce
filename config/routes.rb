@@ -126,6 +126,7 @@ Optimadmin::Engine.routes.draw do
     resources :event_bookings, only: [:index, :show] do
       collection do
         post 'order'
+        get 'event-agendas'
       end
       member do
         get 'toggle'
