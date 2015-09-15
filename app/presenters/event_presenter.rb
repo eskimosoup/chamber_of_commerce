@@ -105,7 +105,7 @@ class EventPresenter < BasePresenter
   end
 
   def wrapped_start_date
-    "Start " + h.content_tag(:strong, end_date)
+    "Start " + h.content_tag(:strong, start_date)
   end
 
   def wrapped_end_date
