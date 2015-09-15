@@ -22,8 +22,16 @@ class MemberPresenter < BasePresenter
     h.mail_to member.email
   end
 
+  def email_present?
+    true if member.email.present?
+  end
+
   def telephone
     member.telephone
+  end
+
+  def telephone_present?
+    true if member.telephone.present?
   end
 
   def read_more
