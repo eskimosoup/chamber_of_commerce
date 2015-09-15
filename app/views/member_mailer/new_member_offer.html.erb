@@ -12,12 +12,12 @@
 
     <p>
       <strong>Summary</strong><br />
-      <%= @member_offer.summary %>
+      <%= simple_format @member_offer.summary %>
     </p>
 
     <p>
       <strong>Description</strong><br />
-      <%= @member_offer.description %>
+      <%= raw @member_offer.description %>
     </p>
 
     <p>

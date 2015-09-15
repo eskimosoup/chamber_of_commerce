@@ -12,11 +12,15 @@
             </div>
 
             <div class="small-12 medium-6 columns">
-              <strong class="display-block">Telephone</strong>
-              <%= @presented_member.telephone %>
+              <% if @presented_member.telephone_present? %>
+                <strong class="display-block">Telephone</strong>
+                <%= @presented_member.telephone %>
+              <% end %>
 
-              <strong class="display-block">Email</strong>
-              <%= @presented_member.email %>
+              <% if @presented_member.email_present? %>
+                <strong class="display-block">Email</strong>
+                <%= @presented_member.email %>
+              <% end %>
 
               <strong class="display-block">Website</strong>
               <%= @presented_member.website(target: '_blank') %>

@@ -70,7 +70,7 @@ class MemberOfferPresenter < BasePresenter
   end
 
   def website(options = {})
-    h.link_to 'View website', member_offer.website_link, options
+    h.link_to 'View website', "http://#{member_offer.website_link}", options
   end
 
   def date(format = :long)

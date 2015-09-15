@@ -7,6 +7,7 @@ class Event < ActiveRecord::Base
   has_many :event_agendas, dependent: :nullify
   has_many :event_categories, through: :event_agendas
   has_many :event_bookings, dependent: :nullify
+  belongs_to :event_office
   belongs_to :event_location
 
   scope :event_location_id, -> (location_id) { where event_location_id: location_id }
@@ -18,7 +19,7 @@ class Event < ActiveRecord::Base
 
   mount_uploader :image, EventUploader
 
-  validates :name, :description, :start_date, :event_location_id, presence: true
+  validates :name, :description, :start_date, :event_location_id, :event_office_id, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }
   validate :sensible_dates
 

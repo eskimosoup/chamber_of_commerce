@@ -62,6 +62,14 @@ Rails.application.routes.draw do
   mount Optimadmin::Engine => '/admin'
 end
 Optimadmin::Engine.routes.draw do
+  resources :event_offices, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+    end
+  end
   resources :industries, except: [:show] do
     collection do
       post :order
@@ -104,7 +112,7 @@ Optimadmin::Engine.routes.draw do
   end
   get 'article_category/show'
 
-  resources :events, except: [:show] do
+  resources :events, except: [:show], path: 'events-admin' do
     collection do
       post 'order'
     end

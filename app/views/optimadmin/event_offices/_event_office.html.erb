@@ -1,0 +1,26 @@
+<div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= event_office_presenter.id %>">
+
+
+
+    <div class="large-10 small-12 columns" data-equalizer-watch="module-list">
+
+    <%= event_office_presenter.toggle_title %>
+  </div>
+
+
+
+
+  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+    <%= event_office_presenter.edit_link %>
+  </div>
+
+  <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
+    <%= event_office_presenter.delete_link %>
+  </div>
+
+  <div class="row module-list-detail hide" id="index-list-<%= event_office_presenter.id %>">
+    <div class="small-12 columns module-list-summary last">
+      <%= event_office_presenter.optimadmin_summary %>
+    </div>
+  </div>
+</div>

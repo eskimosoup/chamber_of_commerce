@@ -4,7 +4,7 @@ module MemberSessionsHelper
   end
 
   def remember_member_session(member)
-    member.member_login.generate_auth_token
+    member.generate_auth_token
     cookies.permanent.signed[:member_id] = member.id
     cookies.permanent[:member_auth_token] = member.auth_token
   end
@@ -17,9 +17,9 @@ module MemberSessionsHelper
   end
 
   def redirect_member_session
-    return_to = root_url
+    return_to = edit_members_path
     return_to = session[:return_to] if session[:return_to]
-    return_to = root_url if blacklist_redirect_member_session.include?(return_to)
+    return_to = edit_members_path if blacklist_redirect_member_session.include?(return_to)
     session[:return_to] = nil
     return_to
   end
