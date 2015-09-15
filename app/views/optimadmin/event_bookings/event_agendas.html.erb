@@ -1,0 +1,45 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Event Bookings per Agenda' %>
+
+<div class="main-content">
+  <% @event_booking_agendas.each do |agendas, bookings| %>
+    <% agendas.each do |agenda| %>
+      <h5>
+        <%= agenda.name %>
+      </h5>
+
+
+      <% bookings.each do |booking| %>
+        <p>
+          <strong> <%= booking.name %> </strong>
+          <%= booking.phone_number %> <%= mail_to booking.email %>
+        </p>
+
+        <div class="row">
+          <div class="small-3 columns">
+            Phone Number
+          </div>
+          <div class="small-3 columns">
+            Email
+          </div>
+          <div class="small-3 columns last">
+            Dietary Requirements
+          </div>
+        </div>
+
+        <% booking.attendees.each do |attendee_presenter| %>
+          <div class="row">
+            <div class="small-3 columns">
+              <%= attendee_presenter.phone_number %>
+            </div>
+            <div class="small-3 columns">
+              <%= attendee_presenter.email %>
+            </div>
+            <div class="small-3 columns last">
+              <%= attendee_presenter.dietary_requirements %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

@@ -5,8 +5,15 @@ Rails.application.configure do
 
   config.action_mailer.asset_host = "http://www.hull-humber-chamber.co.uk"
 
-  ActionMailer::Base.delivery_method = :sendmail
-  ActionMailer::Base.sendmail_settings = { :location => '/usr/lib/sendmail', :arguments => '-i' }
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address => 'mail.ludo2.co.uk',
+    :authentication => :plain,
+    :user_name => 'noreply@hull-humber-chamber.co.uk',
+    :password => 'undergr0und47#!',
+    :enable_starttls_auto => true,
+    :openssl_verify_mode  => 'none'
+  }
 
   # Settings specified here will take precedence over those in config/application.rb.
 

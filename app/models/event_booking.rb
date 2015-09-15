@@ -1,7 +1,7 @@
 class EventBooking < ActiveRecord::Base
 
   belongs_to :event, counter_cache: true
-
+  has_many :event_agendas, through: :event
   has_many :attendees, dependent: :destroy
   accepts_nested_attributes_for :attendees, reject_if: :all_blank, allow_destroy: true
 
