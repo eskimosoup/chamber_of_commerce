@@ -64,6 +64,8 @@
     <% end %>
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
+
+
       <div class="field">
         <%= f.label :event_office_id %>
         <%= f.select :event_office_id, EventOffice.all.pluck(:name, :id) %>

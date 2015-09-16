@@ -8,6 +8,10 @@ class ArticleUploader < Optimadmin::ImageUploader
     process resize_to_fill: [215, 135]
   end
 
+  version :show_full_image do
+    process resize_to_fill: [613, 213]
+  end
+
   version :homepage do
     process resize_to_fill: [450, 295]
   end
