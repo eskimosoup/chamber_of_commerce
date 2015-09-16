@@ -23,6 +23,7 @@ class Member < ActiveRecord::Base
   #scope :nature_of_business, -> (nature_of_business) { where("nature_of_business ILIKE ?", "#{nature_of_business}%") }
   #scope :industry, -> (industry_id) { joins(:industries).where(industries: { id: industry_id }) }
   scope :verified, -> { where(verified: true) }
+  scope :admin, -> (current_administrator) { unscoped if current_administrator.present? }
 
   def should_generate_new_friendly_id?
     slug.blank? || company_name_changed?

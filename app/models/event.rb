@@ -16,7 +16,8 @@ class Event < ActiveRecord::Base
   scope :has_tables, -> (has_tables) { includes(:event_categories).where event_categories: { has_tables: has_tables } }
   scope :food_event, -> (food_event) { includes(:event_categories).where event_categories: { food_event: food_event } }
   scope :upcoming, -> { where('display = ? AND ( end_date >= ? OR end_date is NULL )', true, Date.today).order(start_date: :asc) }
-
+  scope :admin, -> (current_administrator) { unscoped if current_administrator.present? }
+  
   mount_uploader :image, EventUploader
 
   validates :name, :description, :start_date, :event_location_id, :event_office_id, presence: true

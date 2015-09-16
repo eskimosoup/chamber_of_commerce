@@ -6,6 +6,8 @@ class Page < ActiveRecord::Base
 
   mount_uploader :image, PageUploader
 
+  scope :admin, -> (current_administrator) { unscoped if current_administrator.present? }
+
   before_save :store_image, if: Proc.new{|page| page.remote_image_url.blank? }
   # before_save :store_file, if: Proc.new{|page| page.remote_file_url.blank? }
 

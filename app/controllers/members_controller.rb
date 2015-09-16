@@ -35,7 +35,7 @@ class MembersController < ApplicationController
 
   private
     def set_member
-      @member_object = Member.find(params[:id])
+      @member_object = Member.admin(current_administrator).find(params[:id])
       @presented_member = MemberPresenter.new(object: @member_object, view_template: view_context)
     end
 
