@@ -1,7 +1,7 @@
 module Optimadmin
   class ArticlesController < Optimadmin::ApplicationController
 
-    edit_images_for Article, [[:image, { index: ['fill', 250, 250], show: ['fill', 215, 135], homepage: ['fill', 450, 295] }]]
+    edit_images_for Article, [[:image, { index: ['fill', 250, 250], show: ['fill', 215, 135], show_full_image: ['fill', 613, 213], homepage: ['fill', 450, 295] }]]
     before_action :set_article, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -48,7 +48,7 @@ module Optimadmin
     end
 
     def article_params
-      params.require(:article).permit(:title, :article_category_id, :summary, :content, :image, :image_cache, :remote_image_url, :date, :display, :suggested_url)
+      params.require(:article).permit(:title, :article_category_id, :summary, :content, :image, :image_cache, :remote_image_url, :date, :display,  :layout, :caption, :suggested_url)
     end
   end
 end

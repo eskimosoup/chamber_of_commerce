@@ -52,9 +52,21 @@
 
     <%= field_set_tag nil, id: 'tabs-2' do %>
       <%= f.image_field :image %>
+
+      <div class="field">
+        <%= f.label :caption %><br />
+        <%= f.text_field :caption %>
+      </div>
     <% end %>
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
+      <% if Article.layouts.size > 1 %>
+        <div class="field">
+          <%= f.label :layout %><br />
+          <%= f.select :layout, Article.layouts.map{ |x| [t(x), x] } %>
+        </div>
+      <% end %>
+
       <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>

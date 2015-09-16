@@ -41,9 +41,20 @@
   .page-image {
     border: 4px solid $deep-grey;
   }
+
+  .article-caption {
+    font-size: em(12px, 14px);
+    color: $complimentary-blue;
+    line-height: 1.1;
+    margin: em(5px, 12px) em(2px, 12px);
+  }
 }
 
 
 .member-offer-expired-opacity {
   opacity: 0.5;
+}
+
+.image-right .article-caption {
+  max-width: 223px;
 }

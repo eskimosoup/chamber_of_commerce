@@ -13,6 +13,10 @@ class Article < ActiveRecord::Base
   validates :title, :content, :date, :article_category, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }
 
+  def self.layouts
+    %w{ right_image full_image }
+  end
+
   def slug_candidates
     [
       :suggested_url,

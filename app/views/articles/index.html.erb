@@ -4,6 +4,13 @@
       <aside class="aside-content-wrap">
         <h3><span>News Categories</span></h3>
 
+        <div class="category-item">
+          <div class="title">
+            <%= link_to 'All Articles', articles_path %>
+          </div>
+        </div>
+
+
         <%= render partial: 'shared/category_link_list', collection: @presented_article_categories, as: :module_presenter %>
       </aside>
     </div>
