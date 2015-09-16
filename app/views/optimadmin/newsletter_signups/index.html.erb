@@ -3,6 +3,7 @@
 <div class="main-content">
   <div class="row module-header collapse">
     <%#= render 'optimadmin/shared/module/index/new_item', title: 'Newsletter Signup', object: NewsletterSignup, path: new_newsletter_signup_path %>
+    <%= link_to "Download CSV", export_csv_newsletter_signups_path, class: "action-button" %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
     <%= render 'optimadmin/shared/module/index/order', options: [['Email', 'email_address'], ['Created', 'created_at']] %>
