@@ -1,45 +1,48 @@
 <%= render 'optimadmin/shared/header/main_title', title: 'Manage Event Bookings per Agenda' %>
 
 <div class="main-content">
-  <% @event_booking_agendas.each do |agendas, bookings| %>
-    <% agendas.each do |agenda| %>
-      <h5>
-        <%= agenda.name %>
-      </h5>
+  <%= link_to 'View summary', event_event_bookings_path(@event.id), class: 'action-button' %>
 
+  <% @agendas.each do |agenda| %>
+    <h1><%= agenda.name %></h1>
 
-      <% bookings.each do |booking| %>
-        <p>
-          <strong> <%= booking.name %> </strong>
-          <%= booking.phone_number %> <%= mail_to booking.email %>
-        </p>
+    <% atendee_number = 0 %>
+    <% agenda.attendee_event_agendas.each_with_index do |attendees, index| %>
+      <% atendee_number = atendee_number + 1  %>
+      <p>
+        <strong><%= link_to "#{attendees.attendee.event_booking.name}#{" (#{attendees.attendee.event_booking.company_name})" if attendees.attendee.event_booking.company_name.present?}", event_event_booking_path(attendees.attendee.event_booking.event_id, attendees.attendee.event_booking.id) %></strong>
+        (<%=  attendees.attendee.event_booking.phone_number %>)
+        <%= mail_to  attendees.attendee.event_booking.email %>
+        <br />
+        <strong><%= atendee_number %> of <%= pluralize(attendees.attendee.event_booking.attendees.size, "attendee") %></strong>
+      </p>
 
-        <div class="row">
-          <div class="small-3 columns">
-            Phone Number
-          </div>
-          <div class="small-3 columns">
-            Email
-          </div>
-          <div class="small-3 columns last">
-            Dietary Requirements
-          </div>
+      <div class="row">
+        <div class="small-3 columns">
+          <strong>Phone Number</strong>
         </div>
+        <div class="small-3 columns">
+          <strong>Email</strong>
+        </div>
+        <div class="small-3 columns last">
+          <strong>Dietary Requirements</strong>
+        </div>
+      </div>
 
-        <% booking.attendees.each do |attendee_presenter| %>
-          <div class="row">
-            <div class="small-3 columns">
-              <%= attendee_presenter.phone_number %>
-            </div>
-            <div class="small-3 columns">
-              <%= attendee_presenter.email %>
-            </div>
-            <div class="small-3 columns last">
-              <%= attendee_presenter.dietary_requirements %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+      <div class="row">
+        <div class="small-3 columns">
+          <%= attendees.attendee.phone_number %>
+        </div>
+        <div class="small-3 columns">
+          <%= attendees.attendee.email %>
+        </div>
+        <div class="small-3 columns">
+          <%= attendees.attendee.dietary_requirements %>
+        </div>
+      </div>
+      <%= '<hr /> '.html_safe if atendee_number == attendees.attendee.event_booking.attendees.size %>
+      <% atendee_number = 0 if atendee_number >= attendees.attendee.event_booking.attendees.size %>
     <% end %>
   <% end %>
+
 </div>
