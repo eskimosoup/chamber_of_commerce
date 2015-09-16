@@ -21,6 +21,6 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @presented_event = EventPresenter.new(object: Event.upcoming.find(params[:id]), view_template: view_context)
+    @presented_event = EventPresenter.new(object: Event.upcoming.admin(current_administrator).find(params[:id]), view_template: view_context)
   end
 end

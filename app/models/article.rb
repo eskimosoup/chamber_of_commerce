@@ -9,6 +9,7 @@ class Article < ActiveRecord::Base
   scope :published, -> { where("display = ? and date <= ?", true, Date.today) }
   scope :member_news, -> { joins(:article_category).where(article_categories: { member_related: true }).published.order(date: :desc) }
   scope :non_member_news, -> { joins(:article_category).where(article_categories: { member_related: false }).published.order(date: :desc) }
+  scope :admin, -> (current_administrator) { unscoped if current_administrator.present? }
 
   validates :title, :content, :date, :article_category, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }

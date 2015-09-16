@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.published.friendly.find(params[:id])
+      @article = Article.published.admin(current_administrator).friendly.find(params[:id])
       @presented_article = ArticlePresenter.new(object: @article, view_template: view_context)
     end
 
