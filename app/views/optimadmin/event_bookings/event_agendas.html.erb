@@ -21,10 +21,10 @@
         <div class="small-3 columns">
           <strong>Phone Number</strong>
         </div>
-        <div class="small-3 columns">
+        <div class="small-5 columns">
           <strong>Email</strong>
         </div>
-        <div class="small-3 columns last">
+        <div class="small-5 columns">
           <strong>Dietary Requirements</strong>
         </div>
       </div>
@@ -33,10 +33,10 @@
         <div class="small-3 columns">
           <%= attendees.attendee.phone_number %>
         </div>
-        <div class="small-3 columns">
-          <%= attendees.attendee.email %>
+        <div class="small-5 columns">
+          <%= mail_to attendees.attendee.email %>
         </div>
-        <div class="small-3 columns">
+        <div class="small-4 columns">
           <%= attendees.attendee.dietary_requirements %>
         </div>
       </div>
