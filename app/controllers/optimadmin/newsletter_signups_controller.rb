@@ -6,6 +6,11 @@ module Optimadmin
       @newsletter_signups = Optimadmin::BaseCollectionPresenter.new(collection: NewsletterSignup.page(params[:page]).per(params[:per_page] || 15).order(params[:order]), view_template: view_context, presenter: Optimadmin::NewsletterSignupPresenter)
     end
 
+    def export_csv
+      @newsletter_signups = NewsletterSignup.all
+      send_data @newsletter_signups.to_csv, filename: "newsletter-signups-#{ Date.today }.csv"
+    end
+
     def show
     end
 
