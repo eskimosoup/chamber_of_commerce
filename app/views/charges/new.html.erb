@@ -61,7 +61,8 @@
                   data-description="<%= "Booking for #{ @presented_event.name }" %>"
                   data-amount="<%= @presented_event_booking.stripe_price %>"
                   data-email="<%= @presented_event_booking.email %>"
-                  data-currency="gbp"></script>
+                  data-currency="gbp"
+                  data-allow-remember-me="false"></script>
         <% end %>
       </div>
     </div>
