@@ -23,8 +23,10 @@ class EventBookingsController < ApplicationController
   end
 
   def event_booking_params
-    params.require(:event_booking).permit(:name, :company_name, :industry, :nature_of_business, :address, :phone_number, :email,
-    attendees_attributes: [:id, :event_booking_id, :phone_number, :email, :dietary_requirements, :_destroy, event_agenda_ids: []])
+    params.require(:event_booking).permit(:name, :company_name, :industry, :nature_of_business, :address_line_1,
+                                          :address_line_2, :town, :postcode, :phone_number, :email,
+                                          attendees_attributes: [:id, :name, :event_booking_id, :phone_number, :email,
+                                                                 :dietary_requirements, :_destroy, event_agenda_ids: []])
   end
 
 end

@@ -5,6 +5,10 @@ class AttendeePresenter < BasePresenter
     attendee.phone_number
   end
 
+  def name
+    attendee.name
+  end
+
   def email
     attendee.email
   end

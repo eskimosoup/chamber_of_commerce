@@ -1,9 +1,11 @@
 class Attendee < ActiveRecord::Base
+
+  CSV_FIELDS = %w{ name phone_number email dietary_requirements event_agenda_names }
   belongs_to :event_booking, counter_cache: true
   has_many :attendee_event_agendas, dependent: :destroy
   has_many :event_agendas, through: :attendee_event_agendas
 
-  validates :attendee_event_agendas, presence: true
+  validates :attendee_event_agendas, :name, presence: true
 
   def agendas_total_price
     attendee_event_agenda_prices.reduce(:+)
@@ -14,7 +16,7 @@ class Attendee < ActiveRecord::Base
   end
 
   def csv_attributes
-    %w{ phone_number email dietary_requirements event_agenda_names }.map{|attr| send(attr) }
+    CSV_FIELDS.map{|attr| send(attr) }
   end
 
   def event_agenda_names

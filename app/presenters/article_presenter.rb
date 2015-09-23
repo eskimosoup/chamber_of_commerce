@@ -40,11 +40,21 @@ class ArticlePresenter < BasePresenter
   end
 
   def image
-    img = caption = nil
-    img = h.image_tag article.image.show, alt: article.title, class: 'page-image' if article.image && article.layout == 'right_image'
-    img = h.image_tag article.image.show_full_image, alt: article.title, class: 'page-image' if article.image && article.layout == 'full_image'
-    caption = h.content_tag :p, article.caption, class: 'article-caption' if article.image && article.caption.present?
-    h.content_tag :div, (img + caption), class: "#{'image-right' if article.layout == 'right_image'}" if article.image.present?
+    return nil unless article.image.present?
+    h.content_tag :div, (image_from_layout + image_caption), class: "#{'image-right' if article.layout == 'right_image'}"
+  end
+
+  def image_from_layout
+    case article.layout
+      when "full_image"
+        h.image_tag article.image.show_full_image, alt: article.title, class: 'page-image'
+      else
+        h.image_tag article.image.show, alt: article.title, class: 'page-image'
+    end
+  end
+
+  def image_caption
+    h.content_tag :p, article.caption, class: 'article-caption'
   end
 
   def linked_index_image

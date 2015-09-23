@@ -68,14 +68,47 @@ RSpec.describe ArticlePresenter, type: :presenter do
     let(:article) { create(:article_with_image) }
     subject(:article_presenter) { ArticlePresenter.new(object: article, view_template: view) }
 
-    it "returns image when image method called" do
-      image = image_tag(article.image.show, alt: article.title, class: 'page-image image-right')
-      expect(article_presenter.image).to eq(image)
+    it "returns image caption in a paragraph tag" do
+      caption = content_tag :p, article.caption, class: 'article-caption'
+      expect(article_presenter.image_caption).to eq(caption)
     end
 
     it "returns home image" do
       linked_image = link_to image_tag(article.image.homepage, alt: article.title), article, title: article.title
       expect(article_presenter.linked_home_image).to eq(linked_image)
+    end
+
+    describe "full image layout" do
+      let(:article) { create(:article_with_image, layout: "full_image") }
+      subject(:article_presenter) { ArticlePresenter.new(object: article, view_template: view) }
+
+      it "returns the show full image crop" do
+        image = image_tag(article.image.show_full_image, alt: article.title, class: 'page-image')
+        expect(article_presenter.image_from_layout).to eq(image)
+      end
+
+      it "returns captions image when image method called" do
+        image = image_tag(article.image.show_full_image, alt: article.title, class: 'page-image')
+        caption = content_tag :p, article.caption, class: 'article-caption'
+        captioned_image = content_tag :div, (image + caption), class: ""
+        expect(article_presenter.image).to eq(captioned_image)
+      end
+    end
+
+    describe "right image layout" do
+      let(:article) { create(:article_with_image, layout: "right_image") }
+      subject(:article_presenter) { ArticlePresenter.new(object: article, view_template: view) }
+      it "returns the show image crop" do
+        image = image_tag(article.image.show, alt: article.title, class: 'page-image')
+        expect(article_presenter.image_from_layout).to eq(image)
+      end
+
+      it "returns captions image when image method called" do
+        image = image_tag(article.image.show, alt: article.title, class: 'page-image')
+        caption = content_tag :p, article.caption, class: 'article-caption'
+        captioned_image = content_tag :div, (image + caption), class: "image-right"
+        expect(article_presenter.image).to eq(captioned_image)
+      end
     end
   end
 end

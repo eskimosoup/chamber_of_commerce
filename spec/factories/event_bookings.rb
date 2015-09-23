@@ -5,7 +5,10 @@ FactoryGirl.define do
     company_name "MyString"
     industry "MyString"
     nature_of_business "MyString"
-    address "MyText"
+    address_line_1 "MyText"
+    address_line_2 "MyText"
+    town "MyText"
+    postcode "MyText"
     phone_number "MyString"
     email "MyString"
     paid false
