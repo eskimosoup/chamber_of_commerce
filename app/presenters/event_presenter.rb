@@ -41,7 +41,7 @@ class EventPresenter < BasePresenter
   end
 
   def end_date(format = :long)
-    h.l event.end_date, format: format
+    h.l event.end_date, format: format if event.end_date
   end
 
   def location
