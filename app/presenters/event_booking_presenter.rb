@@ -1,7 +1,8 @@
 class EventBookingPresenter < BasePresenter
   presents :event_booking
 
-  delegate :nature_of_business, :phone_number, :name, :company_name, :industry, :email, :price, :stripe_price, to: :event_booking
+  delegate :nature_of_business, :phone_number, :name, :company_name, :industry, :email, :price, :stripe_price,
+           :address_line_1, :address_line_2, :town, :postcode, to: :event_booking
 
   def company_name
     return nil unless event_booking.company_name
@@ -9,8 +10,8 @@ class EventBookingPresenter < BasePresenter
   end
 
   def address
-    return nil unless event_booking.address
-    two_column_row(first_column_content: "Address", second_column_content: h.simple_format(event_booking.address))
+    return nil unless address_fields.blank?
+    two_column_row(first_column_content: "Address", second_column_content: h.simple_format(address_fields.compact.join("\n")))
   end
 
   def industry
@@ -21,6 +22,10 @@ class EventBookingPresenter < BasePresenter
   def nature_of_business
     return nil unless event_booking.nature_of_business
     two_column_row(first_column_content: "Nature of Business", second_column_content: event_booking.nature_of_business)
+  end
+
+  def address_fields
+    [address_line_1, address_line_2, town, postcode].compact.join("\n")
   end
 
 

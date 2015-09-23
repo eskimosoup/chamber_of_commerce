@@ -14,18 +14,13 @@ RSpec.feature "Booking An Event", type: :feature do
     it "allows a booking to be made", js: true do
       go_to_event_booking_page
 
-      fill_in "event_booking_name", with: "Joe Bloggs"
-      fill_in "event_booking_company_name", with: "Acme Inc."
-      fill_in "event_booking_industry", with: "Explosives"
-      fill_in "event_booking_nature_of_business", with: "Carton explosives"
-      fill_in "event_booking_address", with: "123 Looney Tunes Lane"
-      fill_in "event_booking_phone_number", with: "01234 567890"
-      fill_in "event_booking_email", with: "wile.e@coyote.co.uk"
+      fill_in_booking_fields
 
       click_link "Add Attendee"
 
       expect(page).to have_selector("#event-attendees .nested-fields", count: 1)
       within(all("#event-attendees .nested-fields").last) do
+        fill_in "Name", with: "Joe Bloggs"
         fill_in "Phone number", with: "01482 666999"
         fill_in "Email", with: "test@example.com"
         event_agendas.each do |event_agenda|
@@ -54,13 +49,7 @@ RSpec.feature "Booking An Event", type: :feature do
     it "will not allow a booking with no attendees" do
       go_to_event_booking_page
 
-      fill_in "event_booking_name", with: "Joe Bloggs"
-      fill_in "event_booking_company_name", with: "Acme Inc."
-      fill_in "event_booking_industry", with: "Explosives"
-      fill_in "event_booking_nature_of_business", with: "Carton explosives"
-      fill_in "event_booking_address", with: "123 Looney Tunes Lane"
-      fill_in "event_booking_phone_number", with: "01234 567890"
-      fill_in "event_booking_email", with: "wile.e@coyote.co.uk"
+      fill_in_booking_fields
       click_button "Create Booking"
 
       expect(page).to have_content "Attendees can't be blank"
@@ -101,6 +90,19 @@ RSpec.feature "Booking An Event", type: :feature do
 
   def on_current_event_path
     expect(current_path).to eq(event_path(event))
+  end
+
+  def fill_in_booking_fields
+    fill_in "event_booking_name", with: "Joe Bloggs"
+    fill_in "event_booking_company_name", with: "Acme Inc."
+    fill_in "event_booking_industry", with: "Explosives"
+    fill_in "event_booking_nature_of_business", with: "Carton explosives"
+    fill_in "event_booking_address_line_1", with: "123 Looney Tunes Lane"
+    fill_in "event_booking_address_line_2", with: "Looney Tunes Street"
+    fill_in "event_booking_town", with: "Looney Tunes City"
+    fill_in "event_booking_postcode", with: "LT12 3LT"
+    fill_in "event_booking_phone_number", with: "01234 567890"
+    fill_in "event_booking_email", with: "wile.e@coyote.co.uk"
   end
 end
 

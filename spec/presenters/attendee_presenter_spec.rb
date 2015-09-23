@@ -9,6 +9,10 @@ RSpec.describe AttendeePresenter, type: :presenter do
       expect(attendee_presenter.phone_number).to eq(attendee.phone_number)
     end
 
+    it "returns the name" do
+      expect(attendee_presenter.name).to eq(attendee.name)
+    end
+
     it "returns the email" do
       expect(attendee_presenter.email).to eq(attendee.email)
     end

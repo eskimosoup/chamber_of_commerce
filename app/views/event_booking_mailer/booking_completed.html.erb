@@ -23,16 +23,18 @@
       Start: <strong><%= l @event.start_date, format: :long %></strong>
     </td>
   </tr>
-  <tr>
-    <td style="color: #33393e;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        line-height: 14px;
-        margin: 0;
-        padding: 0 0 5px;">
-      End: <strong><%= l @event.end_date, format: :long %></strong>
-    </td>
-  </tr>
+  <% if @event.end_date %>
+    <tr>
+      <td style="color: #33393e;
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+          line-height: 14px;
+          margin: 0;
+          padding: 0 0 5px;">
+        End: <strong><%= l @event.end_date, format: :long %></strong>
+      </td>
+    </tr>
+  <% end %>
   <tr>
     <td style="color: #33393e;
         font-family: Arial, sans-serif;
@@ -155,7 +157,7 @@
         line-height: 14px;
         margin: 0;
         padding: 0 0 5px;">
-      <%= @event_booking.address %>
+      <%= simple_format [@event_booking.address_line_1, @event_booking.address_line_2, @event_booking.town, @event_booking.postcode].compact.join("\n") %>
     </td>
   </tr>
   <tr>
@@ -179,6 +181,11 @@
           margin: 0;
           padding: 0 0 5px;">
         <table border="0" cellpadding="0" cellspacing="0" width="600">
+          <tr>
+            <td colspan="2" style="padding: 0 5px 10px 0;">
+              Name: <strong><%= attendee.name %></strong>
+            </td>
+          </tr>
           <tr>
             <td style="padding: 0 5px 10px 0;">
               Phone Number: <strong><%= attendee.phone_number %></strong>

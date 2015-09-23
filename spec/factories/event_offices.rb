@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :event_office do
-    name "MyString"
-email "MyString"
+    sequence(:name){|n| "Name #{n}" }
+    sequence(:email){|n| "test#{ n }@example.com" }
   end
 
 end

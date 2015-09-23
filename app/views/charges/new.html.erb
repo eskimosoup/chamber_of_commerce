@@ -32,22 +32,13 @@
 
           <h3>Attendees summary</h3>
 
-          <div class="row event-charges-attendee-headings">
-            <div class="small-6 medium-3 columns">
-              Phone Number
-            </div>
-            <div class="small-6 medium-3 columns">
-              Email
-            </div>
-            <div class="small-6 medium-3 columns">
-              Dietary Requirements
-            </div>
-            <div class="small-6 medium-3 columns">
-              Event Agendas
-            </div>
-          </div>
+
 
           <%= render partial: "attendees/attendee", collection: @presented_attendees, as: :presented_attendee %>
+        </div>
+
+        <div class="payment-info">
+          Please ensure you have your card number, expiry date and CVC code ready for payment.
         </div>
 
         <%= form_tag event_booking_charges_path(@presented_event_booking) do %>
