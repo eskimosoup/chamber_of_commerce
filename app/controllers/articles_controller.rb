@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :set_article_categories, only: [:index]
 
   def index
-    @presented_articles = BaseCollectionPresenter.new(collection: Article.non_member_news.published.order(date: :desc).page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: ArticlePresenter)
+    @presented_articles = BaseCollectionPresenter.new(collection: Article.published.order(date: :desc).page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: ArticlePresenter)
   end
 
   def show
