@@ -40,7 +40,8 @@ class EventBooking < ActiveRecord::Base
   end
 
   def self.to_csv(event_id:)
-    attributes = %w{ name company_name industry nature_of_business address phone_number email paid refunded }
+    attributes = %w{ name company_name industry nature_of_business address_line_1 address_line_2 town postcode
+                phone_number email paid refunded }
     attendee_attributes = %w{ phone_number email dietary_requirements agendas }
     headers = attributes + (attendee_attributes * max_attendees(event_id: 1))
     CSV.generate(headers: true) do |csv|

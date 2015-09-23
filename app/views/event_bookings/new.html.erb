@@ -62,30 +62,52 @@
 
             <div class="row">
               <div class="small-12 medium-6 columns">
-                <div class="row">
-                  <div class="small-12 medium-6 columns">
-                    <div class="field">
-                      <%= f.label :email %><br/>
-                      <%= f.email_field :email %>
-                    </div>
-                  </div>
-
-                  <div class="small-12 medium-6 columns">
-                    <div class="field">
-                      <%= f.label :phone_number %><br/>
-                      <%= f.telephone_field :phone_number %>
-                    </div>
-                  </div>
+                <div class="field">
+                  <%= f.label :email %><br/>
+                  <%= f.email_field :email %>
                 </div>
               </div>
 
               <div class="small-12 medium-6 columns">
                 <div class="field">
-                  <%= f.label :address %><br/>
-                  <%= f.text_area :address %>
+                  <%= f.label :phone_number %><br/>
+                  <%= f.telephone_field :phone_number %>
                 </div>
               </div>
             </div>
+
+            <%= field_set_tag "Address" do %>
+              <div class="row">
+                <div class="small-12 medium-6 columns">
+                  <div class="field">
+                    <%= f.label :address_line_1 %><br/>
+                    <%= f.text_field :address_line_1 %>
+                  </div>
+                </div>
+                <div class="small-12 medium-6 columns">
+                  <div class="field">
+                    <%= f.label :address_line_2 %><br/>
+                    <%= f.text_field :address_line_2 %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-12 medium-6 columns">
+                  <div class="field">
+                    <%= f.label :town %><br/>
+                    <%= f.text_field :town %>
+                  </div>
+                </div>
+                <div class="small-12 medium-6 columns">
+                  <div class="field">
+                    <%= f.label :postcode %><br/>
+                    <%= f.text_field :postcode %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
 
             <%= field_set_tag "Attendees", id: "event-attendees" do %>
               <%= f.fields_for :attendees do |attendee| %>
