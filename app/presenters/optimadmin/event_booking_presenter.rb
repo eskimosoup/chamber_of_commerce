@@ -2,8 +2,12 @@ module Optimadmin
   class EventBookingPresenter < Optimadmin::BasePresenter
     presents :event_booking
 
-    delegate :name, :company_name, :industry, :nature_of_business, :phone_number, :email,
+    delegate :company_name, :industry, :nature_of_business, :phone_number, :email,
              :attendees_count, :address, to: :event_booking
+
+    def name
+      [event_booking.forename, event_booking.surname].compact.join(" ")
+    end
 
     def price
       h.number_to_currency event_booking.price

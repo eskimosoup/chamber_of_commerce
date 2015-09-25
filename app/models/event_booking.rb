@@ -7,10 +7,10 @@ class EventBooking < ActiveRecord::Base
 
   scope :paid, ->{ where(paid: true) }
 
-  validates :name, :email, :phone_number, presence: true
+  validates :forename, :surname, :email, :phone_number, presence: true
   validates :attendees, presence: true
   validate :agendas_available, on: :create
-  validates :stripe_charge_id, presence: true, on: :update
+  validates :stripe_charge_id, presence: true, on: :update, unless: :paid?
 
   def price
     price_calculator.price
@@ -40,7 +40,7 @@ class EventBooking < ActiveRecord::Base
   end
 
   def self.to_csv(event_id:)
-    attributes = %w{ name company_name industry nature_of_business address_line_1 address_line_2 town postcode
+    attributes = %w{ forename surname company_name industry nature_of_business address_line_1 address_line_2 town postcode
                 phone_number email paid refunded }
     attendee_attributes = Attendee::CSV_FIELDS
     headers = attributes + (attendee_attributes * max_attendees(event_id: event_id))
