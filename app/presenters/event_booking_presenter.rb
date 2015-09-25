@@ -1,8 +1,12 @@
 class EventBookingPresenter < BasePresenter
   presents :event_booking
 
-  delegate :nature_of_business, :phone_number, :name, :company_name, :industry, :email, :price, :stripe_price,
+  delegate :nature_of_business, :phone_number, :forename, :surname, :company_name, :industry, :email, :price, :stripe_price,
            :address_line_1, :address_line_2, :town, :postcode, to: :event_booking
+
+  def name
+    [forename, surname].compact.join(" ")
+  end
 
   def company_name
     return nil unless event_booking.company_name

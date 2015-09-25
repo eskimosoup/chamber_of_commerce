@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :event_booking do
     event
-    name "MyString"
+    forename "Forename"
+    surname "Surname"
     company_name "MyString"
     industry "MyString"
     nature_of_business "MyString"

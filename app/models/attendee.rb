@@ -1,11 +1,11 @@
 class Attendee < ActiveRecord::Base
 
-  CSV_FIELDS = %w{ name phone_number email dietary_requirements event_agenda_names }
+  CSV_FIELDS = %w{ forename surname phone_number email dietary_requirements event_agenda_names }
   belongs_to :event_booking, counter_cache: true
   has_many :attendee_event_agendas, dependent: :destroy
   has_many :event_agendas, through: :attendee_event_agendas
 
-  validates :attendee_event_agendas, :name, presence: true
+  validates :attendee_event_agendas, :forename, :surname, presence: true
 
   def agendas_total_price
     attendee_event_agenda_prices.reduce(:+)

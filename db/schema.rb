@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923131719) do
+ActiveRecord::Schema.define(version: 20150925144107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,7 +71,8 @@ ActiveRecord::Schema.define(version: 20150923131719) do
     t.text     "dietary_requirements"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.string   "name"
+    t.string   "forename"
+    t.string   "surname"
   end
 
   add_index "attendees", ["event_booking_id"], name: "index_attendees_on_event_booking_id", using: :btree
@@ -97,7 +98,7 @@ ActiveRecord::Schema.define(version: 20150923131719) do
 
   create_table "event_bookings", force: :cascade do |t|
     t.integer  "event_id"
-    t.string   "name",                               null: false
+    t.string   "forename",                           null: false
     t.string   "company_name"
     t.string   "industry"
     t.string   "nature_of_business"
@@ -113,6 +114,7 @@ ActiveRecord::Schema.define(version: 20150923131719) do
     t.string   "address_line_2"
     t.string   "town"
     t.string   "postcode"
+    t.string   "surname"
   end
 
   add_index "event_bookings", ["event_id"], name: "index_event_bookings_on_event_id", using: :btree

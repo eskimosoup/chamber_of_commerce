@@ -5,8 +5,16 @@ class AttendeePresenter < BasePresenter
     attendee.phone_number
   end
 
+  def forename
+    attendee.forename
+  end
+
+  def surname
+    attendee.surname
+  end
+
   def name
-    attendee.name
+    [forename, surname].compact.join(" ")
   end
 
   def email

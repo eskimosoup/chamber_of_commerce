@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Attendee, type: :model do
   describe "validations", :validation do
     it { should validate_presence_of(:attendee_event_agendas) }
-    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:forename) }
+    it { should validate_presence_of(:surname) }
   end
 
   describe "associations", :association do

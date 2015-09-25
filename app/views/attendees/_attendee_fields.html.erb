@@ -1,9 +1,20 @@
 <div class="event-agenda-attendee-fields nested-fields">
   <%= f.hidden_field :id %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <div class="field">
+        <%= f.label :forename %>
+        <%= f.text_field :forename %>
+      </div>
+    </div>
+
+    <div class="small-12 medium-6 columns">
+      <div class="field">
+        <%= f.label :surname %>
+        <%= f.text_field :surname %>
+      </div>
+    </div>
   </div>
 
   <div class="row">

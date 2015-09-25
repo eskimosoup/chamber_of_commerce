@@ -20,7 +20,8 @@ RSpec.feature "Booking An Event", type: :feature do
 
       expect(page).to have_selector("#event-attendees .nested-fields", count: 1)
       within(all("#event-attendees .nested-fields").last) do
-        fill_in "Name", with: "Joe Bloggs"
+        fill_in "Forename", with: "Joe"
+        fill_in "Surname", with: "Bloggs"
         fill_in "Phone number", with: "01482 666999"
         fill_in "Email", with: "test@example.com"
         event_agendas.each do |event_agenda|
@@ -93,7 +94,8 @@ RSpec.feature "Booking An Event", type: :feature do
   end
 
   def fill_in_booking_fields
-    fill_in "event_booking_name", with: "Joe Bloggs"
+    fill_in "event_booking_forename", with: "Joe"
+    fill_in "event_booking_surname", with: "Bloggs"
     fill_in "event_booking_company_name", with: "Acme Inc."
     fill_in "event_booking_industry", with: "Explosives"
     fill_in "event_booking_nature_of_business", with: "Carton explosives"
