@@ -1,8 +1,8 @@
 class EventBooking < ActiveRecord::Base
 
   CSV_ATTRIBUTES = ["forename", "surname", "company_name", "industry", "nature_of_business", "email", "phone_number",
-                  "address_line_1", "address_line_2", "town", "postcode", "paid", "refunded"]
-  CSV_HEADERS = ["Event Booking Id", "Booking Date"].push(*CSV_ATTRIBUTES)
+                  "address_line_1", "address_line_2", "town", "postcode", "paid", "refunded", "payment_method"]
+  CSV_HEADERS = ["Event Booking Id", "Booking Date"].push(*CSV_ATTRIBUTES.map{|x| x.split("_").map(&:titleize).join(" ") })
 
   belongs_to :event, counter_cache: true
   has_many :event_agendas, through: :event
