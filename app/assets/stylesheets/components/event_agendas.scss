@@ -41,6 +41,14 @@
   padding: em(10px);
   margin: 0 0 em(10px);
 
+  .booker-population {
+    font-weight: $bold;
+    color: $deep-grey;
+    float: left;
+    display: none;
+    text-transform: uppercase;
+  }
+
   .remove_fields {
     font-weight: $bold;
     color: $deep-grey;
