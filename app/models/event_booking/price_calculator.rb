@@ -7,6 +7,7 @@ class EventBooking::PriceCalculator
   end
 
   def price
+    return 0 if costs_for_agendas.empty?
     costs_for_agendas.reduce(:+).round(2)
   end
 
@@ -21,7 +22,7 @@ class EventBooking::PriceCalculator
   private
 
   def grouped_event_agendas
-    @grouped_event_agendas ||= attendee_event_agendas.group_by{|x| x}
+    @grouped_event_agendas ||= attendee_event_agendas.group_by{|x| x }
   end
 
   def agenda_attendees_price_calculators

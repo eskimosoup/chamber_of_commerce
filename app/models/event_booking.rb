@@ -1,5 +1,9 @@
 class EventBooking < ActiveRecord::Base
 
+  CSV_ATTRIBUTES = ["forename", "surname", "company_name", "industry", "nature_of_business", "email", "phone_number",
+                  "address_line_1", "address_line_2", "town", "postcode", "paid", "refunded"]
+  CSV_HEADERS = ["Event Booking Id", "Booking Date"].push(*CSV_ATTRIBUTES)
+
   belongs_to :event, counter_cache: true
   has_many :event_agendas, through: :event
   has_many :attendees, dependent: :destroy
@@ -35,28 +39,12 @@ class EventBooking < ActiveRecord::Base
     @agenda_id_frequency ||= attendee_event_agenda_ids.each_with_object(Hash.new(0)) {|id, result| result[id] += 1 }
   end
 
-  def attendees_csv_attributes
-    attendees.map(&:csv_attributes).flatten
+  def csv_attributes
+    attrs = [id, created_at.strftime("%Y-%m-%d %H:%M:%S+%H:%M")]
+    attrs.push(*attributes.values_at(*CSV_ATTRIBUTES))
+    attrs
   end
 
-  def self.to_csv(event_id:)
-    attributes = %w{ forename surname company_name industry nature_of_business address_line_1 address_line_2 town postcode
-                phone_number email paid refunded }
-    attendee_attributes = Attendee::CSV_FIELDS
-    headers = attributes + (attendee_attributes * max_attendees(event_id: event_id))
-    CSV.generate(headers: true) do |csv|
-      csv << headers
-      includes(:attendees).where(event_id: event_id).each do |booking|
-        row = booking.attributes.values_at(*attributes)
-        row.push(*booking.attendees_csv_attributes)
-        csv << row
-      end
-    end
-  end
-
-  def self.max_attendees(event_id:)
-    where(event_id: event_id).maximum(:attendees_count)
-  end
 
   private
 
