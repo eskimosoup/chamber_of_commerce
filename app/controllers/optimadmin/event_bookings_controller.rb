@@ -11,7 +11,7 @@ module Optimadmin
                                                                     view_template: view_context, presenter: Optimadmin::EventBookingPresenter)
         end
         format.csv do
-          send_data EventBooking.to_csv(event_id: @event.id)
+          send_data EventAgenda.to_csv(@event.id)
         end
       end
     end

@@ -1,6 +1,7 @@
 class Attendee < ActiveRecord::Base
 
-  CSV_FIELDS = %w{ forename surname phone_number email dietary_requirements event_agenda_names }
+  CSV_FIELDS = %w{ forename surname email phone_number dietary_requirements }
+  CSV_HEADERS = CSV_FIELDS.map{|x| "Attendee #{ x.split("_").map(&:titleize).join(" ") }" }
   belongs_to :event_booking, counter_cache: true
   has_many :attendee_event_agendas, dependent: :destroy
   has_many :event_agendas, through: :attendee_event_agendas

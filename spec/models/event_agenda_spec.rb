@@ -12,6 +12,7 @@ RSpec.describe EventAgenda, type: :model do
     it { should belong_to(:event) }
     it { should belong_to(:event_category) }
     it { should have_many(:attendee_event_agendas).dependent(:nullify) }
+    it { should have_many(:attendees).through(:attendee_event_agendas) }
   end
 
   describe "calculating open spaces" do
