@@ -7,10 +7,15 @@ class EventBookingsController < ApplicationController
   end
 
   def create
-    @event_booking = @event.event_bookings.new(event_booking_params)
-    if @event_booking.save
-      redirect_to new_event_booking_charge_path(@event_booking)
+    event_booking_creator = CreateEventBooking.new(@event, event_booking_params)
+    if event_booking_creator.save
+      if event_booking_creator.paid?
+        redirect_to @event, notice: "Thank you for your booking"
+      else
+        redirect_to new_event_booking_charge_path(event_booking_creator.event_booking)
+      end
     else
+      @event_booking = event_booking_creator.event_booking
       render :new
     end
   end
