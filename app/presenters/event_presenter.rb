@@ -90,7 +90,7 @@ class EventPresenter < BasePresenter
 
   def booking_button
     return nil unless event.allow_booking?
-    h.link_to "Book now", booking_link, id: "book-event", class: "button"
+    h.link_to "Book now", booking_link, id: "book-event", class: "button" if event.event_agendas.present?
   end
 
   def booking_title
