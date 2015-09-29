@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include MemberSessionsHelper, Optimadmin::AdminSessionsHelper
+  helper_method :current_administrator
 
   before_action :global_site_settings, :load_objects, :current_member
   before_action :aside_content

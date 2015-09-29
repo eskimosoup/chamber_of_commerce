@@ -126,7 +126,7 @@
             <% end %>
 
             <div class="actions">
-              <% if current_administrator? %>
+              <% if current_administrator.present? %>
                 <%= f.submit "Offline payment", class: 'button' %>
               <% else %>
                 <%= f.submit "Create Booking", class: 'button' %>
