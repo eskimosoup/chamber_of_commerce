@@ -11,7 +11,7 @@ module Optimadmin
 
     def address
       return nil unless address_fields.blank?
-      h.simple_format(address_fields.compact.join("\n"))
+      h.simple_format(address_fields)
     end
 
     def price
