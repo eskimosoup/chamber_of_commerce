@@ -15,7 +15,7 @@ class EventBookingPresenter < BasePresenter
 
   def address
     return nil unless address_fields.blank?
-    two_column_row(first_column_content: "Address", second_column_content: h.simple_format(address_fields.compact.join("\n")))
+    two_column_row(first_column_content: "Address", second_column_content: h.simple_format(address_fields))
   end
 
   def industry
