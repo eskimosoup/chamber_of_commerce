@@ -2,11 +2,16 @@ module Optimadmin
   class EventBookingPresenter < Optimadmin::BasePresenter
     presents :event_booking
 
-    delegate :company_name, :industry, :nature_of_business, :phone_number, :email,
-             :attendees_count, :address, to: :event_booking
+    delegate :company_name, :industry, :nature_of_business, :phone_number, :email, :payment_method,
+             :attendees_count, :address_line_1, :address_line_2, :town, :postcode, to: :event_booking
 
     def name
       [event_booking.forename, event_booking.surname].compact.join(" ")
+    end
+
+    def address
+      return nil unless address_fields.blank?
+      h.simple_format(address_fields.compact.join("\n"))
     end
 
     def price
@@ -65,6 +70,10 @@ module Optimadmin
 
     def event_slug
       event.slug
+    end
+
+    def address_fields
+      [address_line_1, address_line_2, town, postcode].compact.join("\n")
     end
 
   end
