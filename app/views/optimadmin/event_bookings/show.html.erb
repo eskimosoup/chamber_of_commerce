@@ -134,6 +134,14 @@
     </div>
     <% if @event_booking_presenter.paid? %>
       <div class="row">
+        <div class="small-3 columns">
+          Payment Method
+        </div>
+        <div class="small-9 columns">
+          <%= @event_booking_presenter.payment_method %>
+        </div>
+      </div>
+      <div class="row">
         <% if @event_booking_presenter.refunded? %>
           <div class="small-3 columns">
             Refunded
@@ -141,7 +149,7 @@
           <div class="small-9 columns">
             <%= @event_booking_presenter.refunded %>
           </div>
-        <% else %>
+        <% elsif @event_booking_presenter.stripe_charge_id.present? %>
           <div class="small-12 columns">
             <h3>Refund</h3>
             <%= form_for :refund, url: refund_event_event_booking_path(@event, @event_booking) do |f| %>
