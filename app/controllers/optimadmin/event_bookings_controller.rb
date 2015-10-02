@@ -7,13 +7,18 @@ module Optimadmin
     def index
       respond_to do |format|
         format.html do
-          @event_bookings = Optimadmin::BaseCollectionPresenter.new(collection: @event.event_bookings.includes(attendees: :event_agendas).order(created_at: :desc).page(params[:page]).per(params[:per_page] || 15),
+          @event_bookings = Optimadmin::BaseCollectionPresenter.new(collection: @event.event_bookings.includes(attendees: :event_agendas).paid_not_refunded.order(created_at: :desc).page(params[:page]).per(params[:per_page] || 15),
                                                                     view_template: view_context, presenter: Optimadmin::EventBookingPresenter)
         end
         format.csv do
           send_data EventAgenda.to_csv(@event.id)
         end
       end
+    end
+
+    def unpaid_or_refunded
+      @event_bookings = Optimadmin::BaseCollectionPresenter.new(collection: @event.event_bookings.includes(attendees: :event_agendas).unpaid_or_refunded.order(refunded: :desc, created_at: :desc).page(params[:page]).per(params[:per_page] || 15),
+                                                                view_template: view_context, presenter: Optimadmin::EventBookingPresenter)
     end
 
     def show
@@ -32,8 +37,7 @@ module Optimadmin
     end
 
     def event_agendas
-      @agendas = @event.event_agendas.includes(attendee_event_agendas: { attendee: :event_booking })
-      #@event_booking_agendas = @event.event_bookings.order(created_at: :desc).group_by(&:event_agendas)
+      @agendas = @event.event_bookings.paid_not_refunded.first.event_agendas.includes(attendee_event_agendas: { attendee: :event_booking })
     end
 
   private

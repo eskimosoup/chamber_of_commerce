@@ -5,12 +5,12 @@
 
   <% @agendas.each do |agenda| %>
     <h1><%= agenda.name %></h1>
-
     <% atendee_number = 0 %>
     <% agenda.attendee_event_agendas.each_with_index do |attendees, index| %>
+      <% next if attendees.attendee.event_booking.paid != true || attendees.attendee.event_booking.refunded == true  %>
       <% atendee_number = atendee_number + 1  %>
       <p>
-        <strong><%= link_to "#{attendees.attendee.event_booking.name}#{" (#{attendees.attendee.event_booking.company_name})" if attendees.attendee.event_booking.company_name.present?}", event_event_booking_path(attendees.attendee.event_booking.event_id, attendees.attendee.event_booking.id) %></strong>
+        <strong><%= link_to "#{attendees.attendee.event_booking.forename} #{attendees.attendee.event_booking.surname} #{" (#{attendees.attendee.event_booking.company_name})" if attendees.attendee.event_booking.company_name.present?}", event_event_booking_path(attendees.attendee.event_booking.event_id, attendees.attendee.event_booking.id) %></strong>
         (<%=  attendees.attendee.event_booking.phone_number %>)
         <%= mail_to  attendees.attendee.event_booking.email %>
         <br />
