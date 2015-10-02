@@ -28,104 +28,98 @@
               </div>
             <% end %>
 
-            <div class="row">
-              <div class="small-12 medium-6 columns">
-                <div class="field">
-                  <%= f.label :forename %><br/>
-                  <%= f.text_field :forename %>
-                </div>
-              </div>
-
-              <div class="small-12 medium-6 columns">
-                <div class="field">
-                  <%= f.label :surname %><br/>
-                  <%= f.text_field :surname %>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="small-12 columns">
-                <div class="field">
-                  <%= f.label :company_name %><br/>
-                  <%= f.text_field :company_name %>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="small-12 medium-6 columns">
-                <div class="field">
-                  <%= f.label :industry %><br/>
-                  <%= f.text_field :industry %>
-                </div>
-              </div>
-
-              <div class="small-12 medium-6 columns">
-                <div class="field">
-                  <%= f.label :nature_of_business %><br/>
-                  <%= f.text_field :nature_of_business %>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="small-12 medium-6 columns">
-                <div class="field">
-                  <%= f.label :email %><br/>
-                  <%= f.email_field :email %>
-                </div>
-              </div>
-
-              <div class="small-12 medium-6 columns">
-                <div class="field">
-                  <%= f.label :phone_number %><br/>
-                  <%= f.telephone_field :phone_number %>
-                </div>
-              </div>
-            </div>
-
-            <%= field_set_tag "Address" do %>
+            <div class="event-booking-details">
               <div class="row">
                 <div class="small-12 medium-6 columns">
                   <div class="field">
-                    <%= f.label :address_line_1 %><br/>
-                    <%= f.text_field :address_line_1 %>
+                    <%= f.label :forename %><br/>
+                    <%= f.text_field :forename %>
                   </div>
                 </div>
+
                 <div class="small-12 medium-6 columns">
                   <div class="field">
-                    <%= f.label :address_line_2 %><br/>
-                    <%= f.text_field :address_line_2 %>
+                    <%= f.label :surname %><br/>
+                    <%= f.text_field :surname %>
                   </div>
                 </div>
               </div>
 
               <div class="row">
-                <div class="small-12 medium-6 columns">
+                <div class="small-12 columns">
                   <div class="field">
-                    <%= f.label :town %><br/>
-                    <%= f.text_field :town %>
-                  </div>
-                </div>
-                <div class="small-12 medium-6 columns">
-                  <div class="field">
-                    <%= f.label :postcode %><br/>
-                    <%= f.text_field :postcode %>
+                    <%= f.label :company_name %><br/>
+                    <%= f.text_field :company_name %>
                   </div>
                 </div>
               </div>
-            <% end %>
+
+              <div class="field">
+                <%= f.label :nature_of_business %><br/>
+                <%= f.text_field :nature_of_business %>
+              </div>
+
+              <div class="row">
+                <div class="small-12 medium-6 columns">
+                  <div class="field">
+                    <%= f.label :email %><br/>
+                    <%= f.email_field :email %>
+                  </div>
+                </div>
+
+                <div class="small-12 medium-6 columns">
+                  <div class="field">
+                    <%= f.label :phone_number %><br/>
+                    <%= f.telephone_field :phone_number %>
+                  </div>
+                </div>
+              </div>
+
+              <%= field_set_tag "Company Address" do %>
+                <div class="row">
+                  <div class="small-12 medium-6 columns">
+                    <div class="field">
+                      <%= f.label :address_line_1 %><br/>
+                      <%= f.text_field :address_line_1 %>
+                    </div>
+                  </div>
+                  <div class="small-12 medium-6 columns">
+                    <div class="field">
+                      <%= f.label :address_line_2 %><br/>
+                      <%= f.text_field :address_line_2 %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="small-12 medium-6 columns">
+                    <div class="field">
+                      <%= f.label :town %><br/>
+                      <%= f.text_field :town %>
+                    </div>
+                  </div>
+                  <div class="small-12 medium-6 columns">
+                    <div class="field">
+                      <%= f.label :postcode %><br/>
+                      <%= f.text_field :postcode %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+            <%= link_to 'Next', '#event-attendees', class: 'button event-process next add-event-attendees', data: { container: "#event-attendees, .actions, .event-booking-details, .event-process.previous, .event-process.next", class: 'hide', return: 'false' } %>
+            <%= link_to 'Previous', '#event-attendees', class: 'button event-process previous toggle-class hide', data: { container: "#event-attendees, .actions, .event-booking-details, .event-process.previous, .event-process.next", class: 'hide', return: 'false' } %>
 
 
-            <%= field_set_tag "Attendees", id: "event-attendees" do %>
+            <%= field_set_tag "Attendees", id: "event-attendees", class: 'hide' do %>
               <%= f.fields_for :attendees do |attendee| %>
                 <%= render "attendees/attendee_fields", f: attendee %>
               <% end %>
-              <%= link_to_add_association "Add Attendee", f, :attendees, partial: "attendees/attendee_fields" %>
+              <%= link_to_add_association "Add Another Attendee", f, :attendees, partial: "attendees/attendee_fields" %>
             <% end %>
 
-            <div class="actions">
+            <div class="actions hide">
               <% if current_administrator.present? %>
                 <%= f.submit "Offline payment", class: 'button' %>
               <% else %>

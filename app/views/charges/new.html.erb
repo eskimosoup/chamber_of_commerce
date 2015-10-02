@@ -38,7 +38,7 @@
         </div>
 
         <div class="payment-info">
-          Please ensure you have your card number, expiry date and CVC code ready for payment.
+          Please ensure you have your card holder's name and address, the card number, expiry date and CVC code ready for payment.
         </div>
 
         <%= form_tag event_booking_charges_path(@presented_event_booking) do %>
@@ -53,7 +53,8 @@
                   data-amount="<%= @presented_event_booking.stripe_price %>"
                   data-email="<%= @presented_event_booking.email %>"
                   data-currency="gbp"
-                  data-allow-remember-me="false"></script>
+                  data-allow-remember-me="false"
+                  data-billing-address="true"></script>
         <% end %>
       </div>
     </div>
