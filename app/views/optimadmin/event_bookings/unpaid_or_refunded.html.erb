@@ -2,19 +2,12 @@
 
 
 <div class="main-content">
-  <!-- <p>Please click the downward arrow to for expanded information; you will see the event agendas for the booking.</p> -->
-
+  <%= render 'optimadmin/shared/module/form/back', path: event_event_bookings_path, title: 'Paid Event Bookings' %>
 
   <div class="row module-header collapse">
     <div class="small-12 columns">
       <h2><%= @event_presenter.name %></h2>
-      <p>This list shows only those who have <strong>paid</strong> and have <strong>not</strong> had their payment <strong>refunded</strong>.</p>
-      <p>
-        <%= link_to "Download CSV of bookings", event_event_bookings_path(format: :csv), target: "_blank", class: "button" %> |
-        <%= link_to "View unpaid or refunded", unpaid_or_refunded_event_event_bookings_path(@event.id), class: "button" %>
-      </p>
-
-      <%= link_to 'View expanded details for each booking', event_agendas_event_event_bookings_path(@event.id), class: 'action-button' %>
+      <p>These bookings have <strong>either</strong> been <strong>refunded</strong> <em>or</em> have <strong>not paid</strong>. Refunded bookings show before those who have not paid.</p>
     </div>
   </div>
 

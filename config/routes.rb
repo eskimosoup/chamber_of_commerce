@@ -127,6 +127,7 @@ Optimadmin::Engine.routes.draw do
       collection do
         post 'order'
         get 'event-agendas'
+        get 'unpaid_or_refunded'
       end
       member do
         get 'toggle'

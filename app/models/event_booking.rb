@@ -10,6 +10,8 @@ class EventBooking < ActiveRecord::Base
   accepts_nested_attributes_for :attendees, reject_if: :all_blank, allow_destroy: true
 
   scope :paid, ->{ where(paid: true) }
+  scope :paid_not_refunded, ->{ paid.where("refunded != ?", true) }
+  scope :unpaid_or_refunded, ->{ where("paid != :true OR refunded = :true", true: true) }
 
   validates :forename, :surname, :email, :phone_number, presence: true
   validates :attendees, presence: true
