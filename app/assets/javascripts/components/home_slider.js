@@ -5,9 +5,10 @@ function slick() {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 5000,
-    slidesToShow: 7,
+    slidesToShow: 5,
     slidesToScroll: 1,
-    infinite: false
+    infinite: false,
+    adaptiveHeight: true
   });
   $('.scrolling-slider .content:not(.hide)').slick('reinit');
 }

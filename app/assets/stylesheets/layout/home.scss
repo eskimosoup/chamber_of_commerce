@@ -162,6 +162,10 @@
     margin: 0 auto;
     width: 90%;
 
+    @media screen and (min-width: 768px) {
+      height: 301px;
+    }
+
     .row {
       border-bottom: 1px solid $light-grey;
       padding: em(10px) 0;
