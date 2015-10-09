@@ -7,7 +7,7 @@ class Member::Import
     CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
       member = assign_member_from_csv_row(row)
       new_record = member.new_record?
-      if member.save
+      if member.save(validate: false)
         if new_record
           @imported_count += 1
         else

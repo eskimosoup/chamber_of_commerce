@@ -9,11 +9,12 @@ class Member < ActiveRecord::Base
   has_many :industries, through: :member_industries
 
 
-  validates :company_name, :address, :telephone,
-            :nature_of_business, presence: true
+  #validates :company_name, :address, :telephone,
+            #:nature_of_business, presence: true
 
   #validates :company_name, uniqueness: true
-  validates :email, email: true, allow_blank: true
+  #validates :email, email: true, allow_blank: true
+  validates :company_name, presence: true
 
   scope :company_name, -> (company_name) { where("company_name ILIKE ?", "%#{company_name}%") if company_name.present? }
   # http://stackoverflow.com/a/29798772
