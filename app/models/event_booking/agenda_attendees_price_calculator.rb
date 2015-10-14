@@ -4,7 +4,13 @@ class EventBooking::AgendaAttendeesPriceCalculator
   def initialize(event_agenda:, number_of_attendees:)
     @event_agenda = event_agenda
     @number_of_attendees = number_of_attendees
-    @tables, @individuals = number_of_attendees.divmod(table_size)
+    if event_agenda.table_size.zero?
+      @tables = 0
+      @individuals = number_of_attendees
+    else
+      @tables, @individuals = number_of_attendees.divmod(table_size)
+    end
+
   end
 
   def price
