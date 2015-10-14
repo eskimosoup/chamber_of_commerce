@@ -5,6 +5,23 @@ RSpec.describe EventBooking::AgendaAttendeesPriceCalculator, type: :model do
   describe "working out tables needed" do
     let(:event_agenda) { build(:event_agenda, table_size: 2) }
 
+    describe "event agenda has no tables" do
+      let(:event_agenda) { build(:event_agenda, table_size: 0) }
+      subject(:agenda_price_calc) { EventBooking::AgendaAttendeesPriceCalculator.new(event_agenda: event_agenda, number_of_attendees: 2) }
+
+      it "should have no tables" do
+        expect(agenda_price_calc.tables).to eq(0)
+      end
+
+      it "should have 2 individuals" do
+        expect(agenda_price_calc.individuals).to eq(2)
+      end
+
+      it "should return the price correctly, with no discount" do
+        expect(agenda_price_calc.price).to eq((agenda_price_calc.number_of_attendees * event_agenda.price))
+      end
+    end
+
     describe "no attendees" do
       subject(:agenda_price_calc) { EventBooking::AgendaAttendeesPriceCalculator.new(event_agenda: event_agenda, number_of_attendees: 0) }
 
