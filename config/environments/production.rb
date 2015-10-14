@@ -1,9 +1,10 @@
 Rails.application.configure do
   config.logger = Logger.new(config.paths['log'].first, 3, 5242880)
 
-  Rails.application.routes.default_url_options[:host] = 'www.ludo5.co.uk'
+  Rails.application.routes.default_url_options[:host] = 'chamber.ludo5.co.uk'
 
-  config.action_mailer.asset_host = "http://www.hull-humber-chamber.co.uk"
+  #config.action_mailer.asset_host = "http://www.hull-humber-chamber.co.uk"
+  config.action_mailer.asset_host = "http://chamber.ludo5.co.uk"
 
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {

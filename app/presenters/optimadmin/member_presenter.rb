@@ -3,7 +3,7 @@ module Optimadmin
     presents :member
 
     def title
-      member.company_name
+      member.company_name  if member.company_name.present?
     end
 
     def toggle_title

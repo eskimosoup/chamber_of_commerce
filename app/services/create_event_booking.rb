@@ -42,7 +42,7 @@ class CreateEventBooking
 
   def payment_method
     if event_booking.price.zero?
-      "N/A"
+      "Free"
     elsif administrator?
       "Offline"
     else

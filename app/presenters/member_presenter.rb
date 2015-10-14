@@ -2,15 +2,15 @@ class MemberPresenter < BasePresenter
   presents :member
 
   def company_name
-    member.company_name
+    member.company_name if member.company_name.present?
   end
 
   def address
-    "#{member.address.gsub("\n", '<br />')} #{member.post_code}".html_safe
+    "#{member.address.gsub("\n", '<br />')} #{member.post_code}".html_safe if member.address.present?
   end
 
   def linked_company_name(options = {})
-    h.link_to member.company_name, member, options
+    h.link_to member.company_name, member, options if member.company_name.present?
   end
 
   def website(options = {})
@@ -19,7 +19,7 @@ class MemberPresenter < BasePresenter
   end
 
   def email
-    h.mail_to member.email
+    h.mail_to member.email  if member.email.present?
   end
 
   def email_present?
@@ -27,7 +27,7 @@ class MemberPresenter < BasePresenter
   end
 
   def telephone
-    member.telephone
+    member.telephone  if member.telephone.present?
   end
 
   def telephone_present?
