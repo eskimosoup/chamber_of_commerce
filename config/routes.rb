@@ -102,6 +102,7 @@ Optimadmin::Engine.routes.draw do
       end
     end
     collection do
+      get '/destroy_non_csv_members', to: "members#destroy_non_csv_members", as: 'destroy_non_csv'
       get :import_csv
       post 'order'
       post :import

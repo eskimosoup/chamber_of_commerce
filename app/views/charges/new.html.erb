@@ -14,9 +14,9 @@
               <h3><%= @presented_event.name %></h3>
 
               <div class="main-details">
-                Start <strong><%= @presented_event.start_date %></strong>
-                End <strong><%= @presented_event.end_date %></strong>
-                Location <strong><%= @presented_event.location %></strong>
+                <%= @presented_event.dates %><br />
+                Location <strong><%= @presented_event.location %> <br />
+                <%= @presented_event.location_address %></strong>
               </div>
 
               <%= @presented_event.summary %>
@@ -47,14 +47,23 @@
               <span>Amount (inc. VAT): <%= number_to_currency @presented_event_booking.price %></span>
             </label>
           </div>
-          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                  data-description="<%= "Booking for #{ @presented_event.name }" %>"
-                  data-amount="<%= @presented_event_booking.stripe_price %>"
-                  data-email="<%= @presented_event_booking.email %>"
-                  data-currency="gbp"
-                  data-allow-remember-me="false"
-                  data-billing-address="true"></script>
+
+          <% if @presented_event.booking_deadline.present? && @presented_event.booking_deadline <= DateTime.now %>
+            <p>Bookings are no longer being taken for this event.</p>
+          <% elsif @presented_event.booking_deadline.present? && @presented_event.booking_deadline > DateTime.now %>
+            <p>Bookings made after <strong><%= @presented_event.booking_deadline(:long) %></strong> may still be charged but will not valid, please contact us for a refund if you accidentally book after this time.</p>
+          <% end %>
+
+          <% if (@presented_event.booking_deadline.present? && @presented_event.booking_deadline > DateTime.now) || @presented_event.booking_deadline.blank? %>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-description="<%= "Booking for #{ @presented_event.name }" %>"
+                    data-amount="<%= @presented_event_booking.stripe_price %>"
+                    data-email="<%= @presented_event_booking.email %>"
+                    data-currency="gbp"
+                    data-allow-remember-me="false"
+                    data-billing-address="true"></script>
+          <% end %>
         <% end %>
       </div>
     </div>

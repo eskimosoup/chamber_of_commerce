@@ -4,7 +4,7 @@ module Optimadmin
     before_action :set_event, only: [:show, :edit, :update, :destroy]
 
     def index
-      @events = Optimadmin::BaseCollectionPresenter.new(collection: Event.where('name ILIKE ?', "%#{params[:search]}%").order(start_date: :desc).page(params[:page]).per(params[:per_page] || 15).order(params[:order] || "created_at desc"), view_template: view_context, presenter: Optimadmin::EventPresenter)
+      @events = Optimadmin::BaseCollectionPresenter.new(collection: Event.where('name ILIKE ?', "%#{params[:search]}%").order(start_date: :desc).page(params[:page]).per(params[:per_page] || 15).order(params[:order] || "start_date desc"), view_template: view_context, presenter: Optimadmin::EventPresenter)
     end
 
     def show
@@ -49,7 +49,7 @@ module Optimadmin
     def event_params
       params.require(:event).permit(:name, :event_agendas, :start_date, :end_date, :remote_image_url, :image_cache,
                                     :remove_image, :image, :event_location_id, :description, :display, :summary,
-                                    :event_office_id, :booking_confirmation_information, :eventbrite_link, :allow_booking)
+                                    :event_office_id, :booking_confirmation_information, :eventbrite_link, :allow_booking, :booking_deadline)
     end
   end
 end

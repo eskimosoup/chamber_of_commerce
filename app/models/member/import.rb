@@ -4,6 +4,7 @@ class Member::Import
 
   def process!
     @imported_count, @updated_count = 0, 0
+    Member.update_all(in_csv: false)
     CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
       member = assign_member_from_csv_row(row)
       new_record = member.new_record?
@@ -37,6 +38,7 @@ class Member::Import
   def assign_member_from_csv_row(row)
     member_details = make_hash_from_row(row)
     member = Member.find_or_initialize_by(chamber_db_id: row[:id_no])
+    member.update_attributes(in_csv: true)
     member.assign_attributes(member_details)
     member
   end

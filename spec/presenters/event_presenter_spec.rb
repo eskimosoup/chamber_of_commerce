@@ -51,6 +51,10 @@ RSpec.describe EventPresenter, type: :presenter do
         content = "Start <strong>#{ l event.start_date, format: :long }</strong> End <strong>#{ l event.end_date, format: :long }</strong>"
         expect(event_presenter.dates).to eq(content)
       end
+
+      it "return nil for the booking deadline" do
+        expect(event_presenter.booking_deadline).to eq(nil)
+      end
     end
 
     describe "no end date" do
@@ -59,6 +63,23 @@ RSpec.describe EventPresenter, type: :presenter do
       it "should simply display the start date" do
         content = "<strong>#{ l event.start_date, format: :long }</strong>"
         expect(event_presenter.dates).to eq(content)
+      end
+    end
+
+    describe "date formatting" do
+      let(:event) { build(:event, booking_deadline: Date.tomorrow) }
+      subject(:event_presenter) { EventPresenter.new(object: event, view_template: view) }
+
+      it "should return the booking deadline date with default format" do
+        expect(event_presenter.booking_deadline).to eq(l event.booking_deadline, format: :default)
+      end
+
+      it "should return the booking deadline date with short format" do
+        expect(event_presenter.booking_deadline(:short)).to eq(l event.booking_deadline, format: :short)
+      end
+
+      it "should return the booking deadline date with long format" do
+        expect(event_presenter.booking_deadline(:long)).to eq(l event.booking_deadline, format: :long)
       end
     end
   end

@@ -36,7 +36,7 @@ $(document).on("click", ".add-event-attendees", function(e) {
   if($(this).attr('data-clicked') === undefined) {
     $('.add_fields').click();
     setMainBookerDetails();
-    $('.booker-population, .remove_fields').hide();
+    $('.booker-population, .remove_fields, .guest-attendee').hide();
     $(this).attr('data-clicked', 'true');
   }
 

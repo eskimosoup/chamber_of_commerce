@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
   #scope :bookable, -> (bookable) { where allow_booking: bookable }
   scope :has_tables, -> (has_tables) { includes(:event_categories).where event_categories: { has_tables: has_tables } }
   scope :food_event, -> (food_event) { includes(:event_categories).where event_categories: { food_event: food_event } }
-  scope :upcoming, -> { where('display = :display AND start_date >= :date AND ( end_date >= :date OR end_date is NULL )', display: true, date: Date.today).order(start_date: :asc) }
+  scope :upcoming, -> { where('display = :display AND ( end_date >= :date OR end_date is NULL )', display: true, date: Date.today).order(start_date: :asc) }
   scope :admin, -> (current_administrator) { unscoped if current_administrator.present? }
 
   mount_uploader :image, EventUploader

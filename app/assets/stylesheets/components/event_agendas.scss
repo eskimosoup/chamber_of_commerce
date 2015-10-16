@@ -49,15 +49,25 @@
     text-transform: uppercase;
   }
 
-  .remove_fields {
+  .remove_fields,
+  .guest-attendee {
     font-weight: $bold;
     color: $deep-grey;
-    float: right;
     text-transform: uppercase;
+  }
+
+  .guest-attendee {
+    float: left;
+  }
+
+  .remove_fields {
+    float: right;
   }
 }
 
-.add_fields {
+.add_fields,
+.add-attendee,
+.add-guest {
   background: $pale-blue;
   color: $white;
   font-weight: $bold;

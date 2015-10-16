@@ -3,8 +3,8 @@ class Member < ActiveRecord::Base
   extend FriendlyId
   friendly_id :company_name, use: [:slugged, :history]
 
-  has_one :member_login
-  has_many :member_offers
+  has_one :member_login, dependent: :destroy
+  has_many :member_offers, dependent: :destroy
   has_many :member_industries, dependent: :destroy
   has_many :industries, through: :member_industries
 
