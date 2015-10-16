@@ -3,15 +3,20 @@ class EventBookingsController < ApplicationController
   before_action :set_event_and_agendas
 
   def new
+    redirect_to @event, notice: "Bookings are no longer being taken for this event" if @event.booking_deadline.present? && @event.booking_deadline <= DateTime.now
     @event_booking = @event.event_bookings.new
   end
 
   def create
+    return redirect_to @event, notice: "Bookings are no longer being taken for this event" if @event.booking_deadline.present? && @event.booking_deadline <= DateTime.now
     event_booking_creator = CreateEventBooking.new(@event, event_booking_params, current_administrator.present?)
     if event_booking_creator.save
       @event_booking = event_booking_creator.event_booking
       if event_booking_creator.paid?
-        EventBookingMailer.booking_completed(@event_booking, @event_booking.event).deliver_now
+        EventBookingMailer.booking_completed(@event_booking.email, @event_booking, @event_booking.event, true).deliver_now
+        @event_booking.attendees.pluck(:email).each do |attendee_email|
+          EventBookingMailer.booking_completed(attendee_email, @event_booking, @event_booking.event).deliver_now if attendee_email.present? && @event_booking.email != attendee_email
+        end
         redirect_to @event, notice: "Thank you for your booking"
       else
         redirect_to new_event_booking_charge_path(@event_booking)

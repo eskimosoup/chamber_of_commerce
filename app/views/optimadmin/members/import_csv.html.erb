@@ -28,4 +28,29 @@
       <%= f.submit "Upload" %>
     </div>
   <% end %>
+
+  <% if @members.present? %>
+
+    <p>The following members did not appear within the last CSV upload, please consider whether you would like to delete them.</p>
+
+    <p>You can toggle the status of these by setting 'In CSV' to 'Yes', which will exclude it from the delete all.</p>
+
+    <div class="row collapse module-list-index header">
+      <%= list_item 'large-4 small-6' do 'Company Name' end %>
+      <%= list_item 'large-3 hide-for-small' do 'Member login' end %>
+      <%= list_item { 'In CSV' } %>
+      <%= list_item { 'Verified' } %>
+      <%= list_item { 'View' } %>
+      <%= list_item { 'Edit' } %>
+
+      <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
+    </div>
+
+    <%= render partial: 'import_member', collection: @members, as: :member_presenter %>
+
+    <p>You can delete all of the above records at once by pressing the button below.</p>
+
+    <%= link_to 'Delete All', destroy_non_csv_members_path, class: 'action-button' %>
+
+  <% end %>
 </div>

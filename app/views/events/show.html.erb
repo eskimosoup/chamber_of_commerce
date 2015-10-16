@@ -5,7 +5,7 @@
         <h1><%= @presented_event.name %></h1>
 
         <%= render "shared/flash_messages" %>
-        
+
         <div class="main-details">
           <%= @presented_event.dates %>
           Location <strong><%= @presented_event.location %></strong>
@@ -28,6 +28,12 @@
         <% end %>
 
         <%= @presented_event.booking_button %>
+
+        <% if @presented_event.booking_deadline.present? && @presented_event.booking_deadline <= DateTime.now %>
+          <p>Bookings are no longer being taken for this event.</p>
+        <% elsif @presented_event.booking_deadline.present? && @presented_event.booking_deadline > DateTime.now %>
+          <p>The deadline for bookings is <strong><%= @presented_event.booking_deadline(:long) %></strong>.</p>
+        <% end %>
       </div>
     </div>
 

@@ -1,7 +1,14 @@
-<%= content_for :head do %>
 
-<% end %>
 <%= content_for :footer do %>
+  <% if @event_booking.errors.any? %>
+    <script>
+    $(function() {
+      $('.add-event-attendees').attr('data-clicked', 'true');
+      guestify();
+    })
+    </script>
+  <% end %>
+
   <%= javascript_include_tag "components/event_booking_cocoon" %>
 <% end %>
 
@@ -116,7 +123,10 @@
               <%= f.fields_for :attendees do |attendee| %>
                 <%= render "attendees/attendee_fields", f: attendee %>
               <% end %>
-              <%= link_to_add_association "Add Another Attendee", f, :attendees, partial: "attendees/attendee_fields" %>
+              <%= link_to_add_association "Add Another Attendee", f, :attendees, class: 'hide', partial: "attendees/attendee_fields" %>
+              <%= link_to 'Add Attendee', '#', class: 'add-attendee left' %>
+              <%= link_to 'Add Guest', '#', class: 'add-guest right' %>
+              <%#= link_to_add_association "Add Guest", f, :attendees, partial: "attendees/attendee_fields" %>
             <% end %>
 
             <div class="actions hide">

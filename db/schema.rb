@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150928115056) do
+ActiveRecord::Schema.define(version: 20151016082539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 20150928115056) do
     t.string   "eventbrite_link"
     t.boolean  "allow_booking",                    default: true
     t.integer  "event_office_id"
+    t.datetime "booking_deadline"
   end
 
   add_index "events", ["event_agendas_id"], name: "index_events_on_event_agendas_id", using: :btree
@@ -279,13 +280,14 @@ ActiveRecord::Schema.define(version: 20150928115056) do
     t.boolean  "verified"
     t.text     "nature_of_business"
     t.integer  "member_login_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "slug"
     t.integer  "member_offers_count", default: 0
     t.string   "fax"
     t.string   "post_code"
     t.integer  "chamber_db_id"
+    t.boolean  "in_csv",              default: true
   end
 
   add_index "members", ["chamber_db_id"], name: "index_members_on_chamber_db_id", using: :btree

@@ -28,9 +28,19 @@ class AttendeePresenter < BasePresenter
   def event_agendas
     h.content_tag :ul do
       attendee.event_agendas.map do |event_agenda|
-        h.concat(h.content_tag(:li, event_agenda.name))
+        h.concat(h.content_tag(:li, "#{event_agenda.name} <br /> #{event_agenda_start(event_agenda)} - #{event_agenda_end(event_agenda)}".html_safe))
       end
     end
   end
+
+  private
+
+    def event_agenda_start(event_agenda)
+      h.l event_agenda.start_time, format: :short
+    end
+
+    def event_agenda_end(event_agenda)
+      h.l event_agenda.end_time, format: :short
+    end
 
 end

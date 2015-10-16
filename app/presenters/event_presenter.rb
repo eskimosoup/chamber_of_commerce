@@ -48,6 +48,10 @@ class EventPresenter < BasePresenter
     h.link_to event.event_location.location_name, event.event_location, title: event.event_location.location_name
   end
 
+  def location_address
+    event.event_location.address
+  end
+
   def summary
     h.simple_format event.summary
   end
@@ -90,11 +94,16 @@ class EventPresenter < BasePresenter
 
   def booking_button
     return nil unless event.allow_booking?
-    h.link_to "Book now", booking_link, id: "book-event", class: "button" if event.event_agendas.present?
+    h.link_to "Book now", booking_link, id: "book-event", class: "button" if event.event_agendas.present? && ((event.booking_deadline.present? && event.booking_deadline >= DateTime.now) || event.booking_deadline.blank?)
   end
 
   def booking_title
     "Book #{ name }"
+  end
+
+  def booking_deadline(format = :default)
+    return nil if event.booking_deadline.blank?
+    h.l event.booking_deadline, format: format
   end
 
   private

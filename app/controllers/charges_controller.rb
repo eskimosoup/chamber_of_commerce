@@ -19,7 +19,10 @@ class ChargesController < ApplicationController
       currency: "gbp"
     )
     if @event_booking.update(paid: true, stripe_charge_id: charge.id)
-      EventBookingMailer.booking_completed(@event_booking, @event_booking.event).deliver_now
+      EventBookingMailer.booking_completed(@event_booking.email, @event_booking, @event_booking.event, true).deliver_now
+      @event_booking.attendees.pluck(:email).each do |attendee_email|
+        EventBookingMailer.booking_completed(attendee_email, @event_booking, @event_booking.event).deliver_now if attendee_email.present? && @event_booking.email != attendee_email
+      end
       redirect_to @presented_event, notice: "Thank you for your payment"
     else
       render :new
