@@ -10,4 +10,11 @@ class EventBookingMailer < ApplicationMailer
       mail to: email_to, from: @event.event_office.email, subject: "Booking Confirmation for #{ @event.name }"
     end
   end
+
+  def booking_refunded(event_booking)
+    @event_booking = event_booking
+    @event = @event_booking.event
+    mail to: @event_booking.email, from: @event.event_office.email, bcc: @event.event_office.email,
+         subject: "Confirmation of refund for #{ @event.name }"
+  end
 end
