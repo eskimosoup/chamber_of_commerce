@@ -44,7 +44,7 @@ class EventAgenda < ActiveRecord::Base
   private
 
   def attendee_event_agendas_count
-    attendee_event_agendas.count
+    attendee_event_agendas.joins(attendee: :event_booking).where(event_bookings: { paid: true, refunded: false }).count
   end
 
   def sensible_times
