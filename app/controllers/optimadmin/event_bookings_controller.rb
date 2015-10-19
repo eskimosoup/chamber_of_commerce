@@ -29,7 +29,7 @@ module Optimadmin
       redirect_to event_event_bookings_path(@event, @event_booking), notice: "Booking has already been refunded" if @event_booking.refunded?
       refund = Stripe::Refund.create(params[:refund])
       @event_booking.update_attribute(:refunded, true)
-      EventBookingMailer.booking_refunded.deliver_now(@event_booking)
+      EventBookingMailer.booking_refunded(@event_booking).deliver_now
       redirect_to event_event_bookings_path(@event), notice: "Successfully refunded"
     rescue Stripe::InvalidRequestError, Stripe::APIError => e
       logger.error "Stripe error while creating customer: #{e.message}"
