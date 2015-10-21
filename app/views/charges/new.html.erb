@@ -48,13 +48,13 @@
             </label>
           </div>
 
-          <% if @presented_event.booking_deadline.present? && @presented_event.booking_deadline <= DateTime.now %>
+          <% if @presented_event.booking_deadline.present? && @presented_event.booking_deadline <= Time.zone.now %>
             <p>Bookings are no longer being taken for this event.</p>
-          <% elsif @presented_event.booking_deadline.present? && @presented_event.booking_deadline > DateTime.now %>
+          <% elsif @presented_event.booking_deadline.present? && @presented_event.booking_deadline > Time.zone.now %>
             <p>Bookings made after <strong><%= @presented_event.booking_deadline(:long) %></strong> may still be charged but will not valid, please contact us for a refund if you accidentally book after this time.</p>
           <% end %>
 
-          <% if (@presented_event.booking_deadline.present? && @presented_event.booking_deadline > DateTime.now) || @presented_event.booking_deadline.blank? %>
+          <% if (@presented_event.booking_deadline.present? && @presented_event.booking_deadline > Time.zone.now) || @presented_event.booking_deadline.blank? %>
             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                     data-description="<%= "Booking for #{ @presented_event.name }" %>"
