@@ -4,7 +4,7 @@ class ApplicationMailer < ActionMailer::Base
 
   def site_email
     @site_email = begin
-      site_setting = Optimadmin::SiteSetting.find_by(key: "Email")
+      site_setting = Optimadmin::SiteSetting.where(environment: Rails.env).find_by(key: "Email")
       if site_setting
         site_setting.value
       else
@@ -15,7 +15,7 @@ class ApplicationMailer < ActionMailer::Base
 
   def member_offer_email
     @site_email = begin
-      site_setting = Optimadmin::SiteSetting.find_by(key: "Member Offers Email")
+      site_setting = Optimadmin::SiteSetting.where(environment: Rails.env).find_by(key: "Member Offers Email")
       if site_setting
         site_setting.value
       else
@@ -26,7 +26,7 @@ class ApplicationMailer < ActionMailer::Base
 
   def site_name
     @site_name = begin
-      site_setting = Optimadmin::SiteSetting.find_by(key: "Name")
+      site_setting = Optimadmin::SiteSetting.where(environment: Rails.env).find_by(key: "Name")
       if site_setting
         site_setting.value
       else
