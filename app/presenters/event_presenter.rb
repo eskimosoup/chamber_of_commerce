@@ -94,7 +94,7 @@ class EventPresenter < BasePresenter
 
   def booking_button
     return nil unless event.allow_booking?
-    h.link_to "Book now", booking_link, id: "book-event", class: "button" if event.event_agendas.present? && ((event.booking_deadline.present? && event.booking_deadline >= Time.zone.now) || event.booking_deadline.blank?)
+    h.link_to "Book now", booking_link, id: "book-event", class: "button" if display_booking_button?
   end
 
   def booking_title
@@ -119,5 +119,10 @@ class EventPresenter < BasePresenter
 
   def wrapped_end_date
     "End " + h.content_tag(:strong, end_date)
+  end
+
+  def display_booking_button?
+    event.event_agendas.present? &&
+        ((event.booking_deadline.present? && event.booking_deadline >= Time.zone.now) || event.booking_deadline.blank?)
   end
 end
