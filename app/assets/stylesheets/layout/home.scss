@@ -150,6 +150,12 @@
 .scrolling-slider {
   background: $white;
 
+  .slick-vertical .slick-slide {
+    display: flex;
+    align-items: center;
+    min-height: 64px;
+  }
+
   .row {
     margin-left: em(20px);
   }
