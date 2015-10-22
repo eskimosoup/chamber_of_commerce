@@ -5,10 +5,10 @@ function slick() {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 5000,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     infinite: false,
-    adaptiveHeight: true
+    adaptiveHeight: false
   });
   $('.scrolling-slider .content:not(.hide)').slick('reinit');
 }
