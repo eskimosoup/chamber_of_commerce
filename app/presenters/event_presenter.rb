@@ -23,6 +23,10 @@ class EventPresenter < BasePresenter
     h.link_to name, event, options
   end
 
+  def linked_truncated_title(options = {}, truncate = 136)
+    h.link_to (h.truncate(name, length: truncate)), event, options
+  end
+
   def dates
     return h.raw h.content_tag(:strong, start_date) unless event.end_date
     h.raw [wrapped_start_date, wrapped_end_date].compact.join(" ")
