@@ -5,7 +5,7 @@ function slick() {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 5000,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     infinite: false,
     adaptiveHeight: false

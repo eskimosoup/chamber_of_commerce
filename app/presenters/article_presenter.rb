@@ -17,6 +17,10 @@ class ArticlePresenter < BasePresenter
     h.link_to article.title, article, options
   end
 
+  def linked_truncated_title(options = {}, truncate_length = 136)
+    h.link_to (h.truncate(article.title, length: truncate_length)), article, options
+  end
+
   def date(format = :long)
     h.content_tag :span, class: 'date' do
       h.l article.date, format: format
