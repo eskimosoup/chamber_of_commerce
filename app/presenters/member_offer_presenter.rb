@@ -16,7 +16,11 @@ class MemberOfferPresenter < BasePresenter
   end
 
   def linked_title(options = {})
-    h.link_to member_offer.title, member_member_offer_path(member_offer.member, member_offer), options
+    h.link_to title, member_offer_path, options
+  end
+
+  def linked_truncated_title(options = {}, truncate_length = 136)
+    h.link_to (h.truncate(title, length: truncate_length)), member_offer_path, options
   end
 
   def summary
@@ -109,5 +113,11 @@ class MemberOfferPresenter < BasePresenter
     #h.content_tag :div, class: 'small-details' do
       h.link_to 'Edit this offer', edit_member_member_offer_path(current_member, member_offer), class: 'edit-button' if current_member == member_offer.member && ( (member_offer.end_date && member_offer.end_date >= Date.today) || member_offer.end_date.blank? )
     #end
+  end
+
+  private
+
+  def member_offer_path
+    member_member_offer_path(member_offer.member, member_offer)
   end
 end
