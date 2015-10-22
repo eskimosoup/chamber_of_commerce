@@ -23,8 +23,8 @@ class EventPresenter < BasePresenter
     h.link_to name, event, options
   end
 
-  def linked_truncated_title(options = {}, truncate = 136)
-    h.link_to (h.truncate(name, length: truncate)), event, options
+  def linked_truncated_title(options = {}, truncate_length = 136)
+    h.link_to (h.truncate(name, length: truncate_length)), event, options
   end
 
   def dates
