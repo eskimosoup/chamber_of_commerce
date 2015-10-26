@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :member_offers, path: 'offers'
 
     collection do
-      get 'a-to-z-directroy', to: 'members#directory', as: 'directory'
+      get 'a-to-z-directory', to: 'members#directory', as: 'directory'
       get 'edit'
       patch 'update', as: 'update'
     end
