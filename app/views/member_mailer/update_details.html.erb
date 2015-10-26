@@ -19,14 +19,6 @@
       </p>
     <% end %>
 
-    <% unless @new_details.industry == @member.industry %>
-      <p>
-        <strong>Industry:</strong>
-        <br />
-        <%= @new_details.industry %>
-      </p>
-    <% end %>
-
     <% unless (simple_format @new_details.address) == @member.address %>
       <p>
         <strong>Address:</strong>
