@@ -72,7 +72,7 @@
 
 
           <div class="payment-info">
-            Please ensure you have your card holder's name and address, the card number, expiry date and CVC code ready for the payment of <strong><%= number_to_currency (vat_inclusive_price @presented_event_booking.price) %></strong>.
+            Please ensure you have your card holder's name and address, the card number, expiry date and CVC code ready for the payment of <strong><%= number_to_currency (@presented_event_booking.stripe_price / 100) %></strong>.
           </div>
 
           <% if @presented_event.booking_deadline.present? && @presented_event.booking_deadline <= Time.zone.now %>
