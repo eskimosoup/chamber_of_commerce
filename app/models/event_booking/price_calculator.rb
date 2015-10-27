@@ -12,7 +12,7 @@ class EventBooking::PriceCalculator
   end
 
   def stripe_price
-    (price * 100).to_i * 1.2
+    ((price * 100).to_i * 1.2).to_i
   end
 
   def attendee_event_agendas
