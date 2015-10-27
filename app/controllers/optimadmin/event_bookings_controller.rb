@@ -1,6 +1,8 @@
 module Optimadmin
   class EventBookingsController < Optimadmin::ApplicationController
 
+    include Optimadmin::EventHelper
+
     before_action :set_event
     before_action :set_event_booking, only: [:show, :refund]
 

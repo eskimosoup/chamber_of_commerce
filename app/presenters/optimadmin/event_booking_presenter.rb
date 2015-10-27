@@ -15,6 +15,10 @@ module Optimadmin
     end
 
     def price
+      event_booking.price
+    end
+
+    def price_formatted
       h.number_to_currency event_booking.price
     end
 

@@ -121,10 +121,28 @@
 
     <div class="row">
       <div class="small-3 columns">
-        Cost (inc. VAT)
+        Cost (ex. VAT)
       </div>
       <div class="small-9 columns">
-        <%= @event_booking_presenter.price %>
+        <%= @event_booking_presenter.price_formatted %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-3 columns">
+        VAT
+      </div>
+      <div class="small-9 columns">
+        <%= number_to_currency @event_booking_presenter.price * 0.2 %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-3 columns">
+        <strong>Total price</strong>
+      </div>
+      <div class="small-9 columns">
+        <strong><%= number_to_currency (@event_booking_presenter.stripe_price / 100) %></strong>
       </div>
     </div>
     <div class="row">
@@ -153,6 +171,7 @@
             <%= @event_booking_presenter.refunded %>
           </div>
         <% elsif @event_booking_presenter.stripe_charge_id.present? %>
+          <p>This will refund <strong><%= number_to_currency (@event_booking_presenter.stripe_price / 100) %></strong>.</p>
           <div class="small-12 columns">
             <h3>Refund</h3>
             <%= form_for :refund, url: refund_event_event_booking_path(@event, @event_booking) do |f| %>

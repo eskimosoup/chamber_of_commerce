@@ -1,4 +1,4 @@
-module EventHelper
+module Optimadmin::EventHelper
 
   def event_agenda_price(price)
     if price.zero?

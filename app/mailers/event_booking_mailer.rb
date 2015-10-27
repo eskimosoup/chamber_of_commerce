@@ -1,4 +1,5 @@
 class EventBookingMailer < ApplicationMailer
+  add_template_helper(EventHelper)
 
   def booking_completed(email_to, event_booking, event, bcc = false)
     @event_booking = event_booking
