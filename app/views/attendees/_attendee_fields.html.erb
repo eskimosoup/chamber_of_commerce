@@ -46,7 +46,7 @@
     <%= f.collection_check_boxes(:event_agenda_ids, @event.event_agendas, :id, :name, {}) do |b| %>
       <div class="event-agenda-checkbox-select">
         <%= b.label(for: "event-agenda-checkbox-#{ b.object.id }") do %>
-          <%= "#{ b.object.name } - #{ event_agenda_price(b.object.price) }  (inc. VAT)" %>
+          <%= "#{ b.object.name } - #{ event_agenda_price(b.object.price) }  (ex. VAT)" %>
         <% end %>
 
         <% if b.object.must_book == true %>

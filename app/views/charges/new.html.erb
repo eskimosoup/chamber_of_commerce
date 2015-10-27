@@ -37,15 +37,42 @@
           <%= render partial: "attendees/attendee", collection: @presented_attendees, as: :presented_attendee %>
         </div>
 
-        <div class="payment-info">
-          Please ensure you have your card holder's name and address, the card number, expiry date and CVC code ready for payment.
-        </div>
-
         <%= form_tag event_booking_charges_path(@presented_event_booking) do %>
           <div class="event-charges-payment-summary">
-            <label class="amount">
-              <span>Amount (inc. VAT): <%= number_to_currency @presented_event_booking.price %></span>
-            </label>
+            <div class="row">
+              <div class="medium-2 columns">
+                Amount (ex. VAT):
+              </div>
+              <div class="medium-10 columns">
+                <%= number_to_currency @presented_event_booking.price %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="medium-2 columns">
+                VAT:
+              </div>
+              <div class="medium-10 columns">
+                <%= number_to_currency (vat_total @presented_event_booking.price) %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="medium-2 columns">
+                <strong>Total (inc. VAT):</strong>
+              </div>
+              <div class="medium-10 columns">
+                <label class="amount">
+                  <span><%= number_to_currency (vat_inclusive_price @presented_event_booking.price) %></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="payment-info">
+            Please ensure you have your card holder's name and address, the card number, expiry date and CVC code ready for the payment of <strong><%= number_to_currency (vat_inclusive_price @presented_event_booking.price) %></strong>.
           </div>
 
           <% if @presented_event.booking_deadline.present? && @presented_event.booking_deadline <= Time.zone.now %>

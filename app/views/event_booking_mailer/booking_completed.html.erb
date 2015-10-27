@@ -280,8 +280,30 @@
         font-size: 14px;
         line-height: 14px;
         margin: 0;
+        padding: 0 0 5px;">
+      Price (ex. VAT): <%= number_to_currency @event_booking.price %>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0 0 5px;">
+      VAT: <%= number_to_currency (vat_total @event_booking.price) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="color: #33393e;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
         padding: 0 0 25px;">
-      Price (inc. VAT): <strong><%= number_to_currency @event_booking.price %></strong>
+      Total (inc. VAT): <strong><%= number_to_currency (vat_inclusive_price @event_booking.price) %></strong>
     </td>
   </tr>
 

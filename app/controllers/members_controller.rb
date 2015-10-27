@@ -14,7 +14,7 @@ class MembersController < ApplicationController
   end
 
   def directory
-    @additional_content = AdditionalContentPresenter.new(object: AdditionalContent.find_by(area: 'Members - Directroy'), view_template: view_context)
+    @additional_content = AdditionalContentPresenter.new(object: AdditionalContent.find_by(area: 'Members - Directory'), view_template: view_context)
     @presented_members = Member.order("LOWER(company_name)").group_by{|x| x.company_name.titleize.first}
   end
 

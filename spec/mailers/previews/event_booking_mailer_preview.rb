@@ -5,4 +5,9 @@ class EventBookingMailerPreview < ActionMailer::Preview
     @event = @event_booking.event
     EventBookingMailer.booking_completed(@event_booking.email, @event_booking, @event, true)
   end
+  def booking_refunded
+    @event_booking = EventBooking.last
+    @event = @event_booking.event
+    EventBookingMailer.booking_completed(@event_booking.email, @event_booking, @event, true)
+  end
 end
