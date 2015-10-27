@@ -61,7 +61,7 @@ class MemberOfferPresenter < BasePresenter
 
   def information_message
     content = h.content_tag :div, 'This offer has now expired.', class: 'member-offer-information-message' if member_offer.end_date && member_offer.end_date < Date.today && member_offer.verified.present?
-    content = h.content_tag :div, 'This offer is upcoming and is only viewable after its start date.', class: 'member-offer-information-message' if member_offer.start_date && member_offer.start_date > Date.today && member_offer.verified.present?
+    #content = h.content_tag :div, 'This offer is upcoming and is only viewable after its start date.', class: 'member-offer-information-message' if member_offer.start_date && member_offer.start_date > Date.today && member_offer.verified.present?
     content = h.content_tag :div, 'This offer is not yet verified.', class: 'member-offer-information-message' unless member_offer.verified.present?
     content
   end
