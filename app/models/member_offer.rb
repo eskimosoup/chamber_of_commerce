@@ -14,9 +14,9 @@ class MemberOffer < ActiveRecord::Base
 
   scope :verified, -> { where(verified: true) }
   scope :unverified, -> { where("verified <> ? OR verified is NULL", true) }
-  scope :upcoming, -> { where("start_date > ? AND verified = ?", Date.today, true) }
+  #scope :upcoming, -> { where("start_date > ? AND verified = ?", Date.today, true) }
   scope :out_of_date_scope, -> { where("end_date < ? AND verified = ?", Date.today, true) }
-  scope :current, -> { where("(start_date <= :today OR start_date IS NULL) AND (end_date >= :today OR end_date IS NULL)", today: Date.today) }
+  scope :current, -> { where("end_date >= :today OR end_date IS NULL", today: Date.today) }
   scope :member_id, -> (member_id) { joins(:member).where(member_id: member_id) }
 
   after_save :verify_member

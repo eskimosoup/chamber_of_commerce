@@ -61,7 +61,7 @@ class MemberOfferPresenter < BasePresenter
 
   def information_message
     content = h.content_tag :div, 'This offer has now expired.', class: 'member-offer-information-message' if member_offer.end_date && member_offer.end_date < Date.today && member_offer.verified.present?
-    content = h.content_tag :div, 'This offer is upcoming and is only viewable after its start date.', class: 'member-offer-information-message' if member_offer.start_date && member_offer.start_date > Date.today && member_offer.verified.present?
+    #content = h.content_tag :div, 'This offer is upcoming and is only viewable after its start date.', class: 'member-offer-information-message' if member_offer.start_date && member_offer.start_date > Date.today && member_offer.verified.present?
     content = h.content_tag :div, 'This offer is not yet verified.', class: 'member-offer-information-message' unless member_offer.verified.present?
     content
   end
@@ -79,7 +79,11 @@ class MemberOfferPresenter < BasePresenter
 
   def date(format = :long)
     h.content_tag :span, class: 'date' do
-      h.l member_offer.created_at.to_date, format: format
+      if member_offer.start_date > Date.today
+        "Starts #{h.l member_offer.start_date, format: format}"
+      else
+        "Ends #{h.l member_offer.end_date, format: format}"
+      end
     end
   end
 

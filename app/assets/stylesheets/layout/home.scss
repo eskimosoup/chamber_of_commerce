@@ -65,7 +65,7 @@
     line-height: 1;
     position: absolute;
     right: em(10px);
-    text-align: right;
+    text-align: center;
     width: 60px;
 
     @include responsive-to(small) {
