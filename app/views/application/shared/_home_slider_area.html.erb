@@ -2,19 +2,19 @@
   <div class="row collapse">
     <div class="small-11 slider-focus medium-5 columns">
       <% if @presented_events.present? %>
-        <div class="home-events">
+        <div class="home-events<%= ' hide' unless global_site_settings['Home Slider'] == "Events" %>">
           <%= render partial: 'application/home_slider/content_preview', collection: @presented_events, as: :module_presenter %>
         </div>
       <% end %>
 
       <% if @presented_articles.present? %>
-        <div class="home-articles" class="hide">
+        <div class="home-articles<%= ' hide' unless global_site_settings['Home Slider'] == "News" %>">
           <%= render partial: 'application/home_slider/content_preview', collection: @presented_articles, as: :module_presenter %>
         </div>
       <% end %>
 
       <% if @presented_members_offers.present? %>
-        <div class="home-members-offers" class="hide">
+        <div class="home-members-offers<%= ' hide' unless global_site_settings['Home Slider'] == "Members' Offers" %>">
           <%= render partial: 'application/home_slider/content_preview', collection: @presented_members_offers, as: :module_presenter %>
         </div>
       <% end %>
@@ -23,19 +23,19 @@
     <div class="small-12 medium-7 columns">
       <ul class="content-focus-tabs">
         <% if @presented_events.present? %>
-          <li class="active">
+          <li <%= 'class=active' if global_site_settings['Home Slider'] == "Events" %>>
             <%= link_to 'Events', '#', data: { slider: '.home-events' } %>
           </li>
         <% end %>
 
         <% if @presented_articles.present? %>
-          <li>
+          <li <%= 'class=active' if global_site_settings['Home Slider'] == "News" %>>
             <%= link_to 'News', '#', data: { slider: '.home-articles' } %>
           </li>
         <% end %>
 
         <% if @presented_members_offers.present? %>
-          <li>
+          <li <%= 'class=active' if global_site_settings['Home Slider'] == "Members' Offers" %>>
             <%= link_to "Members' Offers", '#', data: { slider: '.home-members-offers' } %>
           </li>
         <% end %>
@@ -46,15 +46,15 @@
           <%= link_to (image_tag 'layout/home/arrow-up.png'), '#', class: 'home-arrow-up' %>
         </div>
 
-        <div class="home-events content">
+        <div class="home-events content<%= ' hide' unless global_site_settings['Home Slider'] == "Events" %>">
           <%= render partial: 'application/home_slider/link_list', collection: @presented_events, as: :module_presenter %>
         </div>
 
-        <div class="home-articles content hide">
+        <div class="home-articles content<%= ' hide' unless global_site_settings['Home Slider'] == "News" %>">
           <%= render partial: 'application/home_slider/link_list', collection: @presented_articles, as: :module_presenter %>
         </div>
 
-        <div class="home-members-offers content hide">
+        <div class="home-members-offers content<%= ' hide' unless global_site_settings['Home Slider'] == "Members' Offers" %>">
           <%= render partial: 'application/home_slider/link_list', collection: @presented_members_offers, as: :module_presenter %>
         </div>
 
