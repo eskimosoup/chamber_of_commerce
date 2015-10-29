@@ -9,6 +9,13 @@
     </script>
   <% end %>
 
+  <script>
+    $(document).on('submit', '.new_event_booking', function() {
+      $('.create-booking-button').attr('disabled', 'disabled');
+      return true;
+    });
+  </script>
+
   <%= javascript_include_tag "components/event_booking_cocoon" %>
 <% end %>
 
@@ -133,7 +140,7 @@
               <% if current_administrator.present? %>
                 <%= f.submit "Offline payment", class: 'button' %>
               <% else %>
-                <%= f.submit "Create Booking", class: 'button' %>
+                <%= f.submit "Create Booking", class: 'button create-booking-button' %>
               <% end %>
             </div>
           <% end %>
