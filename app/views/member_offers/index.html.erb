@@ -31,19 +31,6 @@
             </div>
 
             <p>
-              <%= link_to '#upcoming-offers', class: 'toggle-class', data: { container: '#upcoming-offers', class: 'hide', return: 'false' } do %>
-                Upcoming (<%= @upcoming_member_offers.size %>)
-              <% end %>
-            </p>
-
-
-            <div id="upcoming-offers" class="hide">
-              <%= render(partial: 'member_offers/member_offer',
-                  collection: @upcoming_member_offers,
-                  as: :presented_member_offer) || 'There are 0 offers upcoming.' %>
-            </div>
-
-            <p>
               <%= link_to '#expired', class: 'toggle-class', data: { container: '#expired', class: 'hide', return: 'false' } do %>
                 Expired (<%= @expired_member_offers.size %>)
               <% end %>
