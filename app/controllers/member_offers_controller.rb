@@ -14,7 +14,7 @@ class MemberOffersController < ApplicationController
     @member_offers = BaseCollectionPresenter.new(collection: @member.member_offers.current.verified, view_template: view_context, presenter: MemberOfferPresenter)
     @expired_member_offers = BaseCollectionPresenter.new(collection: @member.member_offers.out_of_date_scope, view_template: view_context, presenter: MemberOfferPresenter) if current_member
     @unverified_member_offers = BaseCollectionPresenter.new(collection: @member.member_offers.unverified, view_template: view_context, presenter: MemberOfferPresenter) if current_member
-    @upcoming_member_offers = BaseCollectionPresenter.new(collection: @member.member_offers.upcoming, view_template: view_context, presenter: MemberOfferPresenter) if current_member
+    #@upcoming_member_offers = BaseCollectionPresenter.new(collection: @member.member_offers.upcoming, view_template: view_context, presenter: MemberOfferPresenter) if current_member
   end
 
   def show
