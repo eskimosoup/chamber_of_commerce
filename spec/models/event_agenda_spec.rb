@@ -4,6 +4,7 @@ RSpec.describe EventAgenda, type: :model do
   describe "validations" do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:event_category) }
+    it { should validate_presence_of(:price) }
     it { should validate_numericality_of(:table_size).only_integer }
     it { should validate_numericality_of(:table_discount).allow_nil }
   end
