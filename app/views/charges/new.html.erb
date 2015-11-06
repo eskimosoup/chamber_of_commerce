@@ -72,7 +72,7 @@
 
 
           <div class="payment-info">
-            Please ensure you have your card holder's name and address, the card number, expiry date and CVC code ready for the payment of <strong><%= number_to_currency (@presented_event_booking.stripe_price / 100) %></strong>.
+            Please ensure you have your card holder's name and address, the card number, expiry date and CVC code ready for the payment of <strong><%= number_to_currency ((@presented_event_booking.stripe_price.to_f / 100).to_f) %></strong>.
           </div>
 
           <% if @presented_event.booking_deadline.present? && @presented_event.booking_deadline <= Time.zone.now %>
@@ -87,6 +87,7 @@
                     data-description="<%= "Booking for #{ @presented_event.name }" %>"
                     data-amount="<%= @presented_event_booking.stripe_price %>"
                     data-email="<%= @presented_event_booking.email %>"
+                    data-panel-label="Pay {{amount}}"
                     data-currency="gbp"
                     data-allow-remember-me="false"
                     data-billing-address="true"></script>
