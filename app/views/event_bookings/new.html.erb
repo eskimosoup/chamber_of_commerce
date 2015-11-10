@@ -25,8 +25,6 @@
       <div class="main-content-wrap">
         <h1><%= @presented_event.booking_title %></h1>
 
-        <p>Please fill in your details and then add each attendee. If you wish to attend the event, you must add yourself as an attendee too.</p>
-
         <div class="content">
           <%= form_for [@event, @event_booking] do |f| %>
             <% if @event_booking.errors.any? %>
@@ -43,6 +41,8 @@
             <% end %>
 
             <div class="event-booking-details">
+              <p>Please fill in your details and then add each attendee. If you wish to attend the event, you must add yourself as an attendee too.</p>
+
               <div class="row">
                 <div class="small-12 medium-6 columns">
                   <div class="field">
@@ -127,6 +127,22 @@
 
 
             <%= field_set_tag "Attendees", id: "event-attendees", class: 'hide' do %>
+              <p>
+                If you are booking a place on behalf of someone else then please
+                change the Attendee details below.
+              </p>
+
+              <p>
+                If you require additional places please click Add Attendee or
+                if you do not know attendee names at this time please use Add Guest.
+              </p>
+
+              <p>
+                If the event has a discount for
+                groups or tables this will be calculated based on the number of
+                Attendees/Guests entered below.
+              </p>
+
               <%= f.fields_for :attendees do |attendee| %>
                 <%= render "attendees/attendee_fields", f: attendee %>
               <% end %>

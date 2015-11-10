@@ -6,6 +6,7 @@ class MemberLogin < ActiveRecord::Base
   validates :member, presence: { message: "company can't be blank" },
                      uniqueness: { message: 'company already has a login' }
   validates :username, presence: true, uniqueness: true
+  validates :contact_name, presence: true
 
   def generate_auth_token
     self.auth_token = secure_auth_token
