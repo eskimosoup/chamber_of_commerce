@@ -49,7 +49,7 @@ module Optimadmin
     end
 
     def member_login_params
-      params.require(:member_login).permit(:username, :password, :password_confirmation, :active)
+      params.require(:member_login).permit(:contact_name, :username, :password, :password_confirmation, :active)
     end
   end
 end

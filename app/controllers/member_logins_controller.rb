@@ -33,7 +33,7 @@ class MemberLoginsController < ApplicationController
 
   private
     def member_login_params
-      params.require(:member_login).permit(:member_id, :username, :password, :password_confirmation)
+      params.require(:member_login).permit(:member_id, :contact_name, :username, :password, :password_confirmation)
     end
 
     def load_content
