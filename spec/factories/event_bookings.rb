@@ -14,6 +14,10 @@ FactoryGirl.define do
     email "MyString"
     paid false
 
+    before(:create) do |booking, evaluator|
+      booking.attendees = evaluator.attendees if evaluator.attendees.present?
+    end
+
     factory :event_booking_with_attendees do
       after(:build) do |event_booking|
         event_booking.attendees = create_list(:attendee, rand(1..3), event_booking: event_booking)

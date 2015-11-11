@@ -20,6 +20,7 @@ RSpec.describe EventPresenter, type: :presenter do
       subject(:event_presenter) { EventPresenter.new(object: event, view_template: view) }
       it "should link to the event booking path" do
         book_button = link_to "Book now", new_event_event_booking_path(event), id: "book-event", class: "button"
+        allow(event_presenter).to receive(:display_booking_button?).and_return(true)
         expect(event_presenter.booking_button).to eq(book_button)
       end
     end
@@ -29,6 +30,7 @@ RSpec.describe EventPresenter, type: :presenter do
       subject(:event_presenter) { EventPresenter.new(object: event, view_template: view) }
       it "should have a booking button that links to eventbrite" do
         book_button = link_to "Book now", event.eventbrite_link, id: "book-event", class: "button"
+        allow(event_presenter).to receive(:display_booking_button?).and_return(true)
         expect(event_presenter.booking_button).to eq(book_button)
       end
     end

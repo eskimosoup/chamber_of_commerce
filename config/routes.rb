@@ -133,6 +133,7 @@ Optimadmin::Engine.routes.draw do
       member do
         get 'toggle'
         post :refund
+        post :cancel
       end
     end
   end

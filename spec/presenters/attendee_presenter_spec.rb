@@ -30,7 +30,7 @@ RSpec.describe AttendeePresenter, type: :presenter do
     it "should return a list of event agendas" do
       event_agendas = content_tag :ul do
         attendee.event_agendas.map do |event_agenda|
-          concat(content_tag(:li, event_agenda.name))
+          concat(content_tag(:li, "#{event_agenda.name} <br /> #{l event_agenda.start_time, format: :short } - #{ l event_agenda.end_time, format: :short }".html_safe))
         end
       end
       expect(attendee_presenter.event_agendas).to eq(event_agendas)
