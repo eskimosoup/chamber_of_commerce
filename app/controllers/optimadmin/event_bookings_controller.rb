@@ -4,7 +4,7 @@ module Optimadmin
     include Optimadmin::EventHelper
 
     before_action :set_event
-    before_action :set_event_booking, only: [:show, :refund]
+    before_action :set_event_booking, only: [:show, :refund, :cancel]
 
     def index
       respond_to do |format|
@@ -37,6 +37,11 @@ module Optimadmin
       logger.error "Stripe error while creating customer: #{e.message}"
       flash[:error] = e.message
       render :show
+    end
+
+    def cancel
+      @event_booking.update_attribute(:refunded, true)
+      redirect_to event_event_bookings_path(@event), notice: "Successfully cancelled booking"
     end
 
     def event_agendas

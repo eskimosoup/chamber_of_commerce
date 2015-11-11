@@ -187,6 +187,17 @@
               </div>
             <% end %>
           </div>
+        <% else %>
+          <div class="small-12 columns">
+            <h3>Cancel</h3>
+
+            <p>This will <strong>cancel</strong> the booking.</p>
+            <%= form_for :cancellation, url: cancel_event_event_booking_path(@event, @event_booking) do |f| %>
+              <div class="actions">
+                <%= f.submit "Cancel" %>
+              </div>
+            <% end %>
+          </div>
         <% end %>
       </div>
     <% end %>
