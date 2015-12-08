@@ -67,6 +67,12 @@
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
 
+      <% if Event.layouts.size > 1 %>
+        <div class="field">
+          <%= f.label :layout %><br />
+          <%= f.select :layout, Event.layouts.map{ |x| [t(x), x] } %>
+        </div>
+      <% end %>
 
       <div class="field">
         <%= f.label :event_office_id %>

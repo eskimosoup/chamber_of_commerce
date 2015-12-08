@@ -69,25 +69,35 @@ class EventPresenter < BasePresenter
   end
 
   def image
-    h.image_tag event.image.show, alt: event.name, class: 'page-image image-right' if event.image?
+    return nil unless event.image.present?
+    h.content_tag :div, (image_from_layout + name), class: "#{'image-right' if event.layout == 'right_image'}"
+  end
+
+  def image_from_layout
+    case event.layout
+      when "full_image"
+        h.image_tag event.image.show_full_image, alt: name, class: 'page-image'
+      else
+        h.image_tag event.image.show, alt: name, class: 'page-image'
+    end
   end
 
   def linked_home_image
-    h.link_to event, title: event.name do
+    h.link_to event, title: name do
       if event.image?
-        h.image_tag event.image.homepage, alt: event.name
+        h.image_tag event.image.homepage, alt: name
       else
-        h.image_tag 'placeholders/home-slider.jpg', alt: event.name
+        h.image_tag 'placeholders/home-slider.jpg', alt: name
       end
     end
   end
 
   def linked_index_image
-    h.link_to event, title: event.name do
+    h.link_to event, title: name do
       if event.image?
-        h.image_tag event.image.index, alt: event.name
+        h.image_tag event.image.index, alt: name
       else
-        h.image_tag 'placeholders/list-image.jpg', alt: event.name
+        h.image_tag 'placeholders/list-image.jpg', alt: name
       end
     end
   end
