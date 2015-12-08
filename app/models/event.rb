@@ -36,6 +36,10 @@ class Event < ActiveRecord::Base
     slug.blank? || suggested_url_changed? || name_changed?
   end
 
+  def self.layouts
+    %w{ right_image full_image }
+  end
+  
   def sensible_dates
     errors.add(:end_date, 'cannot be before the start date') if self.end_date.present? && self.start_date.present? && self.end_date < self.start_date
   end
