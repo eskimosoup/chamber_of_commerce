@@ -11,18 +11,18 @@ describe Optimadmin::EventAgendasController, type: :controller do
       it "redirects to index on normal save" do
         event_agenda = stub_valid_event_agenda
 
-        post :create, commit: "Save", event_agenda: event_agenda.attributes
+        post :create, event_id: event_agenda.event_id, commit: "Save", event_agenda: event_agenda.attributes
 
-        expect(response).to redirect_to(event_agendas_path)
+        expect(response).to redirect_to(event_event_agendas_path(event_agenda.event_id))
         expect(flash[:notice]).to eq("Event agenda was successfully created.")
       end
 
       it "redirects to edit on save and continue editing" do
         event_agenda = stub_valid_event_agenda
 
-        post :create, commit: "Save and continue editing", event_agenda: event_agenda.attributes
+        post :create, event_id: event_agenda.event_id, commit: "Save and continue editing", event_agenda: event_agenda.attributes
 
-        expect(response).to redirect_to(edit_event_agenda_path(event_agenda))
+        expect(response).to redirect_to(edit_event_event_agenda_path(event_agenda.event_id, event_agenda))
         expect(flash[:notice]).to eq("Event agenda was successfully created.")
       end
     end
@@ -31,7 +31,7 @@ describe Optimadmin::EventAgendasController, type: :controller do
       it "renders the edit template" do
         event_agenda = stub_invalid_event_agenda
 
-        post :create, commit: "Save", event_agenda: event_agenda.attributes
+        post :create, event_id: event_agenda.event_id, commit: "Save", event_agenda: event_agenda.attributes
 
         expect(response).to render_template(:new)
       end
@@ -43,18 +43,18 @@ describe Optimadmin::EventAgendasController, type: :controller do
       it "redirects to index on normal save" do
         event_agenda = stub_valid_event_agenda
 
-        patch :update, id: event_agenda.id, commit: "Save", event_agenda: event_agenda.attributes
+        patch :update, id: event_agenda.id, event_id: event_agenda.event_id, commit: "Save", event_agenda: event_agenda.attributes
 
-        expect(response).to redirect_to(event_agendas_path)
+        expect(response).to redirect_to(event_event_agendas_path(event_agenda.event_id))
         expect(flash[:notice]).to eq("Event agenda was successfully updated.")
       end
 
       it "redirects to edit on save and continue editing" do
         event_agenda = stub_valid_event_agenda
 
-        patch :update, id: event_agenda.id, commit: "Save and continue editing", event_agenda: event_agenda.attributes
+        patch :update, id: event_agenda.id, event_id: event_agenda.event_id, commit: "Save and continue editing", event_agenda: event_agenda.attributes
 
-        expect(response).to redirect_to(edit_event_agenda_path(event_agenda))
+        expect(response).to redirect_to(edit_event_event_agenda_path(event_agenda.event_id, event_agenda))
         expect(flash[:notice]).to eq("Event agenda was successfully updated.")
       end
     end
@@ -63,7 +63,7 @@ describe Optimadmin::EventAgendasController, type: :controller do
       it "renders the edit template" do
         event_agenda = stub_invalid_event_agenda
 
-        patch :update, id: event_agenda.id, commit: "Save", event_agenda: event_agenda.attributes
+        patch :update, id: event_agenda.id, event_id: event_agenda.event_id, commit: "Save", event_agenda: event_agenda.attributes
 
         expect(response).to render_template(:edit)
       end
@@ -74,6 +74,7 @@ describe Optimadmin::EventAgendasController, type: :controller do
     allow(EventAgenda).to receive(:new).and_return(event_agenda)
     allow(event_agenda).to receive(:save).and_return(true)
     allow(EventAgenda).to receive(:find).and_return(event_agenda)
+    allow(Event).to receive(:find).and_return(double("event", id: event_agenda.event_id))
     allow(event_agenda).to receive(:update).and_return(true)
     event_agenda
   end
@@ -83,6 +84,7 @@ describe Optimadmin::EventAgendasController, type: :controller do
     allow(EventAgenda).to receive(:new).and_return(event_agenda)
     allow(event_agenda).to receive(:save).and_return(false)
     allow(EventAgenda).to receive(:find).and_return(event_agenda)
+    allow(Event).to receive(:find).and_return(double("event", id: event_agenda.event_id))
     allow(event_agenda).to receive(:update).and_return(false)
     event_agenda
   end
