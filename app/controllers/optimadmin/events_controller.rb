@@ -1,5 +1,6 @@
 module Optimadmin
   class EventsController < Optimadmin::ApplicationController
+    
     edit_images_for Event, [[:image, { index: ['fill', 218, 135], show: ['fit', 218, 9999], show_full_image: ['fit', 613, 9999], homepage: ['fill', 418, 280] }]]
     before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -20,7 +21,7 @@ module Optimadmin
     def create
       @event = Event.new(event_params)
       if @event.save
-        redirect_to events_url, notice: 'Event was successfully created.'
+        redirect_to_index_or_continue_editing(@event)
       else
         render :new
       end
@@ -28,7 +29,7 @@ module Optimadmin
 
     def update
       if @event.update(event_params)
-        redirect_to events_url, notice: 'Event was successfully updated.'
+        redirect_to_index_or_continue_editing(@event)
       else
         render :edit
       end
@@ -51,5 +52,6 @@ module Optimadmin
                                     :remove_image, :image, :event_location_id, :description, :display, :summary,
                                     :event_office_id, :booking_confirmation_information, :eventbrite_link, :allow_booking, :booking_deadline, :layout)
     end
+    
   end
 end

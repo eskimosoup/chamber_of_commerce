@@ -163,13 +163,10 @@ Optimadmin::Engine.routes.draw do
       get 'toggle'
     end
   end
-  resources :newsletter_signups, except: [:show] do
+  resources :newsletter_signups, only: [:index] do
     collection do
       post 'order'
       get :export_csv
-    end
-    member do
-      get 'toggle'
     end
   end
   resources :additional_contents, except: [:show] do

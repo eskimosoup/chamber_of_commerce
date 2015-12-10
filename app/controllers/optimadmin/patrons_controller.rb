@@ -21,7 +21,7 @@ module Optimadmin
     def create
       @patron = Patron.new(patron_params)
       if @patron.save
-        redirect_to patrons_url, notice: 'Patron was successfully created.'
+        redirect_to_index_or_continue_editing(@patron)
       else
         render :new
       end
@@ -29,7 +29,7 @@ module Optimadmin
 
     def update
       if @patron.update(patron_params)
-        redirect_to patrons_url, notice: 'Patron was successfully updated.'
+        redirect_to_index_or_continue_editing(@patron)
       else
         render :edit
       end

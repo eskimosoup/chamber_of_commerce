@@ -21,7 +21,7 @@ module Optimadmin
     def create
       @page = Page.new(page_params)
       if @page.save
-        redirect_to pages_url, notice: 'Page was successfully created.'
+        redirect_to_index_or_continue_editing(@page)
       else
         render :new
       end
@@ -29,7 +29,7 @@ module Optimadmin
 
     def update
       if @page.update(page_params)
-        redirect_to pages_url, notice: 'Page was successfully updated.'
+        redirect_to_index_or_continue_editing(@page)
       else
         render :edit
       end

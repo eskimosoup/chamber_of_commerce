@@ -78,6 +78,7 @@
 
   <div class="actions">
     <%= f.hidden_field :event_id, value: (params[:event_id] || @event.id) %>
-    <%= f.submit %>
+    <%= f.submit "Save %>
+    <%= f.submit "Save and continue editing" %> 
   </div>
 <% end %>

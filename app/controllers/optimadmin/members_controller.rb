@@ -16,7 +16,7 @@ module Optimadmin
     def create
       @member = Member.new(member_params)
       if @member.save
-        redirect_to members_url, notice: 'Member was successfully created.'
+        redirect_to_index_or_continue_editing(@member)
       else
         render :new
       end
@@ -24,7 +24,7 @@ module Optimadmin
 
     def update
       if @member.update(member_params)
-        redirect_to members_url, notice: 'Member was successfully updated.'
+        redirect_to_index_or_continue_editing(@member)
       else
         render :edit
       end

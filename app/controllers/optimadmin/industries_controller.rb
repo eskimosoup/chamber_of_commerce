@@ -19,7 +19,7 @@ module Optimadmin
     def create
       @industry = Industry.new(industry_params)
       if @industry.save
-        redirect_to industries_url, notice: 'Industry was successfully created.'
+        redirect_to_index_or_continue_editing(@industry)
       else
         render :new
       end
@@ -27,7 +27,7 @@ module Optimadmin
 
     def update
       if @industry.update(industry_params)
-        redirect_to industries_url, notice: 'Industry was successfully updated.'
+        redirect_to_index_or_continue_editing(@industry)
       else
         render :edit
       end

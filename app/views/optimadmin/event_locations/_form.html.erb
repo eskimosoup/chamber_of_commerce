@@ -25,14 +25,14 @@
 
     <%= field_set_tag nil, id: 'tabs-1' do %>
     <div class="field">
-<%= f.label :location_name, "Location name, used within filtering and the URL" %><br>
-<%= f.text_field :location_name %>
-</div>
-            <div class="field">
+      <%= f.label :location_name, "Location name, used within filtering and the URL" %><br>
+      <%= f.text_field :location_name %>
+    </div>
+      <div class="field">
         <%= f.label :address_line_1 %><br>
         <%= f.text_field :address_line_1 %>
       </div>
-            <div class="field">
+      <div class="field">
         <%= f.label :address_line_2 %><br>
         <%= f.text_field :address_line_2 %>
       </div>
@@ -52,6 +52,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save" %>
+    <%= f.submit "Save and continue editing" %>
   </div>
 <% end %>

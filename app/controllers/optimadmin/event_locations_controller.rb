@@ -19,7 +19,7 @@ module Optimadmin
     def create
       @event_location = EventLocation.new(event_location_params)
       if @event_location.save
-        redirect_to event_locations_url, notice: 'Event location was successfully created.'
+        redirect_to_index_or_continue_editing(@event_location)
       else
         render :new
       end
@@ -27,7 +27,7 @@ module Optimadmin
 
     def update
       if @event_location.update(event_location_params)
-        redirect_to event_locations_url, notice: 'Event location was successfully updated.'
+        redirect_to_index_or_continue_editing(@event_location)
       else
         render :edit
       end

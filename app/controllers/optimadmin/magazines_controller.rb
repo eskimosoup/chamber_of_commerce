@@ -21,7 +21,7 @@ module Optimadmin
     def create
       @magazine = Magazine.new(magazine_params)
       if @magazine.save
-        redirect_to magazines_url, notice: 'Magazine was successfully created.'
+        redirect_to_index_or_continue_editing(@magazine)
       else
         render :new
       end
@@ -29,7 +29,7 @@ module Optimadmin
 
     def update
       if @magazine.update(magazine_params)
-        redirect_to magazines_url, notice: 'Magazine was successfully updated.'
+        redirect_to_index_or_continue_editing(@magazine)
       else
         render :edit
       end

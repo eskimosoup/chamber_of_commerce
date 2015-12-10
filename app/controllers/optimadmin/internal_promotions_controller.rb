@@ -21,7 +21,7 @@ module Optimadmin
     def create
       @internal_promotion = InternalPromotion.new(internal_promotion_params)
       if @internal_promotion.save
-        redirect_to internal_promotions_url, notice: 'Internal promotion was successfully created.'
+        redirect_to_index_or_continue_editing(@internal_promotion)
       else
         render :new
       end
@@ -29,7 +29,7 @@ module Optimadmin
 
     def update
       if @internal_promotion.update(internal_promotion_params)
-        redirect_to internal_promotions_url, notice: 'Internal promotion was successfully updated.'
+        redirect_to_index_or_continue_editing(@internal_promotion)
       else
         render :edit
       end
