@@ -12,7 +12,7 @@ module Optimadmin
     end
 
     def event_agendas
-      h.link_to h.pluralize(event.event_agendas.count, "agenda"), h.event_agendas_path(event_id: event.id)
+      h.link_to h.pluralize(event.event_agendas_count, "agenda"), h.event_event_agendas_path(event)
     end
 
     def event_bookings

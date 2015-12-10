@@ -21,7 +21,7 @@ module Optimadmin
     def create
       @member_offer = MemberOffer.new(member_offer_params)
       if @member_offer.save
-        redirect_to member_offers_url, notice: 'Member offer was successfully created.'
+        redirect_to_index_or_continue_editing(@member_offer)
       else
         render :new
       end
@@ -29,7 +29,7 @@ module Optimadmin
 
     def update
       if @member_offer.update(member_offer_params)
-        redirect_to member_offers_url, notice: 'Member offer was successfully updated.'
+        redirect_to_index_or_continue_editing(@member_offer)
       else
         render :edit
       end

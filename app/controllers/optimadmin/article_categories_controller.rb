@@ -19,7 +19,7 @@ module Optimadmin
     def create
       @article_category = ArticleCategory.new(article_category_params)
       if @article_category.save
-        redirect_to article_categories_url, notice: 'Article category was successfully created.'
+        redirect_to_index_or_continue_editing(@article_category)
       else
         render :new
       end
@@ -27,7 +27,7 @@ module Optimadmin
 
     def update
       if @article_category.update(article_category_params)
-        redirect_to article_categories_url, notice: 'Article category was successfully updated.'
+        redirect_to_index_or_continue_editing(@article_category)
       else
         render :edit
       end

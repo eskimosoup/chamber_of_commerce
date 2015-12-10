@@ -22,7 +22,7 @@ module Optimadmin
       @event_agenda = EventAgenda.new(event_agenda_params)
       @event = Event.find(event_agenda_params[:event_id])
       if @event_agenda.save
-        redirect_to event_agendas_url(event_id: @event_agenda.event_id), notice: 'Event agenda was successfully created.'
+        redirect_to_index_or_continue_editing(@event_agenda)
       else
         render :new
       end
@@ -31,7 +31,7 @@ module Optimadmin
     def update
       @event = @event_agenda.event
       if @event_agenda.update(event_agenda_params)
-        redirect_to event_agendas_url(event_id: @event.id), notice: 'Event agenda was successfully updated.'
+        redirect_to_index_or_continue_editing(@event_agenda)
       else
         render :edit
       end
@@ -40,7 +40,7 @@ module Optimadmin
     def destroy
       @event = @event_agenda.event
       @event_agenda.destroy
-      redirect_to event_agendas_url(event_id: @event.id), notice: 'Event agenda was successfully destroyed.'
+      redirect_to event_event_agendas_url(@event), notice: 'Event agenda was successfully destroyed.'
     end
 
   private

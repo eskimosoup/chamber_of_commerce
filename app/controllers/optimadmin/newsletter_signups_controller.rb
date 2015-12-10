@@ -11,33 +11,6 @@ module Optimadmin
       send_data @newsletter_signups.to_csv, filename: "newsletter-signups-#{ Date.today }.csv"
     end
 
-    def show
-    end
-
-    def new
-      @newsletter_signup = NewsletterSignup.new
-    end
-
-    def edit
-    end
-
-    def create
-      @newsletter_signup = NewsletterSignup.new(newsletter_signup_params)
-      if @newsletter_signup.save
-        redirect_to newsletter_signups_url, notice: 'Newsletter signup was successfully created.'
-      else
-        render :new
-      end
-    end
-
-    def update
-      if @newsletter_signup.update(newsletter_signup_params)
-        redirect_to newsletter_signups_url, notice: 'Newsletter signup was successfully updated.'
-      else
-        render :edit
-      end
-    end
-
     def destroy
       @newsletter_signup.destroy
       redirect_to newsletter_signups_url, notice: 'Newsletter signup was successfully destroyed.'
@@ -45,13 +18,9 @@ module Optimadmin
 
   private
 
-
     def set_newsletter_signup
       @newsletter_signup = NewsletterSignup.find(params[:id])
     end
 
-    def newsletter_signup_params
-      params.require(:newsletter_signup).permit(:email_address)
-    end
   end
 end

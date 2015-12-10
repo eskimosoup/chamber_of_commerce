@@ -37,5 +37,14 @@ module Optimadmin
     def table_discount
       h.number_to_percentage(event_agenda.table_discount, precision: 2)
     end
+
+    def edit_link
+      h.link_to pencil, h.edit_event_event_agenda_path(event_agenda.event_id, event_agenda), class: 'menu-item-control'
+    end
+
+    def delete_link
+      h.link_to trash_can, h.event_event_agenda_path(event_agenda.event_id, event_agenda), method: :delete,
+        data: { confirm: 'Are you sure?' }, class: 'menu-item-control'
+    end
   end
 end

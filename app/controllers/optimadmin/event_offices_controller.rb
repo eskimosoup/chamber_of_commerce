@@ -19,7 +19,7 @@ module Optimadmin
     def create
       @event_office = EventOffice.new(event_office_params)
       if @event_office.save
-        redirect_to event_offices_url, notice: 'Event office was successfully created.'
+        redirect_to_index_or_continue_editing(@event_office)
       else
         render :new
       end
@@ -27,7 +27,7 @@ module Optimadmin
 
     def update
       if @event_office.update(event_office_params)
-        redirect_to event_offices_url, notice: 'Event office was successfully updated.'
+        redirect_to_index_or_continue_editing(@event_office)
       else
         render :edit
       end

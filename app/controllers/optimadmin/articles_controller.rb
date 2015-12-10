@@ -21,7 +21,7 @@ module Optimadmin
     def create
       @article = Article.new(article_params)
       if @article.save
-        redirect_to articles_url, notice: 'Article was successfully created.'
+        redirect_to_index_or_continue_editing(@article)
       else
         render :new
       end
@@ -29,7 +29,7 @@ module Optimadmin
 
     def update
       if @article.update(article_params)
-        redirect_to articles_url, notice: 'Article was successfully updated.'
+        redirect_to_index_or_continue_editing(@article)
       else
         render :edit
       end

@@ -136,13 +136,13 @@ Optimadmin::Engine.routes.draw do
         post :cancel
       end
     end
-  end
-  resources :event_agendas, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
+    resources :event_agendas, except: [:show] do
+      collection do
+        post 'order'
+      end
+      member do
+        get 'toggle'
+      end
     end
   end
 
@@ -163,13 +163,10 @@ Optimadmin::Engine.routes.draw do
       get 'toggle'
     end
   end
-  resources :newsletter_signups, except: [:show] do
+  resources :newsletter_signups, only: [:index, :destroy] do
     collection do
       post 'order'
       get :export_csv
-    end
-    member do
-      get 'toggle'
     end
   end
   resources :additional_contents, except: [:show] do

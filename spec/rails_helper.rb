@@ -10,12 +10,6 @@ require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'shoulda-matchers'
 require 'database_cleaner'
-require 'support/mailer_macros'
-require 'support/geocoder'
-require 'support/share_db_connection'
-require 'support/wait_for_ajax'
-require 'support/site_settings_macros'
-require 'support/optimadmin_macros'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -30,7 +24,7 @@ require 'support/optimadmin_macros'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -64,6 +58,7 @@ RSpec.configure do |config|
   config.include ActionView::TestCase::Behavior, type: :presenter
   config.include Capybara::DSL, type: :feature
   config.include(MailerMacros)
+  config.include ControllerHelpers, type: :controller
   config.include SiteSettingsMacros
   config.include OptimadminMacros, type: :feature
   config.before(:each, type: :feature) { reset_email }

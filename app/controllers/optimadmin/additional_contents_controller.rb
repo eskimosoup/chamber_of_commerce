@@ -19,7 +19,7 @@ module Optimadmin
     def create
       @additional_content = AdditionalContent.new(additional_content_params)
       if @additional_content.save
-        redirect_to additional_contents_url, notice: 'Additional content was successfully created.'
+        redirect_to_index_or_continue_editing(@additional_content)
       else
         render :new
       end
@@ -27,7 +27,7 @@ module Optimadmin
 
     def update
       if @additional_content.update(additional_content_params)
-        redirect_to additional_contents_url, notice: 'Additional content was successfully updated.'
+        redirect_to_index_or_continue_editing(@additional_content)
       else
         render :edit
       end

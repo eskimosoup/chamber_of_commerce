@@ -4,7 +4,8 @@
   <div class="row module-header collapse">
     <%= render 'optimadmin/shared/module/form/back', path: events_path, title: 'Events', prefix: 'Back to' %>
 
-    <%= render 'optimadmin/shared/module/index/new_item', title: 'Event Agenda', object: EventAgenda, path: new_event_agenda_path(event_id: @event.id) if EventCategory.count >= 1 %>
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Event Agenda', object: EventAgenda,
+      path: new_event_event_agenda_path(@event) if EventCategory.count >= 1 %>
     <%#= render 'optimadmin/shared/search_form' %>
     <%#= render 'optimadmin/shared/module/index/pagination' %>
     <%#= render 'optimadmin/shared/module/index/order', options: [['Username', 'username']] %>
