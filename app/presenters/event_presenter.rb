@@ -29,7 +29,11 @@ class EventPresenter < BasePresenter
 
   def dates
     return h.raw h.content_tag(:strong, start_date) unless event.end_date
-    h.raw [wrapped_start_date, wrapped_end_date].compact.join(" ")
+    if event.end_date == event.start_date
+      h.raw "Date <strong>#{start_date}</strong>"
+    else
+      h.raw [wrapped_start_date, wrapped_end_date].compact.join(" ")
+    end
   end
 
   def title
@@ -70,7 +74,11 @@ class EventPresenter < BasePresenter
 
   def image
     return nil unless event.image.present?
-    h.content_tag :div, (image_from_layout + name), class: "#{'image-right' if event.layout == 'right_image'}"
+    h.content_tag :div, (image_from_layout + image_caption), class: "#{'image-right' if event.layout == 'right_image'}"
+  end
+
+  def image_caption
+    h.content_tag :p, event.caption, class: 'article-caption' if event.caption.present?
   end
 
   def image_from_layout

@@ -1,6 +1,6 @@
 module Optimadmin
   class EventsController < Optimadmin::ApplicationController
-    
+
     edit_images_for Event, [[:image, { index: ['fill', 218, 135], show: ['fit', 218, 9999], show_full_image: ['fit', 613, 9999], homepage: ['fill', 418, 280] }]]
     before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -49,9 +49,9 @@ module Optimadmin
 
     def event_params
       params.require(:event).permit(:name, :event_agendas, :start_date, :end_date, :remote_image_url, :image_cache,
-                                    :remove_image, :image, :event_location_id, :description, :display, :summary,
+                                    :remove_image, :image, :event_location_id, :description, :display, :summary, :caption,
                                     :event_office_id, :booking_confirmation_information, :eventbrite_link, :allow_booking, :booking_deadline, :layout)
     end
-    
+
   end
 end
