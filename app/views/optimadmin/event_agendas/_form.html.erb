@@ -1,7 +1,7 @@
 <%= form_for([@event, @event_agenda]) do |f| %>
 <% if @event_agenda.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@event_agenda.errors.count, "error") %> prohibited this @event_agenda from being saved:</h2>
+    <h2><%= pluralize(@event_agenda.errors.count, "error") %> prohibited this event agenda from being saved:</h2>
 
     <ul>
       <% @event_agenda.errors.full_messages.each do |message| %>
@@ -77,8 +77,8 @@
   </div>
 
   <div class="actions">
-    <%= f.hidden_field :event_id, value: (params[:event_id] || @event.id) %>
+    <%= f.hidden_field :event_id, value: @event.id %>
     <%= f.submit "Save" %>
-    <%= f.submit "Save and continue editing" %> 
+    <%= f.submit "Save and continue editing" %>
   </div>
 <% end %>
