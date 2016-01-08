@@ -9,6 +9,10 @@ module Optimadmin
       [event_booking.forename, event_booking.surname].compact.join(" ")
     end
 
+    def payment_link
+      h.link_to h.main_app.new_event_booking_charge_url(event_booking), h.main_app.new_event_booking_charge_url(event_booking)
+    end
+
     def address
       return nil unless address_fields.blank?
       h.simple_format(address_fields)
