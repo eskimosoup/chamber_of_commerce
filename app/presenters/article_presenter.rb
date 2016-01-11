@@ -23,7 +23,7 @@ class ArticlePresenter < BasePresenter
 
   def date(format = :long)
     h.content_tag :span, class: 'date' do
-      h.l article.date, format: format
+      h.l article.date.to_date, format: format
     end
   end
 
