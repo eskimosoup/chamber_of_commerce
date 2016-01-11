@@ -6,7 +6,7 @@ class Article < ActiveRecord::Base
   belongs_to :article_category
   mount_uploader :image, ArticleUploader
 
-  scope :published, -> { where("display = ? and date <= ?", true, Date.today) }
+  scope :published, -> { where("display = ? and date <= ?", true, Time.zone.now) }
   scope :member_news, -> { joins(:article_category).where(article_categories: { member_related: true }).published.order(date: :desc) }
   scope :non_member_news, -> { joins(:article_category).where(article_categories: { member_related: false }).published.order(date: :desc) }
   scope :admin, -> (current_administrator) { unscoped if current_administrator.present? }
