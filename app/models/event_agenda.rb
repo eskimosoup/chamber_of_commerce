@@ -4,11 +4,11 @@ class EventAgenda < ActiveRecord::Base
   has_many :attendee_event_agendas, dependent: :nullify
   has_many :attendees, through: :attendee_event_agendas
 
-  scope :order_by_start_time, ->{ order(start_time: :asc) }
+  scope :order_by_start_time, -> { order(start_time: :asc) }
 
   validates :name, :event_category, :price, presence: true
   validates :table_size, numericality: { only_integer: true }
-  validates :table_discount, numericality: true, allow_nil: true
+  validates :table_discount, numericality: true, allow_nil: false, presence: true
   validate :sensible_times
 
   def open_spaces
@@ -21,7 +21,7 @@ class EventAgenda < ActiveRecord::Base
 
   def self.csv_headers
     headers = EventBooking::CSV_HEADERS
-    headers << "Agenda"
+    headers << 'Agenda'
     headers.push(*Attendee::CSV_HEADERS)
     headers
   end
@@ -48,6 +48,6 @@ class EventAgenda < ActiveRecord::Base
   end
 
   def sensible_times
-    errors.add(:end_time, 'cannot be before the start time') if self.end_time.present? && self.start_time.present? && self.end_time < self.start_time
+    errors.add(:end_time, 'cannot be before the start time') if end_time.present? && start_time.present? && end_time < start_time
   end
 end
