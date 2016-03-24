@@ -20,9 +20,9 @@
 //= require components/toggles
 //= require jquery-ui/datepicker
 //= require tinymce
-//= require slick.js.js
+//= require jquery.slick
 //= require cocoon
-//= require colorbox
+//= require vendor/jquery.colorbox-min.js
 // require_tree .
 
 $(document).foundation({

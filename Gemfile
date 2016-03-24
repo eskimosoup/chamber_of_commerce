@@ -65,12 +65,9 @@ group :development do
   gem 'bullet'
 end
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-slick.js'
-  gem 'rails-assets-tinymce'
-  gem 'rails-assets-colorbox'
-end
+gem 'tinymce-rails'
 
+gem 'jquery-slick-rails', '~> 1.5', '>= 1.5.9.1'
 gem 'geocoder', '~> 1.2.9'
 gem 'cocoon', '~> 1.2.6'
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :master
