@@ -19,6 +19,7 @@ stdout_redirect "#{ app_dir }/log/puma.stdout.log", "#{ app_dir }/log/puma.stder
 # Set master PID and state locations
 pidfile "#{ tmp_dir }/puma/pid"
 state_path "#{ tmp_dir }/puma/state"
+daemonize true
 
 on_worker_boot do
   # Worker specific setup for Rails 4.1+
