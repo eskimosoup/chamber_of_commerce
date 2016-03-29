@@ -11,7 +11,7 @@ tmp_dir = "#{ app_dir }/tmp"
 environment ENV['RAILS_ENV'] || 'production'
 
 # Set up socket location
-bind "unix://#{ tmp_dir }/puma/chamber.sock"
+bind "unix:///var/run/chamber.sock"
 
 # Logging
 stdout_redirect "#{ app_dir }/log/puma.stdout.log", "#{ app_dir }/log/puma.stderr.log"
@@ -26,4 +26,3 @@ on_worker_boot do
   ActiveRecord::Base.establish_connection
 end
 
-activate_control_app
