@@ -2,7 +2,7 @@ workers Integer(ENV['WEB_CONCURRENCY'] || 2)
 threads_count = Integer(ENV['MAX_THREADS'] || 5)
 threads(threads_count, threads_count)
 
-preload_app!
+directory '/home/chamber/current'
 
 app_dir = File.expand_path("../..", __FILE__)
 tmp_dir = "#{ app_dir }/tmp"
@@ -11,19 +11,22 @@ tmp_dir = "#{ app_dir }/tmp"
 environment ENV['RAILS_ENV'] || 'production'
 
 # Set up socket location
-bind "unix:///var/run/chamber.sock"
+bind "unix://#{ app_dir }/tmp/chamber.sock"
 
 # Logging
 stdout_redirect "#{ app_dir }/log/puma.stdout.log", "#{ app_dir }/log/puma.stderr.log"
 
 # Set master PID and state locations
-pidfile "#{ tmp_dir }/puma/pid"
-state_path "#{ tmp_dir }/puma/state"
+pidfile "#{ tmp_dir }/pids/puma.pid"
 daemonize true
 
 on_worker_boot do
-  # Worker specific setup for Rails 4.1+
-  # See: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#on-worker-boot
-  ActiveRecord::Base.establish_connection
+  ActiveSupport.on_load(:active_record) do
+    ActiveRecord::Base.establish_connection
+  end
+end
+
+before_fork do
+  ActiveRecord::Base.connection_pool.disconnect!
 end
 
