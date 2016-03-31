@@ -16,6 +16,7 @@ class EventAgenda < ActiveRecord::Base
   end
 
   def full?(spaces_required)
+    return false unless maximum_capacity.present?
     open_spaces < spaces_required
   end
 
