@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111150734) do
+ActiveRecord::Schema.define(version: 20160408081319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,8 +178,8 @@ ActiveRecord::Schema.define(version: 20160111150734) do
     t.string   "suggested_url"
     t.string   "slug"
     t.text     "summary"
-    t.integer  "event_bookings_count",             default: 0
     t.text     "booking_confirmation_information"
+    t.integer  "event_bookings_count",             default: 0
     t.string   "eventbrite_link"
     t.boolean  "allow_booking",                    default: true
     t.integer  "event_office_id"
@@ -334,13 +334,11 @@ ActiveRecord::Schema.define(version: 20160111150734) do
   end
 
   create_table "optimadmin_images", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.string   "image",       null: false
-    t.string   "string"
+    t.string   "name",       null: false
+    t.string   "image",      null: false
     t.integer  "module_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "module_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "optimadmin_links", force: :cascade do |t|
@@ -370,6 +368,7 @@ ActiveRecord::Schema.define(version: 20160111150734) do
     t.integer  "link_id"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
+    t.boolean  "display",                     default: true
   end
 
   add_index "optimadmin_menu_items", ["link_id"], name: "index_optimadmin_menu_items_on_link_id", using: :btree
