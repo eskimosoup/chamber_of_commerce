@@ -5,7 +5,7 @@
     <%= render 'optimadmin/shared/module/index/new_item', title: 'Article', object: Article, path: new_article_path %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
-    <%= render 'optimadmin/shared/module/index/order', options: [['Date', 'date'], ['Title', 'title']] %>
+    <%= render 'optimadmin/shared/module/index/order', options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC'], ['Date newest first', 'date DESC'], ['Date oldest first', 'date ASC']] %>
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @articles.size, path: root_url %>
   </div>
 
