@@ -122,8 +122,8 @@
               <% end %>
             </div>
 
-            <%= link_to 'Next', '#event-attendees', class: 'button event-process next add-event-attendees', data: { container: "#event-attendees, .actions, .event-booking-details, .event-process.previous, .event-process.next", class: 'hide', return: 'false' } %>
-            <%= link_to 'Previous', '#event-attendees', class: 'button event-process previous toggle-class hide', data: { container: "#event-attendees, .actions, .event-booking-details, .event-process.previous, .event-process.next", class: 'hide', return: 'false' } %>
+            <%= link_to 'Next', '#event-attendees', class: 'button event-process next add-event-attendees', data: { container: "#event-attendees, .actions, .event-process.next", class: 'hide', return: 'true' } %>
+            <%#= link_to 'Previous', '#event-attendees', class: 'button event-process previous toggle-class hide', data: { container: "#event-attendees, .actions, .event-booking-details, .event-process.previous, .event-process.next", class: 'hide', return: 'false' } %>
 
 
             <%= field_set_tag "Attendees", id: "event-attendees", class: 'hide' do %>
