@@ -1,6 +1,4 @@
 <% # Please skip over this 'hacky' method to remove the space that inline-block creates %>
-<% unless current_member %>
-  <%= link_to 'Sign In', login_member_sessions_path, class: 'member-action' %><%= link_to 'Join your Chamber', '/pages/reasons-to-join', class: 'member-register' %>
-<% else %>
+<% if current_member %>
   <%= link_to 'Profile', edit_members_path, class: 'member-update-details' %><%= link_to 'Logout', logout_member_sessions_path, class: 'member-logout' %>
 <% end %>
