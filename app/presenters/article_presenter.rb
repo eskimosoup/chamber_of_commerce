@@ -18,7 +18,7 @@ class ArticlePresenter < BasePresenter
   end
 
   def linked_truncated_title(options = {}, truncate_length = 136)
-    h.link_to (h.truncate(article.title, length: truncate_length)), article, options
+    h.link_to h.truncate(article.title, length: truncate_length), article, options
   end
 
   def date(format = :long)
@@ -44,16 +44,16 @@ class ArticlePresenter < BasePresenter
   end
 
   def image
-    return nil unless article.image.present?
-    h.content_tag :div, (image_from_layout + image_caption), class: "#{'image-right' if article.layout == 'right_image'}"
+    return nil if article.image.blank? || article.layout == 'no_image'
+    h.content_tag :div, (image_from_layout + image_caption), class: ('image-right' if article.layout == 'right_image').to_s
   end
 
   def image_from_layout
     case article.layout
-      when "full_image"
-        h.image_tag article.image.show_full_image, alt: article.title, class: 'page-image'
-      else
-        h.image_tag article.image.show, alt: article.title, class: 'page-image'
+    when 'full_image'
+      h.image_tag article.image.show_full_image, alt: article.title, class: 'page-image'
+    else
+      h.image_tag article.image.show, alt: article.title, class: 'page-image'
     end
   end
 
