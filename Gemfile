@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 4.2.5.2', '< 5.0'
+gem 'rails', '>= 4.2', '< 5.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -72,4 +72,3 @@ gem 'geocoder', '~> 1.2.9'
 gem 'cocoon', '~> 1.2.6'
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :master
 gem 'stripe', '~> 1.25.0'
-gem 'puma'
