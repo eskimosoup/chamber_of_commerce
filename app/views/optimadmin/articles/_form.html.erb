@@ -33,7 +33,7 @@
     <%= field_set_tag nil, id: 'tabs-1' do %>
       <div class="field">
         <%= f.label :article_category_id %><br>
-        <%= f.select :article_category_id, ArticleCategory.order(title: :asc).map { |x| ["#{x.title} #{'(in slider)' unless x.member_related?}", x.id] }, prompt: 'Please select' %>
+        <%= f.select :article_category_id, ArticleCategory.pluck(:title, :id).order(title: :asc), prompt: 'Please select' %>
       </div>
 
       <div class="field">
