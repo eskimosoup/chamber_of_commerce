@@ -72,3 +72,4 @@ gem 'geocoder', '~> 1.2.9'
 gem 'cocoon', '~> 1.2.6'
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :master
 gem 'stripe', '~> 1.25.0'
+gem 'puma'
