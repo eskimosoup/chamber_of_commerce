@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def index
-    @presented_articles       = BaseCollectionPresenter.new(collection: Article.published.limit(10), view_template: view_context, presenter: ArticlePresenter)
+    @presented_articles       = BaseCollectionPresenter.new(collection: Article.published.order(date: :desc).limit(10), view_template: view_context, presenter: ArticlePresenter)
     @presented_member_news    = BaseCollectionPresenter.new(collection: Article.member_news.limit(5), view_template: view_context, presenter: ArticlePresenter)
     @presented_events         = BaseCollectionPresenter.new(collection: Event.upcoming.limit(10), view_template: view_context, presenter: EventPresenter)
     @presented_members_offers = BaseCollectionPresenter.new(collection: MemberOffer.includes(:member).current.verified, view_template: view_context, presenter: MemberOfferPresenter)
