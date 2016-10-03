@@ -83,7 +83,7 @@
 
           <% if (@presented_event.booking_deadline.present? && @presented_event.booking_deadline > Time.zone.now) || @presented_event.booking_deadline.blank? %>
             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
                     data-description="<%= "Booking for #{ @presented_event.name }" %>"
                     data-amount="<%= @presented_event_booking.stripe_price %>"
                     data-email="<%= @presented_event_booking.email %>"
