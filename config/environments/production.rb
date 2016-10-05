@@ -1,19 +1,18 @@
 Rails.application.configure do
-  config.logger = Logger.new(config.paths['log'].first, 3, 5242880)
+  config.logger = Logger.new(config.paths['log'].first, 3, 26_214_400)
 
-  Rails.application.routes.default_url_options[:host] = 'chamber.ludo5.co.uk'
+  Rails.application.routes.default_url_options[:host] = 'www.hull-humber-chamber.co.k'
 
-  #config.action_mailer.asset_host = "http://www.hull-humber-chamber.co.uk"
-  config.action_mailer.asset_host = "http://chamber.ludo5.co.uk"
+  config.action_mailer.asset_host = 'http://www.hull-humber-chamber.co.uk'
 
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-    :address => 'mail.ludo2.co.uk',
-    :authentication => :plain,
-    :user_name => 'noreply@hull-humber-chamber.co.uk',
-    :password => 'undergr0und47#!',
-    :enable_starttls_auto => true,
-    :openssl_verify_mode  => 'none'
+    address: 'mail.ludo2.co.uk',
+    authentication: :plain,
+    user_name: 'noreply@hull-humber-chamber.co.uk',
+    password: 'undergr0und47#!',
+    enable_starttls_auto: true,
+    openssl_verify_mode: 'none'
   }
 
   # Settings specified here will take precedence over those in config/application.rb.

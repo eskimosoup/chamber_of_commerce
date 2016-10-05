@@ -9,13 +9,16 @@ class ApplicationController < ActionController::Base
   before_action :global_site_settings, :load_objects, :current_member
   before_action :aside_content
 
-  rescue_from ActiveRecord::RecordNotFound do |_exception|
-    render_error 404
+  unless Rails.application.config.consider_all_requests_local
+    rescue_from Exception, with: ->(e) { render_error(500, e) }
+    rescue_from ActiveRecord::RecordNotFound, with: ->(e) { render_error(404, e) }
+    rescue_from ActionController::RoutingError, with: ->(e) { render_error(404, e) }
   end
 
-  def render_error(status)
+  def render_error(status, error)
+    logger.error "#{error.class}: #{error.message}"
     respond_to do |format|
-      format.html { render 'errors/404', status: status }
+      format.html { render "errors/#{status}", status: status }
       format.all { render nothing: true, status: status }
     end
   end
