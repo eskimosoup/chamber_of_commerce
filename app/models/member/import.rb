@@ -3,9 +3,10 @@ class Member::Import
   attr_accessor :file, :imported_count, :updated_count
 
   def process!
-    @imported_count, @updated_count = 0, 0
+    @imported_count = 0
+    @updated_count = 0
     Member.update_all(in_csv: false)
-    CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
+    CSV.foreach(file.path, headers: true, header_converters: :symbol, encoding: 'windows-1251:utf-8') do |row|
       member = assign_member_from_csv_row(row)
       new_record = member.new_record?
       if member.save
@@ -16,7 +17,7 @@ class Member::Import
         end
       else
         # $. gets last line read in
-        errors.add(:base, "Line #{ $. } - #{ member.errors.full_messages.join(", ") }")
+        errors.add(:base, "Line #{$INPUT_LINE_NUMBER} - #{member.errors.full_messages.join(', ')}")
       end
     end
   end
