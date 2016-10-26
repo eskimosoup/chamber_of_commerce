@@ -7,7 +7,8 @@ class Industry::Import
   end
 
   def process!
-    @imported_count, @updated_count = 0, 0
+    @imported_count = 0
+    @updated_count = 0
     industry_members = build_industry_members_from_csv
 
     industry_members.each do |industry_name, member_ids|
@@ -21,13 +22,13 @@ class Industry::Import
           @updated_count += 1
         end
       else
-        errors.add(:base, "Line #{ $. } - #{ industry.errors.full_messages.join(", ") }")
+        errors.add(:base, "Line #{$INPUT_LINE_NUMBER} - #{industry.errors.full_messages.join(', ')}")
       end
     end
   end
 
   def build_industry_members_from_csv
-    CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
+    CSV.foreach(file.path, headers: true, header_converters: :symbol, encoding: 'windows-1251:utf-8') do |row|
       add_row_to_industry_members(row)
     end
     industry_members
