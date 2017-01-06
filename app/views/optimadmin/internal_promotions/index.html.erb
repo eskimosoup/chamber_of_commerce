@@ -5,7 +5,7 @@
     <%= render 'optimadmin/shared/module/index/new_item', title: 'Internal Promotion', object: InternalPromotion, path: new_internal_promotion_path %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
-    <%= render 'optimadmin/shared/module/index/order', options: [['Area', 'area'], ['Name', 'name'], ['Latest', 'created_at desc'] %>
+    <%= render 'optimadmin/shared/module/index/order', options: [['Area', 'area'], ['Name', 'name'], ['Latest', 'created_at desc']] %>
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @internal_promotions.size, path: root_url %>
   </div>
 
