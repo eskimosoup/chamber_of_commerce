@@ -20,6 +20,8 @@
     <%= f.check_box :remember_me %>
 
 
+    <p>If you do not have an account, <%= link_to 'register for website', new_member_login_path, class: 'colorbox' %>.</p>
+
     <%= f.submit 'Login', class: 'button' %>
   <% end %>
 <% end %>

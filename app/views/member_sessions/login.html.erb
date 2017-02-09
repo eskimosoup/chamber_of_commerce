@@ -7,10 +7,9 @@
         <div class="content">
           <%= @additional_content.content %>
 
-          <%= render 'form' %>
+          <%= render 'form' %>          
 
           <p>If you do not know your password, <%= link_to 'use the password reset page', new_member_password_reset_path %>.</p>
-          <p>If you do not have an account, <%= link_to 'register for website', new_member_login_path, class: 'colorbox' %>.</p>
         </div>
       </div>
     </div>
