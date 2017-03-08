@@ -307,6 +307,26 @@
     </td>
   </tr>
 
+  <% if @event.booking_confirmation_information.present? %>
+    <tr>
+      <td style="color: #33393e;
+          border-top: 4px solid #a18a5e;
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+          line-height: 14px;
+          margin: 100px 0 0;
+          padding: 0 0 5px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="600">
+          <tr>
+            <td>
+              <%= raw @event.booking_confirmation_information %>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  <% end %>
+
 
   <tr>
     <td style="color: #33393e;
