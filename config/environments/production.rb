@@ -10,7 +10,7 @@ Rails.application.configure do
     address: 'mail.ludo2.co.uk',
     authentication: :plain,
     user_name: 'noreply@hull-humber-chamber.co.uk',
-    password: 'undergr0und47#!',
+    password: ENV['NOREPLY_PASSWORD'],
     enable_starttls_auto: true,
     openssl_verify_mode: 'none'
   }
