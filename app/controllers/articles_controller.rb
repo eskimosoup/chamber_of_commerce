@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
 
   def show
     redirect_to @article, status: :moved_permanently if article_path(@article) != request.path
-    @presented_articles = BaseCollectionPresenter.new(collection: @article.article_category.articles.published.limit(5), view_template: view_context, presenter: ArticlePresenter)
+    @presented_articles = BaseCollectionPresenter.new(collection: @article.article_category.articles.order(date: :desc).published.limit(5), view_template: view_context, presenter: ArticlePresenter)
   end
 
   private
