@@ -16,7 +16,9 @@ class PatronPresenter < BasePresenter
   def display
     h.content_tag :div do
       if patron.link.present?
-        h.link_to patron.link, title: patron.name do
+        attributes = { title: patron.name }
+        attributes = { rel: 'nofollow' }.merge(attributes) if patron.no_follow?
+        h.link_to patron.link, attributes do
           image(patron)
         end
       else

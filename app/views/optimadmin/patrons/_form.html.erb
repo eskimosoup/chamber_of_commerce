@@ -43,6 +43,10 @@
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
       <div class="field">
+        <%= f.label :no_follow %><br>
+        <%= f.check_box :no_follow %>
+      </div>
+      <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>
       </div>
