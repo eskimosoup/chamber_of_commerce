@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212164818) do
+ActiveRecord::Schema.define(version: 20180501151349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -312,6 +312,7 @@ ActiveRecord::Schema.define(version: 20180212164818) do
     t.datetime "password_reset_sent_at"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.datetime "password_changed_at"
   end
 
   add_index "optimadmin_administrators", ["auth_token"], name: "index_optimadmin_administrators_on_auth_token", using: :btree
