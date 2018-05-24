@@ -1,0 +1,144 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  /*
+  "options": {
+    "env": {
+      // ${VAR}
+      "VAR": "`git branch`"
+    }
+  },
+  */
+  "tasks": [
+    // For Windows, requires Git bash to be configured along with local SSH keys
+    {
+      "label": "ssh",
+      "type": "shell",
+      "command": "ssh server -t 'cd paul/${workspaceFolderBasename}; bash --login'",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "beautify",
+      "type": "shell",
+      "command": "htmlbeautifier ${relativeFile}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "rubocop",
+      "type": "shell",
+      "command": "rubocop --auto-correct ${relativeFile}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "rspec",
+      "type": "shell",
+      "command": "bundle exec rspec",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "rspec file",
+      "type": "shell",
+      "command": "bundle exec rspec ${relativeFile}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "rails c",
+      "type": "shell",
+      "command": "bundle exec rails console",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "rails s",
+      "type": "shell",
+      "command": "bundle exec rails server",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "cap production deploy",
+      "type": "shell",
+      "command": "cap production deploy",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "GitHub - open repo",
+      "type": "shell",
+      "command": "chrome.exe",
+      "windows": {
+        "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+      },
+      "osx": {
+        "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      },
+      "args": [
+        "https://github.com/${config:github.username}/${workspaceFolderBasename}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "GitHub - master pull request",
+      "type": "shell",
+      "command": "chrome.exe",
+      "windows": {
+        "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+      },
+      "osx": {
+        "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      },
+      "args": [
+        "https://github.com/${config:github.username}/${workspaceFolderBasename}/pull/new/master"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "configure",
+      "type": "shell",
+      "command": "gem install ruby-debug-ide:0.6.0 debase:0.2.2.beta10 rcodetools rubocop fastri htmlbeautifier scss_lint --no-ri --no-rdoc",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}

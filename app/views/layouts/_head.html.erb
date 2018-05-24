@@ -4,19 +4,18 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
 
   <!--[if lt IE 9]>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
-    <script src="//s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
-    <script src="//html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+    <%= javascript_include_tag 'vendor/foundation-ie8' %>
   <![endif]-->
 
   <%= yield :head %>
 
+  <%= stylesheet_link_tag 'cookie_consent/consent' %>
+  <%= javascript_include_tag 'cookie_consent/consent' %>
+
   <%= csrf_meta_tags %>
   <script src="//use.typekit.net/jhn0hwh.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
-  <script>
+  <script type="text/plain" data-cookie-type="statistics">
     (function() {
       var cx = '014374903494110971556:pb_sfewr6k0';
       var gcse = document.createElement('script');
