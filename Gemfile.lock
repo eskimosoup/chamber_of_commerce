@@ -19,6 +19,14 @@ GIT
       tinymce-rails
 
 GIT
+  remote: git@github.com:eskimosoup/cookie_consent.git
+  revision: 76f4bcd3bf57e5c02d61b2b2f38592b6d6224b5e
+  branch: master
+  specs:
+    cookie_consent (0.0.4)
+      rails (>= 4.0.0)
+
+GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
   revision: a6a495de21a908fe7b7bc36fb1f032d2d522c1b8
   specs:
@@ -362,6 +370,7 @@ DEPENDENCIES
   capybara
   cocoon (~> 1.2.6)
   coffee-rails (~> 4.1.0)
+  cookie_consent!
   database_cleaner (~> 1.4.1)
   factory_girl_rails
   flamegraph
