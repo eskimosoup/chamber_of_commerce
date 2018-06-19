@@ -14,7 +14,7 @@ module Optimadmin
     end
 
     def date(date)
-      h.l date, format: :short if date
+      date
     end
   end
 end
