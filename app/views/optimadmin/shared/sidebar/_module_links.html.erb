@@ -31,7 +31,7 @@
         <%= module_link(content: "Newsletter Signups", model: NewsletterSignup, path: newsletter_signups_path) %>
         <%= module_link(model: Patron, path: patrons_path) %>
         <%= module_link(content: "Internal Promotions", model: InternalPromotion, path: internal_promotions_path) %>
-        <%= module_link(content: Advertisement.model_name.human.pluralize.titleize, model: Advertisement, path: advertisements_path) %>
+        <%= module_link(content: Advertisement.model_name.human.pluralize.titleize, model: Advertisement, path: advertisements_path) if current_administor.username == 'optimised' %>
         <% if can? :manage, Optimadmin::MenuItem %>
         <% end %>
       </ul>
