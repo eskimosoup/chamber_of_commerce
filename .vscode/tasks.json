@@ -131,6 +131,25 @@
       }
     },
     {
+      "label": "Project - open Chrome",
+      "type": "shell",
+      "command": "chrome.exe",
+      "windows": {
+        "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+      },
+      "osx": {
+        "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      },
+      "args": [
+        "https://localhost.ssl:3000"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      }
+    },
+    {
       "label": "configure",
       "type": "shell",
       "command": "gem install ruby-debug-ide:0.6.0 debase:0.2.2.beta10 rcodetools rubocop fastri htmlbeautifier scss_lint --no-ri --no-rdoc",

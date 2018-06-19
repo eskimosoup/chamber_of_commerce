@@ -3,12 +3,16 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  include MemberSessionsHelper, Optimadmin::AdminSessionsHelper
+  include MemberSessionsHelper
+  include Optimadmin::AdminSessionsHelper
+  include Optimadmin::ErrorReporting
+
   helper_method :current_administrator
 
   before_action :global_site_settings, :load_objects, :current_member
   before_action :aside_content
 
+=begin
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, with: ->(e) { render_error(500, e) }
     rescue_from ActiveRecord::RecordNotFound, with: ->(e) { render_error(404, e) }
@@ -22,6 +26,7 @@ class ApplicationController < ActionController::Base
       format.all { render nothing: true, status: status }
     end
   end
+=end
 
   def index
     @presented_articles       = BaseCollectionPresenter.new(collection: Article.published.order(date: :desc).limit(10), view_template: view_context, presenter: ArticlePresenter)
