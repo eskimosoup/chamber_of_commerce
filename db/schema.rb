@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180501151349) do
+ActiveRecord::Schema.define(version: 20180604083334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -384,9 +384,11 @@ ActiveRecord::Schema.define(version: 20180501151349) do
   end
 
   create_table "optimadmin_site_settings", force: :cascade do |t|
-    t.string "key"
-    t.string "value"
-    t.string "environment"
+    t.string   "key"
+    t.string   "value"
+    t.string   "environment"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "pages", force: :cascade do |t|
