@@ -24,6 +24,8 @@
       </div>
 
       <ul id="modules" class="content-category-list">
+<%= module_link(content: Advertisement.model_name.human.pluralize.titleize, model: Advertisement, path: advertisements_path) %>
+
         <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <%= module_link(model: Magazine, path: magazines_path) %>
         <%= module_link(model: Page, path: pages_path) %>

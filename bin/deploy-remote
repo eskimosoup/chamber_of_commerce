@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Exit immediately if a command exits with a non-zero status.
+set -e
+
+start=$SECONDS
+echo `date`
+cd current
+
+printf "\nPulling latest version\n"
+git pull
+
+if [ "$1" = "install" ] ; then
+  printf "\nInstalling gems\n"
+
+  rm -rf Gemfile.lock
+  rm -rf .bundle
+  rm -rf vendor/bundle/
+
+  bundle install --without development test
+  bundle install --without development test --deployment
+fi
+
+printf "\nRunning database migrations\n"
+bundle exec rake db:migrate RAILS_ENV=production
+
+printf "\nPrecompiling assets\n"
+bundle exec rake assets:precompile RAILS_ENV=production
+
+printf "\nRestarting site\n"
+touch tmp/restart.txt
+bundle exec rake ping_host:request RAILS_ENV=production
+
+duration=$(( SECONDS - start ))
+printf "\nComplete: $duration seconds\n"
+
+if [ "$2" = "assets" ] ; then
+  printf "\nCompressing assets\n"
+  cd ./public/assets
+  
+  if [ -x "$(command -v jpegoptim)" ]; then
+    find . -type f -name "*.jpg" -exec jpegoptim -m70 --strip-all --all-progressive --force {} \;
+    find . -type f -name "*.JPG" -exec jpegoptim -m70 --strip-all --all-progressive --force {} \;
+  else
+    printf "jpegoptim not found\n"
+  fi
+  
+  if [ -x "$(command -v optipng)" ]; then
+    find . -type f -name "*.PNG" -exec optipng --quiet -strip all -o7 {} \;
+    find . -type f -name "*.PNG" -exec optipng --quiet -strip all -o7 {} \;
+  else
+    printf "optipng not found\n"
+  fi    
+  
+  total=$(( SECONDS - start ))
+  printf "\nComplete: $total seconds\n"
+fi

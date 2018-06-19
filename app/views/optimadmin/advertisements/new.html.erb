@@ -1,0 +1,6 @@
+<%= render 'optimadmin/shared/help_guides/sidebar', object: Advertisement, area: 'new' %>
+<%= render 'optimadmin/shared/header/main_title', title: "New #{Advertisement.model_name.human.titleize}" %>
+<div class="main-content">
+  <%= render 'optimadmin/shared/module/form/back', path: advertisements_path, title: Advertisement.model_name.human.titleize %>
+  <%= render 'form', model: @advertisement %>
+</div>

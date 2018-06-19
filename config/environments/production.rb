@@ -1,9 +1,19 @@
 Rails.application.configure do
   config.logger = Logger.new(config.paths['log'].first, 3, 26_214_400)
 
-  Rails.application.routes.default_url_options[:host] = 'www.hull-humber-chamber.co.k'
+  Rails.application.routes.default_url_options[:host] = 'www.hull-humber-chamber.co.uk'
+  Rails.application.routes.default_url_options[:protocol] = 'https'
 
-  config.action_mailer.asset_host = 'http://www.hull-humber-chamber.co.uk'
+  config.action_mailer.default_url_options = {
+    host: Rails.application.routes.default_url_options[:host],
+    protocol: Rails.application.routes.default_url_options[:protocol]
+  }
+
+  config.action_mailer.asset_host = [
+    Rails.application.routes.default_url_options[:protocol],
+    '://',
+    Rails.application.routes.default_url_options[:host]
+  ].join
 
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {

@@ -1,0 +1,40 @@
+
+<div class="tabs prevent-flash">
+  <ul class="tab-list">
+    <li><a href="#tabs-1">Content</a></li>
+    <li><a href="#tabs-2">Media</a></li>
+    <li><a href="#tabs-3">Settings</a></li>
+    <li>
+      <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+        <%= octicon('chevron-down') %>
+      <% end %>
+    </li>
+  </ul>
+
+  <%= field_set_tag nil, id: 'tabs-1' do %>
+        <div class="field">
+      <%= f.label :name, for: :name %><br>
+      <%= f.text_field :name, id: :name  %>
+    </div>
+        <div class="field">
+      <%= f.label :url, for: :url %><br>
+      <%= f.text_field :url, id: :url  %>
+    </div>
+
+
+      <% end %>
+
+  <%= field_set_tag nil, id: 'tabs-2' do %>
+        <%= f.document_field :image_large %>
+        <%= f.document_field :image_medium %>
+        <%= f.document_field :image_small %>
+
+
+      <% end %>
+
+  <%= field_set_tag nil, id: 'tabs-3' do %>
+
+        <%= render 'optimadmin/shared/display_status_field', f: f %>
+
+      <% end %>
+</div>

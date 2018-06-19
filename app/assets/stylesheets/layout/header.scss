@@ -65,3 +65,14 @@ header {
   background: $pale-blue;
   border-bottom-left-radius: 10px;
 }
+
+.advertisement {
+  background-color: $deep-blue;
+  padding-bottom: em(2px);
+  padding-top: em(2px);
+  text-align: center;
+
+  &__link {
+    display: inline-block;
+  }
+}

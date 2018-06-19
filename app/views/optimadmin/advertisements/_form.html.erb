@@ -1,0 +1,10 @@
+<%= form_for(model) do |f| %>
+  <%= render 'optimadmin/shared/form_errors', model: model %>
+
+  <%= render 'form_fields', f: f %>
+
+  <div class="actions">
+    <%= f.submit 'Save' %>
+    <%= f.submit 'Save and continue editing' %>
+  </div>
+<% end %>

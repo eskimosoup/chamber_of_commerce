@@ -62,36 +62,57 @@ Rails.application.routes.draw do
   mount Optimadmin::Engine => '/admin'
 end
 Optimadmin::Engine.routes.draw do
-  resources :event_offices, except: [:show] do
-    collection do
-      post 'order'
-    end
+  concern :imageable do
     member do
-      get 'toggle'
-    end
-  end
-  resources :industries, except: [:show] do
-    collection do
-      post :order
-      get :import_csv
-      post :import
-    end
-    member do
-      get 'toggle'
-    end
-  end
-  resources :member_offers, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
       get 'edit_images'
       post 'update_image_default'
       post 'update_image_fill'
       post 'update_image_fit'
     end
   end
+
+  concern :orderable do
+    collection do
+      post 'order'
+    end
+  end
+
+  concern :toggleable do
+    member do
+      get 'toggle'
+    end
+  end
+
+  concern :publishable do |options|
+    collection do
+      resources :expired,
+                as: "expired_#{options[:module]}",
+                controller: "#{options[:module]}/expired"
+      resources :scheduled,
+                as: "scheduled_#{options[:module]}",
+                controller: "#{options[:module]}/scheduled"
+      resources :published,
+                as: "published_#{options[:module]}",
+                controller: "#{options[:module]}/published"
+    end
+  end
+
+  resources :advertisements, except: [:show] do
+    concerns :imageable, :publishable, module: 'advertisements'
+  end
+
+  resources :event_offices, except: [:show], concerns: %i[orderable toggleable]
+
+  resources :industries, except: [:show], concerns: %i[toggleable] do
+    collection do
+      post :order
+      get :import_csv
+      post :import
+    end
+  end
+
+  resources :member_offers, except: [:show], concerns: %i[imageable orderable toggleable]
+
   resources :members, except: [:show] do
     resources :member_logins, except: [:show] do
       collection do

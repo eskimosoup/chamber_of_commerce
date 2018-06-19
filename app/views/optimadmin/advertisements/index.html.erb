@@ -1,0 +1,37 @@
+<%= render 'optimadmin/shared/header/main_title', title: "Manage #{Advertisement.model_name.human.pluralize.titleize}" %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: Advertisement.model_name.human.titleize, object: Advertisement, path: new_advertisement_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <!-- <%= render 'optimadmin/shared/module/index/order', options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC']] %> -->
+    <!-- <%= render 'optimadmin/shared/module/index/recycle_bin', items: @advertisements.size, path: root_url %> -->
+  </div>
+  <div class="tabs prevent-flash">
+    <%= render 'optimadmin/shared/module/index/display_status_navigation', object: Advertisement %>
+    <div id="tabs-1">
+      <div class="row collapse module-list-index header">
+        <%= list_item '' do %>
+          <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+          Title
+        <% end %>
+        <%= list_item '' do %>
+          Publish at
+        <% end %>
+        <%= list_item '' do %>
+          Expire at
+        <% end %>
+        <%= list_item('hide-for-medium-down') { 'Image' } %>
+        <%= list_item('large-1 small-4 text-center') { 'Edit' } %>
+        <%= list_item('large-1 text-center last') { 'Delete' } %>
+      </div>
+      <!-- <div class="module-sortable" data-module="Advertisement"> -->
+      <%= render partial: 'advertisement', collection: @advertisements, as: :advertisement, cached: true %>
+      <!-- </div> -->
+      <%= paginate @advertisements %>
+    </div>
+    <%= content_tag :div, (image_tag 'optimadmin/vendor/slick/ajax-loader.gif'), id: 'tabs-2' %>
+    <%= content_tag :div, (image_tag 'optimadmin/vendor/slick/ajax-loader.gif'), id: 'tabs-3' %>
+    <%= content_tag :div, (image_tag 'optimadmin/vendor/slick/ajax-loader.gif'), id: 'tabs-4' %>
+  </div>
+</div>

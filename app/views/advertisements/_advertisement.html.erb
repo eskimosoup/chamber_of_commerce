@@ -1,0 +1,12 @@
+<% cache @advertisement do %>
+  <div class="advertisement">
+    <%= link_to @advertisement.url, target: '_blank', rel: 'noopener', class: 'advertisement__link' do %>
+      <%= image_set_tag @advertisement.image_large.url,
+          {
+            @advertisement.image_small.url => '640w',
+            @advertisement.image_medium.url => '1024w',
+            @advertisement.image_large.url => '1980w'
+          }, sizes: '100vw' %>
+    <% end %>
+  </div>
+<% end %>
