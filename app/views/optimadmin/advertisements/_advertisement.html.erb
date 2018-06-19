@@ -1,0 +1,29 @@
+<% present advertisement do |advertisement_presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= advertisement_presenter.id %>">
+    <div class="columns">
+      <%= advertisement_presenter.toggle_title %>
+    </div>
+    <div class="columns">
+      <%= advertisement_presenter.date(advertisement.publish_at) %>
+    </div>
+    <div class="columns">
+      <%= advertisement_presenter.date(advertisement.expire_at) %>
+    </div>
+    <div class="hide-for-medium-down columns">
+      <%= link_to 'Small', advertisement.image_small.url %> -
+      <%= link_to 'Medium', advertisement.image_medium.url %> -
+      <%= link_to 'Large', advertisement.image_large.url %>
+    </div>
+    <div class="large-1 small-4 text-center columns">
+      <%= advertisement_presenter.edit_link %>
+    </div>
+    <div class="large-1 text-center columns last">
+      <%= advertisement_presenter.delete_link %>
+    </div>
+  </div>
+  <div class="row module-list-detail hide" id="index-list-<%= advertisement_presenter.id %>">
+    <div class="small-12 columns module-list-summary last">
+      <%= advertisement_presenter.optimadmin_summary %>
+    </div>
+  </div>
+<% end %>

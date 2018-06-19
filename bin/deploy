@@ -1,0 +1,21 @@
+#!/bin/bash
+HOST_USER="root";
+HOST="postgres.allofmy.co.uk";
+FULLHOST="$HOST_USER@$HOST";
+
+LOCAL_DEPLOY_FILE="bin/deploy-remote";
+DIRECTORY="/home/chamber_of_commerce";
+DEPLOY_FILE="deploy-remote";
+USER="chamber_of_commerce";
+
+echo $FULLHOST;
+echo $DIRECTORY;
+echo $DEPLOY_FILE;
+echo $USER;
+
+scp $LOCAL_DEPLOY_FILE $HOST:$DIRECTORY
+ssh $HOST -t "cd $DIRECTORY && chown $USER:$USER deploy-remote && chmod +x $DEPLOY_FILE"
+ssh $HOST -t "su -l $USER bash -c './$DEPLOY_FILE'"
+# ssh root@postgres.allofmy.co.uk -t 'su -l chamber_of_commerce bash -c "./deploy-remote install assets"'
+
+
