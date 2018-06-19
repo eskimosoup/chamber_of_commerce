@@ -24,8 +24,6 @@
       </div>
 
       <ul id="modules" class="content-category-list">
-<%= module_link(content: Advertisement.model_name.human.pluralize.titleize, model: Advertisement, path: advertisements_path) %>
-
         <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <%= module_link(model: Magazine, path: magazines_path) %>
         <%= module_link(model: Page, path: pages_path) %>
@@ -33,6 +31,7 @@
         <%= module_link(content: "Newsletter Signups", model: NewsletterSignup, path: newsletter_signups_path) %>
         <%= module_link(model: Patron, path: patrons_path) %>
         <%= module_link(content: "Internal Promotions", model: InternalPromotion, path: internal_promotions_path) %>
+        <%= module_link(content: Advertisement.model_name.human.pluralize.titleize, model: Advertisement, path: advertisements_path) %>
         <% if can? :manage, Optimadmin::MenuItem %>
         <% end %>
       </ul>
