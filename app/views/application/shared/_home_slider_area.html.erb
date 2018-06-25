@@ -3,19 +3,19 @@
     <div class="small-11 slider-focus medium-5 columns">
       <% if @presented_events.present? %>
         <div class="home-events<%= ' hide' unless global_site_settings['Home Slider'] == "Events" %>">
-          <%= render partial: 'application/home_slider/content_preview', collection: @presented_events, as: :module_presenter %>
+          <%= render partial: 'application/home_slider/content_preview', collection: @presented_events, as: :module_presenter, cache: true %>
         </div>
       <% end %>
 
       <% if @presented_articles.present? %>
         <div class="home-articles<%= ' hide' unless global_site_settings['Home Slider'] == "News" %>">
-          <%= render partial: 'application/home_slider/content_preview', collection: @presented_articles, as: :module_presenter %>
+          <%= render partial: 'application/home_slider/content_preview', collection: @presented_articles, as: :module_presenter, cache: true %>
         </div>
       <% end %>
 
       <% if @presented_members_offers.present? %>
         <div class="home-members-offers<%= ' hide' unless global_site_settings['Home Slider'] == "Members' Offers" %>">
-          <%= render partial: 'application/home_slider/content_preview', collection: @presented_members_offers, as: :module_presenter %>
+          <%= render partial: 'application/home_slider/content_preview', collection: @presented_members_offers, as: :module_presenter, cache: true %>
         </div>
       <% end %>
     </div>
@@ -47,15 +47,15 @@
         </div>
 
         <div class="home-events content<%= ' hide' unless global_site_settings['Home Slider'] == "Events" %>">
-          <%= render partial: 'application/home_slider/link_list', collection: @presented_events, as: :module_presenter %>
+          <%= render partial: 'application/home_slider/link_list', collection: @presented_events, as: :module_presenter, cache: true %>
         </div>
 
         <div class="home-articles content<%= ' hide' unless global_site_settings['Home Slider'] == "News" %>">
-          <%= render partial: 'application/home_slider/link_list', collection: @presented_articles, as: :module_presenter %>
+          <%= render partial: 'application/home_slider/link_list', collection: @presented_articles, as: :module_presenter, cache: true %>
         </div>
 
         <div class="home-members-offers content<%= ' hide' unless global_site_settings['Home Slider'] == "Members' Offers" %>">
-          <%= render partial: 'application/home_slider/link_list', collection: @presented_members_offers, as: :module_presenter %>
+          <%= render partial: 'application/home_slider/link_list', collection: @presented_members_offers, as: :module_presenter, cache: true %>
         </div>
 
         <div class="navigation text-center">
