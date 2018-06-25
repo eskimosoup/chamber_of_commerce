@@ -76,3 +76,15 @@ header {
     display: inline-block;
   }
 }
+
+.header-tagline {
+  font-size: em(24px);
+  font-weight: $light;
+  margin-top: em(40px, 24px);
+  margin-bottom: em(30px, 24px);
+  text-align: center;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
