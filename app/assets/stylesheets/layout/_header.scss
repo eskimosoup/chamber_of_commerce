@@ -9,6 +9,10 @@ header {
 .logo {
   display: block;
   margin: em(12px) 0 0;
+
+  @media only screen and (max-width: 768px) {
+    text-align: center;
+  }
 }
 
 %header-user-link {
@@ -88,5 +92,13 @@ header {
 
   @media screen and (max-width: 767px) {
     display: none;
+  }
+}
+
+.member-buttons {
+  .text-right {
+    @media screen and (max-width: 767px) {
+      text-align: center;
+    }
   }
 }
