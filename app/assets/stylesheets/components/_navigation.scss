@@ -7,6 +7,10 @@
     display: inline-block;
     position: relative;
 
+    @media only screen and (max-width: 767px) {
+      display: block;
+    }
+
     &:hover {
       ul {
         display: block;
@@ -58,6 +62,11 @@
     margin: 0 em(17px) 0 0;
     text-decoration: none;
 
+    @media only screen and (max-width: 767px) {
+      padding-bottom: em(10px);
+      padding-top: em(10px);
+    }
+
     &:link,
     &:visited {
       border-bottom: 2px solid $white; // prevent 2px jump on hover when no active
@@ -75,7 +84,7 @@
 }
 
 .navigation-toggle {
-  display: block;
+  display: inline-block;
   margin: em(10px) auto;
   text-align: right;
 }

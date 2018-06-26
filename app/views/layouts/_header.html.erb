@@ -12,20 +12,26 @@
     <div class="small-12 medium-6 columns">
       <p class="header-tagline">Growing your business,<br />building our economy</p>
     </div>
-    <div class="small-12 medium-3 columns">
+    <div class="small-12 medium-3 member-buttons columns">
       <div class="text-right">
         <%= render 'shared/member_buttons' %>
       </div>
-      <gcse:search></gcse:search>
+      <div class="row collapse">
+        <div class="small-10 medium-12 columns">
+          <gcse:search></gcse:search>
+        </div>
+        <div class="small-2 medium-12 columns">
+          <%= link_to '#header-navigation', class: 'toggle-class navigation-toggle show-for-small', title: 'Navigation', data: { container: '.header-navigation', class: 'hide-for-small', return: 'false' } do %>
+            <%= image_tag 'components/icons/hamburger.png', alt: 'Navigation' %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="row">
     <div class="small-12 columns">
       <nav>
-        <%= link_to '#header-navigation', class: 'toggle-class navigation-toggle show-for-small', title: 'Navigation', data: { container: '.header-navigation', class: 'hide-for-small', return: 'false' } do %>
-          <%= image_tag 'components/icons/hamburger.png', alt: 'Navigation' %>
-        <% end %>
         <ul class="header-navigation hide-for-small" id="header-navigation">
           <%= nested_menu_items(menu_items: @header_menu.menu_items) %>
         </ul>
