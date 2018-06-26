@@ -4,7 +4,7 @@
       <picture>
         <source srcset="<%= image_path advertisement.image_small.url %>" media="(max-width: 650px)" />
         <source srcset="<%= image_path advertisement.image_medium.url %>" media="(max-width: 1024px)" />
-        <img srcset="<%= image_path advertisement.image_large.url %>" />
+        <img src="<%= image_path advertisement.image_large.url %>" />
       </picture>
 
       <%#= image_set_tag advertisement.image_large.url,
