@@ -21,7 +21,7 @@
           <gcse:search></gcse:search>
         </div>
         <div class="small-2 medium-12 columns">
-          <%= link_to '#header-navigation', class: 'toggle-class navigation-toggle show-for-small', title: 'Navigation', data: { container: '.header-navigation', class: 'hide-for-small', return: 'false' } do %>
+          <%= link_to '#header-navigation', class: 'toggle-class navigation-toggle show-for-medium-down', title: 'Navigation', data: { container: '.header-navigation', class: 'hide-for-medium-down', return: 'false' } do %>
             <%= image_tag 'components/icons/hamburger.png', alt: 'Navigation' %>
           <% end %>
         </div>
@@ -32,7 +32,7 @@
   <div class="row">
     <div class="small-12 columns">
       <nav>
-        <ul class="header-navigation hide-for-small" id="header-navigation">
+        <ul class="header-navigation hide-for-medium-down" id="header-navigation">
           <%= nested_menu_items(menu_items: @header_menu.menu_items) %>
         </ul>
       </nav>
