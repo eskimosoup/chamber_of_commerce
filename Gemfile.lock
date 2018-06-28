@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: bd11b9b178a38282d689b2e92cbfcc6a7cb6f562
+  revision: 9d80fe474e4ac83b5f323d6cf2cf6638e21ca001
   branch: master
   specs:
-    optimadmin (0.9.11.1)
+    optimadmin (0.9.11.3)
       bcrypt
       cancancan
       carrierwave
@@ -29,9 +29,9 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: 9dfe64535c7d10f79cf92bff88b38e4b579910aa
+  revision: 1636935cf0ac32b918b5553ace63273dfa150c5a
   specs:
-    optimadmin_generators (0.8.8.6)
+    optimadmin_generators (0.8.8.7)
 
 GEM
   remote: https://rubygems.org/
