@@ -14,17 +14,23 @@
       </div>
 
       <div class="footer-information">
-        <span class="copyright">
-          &copy; <%= global_site_settings['Name'] %> <%= Date.today.year %>
-        </span>
-        <nav class="footer-navigation">
-          <ul>
-            <%= nested_menu_items(menu_items: @footer_menu.menu_items) %>
-          </ul>
-        </nav>
-        <span class="site-authorship">
-          Site by <%= link_to 'Optimised', 'http://optimised.today' %>
-        </span>
+
+        <div class="footer-microcopy">
+          <span class="copyright">
+            &copy; <%= global_site_settings['Name'] %> <%= Date.today.year %>
+          </span>
+          <nav class="footer-navigation">
+            <ul>
+              <%= nested_menu_items(menu_items: @footer_menu.menu_items) %>
+            </ul>
+          </nav>
+          <span class="site-authorship">
+            Site by <%= link_to 'Optimised', 'http://optimised.today' %>
+          </span>
+        </div>
+        <p class="company-legal">
+          A Company Limited by Guarantee and Registered in England. No. 9604.
+        </p>
       </div>
     </div>
   </div>

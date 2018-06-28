@@ -21,7 +21,7 @@ footer {
   color: $white;
   font-size: em(21px);
   font-weight: $light;
-  margin-bottom: em(30px, 21px);
+  margin-bottom: em(20px, 21px);
   text-align: center;
 }
 
@@ -58,6 +58,16 @@ footer {
   }
 }
 
+.company-legal {
+  font-size: em(14px);
+  margin-bottom: em(10px);
+  margin-top: 0;
+}
+
 .site-authorship {
-  margin-left: em(70px);
+  margin-left: em(20px);
+}
+
+.footer-microcopy {
+  margin-bottom: em(10px);
 }
