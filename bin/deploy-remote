@@ -28,7 +28,7 @@ printf "\nPrecompiling assets\n"
 bundle exec rake assets:precompile RAILS_ENV=production
 
 printf "\nRestarting site\n"
-touch tmp/restart.txt
+passenger-config restart-app $PWD
 bundle exec rake ping_host:request RAILS_ENV=production
 
 duration=$(( SECONDS - start ))
