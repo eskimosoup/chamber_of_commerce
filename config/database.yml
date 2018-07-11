@@ -15,7 +15,7 @@
 # gem 'pg'
 #
 default: &default
-  host: 192.168.0.41
+  host: localhost
   username: postgres
   password: tmedia
   adapter: postgresql
@@ -85,4 +85,5 @@ production:
   <<: *default
   database: chamber_of_commerce_production
   username: chamber_of_commerce
-  password: <%= ENV['chamber_DATABASE_PASSWORD'] %>
+  host: localhost
+  password: <%= ENV['CHAMBER_OF_COMMERCE_DATABASE_PASSWORD'] %>
