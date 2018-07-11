@@ -15,9 +15,7 @@ class MenuItemPresenter < BasePresenter
   end
 
   def classes
-    classes = ["menu-link"]
-    classes << "active" if active?
-    classes.join(' ')
+    active? ? 'menu-link active' : 'menu-link'
   end
 
   private

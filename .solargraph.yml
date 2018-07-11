@@ -1,0 +1,23 @@
+---
+include:
+- "app/**/*.rb"
+- "lib/**/*.rb"
+exclude:
+- "app/assets/**"
+- spec/**/**
+- test/**/**
+- vendor/**/**
+- tmp/**/**
+- node_modules/**/**
+- coverage/**/**
+- public/**/**
+- ".vscode/**/**"
+- ".bundle/**/*"
+- ".git/**/*"
+require: []
+domains: []
+reporters:
+- rubocop
+- require_not_found
+plugins: []
+max_files: 5000
