@@ -83,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: chamber_production
-  username: chamber
+  database: chamber_of_commerce_production
+  username: chamber_of_commerce
   password: <%= ENV['chamber_DATABASE_PASSWORD'] %>
