@@ -63,6 +63,7 @@ group :development do
   gem 'flamegraph'
   gem 'stackprof', '~> 0.2.7'
   gem 'bullet'
+  gem 'memory_profiler'
 end
 
 gem 'tinymce-rails'
@@ -71,5 +72,5 @@ gem 'jquery-slick-rails', '~> 1.5', '>= 1.5.9.1'
 gem 'geocoder', '~> 1.2.9'
 gem 'cocoon', '~> 1.2.6'
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :master
-gem 'cookie_consent', git: 'git@github.com:eskimosoup/cookie_consent.git', branch: 'master'
+gem 'cookie_consent', git: 'git@github.com:eskimosoup/cookie_consent.git', branch: :master
 gem 'stripe', '~> 1.25.0'

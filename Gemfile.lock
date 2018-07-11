@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 9d80fe474e4ac83b5f323d6cf2cf6638e21ca001
+  revision: 52932bc48082f052cc32d9cb3e077a5cc19c31bc
   branch: master
   specs:
-    optimadmin (0.9.11.3)
+    optimadmin (1.0.3.3)
       bcrypt
       cancancan
       carrierwave
@@ -11,8 +11,6 @@ GIT
       closure_tree
       fastimage
       google-api-client (= 0.8.6)
-      jquery-rails
-      jquery-ui-rails
       kaminari
       mini_magick
       rails
@@ -21,17 +19,17 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/cookie_consent.git
-  revision: 06527f44e98b24ae304c5f35aa1f89742abebd2e
+  revision: ec341ed2132637cf3f05be1375d3391cb30de9bc
   branch: master
   specs:
-    cookie_consent (0.1.3.1)
+    cookie_consent (0.2.1)
       rails (>= 4.0.0)
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: 1636935cf0ac32b918b5553ace63273dfa150c5a
+  revision: 9998efbf3aebc5d27ff44cc9152a3a8122aba148
   specs:
-    optimadmin_generators (0.8.8.7)
+    optimadmin_generators (1.0.2)
 
 GEM
   remote: https://rubygems.org/
@@ -91,7 +89,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    carrierwave (1.2.2)
+    carrierwave (1.2.3)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
@@ -217,6 +215,7 @@ GEM
     mail (2.7.0)
       mini_mime (>= 0.1.1)
     memoist (0.16.0)
+    memory_profiler (0.9.10)
     method_source (0.8.2)
     mime-types (2.99.3)
     mini_magick (4.8.0)
@@ -227,7 +226,7 @@ GEM
     multipart-post (2.0.0)
     nenv (0.3.0)
     netrc (0.11.0)
-    nokogiri (1.8.3)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -360,8 +359,8 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    with_advisory_lock (3.2.0)
-      activerecord (>= 3.2)
+    with_advisory_lock (4.0.0)
+      activerecord (>= 4.2)
     xpath (2.1.0)
       nokogiri (~> 1.3)
 
@@ -387,6 +386,7 @@ DEPENDENCIES
   jquery-slick-rails (~> 1.5, >= 1.5.9.1)
   jquery-ui-rails (~> 5.0.5)
   launchy (~> 2.4.3)
+  memory_profiler
   optimadmin!
   optimadmin_generators!
   pg (~> 0.19.0)
