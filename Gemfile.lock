@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 28c06c5f9588a44123b6b69d68d243b2086492f0
+  revision: ad8cf626d27a4ff814da03e30cc34cfa46859890
   branch: master
   specs:
-    optimadmin (1.0.4)
+    optimadmin (1.0.4.1)
       bcrypt
       cancancan
       carrierwave
