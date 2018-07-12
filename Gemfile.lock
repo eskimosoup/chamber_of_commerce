@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: ad8cf626d27a4ff814da03e30cc34cfa46859890
+  revision: 8c63b4bf1c6311d321dd5333e21bfe2f2749ace2
   branch: master
   specs:
-    optimadmin (1.0.4.1)
+    optimadmin (1.1.1)
       bcrypt
       cancancan
       carrierwave
@@ -15,7 +15,6 @@ GIT
       mini_magick
       rails
       sass-rails
-      tinymce-rails
 
 GIT
   remote: git@github.com:eskimosoup/cookie_consent.git
@@ -346,7 +345,7 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    tinymce-rails (4.7.13)
+    tinymce-rails (4.8.0)
       railties (>= 3.1.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
