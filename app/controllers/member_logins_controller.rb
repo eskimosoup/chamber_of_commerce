@@ -19,11 +19,11 @@ class MemberLoginsController < ApplicationController
   end
 
   def edit
-    @member_login = current_member.member_login
+    @member_login = current_member_login
   end
 
   def update
-    @member_login = current_member.member_login
+    @member_login = current_member_login
     if @member_login.update(member_login_params)
       redirect_to edit_member_logins_url, notice: 'Member login was successfully updated.'
     else

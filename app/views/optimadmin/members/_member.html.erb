@@ -4,7 +4,9 @@
   </div>
 
   <div class="large-3 hide-for-small columns" data-equalizer-watch="module-list">
-    <%= member_presenter.edit_member_login %>
+    <% member_presenter.member_logins.each do |member_login| %>
+      <%= link_to "Edit #{member_login.username} (#{member_login.contact_name})", edit_member_member_login_path(member_login.member, member_login) %><br />
+    <% end %>
   </div>
 
   <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
@@ -25,7 +27,7 @@
 
   <div class="row module-list-detail hide" id="index-list-<%= member_presenter.id %>">
     <div class="small-12 columns module-list-summary last">
-      
+
     </div>
   </div>
 </div>
