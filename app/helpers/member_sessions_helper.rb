@@ -10,7 +10,7 @@ module MemberSessionsHelper
   end
 
   def logout_member_session(member)
-    member.member_login.generate_auth_token
+    current_member_login.generate_auth_token
     cookies.delete(:member_id) if cookies.permanent.signed[:member_id]
     cookies.delete(:member_auth_token) if cookies.permanent[:member_auth_token]
     session[:member_id] = nil

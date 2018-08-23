@@ -63,12 +63,16 @@ class ApplicationController < ActionController::Base
   end
 
   def current_member
-    auth_token_current_member = MemberLogin.find_by(auth_token: cookies[:member_auth_token]) if cookies.signed[:member_id]
-    authenticate_member_session auth_token_current_member if auth_token_current_member
-    current_member ||= MemberLogin.find(session[:member_id]) if session[:member_id]
-    current_member.member if current_member
+    current_member_login.member if current_member_login.present?
   end
   helper_method :current_member
+
+  def current_member_login
+    auth_token_current_member = MemberLogin.find_by(auth_token: cookies[:member_auth_token]) if cookies.signed[:member_id]
+    authenticate_member_session(auth_token_current_member) if auth_token_current_member
+    MemberLogin.find(session[:member_id]) if session[:member_id]
+  end
+  helper_method :current_member_login
 
   def members_only
     return if current_member

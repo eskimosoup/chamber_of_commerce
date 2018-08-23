@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 8c63b4bf1c6311d321dd5333e21bfe2f2749ace2
+  revision: 6d6352c7b5452d0f7812e05f55c30fea4836688d
   branch: master
   specs:
-    optimadmin (1.1.1)
+    optimadmin (1.2.0)
       bcrypt
       cancancan
       carrierwave
@@ -26,9 +26,9 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: 9998efbf3aebc5d27ff44cc9152a3a8122aba148
+  revision: 76afa2d878b41a6ca3e07411d7bfb5e88cafd371
   specs:
-    optimadmin_generators (1.0.2)
+    optimadmin_generators (1.0.8)
 
 GEM
   remote: https://rubygems.org/
@@ -170,7 +170,7 @@ GEM
       domain_name (~> 0.5)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    image_optimizer (1.7.2)
+    image_optimizer (1.8.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
