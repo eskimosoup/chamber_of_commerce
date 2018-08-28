@@ -5,4 +5,4 @@
 # 1046320372741-lrht0ligh5qsrpv5tjmbu9gfufbv3dns@developer.gserviceaccount.com
 # to the property, as per https://console.developers.google.com/project/rock-arc-88714/apiui/credential
 # and https://support.google.com/analytics/answer/1009702?hl=en
-GA_PROFILE = ''
+GA_PROFILE = 'ga:13907019'
