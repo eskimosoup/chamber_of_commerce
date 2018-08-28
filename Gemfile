@@ -68,7 +68,7 @@ end
 
 gem 'tinymce-rails'
 
-gem 'jquery-slick-rails', '~> 1.5', '>= 1.5.9.1'
+gem 'jquery-slick-rails', '1.5.9.1'
 gem 'geocoder', '~> 1.2.9'
 gem 'cocoon', '~> 1.2.6'
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :master
