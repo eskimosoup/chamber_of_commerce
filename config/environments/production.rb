@@ -17,7 +17,7 @@ Rails.application.configure do
 
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-    address: 'mail.ludo2.co.uk',
+    address: 'optimisedmail.co.uk',
     authentication: :plain,
     user_name: 'noreply@hull-humber-chamber.co.uk',
     password: ENV['NOREPLY_PASSWORD'],
