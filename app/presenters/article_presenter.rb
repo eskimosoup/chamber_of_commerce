@@ -49,12 +49,13 @@ class ArticlePresenter < BasePresenter
   end
 
   def image_from_layout
-    case article.layout
-    when 'full_image'
-      h.image_tag article.image.show_full_image, alt: article.title, class: 'page-image'
-    else
-      h.image_tag article.image.show, alt: article.title, class: 'page-image'
-    end
+    h.image_tag article.image.homepage, alt: article.title, class: 'page-image'
+    # case article.layout
+    # when 'full_image'
+    #   h.image_tag article.image.show_full_image, alt: article.title, class: 'page-image'
+    # else
+    #  h.image_tag article.image.show, alt: article.title, class: 'page-image'
+    # end
   end
 
   def image_caption

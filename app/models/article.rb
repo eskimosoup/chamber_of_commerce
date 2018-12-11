@@ -14,7 +14,7 @@ class Article < ActiveRecord::Base
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }
 
   def self.layouts
-    %w( right_image full_image no_image )
+    %w( full_image right_image no_image )
   end
 
   def slug_candidates
