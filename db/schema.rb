@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180619091637) do
+ActiveRecord::Schema.define(version: 20181211164428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,18 +47,18 @@ ActiveRecord::Schema.define(version: 20180619091637) do
   add_index "article_categories", ["slug"], name: "index_article_categories_on_slug", using: :btree
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title",                                       null: false
+    t.string   "title",                                      null: false
     t.integer  "article_category_id"
     t.text     "summary"
     t.text     "content"
     t.string   "image"
     t.datetime "date"
     t.boolean  "display",             default: true
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.string   "layout",              default: "right_image"
+    t.string   "layout",              default: "full_image"
     t.string   "caption"
   end
 
@@ -190,8 +190,8 @@ ActiveRecord::Schema.define(version: 20180619091637) do
     t.string   "suggested_url"
     t.string   "slug"
     t.text     "summary"
-    t.integer  "event_bookings_count",             default: 0
     t.text     "booking_confirmation_information"
+    t.integer  "event_bookings_count",             default: 0
     t.string   "eventbrite_link"
     t.boolean  "allow_booking",                    default: true
     t.integer  "event_office_id"
@@ -349,7 +349,6 @@ ActiveRecord::Schema.define(version: 20180619091637) do
   create_table "optimadmin_images", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "image",       null: false
-    t.string   "string"
     t.integer  "module_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
