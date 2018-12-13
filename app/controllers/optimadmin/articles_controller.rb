@@ -4,7 +4,7 @@ module Optimadmin
     edit_images_for Article, [[:image, {
       #index: ['fill', 250, 250],
       #show: ['fill', 215, 135]
-      #show_full_image: ['fit', 613, 9999],
+      show_full_image: ['fit', 613, 9999],
       homepage: ['fill', 450, 295]
       }
     ]]

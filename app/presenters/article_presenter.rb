@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArticlePresenter < BasePresenter
   presents :article
 
@@ -45,17 +47,16 @@ class ArticlePresenter < BasePresenter
 
   def image
     return nil if article.image.blank? || article.layout == 'no_image'
-    h.content_tag :div, (image_from_layout + image_caption), class: ('image-right' if article.layout == 'right_image').to_s
+    h.content_tag :div, (image_from_layout + image_caption), class: ('image-right image-right--width' if article.layout == 'right_image').to_s
   end
 
   def image_from_layout
-    h.image_tag article.image.homepage, alt: article.title, class: 'page-image'
-    # case article.layout
-    # when 'full_image'
-    #   h.image_tag article.image.show_full_image, alt: article.title, class: 'page-image'
-    # else
-    #  h.image_tag article.image.show, alt: article.title, class: 'page-image'
-    # end
+    case article.layout
+    when 'full_image'
+      h.image_tag article.image.show_full_image, alt: article.title, class: 'page-image'
+    else
+      h.image_tag article.image.homepage, alt: article.title, class: 'page-image'
+    end
   end
 
   def image_caption
