@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Optimadmin
   class BasePresenter
-
     attr_reader :partial_path
     def initialize(object:, view_template:)
       @object = object
@@ -51,7 +52,7 @@ module Optimadmin
 
     def toggle_link(attribute = :display)
       return nil unless @object.has_attribute?(attribute)
-      h.link_to((@object.send("#{attribute}?") ? 'Yes' : 'No'), h.toggle_path(model: @object.class.name.demodulize, id: @object.id, toggle: attribute), id: "#{attribute.to_s}-#{@object.id}", class: "helper-link display #{ @object.send("#{attribute}?") ? 'true' : 'false' }", remote: true)
+      h.link_to((@object.send("#{attribute}?") ? 'Yes' : 'No'), h.toggle_path(model: @object.class.name.demodulize, id: @object.id, toggle: attribute), id: "#{attribute}-#{@object.id}", class: "helper-link display #{@object.send("#{attribute}?") ? 'true' : 'false'}", remote: true)
     end
 
     def show_link
@@ -65,13 +66,13 @@ module Optimadmin
     end
 
     def disabled_delete_link
-      h.content_tag :span, class: "disabled" do
+      h.content_tag :span, class: 'disabled' do
         trash_can
       end
     end
 
     def disabled_show_link
-      h.content_tag :span, class: "disabled" do
+      h.content_tag :span, class: 'disabled' do
         eye
       end
     end

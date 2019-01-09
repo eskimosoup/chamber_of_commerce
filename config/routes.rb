@@ -236,6 +236,7 @@ Optimadmin::Engine.routes.draw do
     end
   end
   resources :articles, except: [:show] do
+    concerns :publishable, module: 'articles'
     collection do
       post 'order'
     end

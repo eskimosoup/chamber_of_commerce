@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+  include OptimadminScopes
+
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
@@ -9,6 +11,8 @@ class Article < ActiveRecord::Base
   scope :member_news, -> { joins(:article_category).where(article_categories: { member_related: true }).published.order(date: :desc) }
   scope :non_member_news, -> { joins(:article_category).where(article_categories: { member_related: false }).published.order(date: :desc) }
   scope :admin, -> (current_administrator) { unscoped if current_administrator.present? }
+  scope :scheduled, ->  { where('display = ? and date > ?', true, Time.zone.now) }
+  scope :expired, ->  { where('display = ?', false) }
 
   validates :title, :content, :date, :article_category, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: { message: 'is not unique, leave this blank to generate automatically' }
