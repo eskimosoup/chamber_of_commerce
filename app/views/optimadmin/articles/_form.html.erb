@@ -1,23 +1,18 @@
 <%= form_for(article) do |f| %>
-<% if article.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-    <ul>
-      <% article.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-
+  <% if article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul>
+        <% article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-
-
   <div class="tabs prevent-flash">
     <ul class="tab-list">
       <li><a href="#tabs-1">Content</a></li>
@@ -29,36 +24,28 @@
         <% end %>
       </li>
     </ul>
-
     <%= field_set_tag nil, id: 'tabs-1' do %>
       <div class="field">
         <%= f.label :article_category_id %><br>
         <%= f.select :article_category_id, ArticleCategory.order(title: :asc).pluck(:title, :id), prompt: 'Please select' %>
       </div>
-
       <div class="field">
         <%= f.label :summary %><br>
         <%= f.text_area :summary %>
       </div>
-
       <div class="field">
         <%= f.label :content %><br>
         <%= f.text_area :content, class: 'tinymce' %>
       </div>
-
-
       <%= f.datetimepicker_field :date %>
     <% end %>
-
     <%= field_set_tag nil, id: 'tabs-2' do %>
       <%= f.image_field :image %>
-
       <div class="field">
         <%= f.label :caption %><br />
         <%= f.text_field :caption %>
       </div>
     <% end %>
-
     <%= field_set_tag nil, id: 'tabs-3' do %>
       <% if Article.layouts.size > 1 %>
         <div class="field">
@@ -66,14 +53,12 @@
           <%= f.select :layout, Article.layouts.map{ |x| [t(x), x] } %>
         </div>
       <% end %>
-
       <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>
       </div>
     <% end %>
   </div>
-
   <div class="actions">
     <%= f.submit "Save" %>
     <%= f.submit "Save and continue editing" %>

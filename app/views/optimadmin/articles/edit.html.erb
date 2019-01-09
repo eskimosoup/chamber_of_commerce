@@ -1,7 +1,6 @@
-<%= render 'optimadmin/shared/header/main_title', title: 'Edit Article' %>
-
+<%= render 'optimadmin/shared/help_guides/sidebar', object: Article, area: 'edit' %>
+<%= render 'optimadmin/shared/header/main_title', title: "Edit #{Article.model_name.human.titleize}" %>
 <div class="main-content">
-  <%= render 'optimadmin/shared/module/form/back', path: articles_path, title: 'Article' %>
-
+  <%= render 'optimadmin/shared/module/form/back', path: articles_path, title: Article.model_name.human.titleize %>
   <%= render 'form', article: @article %>
 </div>

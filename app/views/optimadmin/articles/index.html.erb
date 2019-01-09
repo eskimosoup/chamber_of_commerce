@@ -1,27 +1,30 @@
-<%= render 'optimadmin/shared/header/main_title', title: 'Manage Articles' %>
-
+<%= render 'optimadmin/shared/header/main_title', title: t('optimadmin.views.module.index.title', model_name: Article.model_name.human.pluralize.titleize) %>
 <div class="main-content">
   <div class="row module-header collapse">
-    <%= render 'optimadmin/shared/module/index/new_item', title: 'Article', object: Article, path: new_article_path %>
+    <%= render 'optimadmin/shared/module/index/new_item', title: Article.model_name.human.titleize, object: Article, path: new_article_path %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
-    <%= render 'optimadmin/shared/module/index/order', options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC'], ['Date newest first', 'date DESC'], ['Date oldest first', 'date ASC']] %>
-    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @articles.size, path: root_url %>
+    <!-- <%= render 'optimadmin/shared/module/index/order', options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC'], ['Displayed', 'display DESC'], ['Hidden', 'display ASC']] %> -->
+    <!-- <%= render 'optimadmin/shared/module/index/recycle_bin', items: @articles.size, path: root_url %> -->
   </div>
-
-  <div class="row collapse module-list-index header">
-    <%= list_item 'large-6 small-8' do 'Title' end %>
-
-    <%= list_item 'large-2 hide-for-medium-down' do 'Image' end %>
-
-    <%= list_item { 'Display' } %>
-    <%= list_item { 'View' } %>
-    <%= list_item { 'Edit' } %>
-
-    <%= list_item 'large-1 hide-for-medium-down text-center last' do 'Delete' end %>
+  <div class="tabs prevent-flash">
+    <%= render 'optimadmin/shared/module/index/display_status_navigation', object: Article %>
+    <div id="tabs-1">
+      <div class="row collapse module-list-index header">
+        <%= list_item('') { 'Title' } %>
+        <%= list_item('large-2 hide-for-medium-down') { 'Image' } %>
+        <%= list_item('large-1 small-4 text-center') { 'Display' } %>
+        <%= list_item('large-1 small-4 text-center') { 'View' } %>
+        <%= list_item('large-1 small-4 text-center') { 'Edit' } %>
+        <%= list_item('large-1 text-center last') { 'Delete' } %>
+      </div>
+      <!-- <div class="module-sortable" data-module="Article"> -->
+      <%= render partial: 'article', collection: @articles, as: :article, cached: true %>
+      <!-- </div> -->
+      <%= paginate @articles %>
+    </div>
+    <%= content_tag :div, (image_tag 'optimadmin/vendor/slick/ajax-loader.gif'), id: 'tabs-2' %>
+    <%= content_tag :div, (image_tag 'optimadmin/vendor/slick/ajax-loader.gif'), id: 'tabs-3' %>
+    <%= content_tag :div, (image_tag 'optimadmin/vendor/slick/ajax-loader.gif'), id: 'tabs-4' %>
   </div>
-
-  <%= render partial: 'article', collection: @articles, as: :article_presenter %>
-
-  <%= paginate @articles %>
 </div>
