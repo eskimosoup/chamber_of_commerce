@@ -6,6 +6,10 @@ module Optimadmin
       article.title
     end
 
+    def date
+      h.l article.date, format: :long
+    end
+
     def summary
       h.simple_format article.summary
     end
