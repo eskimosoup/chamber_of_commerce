@@ -1,7 +1,10 @@
 <% present article do |article_presenter| %>
   <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= article_presenter.id %>">
-    <div class="large-6 small-8 columns" data-equalizer-watch="module-list">
+    <div class="columns" data-equalizer-watch="module-list">
       <%= article_presenter.toggle_title %>
+    </div>
+    <div class="columns" data-equalizer-watch="module-list">
+      <%= article_presenter.date %>
     </div>
     <div class="large-2 hide-for-medium-down columns" data-equalizer-watch="module-list">
       <%= article_presenter.edit_image(:image) %>
