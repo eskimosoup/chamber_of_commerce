@@ -10,6 +10,10 @@ class ArticleUploader < Optimadmin::ImageUploader
   end
 =end
 
+  version :show_right do
+    process resize_to_fit: [265, 380]
+  end
+
   version :show_full_image do
     process resize_to_fit: [613, 9999]
   end

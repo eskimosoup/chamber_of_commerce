@@ -11,6 +11,7 @@ module Optimadmin
                         # index: ['fill', 250, 250],
                         # show: ['fill', 215, 135]
                         show_full_image: ['fit', 613, 9999],
+                        show_right: ['fit', 265, 380],
                         homepage: ['fill', 450, 295]
                       }]
                     ]
