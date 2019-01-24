@@ -55,7 +55,7 @@ class ArticlePresenter < BasePresenter
     when 'full_image'
       h.image_tag article.image.show_full_image, alt: article.title, class: 'page-image'
     else
-      h.image_tag article.image.homepage, alt: article.title, class: 'page-image'
+      h.image_tag article.image.show_right, alt: article.title, class: 'page-image'
     end
   end
 
