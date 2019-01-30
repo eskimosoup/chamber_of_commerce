@@ -1,12 +1,17 @@
 <% cache advertisement do %>
   <div class="advertisement">
-    <%= link_to advertisement.url, target: '_blank', rel: 'noopener', class: 'advertisement__link' do %>
+    <%= link_to advertisement.url, target: '_blank', rel: 'noopener', class: 'advertisement__link',
+                                  class: 'ga-event',
+                                  data: {
+                                    event_category: 'Advertisement',
+                                    event_action: 'click',
+                                    event_label: "#{j advertisement.name }"
+                                  } do %>
       <picture>
         <source srcset="<%= image_path advertisement.image_small.url %>" media="(max-width: 650px)" />
         <source srcset="<%= image_path advertisement.image_medium.url %>" media="(max-width: 1024px)" />
         <img src="<%= image_path advertisement.image_large.url %>" />
       </picture>
-
       <%#= image_set_tag advertisement.image_large.url,
           {
             advertisement.image_small.url => '640w',

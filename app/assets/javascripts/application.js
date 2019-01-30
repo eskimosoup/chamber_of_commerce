@@ -22,6 +22,7 @@
 //= require tinymce
 //= require jquery.slick
 //= require cocoon
+//= require vendor/ga-events
 //= require vendor/jquery.colorbox-min.js
 //= require cookie-consent/consent
 // require_tree .
