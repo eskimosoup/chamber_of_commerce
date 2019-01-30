@@ -1,5 +1,9 @@
 <% present advertisement do |advertisement_presenter| %>
   <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= advertisement_presenter.id %>">
+
+    <div class="columns">
+      <%= advertisement_presenter.id %>
+    </div>
     <div class="columns">
       <%= advertisement_presenter.toggle_title %>
     </div>
