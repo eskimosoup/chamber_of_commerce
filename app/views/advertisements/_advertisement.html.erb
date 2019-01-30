@@ -5,7 +5,7 @@
                                   data: {
                                     event_category: 'Advertisement',
                                     event_action: 'click',
-                                    event_label: "#{j advertisement.name }"
+                                    event_label: "#{j advertisement.name} - #{advertisement.id)}"
                                   } do %>
       <picture>
         <source srcset="<%= image_path advertisement.image_small.url %>" media="(max-width: 650px)" />
