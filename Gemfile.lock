@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 2a60f74a41b478948d41eee16bce485bb665b6ac
+  revision: 79040f338210c04d80edfdba977be82018490629
   branch: master
   specs:
-    optimadmin (1.4.7)
+    optimadmin (1.6.0)
       bcrypt
       cancancan
       carrierwave
@@ -17,11 +17,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/cookie_consent.git
-  revision: 2f1ad3dd6ca008a33be7a721290be4933f2ac599
+  revision: 641bbde4428b82a563d472254a03f81f52344197
   branch: master
   specs:
-    cookie_consent (1.0.1)
-      rails (>= 4.0.0)
+    cookie_consent (1.2.3)
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
@@ -66,7 +65,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.5.2)
+    addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     arel (6.0.4)
     autoparse (0.3.3)
@@ -127,7 +126,7 @@ GEM
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     geocoder (1.2.14)
-    globalid (0.4.1)
+    globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-api-client (0.8.6)
       activesupport (>= 3.2)
@@ -215,7 +214,7 @@ GEM
     multipart-post (2.0.0)
     nenv (0.3.0)
     netrc (0.11.0)
-    nokogiri (1.10.0)
+    nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
