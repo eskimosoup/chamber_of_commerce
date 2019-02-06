@@ -40,6 +40,10 @@ class ApplicationController < ActionController::Base
     @members_services_menu = Optimadmin::Menu.new(name: 'members_services')
   end
 
+  helper_method def app_banner
+    @app_banner ||= AdditionalContent.find_by(area: 'App Banner')
+  end
+
   private
 
   def global_site_settings

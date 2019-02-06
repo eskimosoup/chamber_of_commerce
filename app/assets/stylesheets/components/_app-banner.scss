@@ -1,0 +1,48 @@
+@media screen and (max-width:1023px) {
+  .app-banner {
+    background-color: $light-blue;
+    padding: em(10px);
+    display: none;
+
+    &__title {
+      color: $bronze;
+      font-size: em(20px);
+      font-weight: $bold;
+    }
+
+    &__content {
+      color: $white;
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    &__button {
+      border: 2px solid $bronze;
+      color: $white;
+      display: inline-block;
+      font-size: em(18px);
+      padding: em(5px) em(10px);
+
+      &:link,
+      &:visited {
+        color: $white;
+      }
+    }
+
+    &__dismiss {
+      color: $white;
+      display: inline-block;
+      font-size: em(14px);
+      margin-top: em(10px);
+      padding: em(5px);
+
+      &:link,
+      &:visited {
+        color: $white;
+      }
+    }
+  }
+}

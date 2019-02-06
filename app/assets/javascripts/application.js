@@ -18,6 +18,7 @@
 //= require components/google_maps.js
 //= require components/home_slider.js
 //= require components/toggles
+//= require components/app-banner
 //= require jquery-ui/datepicker
 //= require tinymce
 //= require jquery.slick
