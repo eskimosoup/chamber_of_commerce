@@ -4,9 +4,9 @@ function dismissAppBanner() {
 }
 
 $(function() {
-  //if(Cookies.get('app-banner') === undefined) {
+  if(Cookies.get('app-banner') === undefined) {
     $('.app-banner').slideDown(250);
-  //}
+  }
 });
 
 $(document).on('click', '.app-banner__dismiss', function() {
