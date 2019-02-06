@@ -1,5 +1,22 @@
 <%= render 'cookie_consent/message' %>
-<%= render @advertisement if @advertisement %>
+<% if @advertisements.present? %>
+  <%= content_for :footer do %>
+    <script>
+      $(function() {
+        $('.header-ads').slick({
+          fade: true,
+          autoplay: true,
+          autoplaySpeed: 6000,
+          dots: false,
+          arrows: false
+        });
+      });
+    </script>
+  <% end %>
+  <div class="header-ads">
+    <%= render @advertisements %>
+  </div>
+<% end %>
 <% if app_banner.present? %>
   <section class="app-banner">
     <div class="row">
