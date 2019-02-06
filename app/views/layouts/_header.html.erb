@@ -1,7 +1,24 @@
 <%= render 'cookie_consent/message' %>
-
 <%= render @advertisement if @advertisement %>
+<% if app_banner.present? %>
+  <section class="app-banner">
+    <div class="row">
+      <div class="app-banner__inner small-7 columns">
+       <div class="app-banner__title">
+          <%= app_banner.title %>
+        </div>
+        <div class="app-banner__content">
+          <%= raw app_banner.content %>
+        </div>
+      </div>
+      <div class="app-banner__aside small-5 columns text-center">
+        <%= link_to 'Install now', '/pages/add-to-home-screen', class: 'app-banner__button' %>
 
+        <%= link_to 'No thanks', '#', class: 'app-banner__dismiss' %>
+      </div>
+    </div>
+  </section>
+<% end %>
 <header>
   <div class="row">
     <div class="small-12 medium-3 columns">
@@ -10,7 +27,8 @@
       <% end %>
     </div>
     <div class="small-12 medium-6 columns">
-      <p class="header-tagline">Growing your business,<br />building our economy</p>
+      <p class="header-tagline">Growing your business,<br />
+        building our economy</p>
     </div>
     <div class="small-12 medium-3 member-buttons columns">
       <div class="text-right">
@@ -28,7 +46,6 @@
       </div>
     </div>
   </div>
-
   <div class="row">
     <div class="small-12 columns">
       <nav>
