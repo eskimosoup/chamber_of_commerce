@@ -1,8 +1,16 @@
 <head>
   <title><%= global_site_settings['Name'] %></title>
-  <meta name="theme-color" content="#394755">
+
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link href="/apple-touch-icon.png" rel="icon">
+
+  <meta name="theme-color" content="#394755">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Hull & Humber Chamber of Commerce">
+  <meta name="screen-orientation" content="portrait">
+
   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all' %>
 
