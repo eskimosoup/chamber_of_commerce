@@ -9,7 +9,7 @@
     <div class="small-8 columns">
       <%= render 'optimadmin/shared/search_form' %>
       <%= render 'optimadmin/shared/module/index/pagination' %>
-      <%= render 'optimadmin/shared/module/index/order', options: [['Company name', 'company_name'], ['Verified', 'verified']] %>
+      <%= render 'optimadmin/shared/module/index/order', options: [['Company name', 'company_name asc'], ['Verified first', 'verified ASC'], ['Unverified first', 'verified DESC']] %>
       <%= render 'optimadmin/shared/module/index/recycle_bin', items: @members.size, path: root_url %>
     </div>
   </div>
