@@ -39,8 +39,7 @@ class Member::Import
   def assign_member_from_csv_row(row)
     member_details = make_hash_from_row(row)
     member = Member.find_or_initialize_by(chamber_db_id: row[:id_no])
-    member.update_attributes(in_csv: true)
-    member.assign_attributes(member_details)
+    member.assign_attributes(member_details.merge(in_csv: true))
     member
   end
 
