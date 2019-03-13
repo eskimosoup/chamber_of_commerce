@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 0d529926bd34942029499c9d0eeafb6411364375
+  revision: 06a990c9ad320da9b604e4941577ba75d3d8ce28
   branch: master
   specs:
-    optimadmin (1.6.2)
+    optimadmin (1.6.5)
       bcrypt
       cancancan
       carrierwave
@@ -206,7 +206,7 @@ GEM
     memory_profiler (0.9.11)
     method_source (0.9.0)
     mime-types (2.99.3)
-    mini_magick (4.9.2)
+    mini_magick (4.9.3)
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
