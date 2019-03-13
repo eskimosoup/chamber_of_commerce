@@ -53,6 +53,8 @@ module Optimadmin
       else
         redirect_back(fallback_location: { action: :index }, notice: t('optimadmin.controllers.module.destroy', model_name: Article.model_name.human))
       end
+    rescue
+      redirect_to articles_path, notice: t('optimadmin.controllers.module.destroy', model_name: Article.model_name.human)
     end
 
     private
