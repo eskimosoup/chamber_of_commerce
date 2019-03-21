@@ -1,4 +1,5 @@
 Rails.application.configure do
+  config.cache_store = :file_store, Rails.root.join('tmp', 'cache'), { expires_in: 6.hours }
   config.logger = Logger.new(config.paths['log'].first, 3, 26_214_400)
 
   Rails.application.routes.default_url_options[:host] = 'www.hull-humber-chamber.co.uk'
