@@ -33,7 +33,7 @@
 
     <p>The following members did not appear within the last CSV upload, please consider whether you would like to delete them.</p>
 
-    <p>You can toggle the status of these by setting 'In CSV' to 'Yes', which will exclude it from the delete all.</p>
+    <p>You can toggle the status of these by setting 'In CSV' to 'Yes', which will allow them appear.</p>
 
     <div class="row collapse module-list-index header">
       <%= list_item 'large-4 small-6' do 'Company Name' end %>
@@ -48,9 +48,7 @@
 
     <%= render partial: 'import_member', collection: @members, as: :member_presenter %>
 
-    <p>You can delete all of the above records at once by pressing the button below.</p>
-
-    <%= link_to 'Delete All', destroy_non_csv_members_path, class: 'action-button' %>
+    <p>The above records are archived within the database but are not shown; they are simply kept here for data archival.</p>
 
   <% end %>
 </div>

@@ -46,6 +46,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'dotenv-rails'
 end
 
 group :test do
@@ -64,13 +65,15 @@ group :development do
   gem 'stackprof', '~> 0.2.7'
   gem 'bullet'
   gem 'memory_profiler'
+  gem "letter_opener"
 end
 
 gem 'tinymce-rails'
 
 gem 'jquery-slick-rails', '1.5.9.1'
-gem 'geocoder', '~> 1.2.9'
+gem 'geocoder'
 gem 'cocoon', '~> 1.2.6'
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :master
 gem 'cookie_consent', git: 'git@github.com:eskimosoup/cookie_consent.git', branch: :master
 gem 'stripe', '~> 1.25.0'
+gem 'ipstack'

@@ -21,10 +21,26 @@
       <%= f.text_field :url, id: :url  %>
     </div>
 
+    <p class="admin_note">If you would like this advertisement to appear within 'postcode distance' miles of a location, specify a postcode below.</p>
+
+        <div class="field">
+      <%= f.label :postcode, for: :postcode %><br>
+      <%= f.text_field :postcode, id: :postcode  %>
+    </div>
+        <div class="field">
+      <%= f.label :postcode_radius, for: :postcode_radius %><br>
+      <%= f.number_field :postcode_radius, id: :postcode_radius  %>
+    </div>
+
 
       <% end %>
 
   <%= field_set_tag nil, id: 'tabs-2' do %>
+    <ul>
+      <li>Large: 1017 x 126 pixels</li>
+      <li>Medium: 728 x 90 pixels</li>
+      <li>Small: 320 x 50 pixels </li>
+    </ul>
         <%= f.document_field :image_large %>
         <%= f.document_field :image_medium %>
         <%= f.document_field :image_small %>

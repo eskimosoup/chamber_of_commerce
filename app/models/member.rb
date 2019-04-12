@@ -1,4 +1,6 @@
 class Member < ActiveRecord::Base
+  default_scope { where(in_csv: true) }
+
   include Filterable
   extend FriendlyId
   friendly_id :company_name, use: [:slugged, :history]

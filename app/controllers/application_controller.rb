@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include MemberSessionsHelper
   include Optimadmin::AdminSessionsHelper
   include Optimadmin::ErrorReporting
+  include LocationAdvertisements
 
   helper_method :current_administrator
 
@@ -63,7 +64,7 @@ class ApplicationController < ActionController::Base
     @header_menu = Optimadmin::Menu.new(name: 'header')
     @footer_menu = Optimadmin::Menu.new(name: 'footer')
     @newsletter_signup = NewsletterSignup.new
-    @advertisements = Advertisement.displayed
+    advertisements
   end
 
   def current_member
