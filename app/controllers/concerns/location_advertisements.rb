@@ -26,7 +26,7 @@ module LocationAdvertisements
   end
 
   def nearby_advertisements
-    return unless Advertisement.displayed.geocoded.exists?
+    return [] unless Advertisement.displayed.geocoded.exists?
     Rails.cache.fetch("#{Digest::MD5.hexdigest(request.remote_ip)}-#{advertisement_cache_key}") do
       Advertisement.geocoded.displayed.near([geocoded_ip_address['latitude'], geocoded_ip_address['longitude']], :postcode_radius)
     end
