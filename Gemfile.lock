@@ -197,6 +197,8 @@ GEM
     kaminari-core (1.1.1)
     launchy (2.4.3)
       addressable (~> 2.3)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     libv8 (3.16.14.19)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -389,6 +391,7 @@ DEPENDENCIES
   jquery-slick-rails (= 1.5.9.1)
   jquery-ui-rails (~> 5.0.5)
   launchy (~> 2.4.3)
+  letter_opener
   memory_profiler
   optimadmin!
   optimadmin_generators!

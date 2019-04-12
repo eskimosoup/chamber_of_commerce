@@ -37,7 +37,7 @@ module Optimadmin
 
     def import_csv
       @member_import = Member::Import.new
-      @members = Optimadmin::BaseCollectionPresenter.new(collection: Member.includes(:member_login).where(in_csv: false).order("LOWER(company_name)"), view_template: view_context, presenter: Optimadmin::MemberPresenter)
+      @members = Optimadmin::BaseCollectionPresenter.new(collection: Member.unscoped.includes(:member_login).where(in_csv: false).order("LOWER(company_name)"), view_template: view_context, presenter: Optimadmin::MemberPresenter)
     end
 
     def import
@@ -50,10 +50,10 @@ module Optimadmin
     end
 
     def destroy_non_csv_members
-      @members = Member.includes(:member_login).where(in_csv: false)
-      @message = "#{@members.size} member(s) were successfully destroyed."
-      @members.destroy_all
-      redirect_to import_csv_members_path, notice: @message
+      @members = Member.unscoped.includes(:member_login).where(in_csv: false)
+      # @message = "#{@members.size} member(s) were successfully destroyed."
+      # @members.destroy_all
+      redirect_to import_csv_members_path #, notice: @message
     end
 
   private

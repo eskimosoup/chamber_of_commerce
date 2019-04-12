@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
     @header_menu = Optimadmin::Menu.new(name: 'header')
     @footer_menu = Optimadmin::Menu.new(name: 'footer')
     @newsletter_signup = NewsletterSignup.new
-    raise advertisements.to_yaml
+    advertisements
   end
 
   def current_member

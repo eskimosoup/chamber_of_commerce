@@ -65,6 +65,7 @@ group :development do
   gem 'stackprof', '~> 0.2.7'
   gem 'bullet'
   gem 'memory_profiler'
+  gem "letter_opener"
 end
 
 gem 'tinymce-rails'

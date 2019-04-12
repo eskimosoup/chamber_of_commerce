@@ -12,7 +12,7 @@ class MemberOffer < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
 
-  scope :verified, -> { where(verified: true) }
+  scope :verified, -> { joins(:member).where(verified: true, members: { in_csv: true }) }
   scope :unverified, -> { where("verified <> ? OR verified is NULL", true) }
   #scope :upcoming, -> { where("start_date > ? AND verified = ?", Date.today, true) }
   scope :out_of_date_scope, -> { where("end_date < ? AND verified = ?", Date.today, true) }

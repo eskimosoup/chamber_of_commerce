@@ -19,9 +19,10 @@ module LocationAdvertisements
   end
 
   def geocoded_ip_address
-    @geocoded_ip_address = # Rails.cache.fetch(Digest::MD5.hexdigest(request.remote_ip)) do
+    return unless Rails.env.production?
+    @geocoded_ip_address = Rails.cache.fetch(Digest::MD5.hexdigest(request.remote_ip)) do
       Ipstack::API.check
-    #end
+    end
   end
 
   def nearby_advertisements
