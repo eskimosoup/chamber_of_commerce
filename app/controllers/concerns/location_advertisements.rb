@@ -26,7 +26,7 @@ module LocationAdvertisements
   end
 
   def nearby_advertisements
-    return unless Advertisement.geocoded.exists?
+    return unless Advertisement.displayed.geocoded.exists?
     Advertisement.geocoded.displayed.near([geocoded_ip_address['latitude'], geocoded_ip_address['longitude']], :postcode_radius)
   rescue
     []
