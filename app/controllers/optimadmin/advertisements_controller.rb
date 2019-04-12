@@ -62,7 +62,7 @@ module Optimadmin
         :expire_at, :remove_image_large, :remote_image_large_url,
         :image_large_cache, :remove_image_medium, :remote_image_medium_url,
         :image_medium_cache, :remove_image_small, :remote_image_small_url,
-        :image_small_cache
+        :image_small_cache, :postcode, :postcode_radius
       )
     end
   end
