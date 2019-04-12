@@ -76,6 +76,10 @@ class ApplicationController < ActionController::Base
     auth_token_current_member = MemberLogin.find_by(auth_token: cookies[:member_auth_token]) if cookies.signed[:member_id]
     authenticate_member_session(auth_token_current_member) if auth_token_current_member
     MemberLogin.find(session[:member_id]) if session[:member_id]
+  rescue ActiveRecord::RecordNotFound
+    cookies.delete(:member_id) if cookies.permanent.signed[:member_id]
+    cookies.delete(:member_auth_token) if cookies.permanent[:member_auth_token]
+    session[:member_id] = nil
   end
   helper_method :current_member_login
 
