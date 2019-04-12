@@ -26,9 +26,17 @@ module LocationAdvertisements
   end
 
   def nearby_advertisements
-    return unless Advertisement.displayed.geocoded.exists?
-    Advertisement.geocoded.displayed.near([geocoded_ip_address['latitude'], geocoded_ip_address['longitude']], :postcode_radius)
+    Rails.cache.fetch("#{Digest::MD5.hexdigest(request.remote_ip)}-#{advertisement_cache_key}") do
+      return unless Advertisement.displayed.geocoded.exists?
+      Advertisement.geocoded.displayed.near([geocoded_ip_address['latitude'], geocoded_ip_address['longitude']], :postcode_radius)
+    end
   rescue
     []
+  end
+
+  private
+
+  def advertisement_cache_key
+    Advertisement.all.map { |x| x.updated_at.utc.to_s(:number) }.join('/')
   end
 end
