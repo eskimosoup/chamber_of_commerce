@@ -2,6 +2,10 @@ module Optimadmin
   class EventLocationPresenter < BasePresenter
     presents :event_location
 
+    def id
+      event_location.id
+    end
+
     def location_name
       event_location.location_name
     end

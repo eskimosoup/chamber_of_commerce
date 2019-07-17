@@ -46,7 +46,7 @@ module Optimadmin
     end
 
     def event_location_params
-      params.require(:event_location).permit(:address_line_1, :address_line_2, :city, :region, :post_code, :location_name)
+      params.require(:event_location).permit(:address_line_1, :address_line_2, :city, :region, :post_code, :location_name, :latitude, :longitude)
     end
   end
 end

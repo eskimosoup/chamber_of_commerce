@@ -7,7 +7,7 @@ class EventLocation < ActiveRecord::Base
   validates :location_name, :address_line_1, :city, presence: true
   geocoded_by :address
 
-  after_validation :geocode, if: ->(obj){ obj.address_line_1.present? and obj.address_line_1_changed? }
+  after_validation :geocode, if: ->(obj){ (obj.address_line_1.present? && obj.address_line_1_changed?) || !latitude? || !longitude? }
 
 
   def address
