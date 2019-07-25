@@ -114,6 +114,7 @@ Optimadmin::Engine.routes.draw do
   resources :member_offers, except: [:show], concerns: %i[imageable orderable toggleable]
 
   resources :members, except: [:show] do
+    get 'logins-only', to: 'members#logins_only', on: :collection
     resources :member_logins, except: [:show] do
       collection do
         post 'order'

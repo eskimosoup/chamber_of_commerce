@@ -5,6 +5,7 @@
     <div class="small-4 columns">
       <%= render 'optimadmin/shared/module/index/new_item', title: 'Member', object: Member, path: new_member_path %>
       <%= link_to "Import Members", import_csv_members_path, class: "action-button" %>
+      <%= link_to "View members with logins only", logins_only_members_path %>
     </div>
     <div class="small-8 columns">
       <%= render 'optimadmin/shared/search_form' %>

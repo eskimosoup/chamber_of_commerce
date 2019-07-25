@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/cookie_consent.git
-  revision: 641bbde4428b82a563d472254a03f81f52344197
-  branch: master
+  revision: 5ff7f222d678077fff0e4ad1627d6a5f5f53cf83
+  branch: sprockets
   specs:
-    cookie_consent (1.2.3)
+    cookie_consent (1.2.3.1)
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
