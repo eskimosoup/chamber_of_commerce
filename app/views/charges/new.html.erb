@@ -164,22 +164,6 @@
               }
               </script>
             <% end %>
-
-
-
-
-
-            <!---
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
-                    data-description="<%= "Booking for #{ @presented_event.name }" %>"
-                    data-amount="<%= @presented_event_booking.stripe_price %>"
-                    data-email="<%= @presented_event_booking.email %>"
-                    data-panel-label="Pay {{amount}}"
-                    data-currency="gbp"
-                    data-allow-remember-me="false"
-                    data-billing-address="true"></script>
-            -->
           <% end %>
       </div>
     </div>
