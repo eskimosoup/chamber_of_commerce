@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190411154128) do
+ActiveRecord::Schema.define(version: 20190725133027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,24 +114,25 @@ ActiveRecord::Schema.define(version: 20190411154128) do
 
   create_table "event_bookings", force: :cascade do |t|
     t.integer  "event_id"
-    t.string   "forename",                           null: false
+    t.string   "forename",                                 null: false
     t.string   "company_name"
     t.string   "industry"
     t.string   "nature_of_business"
     t.string   "phone_number"
     t.string   "email"
-    t.boolean  "paid",               default: false
-    t.integer  "attendees_count",    default: 0
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.boolean  "paid",                     default: false
+    t.integer  "attendees_count",          default: 0
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "stripe_charge_id"
-    t.boolean  "refunded",           default: false
+    t.boolean  "refunded",                 default: false
     t.string   "address_line_1"
     t.string   "address_line_2"
     t.string   "town"
     t.string   "postcode"
     t.string   "surname"
     t.string   "payment_method"
+    t.string   "stripe_payment_intent_id"
   end
 
   add_index "event_bookings", ["event_id"], name: "index_event_bookings_on_event_id", using: :btree

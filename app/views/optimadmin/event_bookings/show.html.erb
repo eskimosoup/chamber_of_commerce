@@ -5,6 +5,7 @@
   <%= render 'optimadmin/shared/module/form/back', path: unpaid_or_refunded_event_event_bookings_path(@event.id), title: 'Unpaid or Refunded Event Bookings' if @event_booking_presenter.paid != 'Yes' || @event_booking_presenter.refunded == 'Yes' %>
 
   <%= @event_booking_presenter.payment_link %>
+  <%= @event_booking_presenter.created_at %>
 
   <div>
     <h2>
@@ -178,6 +179,23 @@
             <h3>Refund</h3>
             <%= form_for :refund, url: refund_event_event_booking_path(@event, @event_booking) do |f| %>
               <%= f.hidden_field :charge, value: @event_booking_presenter.stripe_charge_id %>
+              <%= f.hidden_field :amount, value: @event_booking_presenter.stripe_price %>
+              <div class="field">
+                <%= f.label :reason %><br/>
+                <%= f.select :reason, options_for_select(@event_booking_presenter.refund_reasons) %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Refund" %>
+              </div>
+            <% end %>
+          </div>
+        <% elsif @event_booking_presenter.stripe_payment_intent_id.present? %>
+          <p>This will refund <strong><%= number_to_currency (@event_booking_presenter.stripe_price / 100) %></strong>.</p>
+          <div class="small-12 columns">
+            <h3>Refund</h3>
+            <%= form_for :refund, url: refund_event_event_booking_path(@event, @event_booking) do |f| %>
+              <%= f.hidden_field :charge, value: @event_booking_presenter.stripe_payment_intent_id %>
               <%= f.hidden_field :amount, value: @event_booking_presenter.stripe_price %>
               <div class="field">
                 <%= f.label :reason %><br/>

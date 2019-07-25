@@ -37,7 +37,6 @@
           <%= render partial: "attendees/attendee", collection: @presented_attendees, as: :presented_attendee %>
         </div>
 
-        <%= form_tag event_booking_charges_path(@presented_event_booking) do %>
           <div class="event-charges-payment-summary">
             <div class="row">
               <div class="medium-2 columns">
@@ -82,6 +81,95 @@
           <% end %>
 
           <% if (@presented_event.booking_deadline.present? && @presented_event.booking_deadline > Time.zone.now) || @presented_event.booking_deadline.blank? %>
+           <%= form_tag event_booking_charges_path(@presented_event_booking), id: 'payment-form' do %>
+              <label for="cardholder-name">
+                Cardholder name
+              </label>
+              <input id="cardholder-name" type="text">
+
+              <div class="form-row">
+                <label for="card-element">
+                  Credit or debit card
+                </label>
+                <div id="card-element">
+                  <!-- A Stripe Element will be inserted here. -->
+                </div>
+
+                <!-- Used to display form errors. -->
+                <div id="card-errors" role="alert"></div>
+              </div>
+
+              <%= hidden_field_tag :stripe_payment_intent_id %>
+
+              <button id="card-button" data-secret="<%= @charge.client_secret %>">Submit Payment</button>
+            <% end %>
+
+            <%= content_for :footer do %>
+              <script src="https://js.stripe.com/v3/"></script>
+
+              <script>
+              $(function() {
+                var stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>');
+                  var elements = stripe.elements();
+                  var cardElement = elements.create('card');
+                  cardElement.mount('#card-element');
+
+                  var cardholderName = document.getElementById('cardholder-name');
+                  var cardButton = document.getElementById('card-button');
+                  var clientSecret = cardButton.dataset.secret;
+
+                  cardElement.addEventListener('change', function(event) {
+                    var displayError = document.getElementById('card-errors');
+                    if (event.error) {
+                      displayError.textContent = event.error.message;
+                    } else {
+                      displayError.textContent = '';
+                    }
+                  });
+
+                  cardButton.addEventListener('click', function(ev) {
+                    ev.preventDefault();
+
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = 'Loading...';
+
+                    stripe.handleCardPayment(
+                      clientSecret, cardElement, {
+                        payment_method_data: {
+                          billing_details: {name: cardholderName.value}
+                        }
+                      }
+                    ).then(function(result) {
+                      if (result.error) {
+                        // Inform the user if there was an error.
+                        var errorElement = document.getElementById('card-errors');
+                        errorElement.textContent = result.error.message;
+                      } else {
+                        var errorElement = document.getElementById('card-errors');
+                        errorElement.textContent = '';
+                        stripeTokenHandler(result);
+                      }
+                    });
+                  });
+              });
+
+              // Submit the form with the token ID.
+              function stripeTokenHandler(result) {
+                // Insert the token ID into the form so it gets submitted to the server
+                var form = document.getElementById('payment-form');
+                var hiddenInput = document.getElementById('stripe_payment_intent_id');
+                hiddenInput.setAttribute('value', result.paymentIntent.id);
+                // Submit the form
+                form.submit();
+              }
+              </script>
+            <% end %>
+
+
+
+
+
+            <!---
             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
                     data-description="<%= "Booking for #{ @presented_event.name }" %>"
@@ -91,8 +179,8 @@
                     data-currency="gbp"
                     data-allow-remember-me="false"
                     data-billing-address="true"></script>
+            -->
           <% end %>
-        <% end %>
       </div>
     </div>
   </div>
