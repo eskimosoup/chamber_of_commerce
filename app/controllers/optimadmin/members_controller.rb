@@ -6,6 +6,10 @@ module Optimadmin
       @members = Optimadmin::BaseCollectionPresenter.new(collection: Member.includes(:member_login).where('company_name ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15).order(params[:order]), view_template: view_context, presenter: Optimadmin::MemberPresenter)
     end
 
+    def logins_only
+      @members = Optimadmin::BaseCollectionPresenter.new(collection: Member.includes(:member_login).where('company_name ILIKE ? AND id IN (?)', "%#{params[:search]}%", MemberLogin.all.pluck(:member_id)).page(params[:page]).per(params[:per_page] || 15).order(params[:order]), view_template: view_context, presenter: Optimadmin::MemberPresenter)
+    end
+
     def new
       @member = Member.new
     end
@@ -37,7 +41,8 @@ module Optimadmin
 
     def import_csv
       @member_import = Member::Import.new
-      @members = Optimadmin::BaseCollectionPresenter.new(collection: Member.unscoped.includes(:member_login).where(in_csv: false).order("LOWER(company_name)"), view_template: view_context, presenter: Optimadmin::MemberPresenter)
+      @members = Optimadmin::BaseCollectionPresenter.new(collection: Member.unscoped.includes(:member_login).where(in_csv: false).order("LOWER(company_name)").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::MemberPresenter)
+      @members_with_logins = Optimadmin::BaseCollectionPresenter.new(collection: Member.unscoped.includes(:member_login).where(in_csv: false, id: MemberLogin.all.pluck(:member_id)).order("LOWER(company_name)").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::MemberPresenter)
     end
 
     def import
