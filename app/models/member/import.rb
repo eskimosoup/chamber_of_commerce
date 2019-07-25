@@ -45,7 +45,7 @@ class Member::Import
 
   def make_hash_from_row(row)
     member_details_hash = row.to_hash.slice(:company_name, :post_code, :tel_no, :fax_no, :www, :email_no, :nature_of_business)
-    member_details_hash[:address] = [row[:address_1], row[:addres_2], row[:address_3], row[:addres_4], row[:town], row[:county]].compact.join("\n")
+    member_details_hash[:address] = [row[:address_1], row[:address_2], row[:address_3], row[:address_4], row[:town], row[:county]].compact.join("\n")
     member_details_hash = manipulate_hash_keys(member_details_hash)
     member_details_hash
   end
