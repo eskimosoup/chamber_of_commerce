@@ -9,7 +9,7 @@ class Member::Import
     CSV.foreach(file.path, headers: true, header_converters: :symbol, encoding: 'windows-1251:utf-8') do |row|
       member = assign_member_from_csv_row(row)
       new_record = member.new_record?
-      if member.save
+      if member.save!
         if new_record
           @imported_count += 1
         else
@@ -27,6 +27,22 @@ class Member::Import
     errors.none?
   end
 
+  def self.tidy
+    Member.unscoped.select("DISTINCT ON(members.company_name) members.*").each do |member|
+      p member.id
+      other_ids = Member.unscoped.where(chamber_db_id: member.chamber_db_id).where.not(id: member.id).pluck(:id)
+
+      verified = Member.where(chamber_db_id: member.chamber_db_id, verified: true).present?
+      member.update_attributes(verified: verified)
+
+      next unless other_ids.present?
+
+      MemberOffer.where(member_id: other_ids).update_all(member_id: member.id)
+      MemberLogin.where(member_id: other_ids).update_all(member_id: member.id)
+      Member.unscoped.where(id: other_ids).destroy_all
+    end
+  end
+
   def make_hash_from_row(row)
     member_details_hash = row.to_hash.slice(:company_name, :post_code, :tel_no, :fax_no, :www, :email_no, :nature_of_business)
     member_details_hash[:address] = [row[:address_1], row[:address_2], row[:address_3], row[:address_4], row[:town], row[:county]].compact.join("\n")
@@ -38,7 +54,7 @@ class Member::Import
 
   def assign_member_from_csv_row(row)
     member_details = make_hash_from_row(row)
-    member = Member.find_or_initialize_by(chamber_db_id: row[:id_no])
+    member = Member.unscoped.find_or_initialize_by(chamber_db_id: row[:id_no])
     member.assign_attributes(member_details.merge(in_csv: true))
     member
   end
