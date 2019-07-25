@@ -75,5 +75,5 @@ gem 'geocoder'
 gem 'cocoon', '~> 1.2.6'
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :master
 gem 'cookie_consent', git: 'git@github.com:eskimosoup/cookie_consent.git', branch: :sprockets
-gem 'stripe', '~> 1.25.0'
+gem 'stripe'#, '~> 1.25.0'
 gem 'ipstack'

@@ -3,22 +3,20 @@ class ChargesController < ApplicationController
   before_action :set_event_booking
 
   def new
-
-  end
-
-  def create
     customer = Stripe::Customer.create(
-      email: @presented_event_booking.email,
-      card: params[:stripeToken]
+      email: @presented_event_booking.email
     )
 
-    charge = Stripe::Charge.create(
+    @charge = Stripe::PaymentIntent.create(
       customer: customer.id,
       amount: @presented_event_booking.stripe_price,
       description: "Booking for #{ @presented_event.name }",
       currency: "gbp"
     )
-    if @event_booking.update(paid: true, stripe_charge_id: charge.id)
+  end
+
+  def create
+    if @event_booking.update(paid: true, stripe_payment_intent_id: params[:stripe_payment_intent_id])
       EventBookingMailer.booking_completed(@event_booking.email, @event_booking, @event_booking.event, true).deliver_now
       @event_booking.attendees.pluck(:email).each do |attendee_email|
         EventBookingMailer.booking_completed(attendee_email, @event_booking, @event_booking.event).deliver_now if attendee_email.present? && @event_booking.email != attendee_email

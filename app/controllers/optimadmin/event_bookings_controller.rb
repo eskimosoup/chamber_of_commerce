@@ -29,7 +29,14 @@ module Optimadmin
 
     def refund
       redirect_to event_event_bookings_path(@event, @event_booking), notice: "Booking has already been refunded" if @event_booking.refunded?
-      refund = Stripe::Refund.create(params[:refund])
+
+      if @event_booking.stripe_charge_id.present?
+        refund = Stripe::Refund.create(params[:refund])
+      elsif @event_booking.stripe_payment_intent_id.present?
+        intent = Stripe::PaymentIntent.retrieve(@event_booking.stripe_payment_intent_id)
+        intent['charges']['data'].first.refund
+      end
+
       @event_booking.update_attribute(:refunded, true)
       EventBookingMailer.booking_refunded(@event_booking).deliver_now
       redirect_to event_event_bookings_path(@event), notice: "Successfully refunded"
