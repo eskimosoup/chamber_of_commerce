@@ -77,3 +77,4 @@ gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :mast
 gem 'cookie_consent', git: 'git@github.com:eskimosoup/cookie_consent.git', branch: :sprockets
 gem 'stripe'#, '~> 1.25.0'
 gem 'ipstack'
+gem 'faraday', '0.15.4'
