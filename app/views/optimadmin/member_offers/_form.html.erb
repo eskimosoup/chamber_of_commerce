@@ -33,7 +33,7 @@
     <%= field_set_tag nil, id: 'tabs-1' do %>
             <div class="field">
         <%= f.label :member_id %><br>
-        <%= f.select :member_id, Member.all.pluck(:company_name, :id) %>
+        <%= f.select :member_id, Member.all.pluck(:company_name, :id), include_blank: 'None' %>
       </div>
             <div class="field">
         <%= f.label :summary %><br>

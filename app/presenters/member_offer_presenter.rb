@@ -36,7 +36,7 @@ class MemberOfferPresenter < BasePresenter
   end
 
   def linked_index_image
-    h.link_to member_member_offer_path(member_offer.member, member_offer), title: member_offer.title do
+    h.link_to member_offer_path, title: member_offer.title do
       if member_offer.image?
         h.image_tag member_offer.image.homepage, alt: member_offer.title
       else
@@ -46,7 +46,7 @@ class MemberOfferPresenter < BasePresenter
   end
 
   def linked_home_image
-    h.link_to member_member_offer_path(member_offer.member, member_offer), title: member_offer.title do
+    h.link_to member_offer_path, title: member_offer.title do
       if member_offer.image?
         h.image_tag member_offer.image.homepage, alt: member_offer.title
       else
@@ -56,7 +56,7 @@ class MemberOfferPresenter < BasePresenter
   end
 
   def read_more
-    h.link_to 'Read more', member_member_offer_path(member_offer.member, member_offer), class: 'content-box-ghost-button'
+    h.link_to 'Read more', member_offer_path, class: 'content-box-ghost-button'
   end
 
   def information_message
@@ -122,6 +122,10 @@ class MemberOfferPresenter < BasePresenter
   private
 
   def member_offer_path
-    member_member_offer_path(member_offer.member, member_offer)
+    if member_offer.member_id?
+      member_member_offer_path(member_offer.member, member_offer)
+    else
+      members_shared_offer_path(member_offer)
+    end
   end
 end
