@@ -1,7 +1,7 @@
 class MemberOffersController < ApplicationController
-  before_action :set_member, except: [:main_index]
-  before_action :members_only, except: [:main_index, :index, :show]
-  before_action :set_member_offer, only: :show
+  before_action :set_member, except: [:main_index, :shared]
+  before_action :members_only, except: [:main_index, :index, :show, :shared]
+  before_action :set_member_offer, only: [:show, :shared]
   before_action :current_member
 
   def main_index
@@ -19,6 +19,11 @@ class MemberOffersController < ApplicationController
 
   def show
     redirect_to member_member_offer_url(@member, @member_offer), status: :moved_permanently if request.path != member_member_offer_path(@member, @member_offer)
+  end
+
+  def shared
+    redirect_to ({ action: :shared, id: @member_offer.friendly_id }), status: :moved_permanently if params[:id] != @member_offer.friendly_id
+    render 'member_offers/show'
   end
 
   def new

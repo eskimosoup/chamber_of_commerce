@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
   get 'member-offers', as: 'members_offers', to: 'member_offers#main_index'
 
+  get 'members/shared-offer/:id', as: :members_shared_offer, to: 'member_offers#shared'
+
   resources :members, only: [:index, :show] do
     resources :member_offers, path: 'offers'
 
@@ -111,7 +113,7 @@ Optimadmin::Engine.routes.draw do
     end
   end
 
-  resources :member_offers, except: [:show], concerns: %i[imageable orderable toggleable]
+  resources :member_offers, except: [:show], concerns: %i[imageable orderable toggleable], path: 'member-offers'
 
   resources :members, except: [:show] do
     get 'logins-only', to: 'members#logins_only', on: :collection

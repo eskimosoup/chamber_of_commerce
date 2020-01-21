@@ -7,7 +7,11 @@ module Optimadmin
     end
 
     def toggle_title
-      inline_detail_toggle_link(member_offer.member.company_name)
+      if member_offer.member_id?
+        inline_detail_toggle_link(member_offer.member.company_name)
+      else
+        inline_detail_toggle_link(member_offer.title)
+      end
     end
 
     def image
