@@ -1,6 +1,6 @@
 namespace :db do
   desc 'Pull production db to development'
-  task pull: %i[dump restore:remote site_settings]
+  task pull: %i[dump restore:local site_settings]
 
   dumpfile = 'db.dump'
 

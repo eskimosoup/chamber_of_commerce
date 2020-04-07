@@ -3,18 +3,14 @@ class MemberPasswordResetsController < ApplicationController
   end
 
   def create
-    @member = MemberLogin.find_by(username: params[:username])
+    @member = member
     if @member
-      @member.generate_reset_token
-      if @member.member.email.present?
-        MemberMailer.password_reset(global_site_settings, @member).deliver_now
-        notice = 'Please check your email for further instructions'
-      else
-        notice = 'We can not find an email associated with your login. Please contact us via the methods on the contact page to change your password.'
-      end
+      @member.member_login.map(&:generate_reset_token)
+      MemberMailer.password_reset(global_site_settings, @member).deliver_now
+      notice = 'Please check your email for further instructions'
       redirect_to new_member_password_reset_url, notice: notice
     else
-      flash[:error] = "The given username doesn't exist"
+      flash[:error] = "Member email address doesn't exist"
       render :new
     end
   end
@@ -34,6 +30,10 @@ class MemberPasswordResetsController < ApplicationController
   end
 
   private
+    def member
+      Member.find_by(email: params[:email_address])
+    end
+
     def member_login_params
       params.require(:member_login).permit(:password, :password_confirmation)
     end

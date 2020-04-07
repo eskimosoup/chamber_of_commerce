@@ -2,7 +2,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
 
-  Rails.application.routes.default_url_options[:host] = '192.168.0.26:5034'
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   config.action_mailer.smtp_settings = { enable_starttls_auto: false }
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.asset_host = 'http://localhost:3000'

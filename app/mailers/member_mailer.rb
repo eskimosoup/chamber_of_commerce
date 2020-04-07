@@ -9,7 +9,7 @@ class MemberMailer < ApplicationMailer
   def password_reset(site_settings, member)
     @site_settings = site_settings
     @member = member
-    mail to: @member.member.email, from: member_offer_email, subject: "Reset password - #{@site_settings['Name']}"
+    mail to: @member.email, from: member_offer_email, subject: "Reset password - #{@site_settings['Name']}"
   end
 
   def new_member_login(site_settings, member_login)
