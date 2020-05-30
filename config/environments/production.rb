@@ -21,7 +21,7 @@ Rails.application.configure do
     address: 'optimisedmail.co.uk',
     authentication: :plain,
     user_name: 'noreply@hull-humber-chamber.co.uk',
-    password: ENV['NOREPLY_PASSWORD'],
+    password: ENV['CHAMBER_OF_COMMERCE_NOREPLY_PASSWORD'],
     enable_starttls_auto: true,
     openssl_verify_mode: 'none'
   }

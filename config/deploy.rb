@@ -13,7 +13,7 @@ set :rbenv_roles, :all
 set :rbenv_ruby, File.read('.ruby-version').strip
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 # set :ssh_options, forward_agent: true
-set :repo_url, "git@github.com:eskimosoup/chamber_of_commerce_production.git"
+set :repo_url, "git@github.com:eskimosoup/chamber_of_commerce.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -32,7 +32,7 @@ set :repo_url, "git@github.com:eskimosoup/chamber_of_commerce_production.git"
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, 'config/credentials.yml.enc', 'config/master.key'
+# append :linked_files, 'config/credentials.yml.enc', 'config/master.key'
 
 # Default value for linked_dirs is []
 append :linked_dirs, '.bundle', 'vendor/bundle', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/uploads', 'public/uploads', 'public/.well-known'
