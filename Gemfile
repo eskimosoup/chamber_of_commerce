@@ -22,9 +22,9 @@ gem 'pg', '~> 0.19.0'
 gem 'rails', '>= 4.2', '< 5.0'
 gem 'sassc-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'stripe' # , '~> 1.25.0'
+gem 'stripe', '4.21.3'
 gem 'therubyracer', platforms: :ruby
-gem 'tinymce-rails'
+gem 'tinymce-rails', '4.8.2'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
@@ -54,4 +54,11 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'stackprof', '~> 0.2.7'
   gem 'thin'
+end
+
+group :development do
+  gem 'capistrano', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rbenv', require: false
+  gem 'capistrano-passenger', require: false
 end

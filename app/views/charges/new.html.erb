@@ -109,7 +109,7 @@
 
               <script>
               $(function() {
-                var stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>');
+                var stripe = Stripe('<%= ENV['CHAMBER_OF_COMMERCE_PUBLISHABLE_KEY'] %>');
                   var elements = stripe.elements();
                   var cardElement = elements.create('card');
                   cardElement.mount('#card-element');
