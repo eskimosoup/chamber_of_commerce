@@ -24,9 +24,9 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: 371afe9886e80254be73e0b81ad66655aa6967cc
+  revision: 2a67a85ff9ed1ee02d8cb7a43439bcd812cdbb10
   specs:
-    optimadmin_generators (2.1.1)
+    optimadmin_generators (2.1.2)
       htmlbeautifier
       rubocop
 
