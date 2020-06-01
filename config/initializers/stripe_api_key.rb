@@ -1,0 +1,2 @@
+
+Stripe.api_key = ENV['CHAMBER_OF_COMMERCE_SECRET_KEY']
