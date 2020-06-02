@@ -23,7 +23,8 @@ Rails.application.configure do
     user_name: 'noreply@hull-humber-chamber.co.uk',
     password: ENV['CHAMBER_OF_COMMERCE_NOREPLY_PASSWORD'],
     enable_starttls_auto: true,
-    openssl_verify_mode: 'none'
+    openssl_verify_mode: 'none',
+    port: 587
   }
 
   # Settings specified here will take precedence over those in config/application.rb.
