@@ -27,6 +27,8 @@ class MemberPasswordResetsController < ApplicationController
   def show
     @member_login = MemberLogin.find_by(password_reset_token: params[:id])
     redirect_to new_member_password_reset_url, flash: { error: 'Your password reset token has expired' } if @member_login.updated_at < 2.hours.ago
+  rescue NoMethodError
+    redirect_to new_member_password_reset_url, flash: { error: 'Your password reset token has expired' }
   end
 
   private
