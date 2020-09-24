@@ -7,7 +7,7 @@ module Optimadmin
     end
 
     def toggle_title
-      inline_detail_toggle_link(title)
+      title
     end
 
   end

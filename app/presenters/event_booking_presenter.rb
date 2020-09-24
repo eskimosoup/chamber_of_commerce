@@ -32,8 +32,6 @@ class EventBookingPresenter < BasePresenter
     [address_line_1, address_line_2, town, postcode].compact.join("\n")
   end
 
-
-
   private
 
   def two_column_row(first_column_content:, second_column_content: )

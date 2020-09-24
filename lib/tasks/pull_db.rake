@@ -11,9 +11,9 @@ namespace :db do
 
     puts 'Running PG_DUMP on production'
 
-    system "ssh root@postgres.allofmy.co.uk -t '#{export_dump_file_command}'"
-    system "scp root@postgres.allofmy.co.uk:/var/lib/pgsql/#{dumpfile} #{Rails.root}"
-    system "ssh root@postgres.allofmy.co.uk -t 'rm -f /var/lib/pgsql/#{dumpfile}'"
+    system "ssh root@my3.allofmy.co.uk -t '#{export_dump_file_command}'"
+    system "scp root@my3.allofmy.co.uk:/var/lib/postgresql/#{dumpfile} #{Rails.root}"
+    system "ssh root@my3.allofmy.co.uk -t 'rm -f /var/lib/postgresql/#{dumpfile}'"
   end
 
   namespace :restore do
@@ -41,6 +41,6 @@ namespace :db do
   desc 'Set database environment and update any environment based settings'
   task :site_settings do
     system("rails runner \"Optimadmin::SiteSetting.where(environment: 'production').update_all(environment: 'development')\"")
-    system('RAILS_ENV=development bin/rails db:environment:set')
+    #system('RAILS_ENV=development bin/rails db:environment:set')
   end
 end

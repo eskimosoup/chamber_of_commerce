@@ -4,7 +4,7 @@ module Optimadmin
     include Optimadmin::EventHelper
 
     before_action :set_event
-    before_action :set_event_booking, only: [:show, :refund, :cancel]
+    before_action :set_event_booking, only: [:show, :refund, :cancel, :resend_confirmation]
 
     def index
       respond_to do |format|
@@ -53,6 +53,11 @@ module Optimadmin
 
     def event_agendas
       @agendas = @event.event_bookings.paid_not_refunded.first.event_agendas.includes(attendee_event_agendas: { attendee: :event_booking })
+    end
+
+    def resend_confirmation
+      EventBookingMailer.booking_completed(@event_booking.email, @event_booking, @event_booking.event, true).deliver_now
+      redirect_to ({ action: :index }), notice: 'Booking confirmation re-sent.'
     end
 
   private

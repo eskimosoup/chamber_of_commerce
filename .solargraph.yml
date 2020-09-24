@@ -1,23 +1,26 @@
 ---
 include:
-- "app/**/*.rb"
-- "lib/**/*.rb"
+  - "app/**/*.rb"
+  - "lib/**/*.rb"
+
 exclude:
-- "app/assets/**"
-- spec/**/**
-- test/**/**
-- vendor/**/**
-- tmp/**/**
-- node_modules/**/**
-- coverage/**/**
-- public/**/**
-- ".vscode/**/**"
-- ".bundle/**/*"
-- ".git/**/*"
+  - "app/assets/**"
+  - spec/**/**
+  - test/**/**
+  - vendor/**/**
+  - tmp/**/**
+  - node_modules/**/**
+  - coverage/**/**
+  - public/**/**
+  - ".vscode/**/**"
+  - ".bundle/**/*"
+  - ".git/**/*"
+
+reporters:
+  - rubocop
+  - require_not_found
+
 require: []
 domains: []
-reporters:
-- rubocop
-- require_not_found
 plugins: []
 max_files: 5000

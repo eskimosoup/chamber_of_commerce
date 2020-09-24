@@ -155,6 +155,7 @@ Optimadmin::Engine.routes.draw do
         get 'unpaid_or_refunded'
       end
       member do
+        get 'resend-confirmation'
         get 'toggle'
         post :refund
         post :cancel

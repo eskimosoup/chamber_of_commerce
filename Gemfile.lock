@@ -1,11 +1,11 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: e661d6c29ecc266e30c75d90be3a8f11e9a8b1d5
+  revision: cecce7ff5e5ff0507d3ff8d9d2a132386cd354d5
   branch: master
   specs:
-    optimadmin (2.0.7)
+    optimadmin (2.2.0)
       bcrypt
-      cancancan (~> 3.0)
+      cancancan (~> 3.1)
       carrierwave
       closure_tree
       fastimage
@@ -13,7 +13,7 @@ GIT
       kaminari
       mini_magick
       rails
-      sass-rails
+      sassc-rails
 
 GIT
   remote: git@github.com:eskimosoup/cookie_consent.git
@@ -232,7 +232,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
-    multi_json (1.14.1)
+    multi_json (1.15.0)
     multipart-post (2.1.1)
     nenv (0.3.0)
     net-http-persistent (3.1.0)
@@ -331,8 +331,6 @@ GEM
     rubocop-ast (0.0.3)
       parser (>= 2.7.0.1)
     ruby-progressbar (1.10.1)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.3.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)

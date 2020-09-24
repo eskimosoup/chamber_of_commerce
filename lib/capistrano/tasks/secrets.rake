@@ -1,18 +1,15 @@
 # frozen_string_literal: true
 
-namespace :deploy do
-  desc 'Configure master.key'
+append :linked_files, 'config/master.key'
 
-  task :master_key do
-    on roles(:all) do |_host|
-      ['master.key', 'credentials.yml.enc'].each do |file|
-        local_file = "config/#{file}"
-        remote_file = "#{shared_path}/config/#{file}"
-        next unless File.exist?(local_file)
-        upload! local_file, remote_file
+namespace :deploy do
+  namespace :check do
+    before :linked_files, :set_master_key do
+      on roles(:app), in: :sequence, wait: 10 do
+        unless test("[ -f #{shared_path}/config/master.key ]")
+          upload! 'config/master.key', "#{shared_path}/config/master.key"
+        end
       end
     end
   end
-
-  before 'deploy:check:linked_files', 'deploy:master_key'
 end

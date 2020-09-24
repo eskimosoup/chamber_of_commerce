@@ -37,5 +37,5 @@ namespace :yarn do
   end
 end
 
-after 'deploy:log_revision', 'host:ping'
-after 'host:ping', 'yarn:integrity'
+after 'deploy:log_revision', 'yarn:integrity'
+after 'yarn:integrity', 'host:ping'

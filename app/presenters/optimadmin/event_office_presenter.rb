@@ -11,7 +11,7 @@ module Optimadmin
     end
 
     def toggle_title
-      inline_detail_toggle_link(event_office.name)
+      event_office.name
     end
 
     def optimadmin_summary

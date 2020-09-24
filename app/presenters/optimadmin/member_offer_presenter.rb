@@ -8,9 +8,9 @@ module Optimadmin
 
     def toggle_title
       if member_offer.member_id?
-        inline_detail_toggle_link(member_offer.member.company_name)
+        member_offer.member.company_name
       else
-        inline_detail_toggle_link(member_offer.title)
+        member_offer.title
       end
     end
 

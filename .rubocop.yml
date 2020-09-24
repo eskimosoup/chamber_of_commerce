@@ -1,0 +1,58 @@
+# @see
+#   https://docs.rubocop.org/rubocop/cops.html
+#   https://docs.rubocop.org/rubocop-rails/cops_rails.html
+#   https://github.com/rubocop-hq/ruby-style-guide
+#   https://rails.rubystyle.guide/
+
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  EnabledByDefault: true
+  Exclude:
+    - 'node_modules/**/*'
+    - 'db/**'
+    - 'db/migrate/**'
+    - 'bin/**'
+    - 'vendor/**/*'
+
+Style/Copyright:
+  Enabled: false
+
+Lint/ConstantResolution:
+  Enabled: false
+
+Bundler/GemComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/**/*'
+
+Style/DocumentationMethod:
+  Exclude:
+    - 'app/facades/**/*.rb'
+    - 'app/controllers/**/*.rb'
+
+Style/MethodCallWithArgsParentheses:
+  Exclude:
+    - 'Gemfile'
+  IgnoredMethods:
+    - 'after'
+    - 'append'
+    - 'execute'
+    - 'exit'
+    - 'get'
+    - 'head'
+    - 'include'
+    - 'post'
+    - 'put'
+    - 'puts'
+    - 'raise'
+    - 'render'
+    - 'require_dependency'
+    - 'require_relative'
+    - 'require'
+    - 'system'
+    - 'yield'

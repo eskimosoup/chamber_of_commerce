@@ -70,6 +70,10 @@ module Optimadmin
       @attendees ||= Optimadmin::BaseCollectionPresenter.new(collection: event_booking.attendees, view_template: h, presenter: Optimadmin::AttendeePresenter )
     end
 
+    def resend_confirmation
+      h.link_to 'Resend booking confirmation', h.resend_confirmation_event_event_booking_path(event_booking.event, event_booking)
+    end
+
     private
 
     def event
