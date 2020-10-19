@@ -68,6 +68,10 @@ class EventPresenter < BasePresenter
     h.raw event.description
   end
 
+  def fully_booked_content
+    h.raw event.fully_booked_content
+  end
+
   def booking_confirmation_information
     h.raw event.booking_confirmation_information
   end

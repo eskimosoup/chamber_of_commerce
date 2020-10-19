@@ -24,6 +24,10 @@ class CreateEventBooking
     event_booking.paid?
   end
 
+  def event_full?
+    event_booking.event_full?
+  end
+
   private
 
   def administrator?

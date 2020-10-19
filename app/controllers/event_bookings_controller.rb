@@ -12,7 +12,9 @@ class EventBookingsController < ApplicationController
     event_booking_creator = CreateEventBooking.new(@event, event_booking_params, current_administrator.present?)
     if event_booking_creator.save
       @event_booking = event_booking_creator.event_booking
-      if event_booking_creator.paid?
+      if event_booking_creator.event_full?
+        redirect_to full_event_path(@event)
+      elsif event_booking_creator.paid?
         EventBookingMailer.booking_completed(@event_booking.email, @event_booking, @event_booking.event, true).deliver_now
         @event_booking.attendees.pluck(:email).each do |attendee_email|
           EventBookingMailer.booking_completed(attendee_email, @event_booking, @event_booking.event).deliver_now if attendee_email.present? && @event_booking.email != attendee_email

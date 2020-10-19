@@ -50,7 +50,8 @@ module Optimadmin
     def event_params
       params.require(:event).permit(:name, :event_agendas, :start_date, :end_date, :remote_image_url, :image_cache,
                                     :remove_image, :image, :event_location_id, :description, :display, :summary, :caption,
-                                    :event_office_id, :booking_confirmation_information, :eventbrite_link, :allow_booking, :booking_deadline, :layout)
+                                    :event_office_id, :booking_confirmation_information, :eventbrite_link, :allow_booking, :booking_deadline, :layout,
+                                    :fully_booked_content)
     end
 
   end

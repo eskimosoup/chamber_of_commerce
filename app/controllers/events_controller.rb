@@ -18,6 +18,10 @@ class EventsController < ApplicationController
     redirect_to @presented_event, status: :moved_permanently if thank_you_event_path(@presented_event) != request.path
   end
 
+  def full
+
+  end
+
   private
 
   def set_event

@@ -1,0 +1,19 @@
+<section class="content-area">
+  <div class="row">
+    <div class="medium-8 small-12 columns">
+      <div class="main-content-wrap">
+        <h1><%= @presented_event.name %></h1>
+
+        <div class="content">
+          <%= render "shared/flash_messages" %>
+
+          <%= @presented_event.fully_booked_content %>
+        </div>
+      </div>
+    </div>
+
+    <div class="medium-4 small-12 columns">
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>

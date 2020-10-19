@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show] do
     resources :event_bookings, path: 'event-bookings', only: [:new, :create]
     member do
+      get 'full'
       get 'thank-you'
     end
   end

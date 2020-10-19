@@ -10,7 +10,8 @@
       <h2><%= @event_presenter.name %></h2>
       <p>This list shows only those who have <strong>paid</strong> and have <strong>not</strong> had their payment <strong>refunded</strong>.</p>
       <p>
-        <%= link_to "Download CSV of bookings", event_event_bookings_path(format: :csv), target: "_blank", class: "button" %> |
+        <%= link_to "Download CSV of paid bookings", event_event_bookings_path(format: :csv), target: "_blank", class: "button" %> |
+        <%= link_to "Download CSV of ALL bookings, including 'overflow' bookings", event_event_bookings_path(format: :csv, overflow: true), target: "_blank", class: "button" %> |
         <%= link_to "View unpaid or refunded", unpaid_or_refunded_event_event_bookings_path(@event.id), class: "button" %>
       </p>
 
@@ -30,4 +31,18 @@
 
   <%= render partial: 'event_booking', collection: @event_bookings, as: :event_booking_presenter %>
   <%= paginate @event_bookings %>
+
+  <h2>'Overflow' bookings - unpaid</h2>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item('small-3') { 'Name' } %>
+    <%= list_item('small-2') { "Email" } %>
+    <%= list_item('small-2') { "Payment Method" } %>
+    <%= list_item { "Paid" } %>
+    <%= list_item { "Refunded" } %>
+    <%= list_item { "Attendees" } %>
+    <%= list_item { 'View' } %>
+  </div>
+
+  <%= render partial: 'event_booking', collection: @unpaid_event_bookings, as: :event_booking_presenter %>
 </div>

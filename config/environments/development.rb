@@ -1,4 +1,7 @@
 Rails.application.configure do
+  # Output logger, this is especially important when using Thin
+  config.logger = ActiveSupport::Logger.new(STDOUT)
+
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
 
@@ -13,7 +16,7 @@ Rails.application.configure do
     g.helper false
   end
 
-  config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
+  # config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
 
   # Settings specified here will take precedence over those in config/application.rb.
 

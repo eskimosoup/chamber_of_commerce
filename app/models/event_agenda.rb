@@ -27,12 +27,12 @@ class EventAgenda < ActiveRecord::Base
     headers
   end
 
-  def self.to_csv(event_id)
+  def self.to_csv(event_id, overflow = false)
     CSV.generate(headers: true) do |csv|
       csv << csv_headers
       includes(attendees: :event_booking).where(event_id: event_id).each do |agenda|
         agenda.attendees.each do |attendee|
-          next if attendee.event_booking.paid != true || attendee.event_booking.refunded == true
+          next if overflow == false && (attendee.event_booking.paid != true || attendee.event_booking.refunded == true)
           row = attendee.event_booking.csv_attributes
           row << agenda.name
           row.push(*attendee.csv_attributes)

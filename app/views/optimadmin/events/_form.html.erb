@@ -55,6 +55,12 @@
         <%= f.label :booking_confirmation_information %><br>
         <%= f.text_area :booking_confirmation_information, class: 'tinymce', style: 'height:70px' %>
       </div>
+
+      <div class="field">
+        <p>This field appears on the 'fully booked' page.</p>
+        <%= f.label :fully_booked_content %><br>
+        <%= f.text_area :fully_booked_content, class: 'tinymce', style: 'height:70px' %>
+      </div>
     <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>
@@ -63,7 +69,7 @@
         <%= f.label :image %><br>
         <%= f.image_field :image %>
       </div>
-      
+
       <div class="field">
         <%= f.label :caption %><br />
         <%= f.text_field :caption %>
