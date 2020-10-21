@@ -35,7 +35,7 @@ class EventBooking < ActiveRecord::Base
   end
 
   def event_full?
-    event.event_agendas.size <= 2 && event.event_agendas.first.full?(agenda_id_frequency[event.event_agendas.first.id])
+    event.event_agendas.size <= 2 && event.event_agendas.map { |agenda| agenda.full?(agenda_id_frequency[agenda.id]) }.include?(true)
   end
 
   def attendee_event_agenda_ids
