@@ -28,14 +28,14 @@ class EventBooking < ActiveRecord::Base
   end
 
   def agendas_available
-    return nil if event.blank? || event.event_agendas.blank? || event.event_agendas.size == 1
+    return nil if event.blank? || event.event_agendas.blank? || event.event_agendas.size <= 2
     event.event_agendas.each do |event_agenda|
       errors.add(:base, "#{ event_agenda.name } only has #{ event_agenda.open_spaces } spaces") if event_agenda.full?(agenda_id_frequency[event_agenda.id])
     end
   end
 
   def event_full?
-    event.event_agendas.size == 1 && event.event_agendas.first.full?(agenda_id_frequency[event.event_agendas.first.id])
+    event.event_agendas.size <= 2 && event.event_agendas.first.full?(agenda_id_frequency[event.event_agendas.first.id])
   end
 
   def attendee_event_agenda_ids
