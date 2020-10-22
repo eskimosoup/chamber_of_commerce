@@ -16,7 +16,7 @@ module Optimadmin
     end
 
     def event_bookings
-      h.link_to h.pluralize(event.event_bookings_count, "booking"), h.event_event_bookings_path(event)
+      h.link_to h.pluralize(event.event_bookings.where(paid: true).size, "paid booking"), h.event_event_bookings_path(event)
     end
 
     def location

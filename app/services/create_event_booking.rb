@@ -13,6 +13,9 @@ class CreateEventBooking
   def save
     set_paid
     set_payment_method
+
+    event_booking.booked_on_full_event = true if event_full?
+
     if event_booking.save
       true
     else
@@ -35,7 +38,7 @@ class CreateEventBooking
   end
 
   def set_paid
-    if event_booking.price.zero? || administrator?
+    if event_booking.price.zero? || administrator? && !event_full?
       event_booking.paid = true
     end
   end

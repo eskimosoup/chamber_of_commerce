@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201019161451) do
+ActiveRecord::Schema.define(version: 20201022133922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 20201019161451) do
     t.string   "surname"
     t.string   "payment_method"
     t.string   "stripe_payment_intent_id"
+    t.boolean  "booked_on_full_event",     default: false
   end
 
   add_index "event_bookings", ["event_id"], name: "index_event_bookings_on_event_id", using: :btree

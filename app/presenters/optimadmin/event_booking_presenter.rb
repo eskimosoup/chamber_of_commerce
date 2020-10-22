@@ -71,7 +71,7 @@ module Optimadmin
     end
 
     def resend_confirmation
-      h.link_to 'Resend booking confirmation', h.resend_confirmation_event_event_booking_path(event_booking.event, event_booking)
+      h.link_to 'Resend booking confirmation', h.resend_confirmation_event_event_booking_path(event_booking.event, event_booking) if event_booking.paid? && !event_booking.refunded?
     end
 
     private

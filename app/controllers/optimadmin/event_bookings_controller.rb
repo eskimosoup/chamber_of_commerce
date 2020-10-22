@@ -11,7 +11,7 @@ module Optimadmin
         format.html do
           @event_bookings = Optimadmin::BaseCollectionPresenter.new(collection: @event.event_bookings.includes(attendees: :event_agendas).paid_not_refunded.order(created_at: :desc).page(params[:page]).per(params[:per_page] || 15),
                                                                     view_template: view_context, presenter: Optimadmin::EventBookingPresenter)
-          @unpaid_event_bookings = Optimadmin::BaseCollectionPresenter.new(collection: @event.event_bookings.includes(attendees: :event_agendas).unpaid.order(created_at: :desc),
+          @unpaid_event_bookings = Optimadmin::BaseCollectionPresenter.new(collection: @event.event_bookings.includes(attendees: :event_agendas).unpaid.where(booked_on_full_event: true).order(created_at: :desc),
                                                                     view_template: view_context, presenter: Optimadmin::EventBookingPresenter)
         end
         format.csv do
