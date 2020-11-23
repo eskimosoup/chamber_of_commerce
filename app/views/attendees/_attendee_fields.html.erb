@@ -43,7 +43,7 @@
       <div class="hide">
     <% end %>
 
-    <%= f.collection_check_boxes(:event_agenda_ids, @event.event_agendas, :id, :name, {}) do |b| %>
+    <%= f.collection_check_boxes(:event_agenda_ids, @event.event_agendas, :id, :name, { checked: false }) do |b| %>
       <div class="event-agenda-checkbox-select">
         <%= b.label(for: "event-agenda-checkbox-#{ b.object.id }") do %>
           <%= "#{ b.object.name } - #{ event_agenda_price(b.object.price) }  (ex. VAT)" %>
