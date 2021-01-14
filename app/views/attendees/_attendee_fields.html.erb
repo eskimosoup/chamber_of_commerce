@@ -43,7 +43,7 @@
       <div class="hide">
     <% end %>
 
-    <%= f.collection_check_boxes(:event_agenda_ids, @event.event_agendas, :id, :name, { checked: false }) do |b| %>
+    <%= f.collection_check_boxes(:event_agenda_ids, @event.event_agendas, :id, :name) do |b| %>
       <div class="event-agenda-checkbox-select">
         <%= b.label(for: "event-agenda-checkbox-#{ b.object.id }") do %>
           <%= "#{ b.object.name } - #{ event_agenda_price(b.object.price) }  (ex. VAT)" %>
@@ -51,9 +51,9 @@
 
         <% if b.object.must_book == true %>
           (required to attend)
-          <%= b.check_box(id: "event-agenda-checkbox-#{ b.object.id }", checked: true, onclick: 'this.checked=!this.checked;') %><br/>
+          <%= b.check_box(id: "event-agenda-checkbox-#{ b.object.id }", checked: (@event.event_agendas.count == 1), onclick: 'this.checked=!this.checked;') %><br/>
         <% else %>
-          <%= b.check_box(id: "event-agenda-checkbox-#{ b.object.id }", checked: true) %><br/>
+          <%= b.check_box(id: "event-agenda-checkbox-#{ b.object.id }", checked: (@event.event_agendas.count == 1)) %><br/>
         <% end %>
       </div>
     <% end %>
