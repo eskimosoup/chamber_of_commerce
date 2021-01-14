@@ -51,7 +51,7 @@
 
         <% if b.object.must_book == true %>
           (required to attend)
-          <%= b.check_box(id: "event-agenda-checkbox-#{ b.object.id }", checked: (@event.event_agendas.count == 1), onclick: 'this.checked=!this.checked;') %><br/>
+          <%= b.check_box(id: "event-agenda-checkbox-#{ b.object.id }", checked: true, onclick: 'this.checked=!this.checked;') %><br/>
         <% else %>
           <%= b.check_box(id: "event-agenda-checkbox-#{ b.object.id }", checked: (@event.event_agendas.count == 1)) %><br/>
         <% end %>
