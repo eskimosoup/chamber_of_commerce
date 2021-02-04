@@ -4,13 +4,13 @@ class MemberPasswordResetsController < ApplicationController
 
   def create
     @member = member
-    if @member
+    if @member && @member.member_login.present?
       @member.member_login.map(&:generate_reset_token)
       MemberMailer.password_reset(global_site_settings, @member).deliver_now
       notice = 'Please check your email for further instructions'
       redirect_to new_member_password_reset_url, notice: notice
     else
-      flash[:error] = "Member email address doesn't exist"
+      flash[:error] = "Member email address doesn't exist or account not found"
       render :new
     end
   end
