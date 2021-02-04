@@ -39,8 +39,6 @@ namespace :deploy do
 
     task :compress_images do
       run_locally do
-        next if assets_cache_recent?
-
         jpegoptim = system('which jpegoptim')
         optipng = system('which optipng')
 

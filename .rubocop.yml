@@ -20,6 +20,10 @@ AllCops:
 Style/Copyright:
   Enabled: false
 
+Layout/LineLength:
+  Max: 80
+  Enabled: true
+
 Lint/ConstantResolution:
   Enabled: false
 
@@ -50,7 +54,6 @@ Style/MethodCallWithArgsParentheses:
     - 'put'
     - 'puts'
     - 'raise'
-    - 'render'
     - 'require_dependency'
     - 'require_relative'
     - 'require'

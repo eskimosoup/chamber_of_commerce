@@ -1,0 +1,39 @@
+# @see
+#   https://github.com/Shopify/erb-lint
+#   https://github.com/Shopify/erb-lint#Rubocop
+
+EnableDefaultLinters: true
+
+linters:
+  RightTrim:
+    enabled: true
+    enforced_style: '-'
+  SpaceAroundErbTag:
+    enabled: true
+  NoJavascriptTagHelper:
+    enabled: true
+    correction_style: 'plain'
+  SelfClosingTag:
+    enabled: true
+    enforced_style: 'never'
+  Rubocop:
+    enabled: true
+    rubocop_config:
+      inherit_from:
+        - .rubocop.yml
+      Rails:
+        Enabled: true
+      Layout/InitialIndentation:
+        Enabled: false
+      Layout/TrailingEmptyLines:
+        Enabled: false
+      Layout/TrailingWhitespace:
+        Enabled: false
+      Naming/FileName:
+        Enabled: false
+      Style/FrozenStringLiteralComment:
+        Enabled: false
+      Lint/UselessAssignment:
+        Enabled: false
+      Rails/OutputSafety:
+        Enabled: false

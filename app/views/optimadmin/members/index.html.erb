@@ -2,12 +2,14 @@
 
 <div class="main-content">
   <div class="row module-header collapse">
-    <div class="small-4 columns">
+    <div class="small-4 large-12 columns">
       <%= render 'optimadmin/shared/module/index/new_item', title: 'Member', object: Member, path: new_member_path %>
       <%= link_to "Import Members", import_csv_members_path, class: "action-button" %>
       <%= link_to "View members with logins only", logins_only_members_path %>
     </div>
-    <div class="small-8 columns">
+  </div>
+  <div class="row module-header collapse">
+    <div class="small-8 large-12 columns">
       <%= render 'optimadmin/shared/search_form' %>
       <%= render 'optimadmin/shared/module/index/pagination' %>
       <%= render 'optimadmin/shared/module/index/order', options: [['Company name', 'company_name asc'], ['Verified first', 'verified ASC'], ['Unverified first', 'verified DESC']] %>
