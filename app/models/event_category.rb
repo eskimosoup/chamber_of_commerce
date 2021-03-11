@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: event_categories
+#
+#  id            :integer          not null, primary key
+#  bookable      :boolean          default(TRUE)
+#  food_event    :boolean
+#  has_tables    :boolean
+#  name          :string           not null
+#  position      :integer
+#  slug          :string
+#  suggested_url :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  parent_id     :integer
+#
 class EventCategory < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]

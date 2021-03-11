@@ -1,0 +1,13 @@
+<% present group do |presenter| %>
+  <div class="medium-4 small-12 columns">
+    <div class="main-content-wrap">
+      <div class="<%= parent_class %>">
+        <%= presenter.image(:index, class: "#{parent_class}__image") %>
+        <%= presenter.header(:h2, class: "#{parent_class}__title") %>
+        <div class="<%= parent_class %>__summary">
+          <%= presenter.summary %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

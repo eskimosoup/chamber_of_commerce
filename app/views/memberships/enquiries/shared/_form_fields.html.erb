@@ -1,0 +1,48 @@
+<%= field_set_tag "Your details" do %>
+  <!-- <div class="row">
+    <div class="small-12 medium-6 columns"> -->
+  <div class="field">
+    <%= f.label :forename %><br/>
+    <%= f.text_field :forename %>
+  </div>
+  <!--     </div>
+    <div class="small-12 medium-6 columns"> -->
+  <div class="field">
+    <%= f.label :surname %><br/>
+    <%= f.text_field :surname %>
+  </div>
+  <!-- </div>
+  </div> -->
+  <!-- <div class="row">
+    <div class="small-12 medium-6 columns"> -->
+  <div class="field">
+    <%= f.label :company_name %><br/>
+    <%= f.text_field :company_name %>
+  </div>
+  <!--     </div>
+    <div class="small-12 medium-6 columns"> -->
+  <div class="field">
+    <%= f.label :postcode %><br/>
+    <%= f.text_field :postcode %>
+  </div>
+  <!-- </div>
+  </div> -->
+  <!-- <div class="row">
+    <div class="small-12 medium-6 columns"> -->
+  <div class="field">
+    <%= f.label :email_address %><br/>
+    <%= f.text_field :email_address %>
+  </div>
+  <!--     </div>
+    <div class="small-12 medium-6 columns"> -->
+  <div class="field">
+    <%= f.label :telephone %><br/>
+    <%= f.text_field :telephone %>
+  </div>
+  <!-- </div>
+  </div> -->
+  <div class="field">
+    <%= f.label :memberships_package_id, 'Please select the package most relevent to your company' %>
+    <%= f.select :memberships_package_id, ::Memberships::Package.displayed.ordered.pluck(:title, :id), prompt: 'Please select' %>
+  </div>
+<% end %>

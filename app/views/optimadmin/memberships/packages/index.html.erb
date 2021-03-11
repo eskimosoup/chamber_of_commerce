@@ -1,0 +1,27 @@
+<%= render(partial: 'optimadmin/shared/header/main_title', locals: { title: t('optimadmin.views.module.index.title', model_name: Memberships::Package.model_name.human.pluralize) }) %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render(partial: 'optimadmin/shared/module/index/new_item', locals: { title: Memberships::Package.model_name.human.titleize, object: Memberships::Package, path: { action: :new } }) %>
+    <%= render(partial: 'optimadmin/shared/search_form') %>
+    <%= render(partial: 'optimadmin/shared/module/index/pagination') %>
+    <%#= render(partial: 'optimadmin/shared/module/index/order', locals: { options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC']] }) %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 hide-for-medium-down' do %>
+      <%= link_to octicon('settings') %>
+    <% end %>
+    <%= list_item('') { 'Title' } %>
+    <%= list_item('large-1 small-4 text-center') { 'Cost' } %>
+    <%= list_item('large-1 small-4 text-center') { 'Display' } %>
+    <%= list_item('large-1 small-4 text-center') { 'Edit' } %>
+    <%= list_item('large-1 text-center last') { 'Delete' } %>
+  </div>
+
+  <div class="module-sortable" data-module="Memberships::Package">
+    <%= render(partial: 'package', collection: @packages, as: :package, cached: true) %>
+  </div>
+
+  <%= paginate(@packages) %>
+</div>

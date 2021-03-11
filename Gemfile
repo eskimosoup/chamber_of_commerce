@@ -44,6 +44,7 @@ group :test do
 end
 
 group :development do
+  gem 'annotate'
   gem 'bullet'
   gem 'flamegraph'
   gem 'guard-rspec', require: false

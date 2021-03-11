@@ -3,6 +3,11 @@ module PresenterHelper
     presenter = object.class.presenter.new(object, self)
     yield presenter if block_given?
     presenter
+  rescue NoMethodError
+    klass ||= "#{object.class}Presenter".classify.constantize
+    presenter = klass.new(object: object, view_template: self)
+    yield presenter if block_given?
+    presenter
   end
 
   def nested_menu_items(menu_items:, depth: 1)

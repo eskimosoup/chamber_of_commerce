@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: internal_promotions
+#
+#  id         :integer          not null, primary key
+#  area       :string           not null
+#  display    :boolean          default(TRUE)
+#  image      :string
+#  link       :string
+#  name       :string           not null
+#  text       :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class InternalPromotion < ActiveRecord::Base
   mount_uploader :image, InternalPromotionUploader
 

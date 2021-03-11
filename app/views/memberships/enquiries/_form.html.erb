@@ -1,0 +1,9 @@
+<%= form_for(model, url: memberships_enquiries_path) do |f| %>
+  <%= render(partial: 'shared/form_errors', locals: { object: model }) %>
+
+  <%= render(partial: 'memberships/enquiries/shared/form_fields', locals: { f: f }) %>
+
+  <div class="actions">
+    <%= f.submit 'Send enquiry', class: 'button' %>
+  </div>
+<% end %>

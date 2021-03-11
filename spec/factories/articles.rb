@@ -1,3 +1,31 @@
+# == Schema Information
+#
+# Table name: articles
+#
+#  id                  :integer          not null, primary key
+#  caption             :string
+#  content             :text
+#  date                :datetime
+#  display             :boolean          default(TRUE)
+#  image               :string
+#  layout              :string           default("full_image")
+#  slug                :string
+#  suggested_url       :string
+#  summary             :text
+#  title               :string           not null
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  article_category_id :integer
+#
+# Indexes
+#
+#  index_articles_on_article_category_id  (article_category_id)
+#  index_articles_on_slug                 (slug) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (article_category_id => article_categories.id)
+#
 FactoryGirl.define do
   factory :article do
     article_category

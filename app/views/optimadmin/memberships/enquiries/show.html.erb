@@ -1,0 +1,44 @@
+<%= render(partial: 'optimadmin/shared/header/main_title', locals: { title: t('optimadmin.views.module.index.title', model_name: Memberships::Enquiry.model_name.human.pluralize) }) %>
+
+<div class="main-content">
+  <div class="row">
+    <div class="columns">
+      <%= render(partial: 'optimadmin/shared/module/form/back', locals: { path: { action: :index }, title: Memberships::Enquiry.model_name.human }) %>
+
+      <p>
+        <strong>Full name</strong>
+        <%= @enquiry.full_name %>
+      </p>
+
+      <p>
+        <strong>Company name</strong>
+        <%= @enquiry.company_name %>
+      </p>
+
+      <p>
+        <strong>Email address</strong>
+        <%= @enquiry.email_address %>
+      </p>
+
+      <p>
+        <strong>Telephone</strong>
+        <%= @enquiry.telephone %>
+      </p>
+
+      <p>
+        <strong>Postcode</strong>
+        <%= @enquiry.postcode %>
+      </p>
+
+      <p>
+        <strong>Package</strong>
+        <%= @enquiry.package_title %>
+      </p>
+
+      <p>
+        <strong>Created at</strong>
+        <%= l(@enquiry.created_at, format: :long) %>
+      </p>
+    </div>
+  </div>
+</div>

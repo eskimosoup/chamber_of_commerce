@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: attendees
+#
+#  id                   :integer          not null, primary key
+#  dietary_requirements :text
+#  email                :string
+#  forename             :string
+#  phone_number         :string
+#  surname              :string
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  event_booking_id     :integer
+#
+# Indexes
+#
+#  index_attendees_on_event_booking_id  (event_booking_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (event_booking_id => event_bookings.id)
+#
 class Attendee < ActiveRecord::Base
 
   CSV_FIELDS = %w{ forename surname email phone_number dietary_requirements }

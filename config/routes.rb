@@ -59,6 +59,16 @@ Rails.application.routes.draw do
   #  resources :member_offers
   # end
 
+  namespace :memberships do
+    resources :enquiries, only: [:create]
+    resources :payments, only: [:create, :edit, :update] do
+      resources :charges, only: [:new, :create]
+
+      get 'thank-you', to: 'payments#show', on: :collection
+    end
+
+    root to: 'homes#index'
+  end
 
   root to: 'application#index'
 
@@ -98,6 +108,14 @@ Optimadmin::Engine.routes.draw do
                 as: "published_#{options[:module]}",
                 controller: "#{options[:module]}/published"
     end
+  end
+
+  namespace :memberships do
+    resources :groups, except: :show, concerns: %i[orderable toggleable imageable]
+    resources :packages, except: :show, concerns: %i[orderable toggleable]
+    resources :enquiries, only: [:index, :show]
+    resources :how_heards, except: [:show], concerns: %i[orderable toggleable]
+    resources :payments, only: [:index, :show]
   end
 
   resources :advertisements, except: [:show] do

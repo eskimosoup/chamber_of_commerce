@@ -1,0 +1,250 @@
+<% if f.object.new_record? %>
+  <%= field_set_tag "Company details" do %>
+    <div class="field">
+      <%= f.label :company_name %><br/>
+      <%= f.text_field :company_name %>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :address_line_1 %><br/>
+          <%= f.text_field :address_line_1 %>
+        </div>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :address_line_2 %><br/>
+          <%= f.text_field :address_line_2 %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-4 columns">
+        <div class="field">
+          <%= f.label :city %><br/>
+          <%= f.text_field :city %>
+        </div>
+      </div>
+      <div class="small-12 medium-4 columns">
+        <div class="field">
+          <%= f.label :county %><br/>
+          <%= f.text_field :county %>
+        </div>
+      </div>
+      <div class="small-12 medium-4 columns">
+        <div class="field">
+          <%= f.label :postcode %><br/>
+          <%= f.text_field :postcode %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% if f.object.new_record? %>
+  <%= field_set_tag "Company information" do %>
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :business_activity %><br/>
+          <%= f.text_field :business_activity %>
+        </div>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :number_of_employees %><br/>
+          <%= f.number_field :number_of_employees %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :website %><br/>
+          <%= f.text_field :website %>
+        </div>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :telephone %><br/>
+          <%= f.number_field :telephone %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :legal_status %><br/>
+          <%= f.select :legal_status, ::Memberships::Payment::LEGAL_STATUSES, prompt: 'Please select' %>
+        </div>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :business_start_date %><br/>
+          <%= f.date_field :business_start_date %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :company_number %><br/>
+          <%= f.email_field :company_number %>
+        </div>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :vat_number %><br/>
+          <%= f.email_field :vat_number %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :linkedin %><br/>
+          <%= f.text_field :linkedin %>
+        </div>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :twitter %><br/>
+          <%= f.text_field :twitter %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :facebook %><br/>
+          <%= f.text_field :facebook %>
+        </div>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :instagram %><br/>
+          <%= f.text_field :instagram %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% unless f.object.new_record? %>
+  <%= field_set_tag "Primary contact details" do %>
+    <div class="row">
+      <div class="small-12 medium-2 columns">
+        <div class="field">
+          <%= f.label :primary_contact_title, 'Title' %><br/>
+          <%= f.text_field :primary_contact_title %>
+        </div>
+      </div>
+      <div class="small-12 medium-5 columns">
+        <div class="field">
+          <%= f.label :primary_contact_forename, 'Forename' %><br/>
+          <%= f.text_field :primary_contact_forename %>
+        </div>
+      </div>
+      <div class="small-12 medium-5 columns">
+        <div class="field">
+          <%= f.label :primary_contact_surname, 'Surname' %><br/>
+          <%= f.text_field :primary_contact_surname %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :primary_contact_role, 'Role' %><br/>
+          <%= f.text_field :primary_contact_role %>
+        </div>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :primary_contact_telephone, 'Telephone' %><br/>
+          <%= f.text_field :primary_contact_telephone %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :primary_contact_email_address, 'Email address' %><br/>
+          <%= f.email_field :primary_contact_email_address %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% unless f.object.new_record? %>
+  <%= field_set_tag "Accounts details" do %>
+    <div class="row">
+      <div class="small-12 medium-2 columns">
+        <div class="field">
+          <%= f.label :accounts_contact_title, 'Title' %><br/>
+          <%= f.text_field :accounts_contact_title %>
+        </div>
+      </div>
+      <div class="small-12 medium-5 columns">
+        <div class="field">
+          <%= f.label :accounts_contact_forename, 'Forename' %><br/>
+          <%= f.text_field :accounts_contact_forename %>
+        </div>
+      </div>
+      <div class="small-12 medium-5 columns">
+        <div class="field">
+          <%= f.label :accounts_contact_surname, 'Surname' %><br/>
+          <%= f.text_field :accounts_contact_surname %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :accounts_contact_role, 'Role' %><br/>
+          <%= f.text_field :accounts_contact_role %>
+        </div>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :accounts_contact_telephone, 'Telephone' %><br/>
+          <%= f.text_field :accounts_contact_telephone %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <div class="field">
+          <%= f.label :accounts_contact_email_address, 'Email address' %><br/>
+          <%= f.email_field :accounts_contact_email_address %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% if f.object.new_record? %>
+  <%= field_set_tag "Membership details" do %>
+    <div class="field">
+      <%= f.label :memberships_package_id %>
+      <%= f.select :memberships_package_id, ::Memberships::Package.displayed.ordered.map { |x| ["#{x.title} (#{number_to_currency(x.cost)} + VAT)", x.id] }, prompt: 'Please select' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :memberships_how_heard_id %>
+      <%= f.select :memberships_how_heard_id, ::Memberships::HowHeard.displayed.ordered.pluck(:title, :id), prompt: 'Please select' %>
+    </div>
+  <% end %>
+<% end %>

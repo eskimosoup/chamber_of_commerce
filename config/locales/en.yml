@@ -1,5 +1,13 @@
 
 en:
+  activerecord:
+    attributes:
+      memberships/payment:
+        vat_number: VAT number
+        memberships_package_id: Please select the package most relevant to your company
+        memberships_package_title: Membership package
+        memberships_how_heard_id: How did you hear about us?
+        how_heard_title: How did you hear about us?
   date:
     abbr_day_names:
     - Sun
@@ -203,3 +211,6 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%H:%M"
     pm: pm
+  memberships_mailer:
+    new_enquiry:
+      subject: New membership enquiry

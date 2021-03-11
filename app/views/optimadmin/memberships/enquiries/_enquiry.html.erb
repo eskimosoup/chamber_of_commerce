@@ -1,0 +1,20 @@
+<% present enquiry do |presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" id="item-<%= presenter.id %>">
+
+    <div class="columns">
+      <%= presenter.full_name %>
+    </div>
+
+    <div class="columns">
+      <%= presenter.company_name %>
+    </div>
+
+    <div class="columns">
+      <%= presenter.submitted %>
+    </div>
+
+    <div class="large-1 small-4 text-center columns">
+      <%= presenter.view_link %>
+    </div>
+  </div>
+<% end %>

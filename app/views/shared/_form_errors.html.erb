@@ -1,0 +1,10 @@
+<% if object.errors.any? %>
+  <div class="form-errors" id="error_explanation">
+    <h2><%= pluralize(object.errors.count, 'error') %> prevented this <%= (defined?(form_name) ? form_name : object.model_name.human.downcase) %> from being saved</h2>
+    <ul class="form-errors__messages">
+      <% object.errors.full_messages.each do |message| %>
+        <%= content_tag(:li, message, class: 'form-errors__message') %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

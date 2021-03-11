@@ -1,0 +1,36 @@
+<h1>New membership enquiry</h1>
+
+<p>
+  <strong>Full name</strong>
+  <%= @enquiry.full_name %>
+</p>
+
+<p>
+  <strong>Company name</strong>
+  <%= @enquiry.company_name %>
+</p>
+
+<p>
+  <strong>Email address</strong>
+  <%= @enquiry.email_address %>
+</p>
+
+<p>
+  <strong>Telephone</strong>
+  <%= @enquiry.telephone %>
+</p>
+
+<p>
+  <strong>Postcode</strong>
+  <%= @enquiry.postcode %>
+</p>
+
+<p>
+  <strong>Package</strong>
+  <%= @enquiry.package_title %>
+</p>
+
+<p>
+  <strong>Created at</strong>
+  <%= l(@enquiry.created_at, format: :long) %>
+</p>

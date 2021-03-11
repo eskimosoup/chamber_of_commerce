@@ -64,6 +64,11 @@
         <%= module_link(model: Industry, path: industries_path) %>
         <%= module_link(model: Member, path: members_path) %>
         <%= module_link(content: "Member Offers", model: MemberOffer, path: member_offers_path) %>
+        <%= module_link(content: Memberships::Group.model_name.human.pluralize.titleize, model: Memberships::Group, path: memberships_groups_path) %>
+        <%= module_link(content: Memberships::Package.model_name.human.pluralize.titleize, model: Memberships::Package, path: memberships_packages_path) %>
+        <%= module_link(content: Memberships::Enquiry.model_name.human.pluralize.titleize, model: Memberships::Enquiry, path: memberships_enquiries_path) %>
+        <%= module_link(content: Memberships::HowHeard.model_name.human.pluralize.titleize, model: Memberships::HowHeard, path: memberships_how_heards_path) %>
+        <%= module_link(content: Memberships::Payment.model_name.human.pluralize.titleize, model: Memberships::Payment, path: memberships_payments_path) %>
       </ul>
     </div>
   </div>

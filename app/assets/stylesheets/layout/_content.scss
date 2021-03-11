@@ -30,7 +30,8 @@
 
   // define styles for editable elements in editor.scss
 
-  h1 {
+  h1,
+  .main-content-wrap__title {
     border-bottom: 4px solid $bronze;
     color: $light-blue;
     font-size: em(26px);

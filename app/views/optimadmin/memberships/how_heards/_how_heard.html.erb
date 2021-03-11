@@ -1,0 +1,24 @@
+<% present how_heard do |presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" id="item-<%= presenter.id %>">
+    <div class="large-1 hide-for-medium-down columns">
+      <span class="drag-helper"></span>
+    </div>
+
+    <div class="columns">
+      <%= presenter.title %>
+    </div>
+
+    <div class="large-1 small-4 text-center columns">
+      <%= presenter.toggle_link %>
+    </div>
+
+    <div class="large-1 small-4 text-center columns">
+      <%= presenter.edit_link %>
+    </div>
+
+    <div class="large-1 text-center columns last">
+      <%= presenter.delete_link %>
+    </div>
+
+  </div>
+<% end %>

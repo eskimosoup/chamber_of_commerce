@@ -1,0 +1,5 @@
+<%= render(partial: 'optimadmin/shared/header/main_title', locals: { title: t('optimadmin.views.module.new.title', model_name: Memberships::Group.model_name.human) }) %>
+<div class="main-content">
+  <%= render(partial: 'optimadmin/shared/module/form/back', locals: { path: { action: :index }, title: Memberships::Group.model_name.human }) %>
+  <%= render(partial: 'form', locals: { model: @group }) %>
+</div>

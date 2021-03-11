@@ -1,0 +1,42 @@
+<div class="content-area">
+  <div class="row">
+    <div class="medium-8 small-12 columns">
+      <div class="main-content-wrap">
+        <%= render(partial: 'shared/flash_messages') %>
+        <% if @facade.additional_content? %>
+          <% present @facade.additional_content do |presenter| %>
+            <h1><%= presenter.title %></h1>
+
+            <div class="content">
+              <%= presenter.content %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="main-content-wrap">
+        <h2 class="main-content-wrap__title">Full application</h2>
+
+        <%= render(partial: 'memberships/payments/form', locals: { model: @payment }) %>
+      </div>
+    </div>
+
+    <aside class="medium-4 small-12 columns">
+
+      <section class="aside-content-wrap">
+        <h2>Membership <span>pricelist</span></h2>
+
+        <%= render(partial: 'memberships/packages/shared/aside', collection: @facade.packages, as: :package) %>
+      </section>
+      <div class="aside-content-wrap">
+        <h2>Send an <span>enquiry</span></h2>
+
+        <%= render(partial: 'memberships/enquiries/form', locals: { model: @enquiry }) %>
+      </div>
+    </aside>
+  </div>
+
+  <div class="row">
+    <%= render(partial: 'memberships/groups/shared/home', collection: @facade.groups, as: :group, locals: { parent_class: 'memberships-home-group' }) %>
+  </div>
+</div>

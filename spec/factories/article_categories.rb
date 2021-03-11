@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: article_categories
+#
+#  id             :integer          not null, primary key
+#  member_related :boolean          default(FALSE)
+#  slug           :string
+#  title          :string           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+# Indexes
+#
+#  index_article_categories_on_slug  (slug)
+#
 FactoryGirl.define do
   factory :article_category do
     sequence(:title) {|n| "Category #{n}"}

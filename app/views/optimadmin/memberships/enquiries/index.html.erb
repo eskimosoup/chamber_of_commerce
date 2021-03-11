@@ -1,0 +1,22 @@
+<%= render(partial: 'optimadmin/shared/header/main_title', locals: { title: t('optimadmin.views.module.index.title', model_name: Memberships::Enquiry.model_name.human.pluralize) }) %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render(partial: 'optimadmin/shared/search_form') %>
+    <%= render(partial: 'optimadmin/shared/module/index/pagination') %>
+    <%#= render(partial: 'optimadmin/shared/module/index/order', locals: { options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC']] }) %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item('') { 'Full name' } %>
+    <%= list_item('') { 'Company' } %>
+    <%= list_item('') { 'Submitted' } %>
+    <%= list_item('large-1 small-4 text-center') { 'View' } %>
+  </div>
+
+  <!-- <div class="module-sortable" data-module="Memberships::Enquiry"> -->
+  <%= render(partial: 'enquiry', collection: @enquiries, as: :enquiry, cached: true) %>
+  <!-- </div> -->
+
+  <%= paginate(@enquiries) %>
+</div>

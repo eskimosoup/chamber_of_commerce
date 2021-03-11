@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: newsletter_signups
+#
+#  id            :integer          not null, primary key
+#  email_address :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
 class NewsletterSignup < ActiveRecord::Base
   validates :email_address, presence: true, uniqueness: { message: 'already exists on our mailing list' }
 

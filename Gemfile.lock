@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: cecce7ff5e5ff0507d3ff8d9d2a132386cd354d5
+  revision: 129df4cf9c5d728812eba5db2c53178b25c92006
   branch: master
   specs:
-    optimadmin (2.2.0)
+    optimadmin (2.4.5)
       bcrypt
       cancancan (~> 3.1)
       carrierwave
@@ -13,7 +13,7 @@ GIT
       kaminari
       mini_magick
       rails
-      sassc-rails
+      sass-rails
 
 GIT
   remote: git@github.com:eskimosoup/cookie_consent.git
@@ -24,11 +24,13 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: 2a67a85ff9ed1ee02d8cb7a43439bcd812cdbb10
+  revision: 7764ddbaf53828796dbe79e2f3ffb3c95c3a296a
   specs:
-    optimadmin_generators (2.1.2)
+    optimadmin_generators (2.3.1)
       htmlbeautifier
       rubocop
+      rubocop-performance
+      rubocop-rails
 
 GEM
   remote: https://rubygems.org/
@@ -71,19 +73,22 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
+    annotate (3.1.1)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 14.0)
     arel (6.0.4)
-    ast (2.4.0)
+    ast (2.4.2)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
-    bcrypt (3.1.13)
+    bcrypt (3.1.16)
     builder (3.2.4)
     bullet (6.1.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (11.1.3)
-    cancancan (3.1.0)
+    cancancan (3.2.1)
     capistrano (3.14.0)
       airbrussh (>= 1.0.0)
       i18n
@@ -107,17 +112,18 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    carrierwave (1.3.1)
+    carrierwave (1.3.2)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+      ssrf_filter (~> 1.0)
     cliver (0.3.2)
-    closure_tree (7.1.0)
+    closure_tree (7.2.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
     cocoon (1.2.14)
     coderay (1.1.3)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.8)
     connection_pool (2.2.2)
     crass (1.0.6)
     daemons (1.3.1)
@@ -138,8 +144,8 @@ GEM
       railties (>= 3.0.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    fastimage (2.1.7)
-    ffi (1.12.2)
+    fastimage (2.2.3)
+    ffi (1.15.0)
     flamegraph (0.9.5)
     formatador (0.2.5)
     friendly_id (5.1.0)
@@ -195,7 +201,7 @@ GEM
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
     json (1.8.6)
-    jwt (2.2.1)
+    jwt (2.2.2)
     kaminari (1.2.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.1)
@@ -216,7 +222,7 @@ GEM
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.5.0)
+    loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.2.5)
@@ -227,11 +233,11 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2020.0512)
-    mini_magick (4.10.1)
+    mime-types-data (3.2021.0225)
+    mini_magick (4.11.0)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.14.1)
+    minitest (5.14.4)
     multi_json (1.15.0)
     multipart-post (2.1.1)
     nenv (0.3.0)
@@ -240,15 +246,15 @@ GEM
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
     net-ssh (6.0.2)
-    nokogiri (1.10.9)
+    nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    os (1.1.0)
-    parallel (1.19.1)
-    parser (2.7.1.3)
-      ast (~> 2.4.0)
+    os (1.1.1)
+    parallel (1.20.1)
+    parser (3.0.0.0)
+      ast (~> 2.4.1)
     pg (0.19.0)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
@@ -257,7 +263,7 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.13)
@@ -276,7 +282,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.11.3)
       sprockets-rails
-    rails-deprecated_sanitizer (1.0.3)
+    rails-deprecated_sanitizer (1.0.4)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.9)
       activesupport (>= 4.2.0, < 5.0)
@@ -290,7 +296,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (3.0.0)
-    rake (13.0.1)
+    rake (13.0.3)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -320,18 +326,28 @@ GEM
       rspec-mocks (~> 3.9.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.3)
-    rubocop (0.84.0)
+    rubocop (0.92.0)
       parallel (~> 1.10)
-      parser (>= 2.7.0.1)
+      parser (>= 2.7.1.5)
       rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.7)
       rexml
-      rubocop-ast (>= 0.0.3)
+      rubocop-ast (>= 0.5.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (0.0.3)
-      parser (>= 2.7.0.1)
-    ruby-progressbar (1.10.1)
-    sassc (2.3.0)
+    rubocop-ast (1.4.1)
+      parser (>= 2.7.1.5)
+    rubocop-performance (1.10.1)
+      rubocop (>= 0.90.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rails (2.9.1)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 0.90.0, < 2.0)
+    ruby-progressbar (1.11.0)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
+    sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -353,13 +369,14 @@ GEM
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.2.1)
+    sprockets-rails (3.2.2)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    ssrf_filter (1.0.7)
     stackprof (0.2.15)
     stripe (4.21.3)
       faraday (~> 0.13)
@@ -371,12 +388,12 @@ GEM
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
       rack (>= 1, < 3)
-    thor (1.0.1)
+    thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
     tinymce-rails (4.8.2)
       railties (>= 3.1.1)
-    tzinfo (1.2.7)
+    tzinfo (1.2.9)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -394,6 +411,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   bcrypt (~> 3.1.7)
   bullet
   byebug

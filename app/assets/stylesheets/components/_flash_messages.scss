@@ -5,7 +5,10 @@
 
 // Flash
 .flash-message {
-  border-color: $deep-grey;
+  background-color: $deep-grey;
+  border-color: $accent-blue;
+  color: $white;
+  padding: rem(10px);
 
   h2 {
     @extend %flash-heading;
@@ -32,6 +35,7 @@
   background-color: $deep-grey;
   border-color: $accent-blue;
   color: $white;
+  padding: rem(10px);
 
   h2 {
     @extend %flash-heading;

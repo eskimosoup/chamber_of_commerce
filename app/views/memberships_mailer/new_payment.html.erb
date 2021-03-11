@@ -1,0 +1,176 @@
+<h1>Thank you for your payment</h1>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:company_name) %></strong><br />
+  <%= @payment.company_name %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:address_line_1) %></strong><br />
+  <%= @payment.address_line_1 %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:address_line_2) %></strong><br />
+  <%= @payment.address_line_2 %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:city) %></strong><br />
+  <%= @payment.city %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:county) %></strong><br />
+  <%= @payment.county %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:postcode) %></strong><br />
+  <%= @payment.postcode %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:business_activity) %></strong><br />
+  <%= @payment.business_activity %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:number_of_employees) %></strong><br />
+  <%= @payment.number_of_employees %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:website) %></strong><br />
+  <%= @payment.website %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:telephone) %></strong><br />
+  <%= @payment.telephone %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:legal_status) %></strong><br />
+  <%= @payment.legal_status %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:business_start_date) %></strong><br />
+  <%= @payment.business_start_date %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:linkedin) %></strong><br />
+  <%= @payment.linkedin %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:twitter) %></strong><br />
+  <%= @payment.twitter %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:facebook) %></strong><br />
+  <%= @payment.facebook %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:instagram) %></strong><br />
+  <%= @payment.instagram %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:primary_contact_title) %></strong><br />
+  <%= @payment.primary_contact_title %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:primary_contact_forename) %></strong><br />
+  <%= @payment.primary_contact_forename %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:primary_contact_surname) %></strong><br />
+  <%= @payment.primary_contact_surname %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:primary_contact_role) %></strong><br />
+  <%= @payment.primary_contact_role %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:primary_contact_telephone) %></strong><br />
+  <%= @payment.primary_contact_telephone %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:primary_contact_email_address) %></strong><br />
+  <%= @payment.primary_contact_email_address %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:company_number) %></strong><br />
+  <%= @payment.company_number %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:vat_number) %></strong><br />
+  <%= @payment.vat_number %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:accounts_contact_title) %></strong><br />
+  <%= @payment.accounts_contact_title %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:accounts_contact_forename) %></strong><br />
+  <%= @payment.accounts_contact_forename %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:accounts_contact_surname) %></strong><br />
+  <%= @payment.accounts_contact_surname %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:accounts_contact_role) %></strong><br />
+  <%= @payment.accounts_contact_role %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:accounts_contact_telephone) %></strong><br />
+  <%= @payment.accounts_contact_telephone %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:accounts_contact_email_address) %></strong><br />
+  <%= @payment.accounts_contact_email_address %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:how_heard_title) %></strong><br />
+  <%= @payment.how_heard_title %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:memberships_package_title) %></strong><br />
+  <%= @payment.memberships_package_title %>
+</p>
+
+<p>
+  <strong>Total ex. VAT</strong><br />
+  <%= number_to_currency(@payment.total_ex_vat) %>
+</p>
+
+<p>
+  <strong>Total VAT</strong><br />
+  <%= number_to_currency(@payment.total_vat) %>
+</p>
+
+<p>
+  <strong><%= Memberships::Payment.human_attribute_name(:total_paid) %></strong><br />
+  <%= number_to_currency(@payment.total_paid) %>
+</p>

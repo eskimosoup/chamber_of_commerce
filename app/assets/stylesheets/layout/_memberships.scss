@@ -1,0 +1,18 @@
+.memberships-home-group {
+  text-align: center;
+
+  &__title {
+    color: $light-blue;
+    font-size: em(24px);
+    font-weight: $extra-bold;
+  }
+
+  &__image {
+    border-radius: 50%;
+    margin-bottom: em(16px);
+  }
+
+  &__summary {
+    font-weight: $semibold;
+  }
+}
