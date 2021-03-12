@@ -17,11 +17,39 @@
     <%= render @advertisements %>
   </div>
 <% end %>
+
+<% if @membership_banner.present? %>
+  <% present @membership_banner do |presenter| %>
+    <section class="membership-banner">
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="membership-banner__header">
+            <div class="membership-banner__title">
+              <%= presenter.title.html_safe %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-9 small-12 columns">
+          <div class="membership-banner__content">
+            <%= presenter.content %>
+          </div>
+        </div>
+        <div class="large-3 small-12 columns">
+          <%= presenter.button(class: 'membership-banner__button') %>
+        </div>
+      </div>
+    </section>
+  <% end %>
+<% end %>
+
 <% if app_banner.present? %>
   <section class="app-banner">
     <div class="row">
       <div class="app-banner__inner small-7 columns">
-       <div class="app-banner__title">
+        <div class="app-banner__title">
           <%= app_banner.title %>
         </div>
         <div class="app-banner__content">

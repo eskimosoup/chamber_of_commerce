@@ -18,6 +18,9 @@
 #
 #  index_memberships_groups_on_slug  (slug)
 #
+
+require_dependency 'memberships'
+
 module Memberships
   class Group < ActiveRecord::Base
     include OptimadminScopes

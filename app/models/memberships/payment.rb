@@ -56,6 +56,9 @@
 #  fk_rails_...  (memberships_how_heard_id => memberships_how_heards.id)
 #  fk_rails_...  (memberships_package_id => memberships_packages.id)
 #
+
+require_dependency 'memberships'
+
 module Memberships
   class Payment < ActiveRecord::Base
     include OptimadminScopes

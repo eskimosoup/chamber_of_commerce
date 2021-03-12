@@ -21,6 +21,9 @@
 #
 #  fk_rails_...  (memberships_package_id => memberships_packages.id)
 #
+
+require_dependency 'memberships'
+
 module Memberships
   class Enquiry < ActiveRecord::Base
     include OptimadminScopes

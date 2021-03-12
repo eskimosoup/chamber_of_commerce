@@ -9,6 +9,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+
+require_dependency 'memberships'
+
 module Memberships
   class HowHeard < ActiveRecord::Base
     include OptimadminScopes

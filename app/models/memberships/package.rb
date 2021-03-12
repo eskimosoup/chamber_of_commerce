@@ -10,6 +10,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+
+require_dependency 'memberships'
+
 module Memberships
   class Package < ActiveRecord::Base
     include OptimadminScopes

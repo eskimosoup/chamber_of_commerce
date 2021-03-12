@@ -118,3 +118,84 @@ header {
     }
   }
 }
+
+.membership-banner {
+  background-color: $light-blue;
+  padding: em(15px) 0 em(25px);
+
+  &__header {
+    background: transparent image-url('layout/headings/border.jpg') center repeat-x;
+    margin: 0 0 rem(10px);
+    text-align: center;
+  }
+
+  &__title {
+    background-color: $light-blue;
+    color: $white;
+    display: inline-block;
+    font-size: em(28px);
+    font-weight: $light;
+    letter-spacing: 2px;
+    padding: 0 em(30px, 23px);
+    text-transform: uppercase;
+
+    span {
+      font-weight: $bold;
+    }
+  }
+
+  &__content {
+    color: $white;
+
+    p {
+      font-size: em(18px);
+      line-height: 1.25;
+
+      &:last-of-type {
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__button {
+    background: $bronze;
+    border: 0;
+    color: $white;
+    display: block;
+    letter-spacing: 1px;
+    padding: em(12px, 24px);
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+
+    &:link,
+    &:visited {
+      color: $white;
+    }
+
+    &:hover {
+      background: $deep-grey;
+      text-decoration: none;
+    }
+
+    p {
+      font-size: em(24px);
+      font-weight: $bold;
+      line-height: 1.1;
+      margin: 0;
+    }
+  }
+
+  &__button-microcopy {
+    display: block;
+    font-size: em(14px, 24px);
+    font-weight: $light;
+    letter-spacing: initial;
+  }
+
+  &__button-emphasis {
+    font-size: em(24px, 24px);
+    letter-spacing: initial;
+  }
+}

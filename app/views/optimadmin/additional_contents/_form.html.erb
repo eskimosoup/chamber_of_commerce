@@ -1,22 +1,20 @@
 <%= form_for(additional_content) do |f| %>
-<% if additional_content.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(additional_content.errors.count, "error") %> prohibited this additional_content from being saved:</h2>
+  <% if additional_content.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(additional_content.errors.count, "error") %> prohibited this additional_content from being saved:</h2>
 
-    <ul>
-      <% additional_content.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
+      <ul>
+        <% additional_content.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-
 
   <div class="tabs prevent-flash">
     <ul class="tab-list">
@@ -29,15 +27,25 @@
     </ul>
 
     <%= field_set_tag nil, id: 'tabs-1' do %>
-            <div class="field">
+      <div class="field">
         <%= f.label :area %><br>
         <%= f.select :area, AdditionalContent::AREAS %>
       </div>
-            <div class="field">
+      <div class="field">
         <%= f.label :content %><br>
         <%= f.text_area :content, class: 'tinymce' %>
       </div>
-          <% end %>
+
+      <div class="field">
+        <%= f.label :button_link %><br />
+        <%= f.text_field :button_link %>
+      </div>
+
+      <div class="field">
+        <%= f.label :button_text %><br>
+        <%= f.text_area :button_text, class: 'tinymce' %>
+      </div>
+    <% end %>
   </div>
 
   <div class="actions">

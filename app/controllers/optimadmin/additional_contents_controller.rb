@@ -46,7 +46,7 @@ module Optimadmin
     end
 
     def additional_content_params
-      params.require(:additional_content).permit(:area, :title, :content)
+      params.require(:additional_content).permit(:area, :title, :content, :button_link, :button_text)
     end
   end
 end

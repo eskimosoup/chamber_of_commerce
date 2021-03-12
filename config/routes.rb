@@ -62,14 +62,14 @@ Rails.application.routes.draw do
   namespace :memberships do
     resources :groups, only: :show
 
-    # resources :enquiries, only: [:create]
-    # resources :payments, only: [:create, :edit, :update] do
-    #  resources :charges, only: [:new, :create]
+    resources :enquiries, only: [:create]
+    resources :payments, only: [:create, :edit, :update] do
+      resources :charges, only: [:new, :create]
 
-    #  get 'thank-you', to: 'payments#show', on: :collection
-    # end
+      get 'thank-you', to: 'payments#show', on: :collection
+    end
 
-    # root to: 'homes#index'
+    root to: 'homes#index'
   end
 
   root to: 'application#index'

@@ -39,6 +39,7 @@ class ApplicationController < ActionController::Base
     @internal_promotions = InternalPromotionPresenter.new(object: InternalPromotion.where(display: true).order(created_at: :desc), view_template: view_context)
     @magazine = MagazinePresenter.new(object: Magazine.where('date <= ? AND display = ?', Date.today, true).order(date: :desc).first, view_template: view_context)
     @members_services_menu = Optimadmin::Menu.new(name: 'members_services')
+    @membership_banner = AdditionalContent.find_by(area: 'Membership Banner')
   end
 
   helper_method def app_banner
