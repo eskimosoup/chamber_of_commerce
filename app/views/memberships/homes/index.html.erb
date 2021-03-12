@@ -12,12 +12,23 @@
             </div>
           <% end %>
         <% end %>
-      </div>
 
-      <div class="main-content-wrap">
-        <h2 class="main-content-wrap__title">Full application</h2>
+        <% if false %>
+        <ul class="memberships-form-links-list">
+          <li class="memberships-form-links-list__item">
+            <%= link_to('Full application', '#new_memberships_payment', class: 'memberships-form-links-list__link') %>
+          </li>
+          <li class="memberships-form-links-list__item">
+            <%= link_to('Make an enquiry', '#new_memberships_enquiry', class: 'memberships-form-links-list__link') %>
+          </li>
+        </ul>
+        <% end %>
 
         <%= render(partial: 'memberships/payments/form', locals: { model: @payment }) %>
+      </div>
+
+      <div class="row">
+        <%= render(partial: 'memberships/groups/shared/home', collection: @facade.groups, as: :group, locals: { parent_class: 'memberships-home-group' }) %>
       </div>
     </div>
 
@@ -28,15 +39,22 @@
 
         <%= render(partial: 'memberships/packages/shared/aside', collection: @facade.packages, as: :package) %>
       </section>
-      <div class="aside-content-wrap">
-        <h2>Send an <span>enquiry</span></h2>
+
+      <section class="aside-content-wrap">
+        <h2>Make an <span>enquiry</span></h2>
 
         <%= render(partial: 'memberships/enquiries/form', locals: { model: @enquiry }) %>
-      </div>
-    </aside>
-  </div>
+      </section>
 
-  <div class="row">
-    <%= render(partial: 'memberships/groups/shared/home', collection: @facade.groups, as: :group, locals: { parent_class: 'memberships-home-group' }) %>
+      <% if @facade.sidebar_menu?(module_page: 'Memberships home', menu_name: 'header') %>
+        <aside class="aside-content-wrap">
+          <h3><span>Membership</span></h3>
+
+          <ul class="plain-list sidebar">
+            <%= nested_menu_items(menu_items: @facade.sidebar_menu(module_page: 'Memberships home', menu_name: 'header')) %>
+          </ul>
+        </aside>
+      <% end %>
+    </aside>
   </div>
 </div>

@@ -126,18 +126,29 @@ header {
   &__header {
     background: transparent image-url('layout/headings/border.jpg') center repeat-x;
     margin: 0 0 rem(10px);
-    text-align: center;
+
+    @media screen and (min-width: 1024px) {
+      text-align: center;
+    }
   }
 
   &__title {
     background-color: $light-blue;
     color: $white;
     display: inline-block;
-    font-size: em(28px);
-    font-weight: $light;
-    letter-spacing: 2px;
-    padding: 0 em(30px, 23px);
     text-transform: uppercase;
+
+    @media screen and (max-width: 1023px) {
+      font-size: em(21px);
+      letter-spacing: normal;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: em(28px);
+      font-weight: $light;
+      letter-spacing: 2px;
+      padding: 0 em(30px, 23px);
+    }
 
     span {
       font-weight: $bold;
@@ -152,8 +163,11 @@ header {
       line-height: 1.25;
 
       &:last-of-type {
-        margin-bottom: 0;
         margin-top: 0;
+
+        @media screen and (min-width: 1024px) {
+          margin-bottom: 0;
+        }
       }
     }
   }
@@ -180,22 +194,28 @@ header {
     }
 
     p {
-      font-size: em(24px);
       font-weight: $bold;
       line-height: 1.1;
       margin: 0;
+
+      @media screen and (min-width: 1024px) {
+        font-size: em(24px);
+      }
     }
   }
 
   &__button-microcopy {
-    display: block;
     font-size: em(14px, 24px);
     font-weight: $light;
-    letter-spacing: initial;
+    letter-spacing: normal;
+
+    @media screen and (min-width: 1024px) {
+      display: block;
+    }
   }
 
   &__button-emphasis {
     font-size: em(24px, 24px);
-    letter-spacing: initial;
+    letter-spacing: normal;
   }
 }

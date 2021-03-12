@@ -3,7 +3,7 @@
 module Memberships
   class GroupUploader < Optimadmin::ImageUploader
     CROPS = {
-      index: ['fill', 150, 150],
+      index: ['fill', 285, 142],
       show: ['fill', 640, 250]
     }.freeze
     public_constant :CROPS

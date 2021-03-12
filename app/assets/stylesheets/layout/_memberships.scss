@@ -1,38 +1,72 @@
-.memberships-home-group {
-  text-align: center;
+.memberships-form-links-list {
+  list-style: none;
+  margin: 0;
 
-  &__title {
-    color: $light-blue;
-    font-size: em(24px);
-    font-weight: $extra-bold;
+  &__item {
+    display: inline-block;
   }
 
-  &__image {
-    border-radius: 50%;
-    margin-bottom: em(16px);
-  }
-
-  &__summary {
-    font-weight: $semibold;
-  }
-
-  &__button {
-    background: $deep-blue;
-    border: 0;
+  &__link {
     color: $white;
-    display: block;
-    font-weight: $bold;
-    padding: em(12px);
-    text-decoration: none;
-    width: 100%;
+    background: $deep-blue;
+    display: inline-block;
+    font-size: em(18px);
+    font-weight: $semibold;
+    padding: em(4px, 18px) em(9px, 18px);
+    text-decoration: none !important;
+    vertical-align: top;
+
+    @include responsive-to(small) {
+      margin-top: em(5px);
+      text-align: center;
+    }
 
     &:link,
     &:visited {
       color: $white;
     }
 
-    &:hover {
-      background: $deep-grey;
+    &:hover,
+    &:active {
+      color: $light-grey;
+    }
+
+    &--bronze {
+      background: $bronze;
+    }
+  }
+}
+
+.memberships-home-group {
+  // text-align: center;
+
+  &__title {
+    border-bottom: 4px solid $bronze;
+    color: $light-blue;
+    font-size: em(21px);
+    padding: 0 0 em(5px, 21px);
+  }
+
+  &__image {
+    margin-bottom: em(16px);
+  }
+
+  &__summary {
+    // font-weight: $semibold;
+  }
+
+  &__button {
+    border: 3px solid $light-blue;
+    display: inline-block;
+    font-size: em(12px);
+    letter-spacing: 1px;
+    padding: em(5px, 12px) em(20px, 12px);
+    text-transform: uppercase;
+
+    &:hover,
+    &:active {
+      background: $light-blue;
+      color: $white;
       text-decoration: none;
     }
   }
