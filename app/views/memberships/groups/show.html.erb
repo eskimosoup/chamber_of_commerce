@@ -1,0 +1,20 @@
+<section class="content-area">
+  <div class="row">
+    <div class="medium-8 small-12 columns">
+      <div class="main-content-wrap">
+        <% present @facade.group do |presenter| %>
+        <%= presenter.header(:h1) %>
+
+        <div class="content">
+          <%= presenter.content %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="medium-4 small-12 columns">
+      <%= render(partial: 'memberships/shared/side_menus', locals: { facade: @facade, object: @facade.group }) if @facade.side_menus.present? %>
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</section>

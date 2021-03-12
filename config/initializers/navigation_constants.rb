@@ -5,5 +5,6 @@ NavigationLinks = {
   'Article' => 'Article',
   'Event' => 'Event',
   'External Link' => 'Optimadmin::ExternalLink',
+  'Membership group' => 'Memberships::Group',
   'Module Page' => 'Optimadmin::ModulePage'
 }

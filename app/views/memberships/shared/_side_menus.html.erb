@@ -1,0 +1,7 @@
+<aside class="aside-content-wrap">
+  <h3><span><%= object.title %></span></h3>
+
+  <ul class="plain-list sidebar">
+    <%= nested_menu_items(menu_items: facade.side_menus.last.related_menu_items(object)) %>
+  </ul>
+</aside>

@@ -24,7 +24,7 @@ module Memberships
     # @return [string]
     #
     def linked_text(text = 'View', html_options = {})
-      h.link_to(text, h.group_path(group), html_options) if text.present?
+      h.link_to(text, h.memberships_group_path(group), html_options) if text.present?
     end
 
     #
@@ -35,7 +35,7 @@ module Memberships
     # @return [string]
     #
     def linked_block(html_options = {}, &block)
-      h.link_to(h.group_path(group), html_options, &block)
+      h.link_to(h.memberships_group_path(group), html_options, &block)
     end
 
     #

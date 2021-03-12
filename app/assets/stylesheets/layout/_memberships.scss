@@ -15,4 +15,25 @@
   &__summary {
     font-weight: $semibold;
   }
+
+  &__button {
+    background: $deep-blue;
+    border: 0;
+    color: $white;
+    display: block;
+    font-weight: $bold;
+    padding: em(12px);
+    text-decoration: none;
+    width: 100%;
+
+    &:link,
+    &:visited {
+      color: $white;
+    }
+
+    &:hover {
+      background: $deep-grey;
+      text-decoration: none;
+    }
+  }
 }
