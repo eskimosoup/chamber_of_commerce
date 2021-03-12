@@ -124,12 +124,7 @@ header {
   padding: em(15px) 0 em(25px);
 
   &__header {
-    background: transparent image-url('layout/headings/border.jpg') center repeat-x;
     margin: 0 0 rem(10px);
-
-    @media screen and (min-width: 1024px) {
-      text-align: center;
-    }
   }
 
   &__title {
@@ -144,10 +139,9 @@ header {
     }
 
     @media screen and (min-width: 1024px) {
-      font-size: em(28px);
+      font-size: em(32px);
       font-weight: $light;
       letter-spacing: 2px;
-      padding: 0 em(30px, 23px);
     }
 
     span {
@@ -159,7 +153,7 @@ header {
     color: $white;
 
     p {
-      font-size: em(18px);
+      font-size: em(22px);
       line-height: 1.25;
 
       &:last-of-type {
@@ -199,7 +193,7 @@ header {
       margin: 0;
 
       @media screen and (min-width: 1024px) {
-        font-size: em(24px);
+        font-size: em(26px);
       }
     }
   }
