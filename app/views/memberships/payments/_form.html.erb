@@ -4,6 +4,6 @@
   <%= render(partial: 'memberships/payments/shared/form_fields', locals: { f: f }) %>
 
   <div class="actions">
-    <%= f.submit "#{model.new_record? ? 'Create' : 'Submit'} application", class: 'button' %>
+    <%= f.submit (model.new_record? ? 'Join now' : 'Pay now'), class: 'button' %>
   </div>
 <% end %>

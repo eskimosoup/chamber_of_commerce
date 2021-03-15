@@ -92,9 +92,59 @@ module Memberships
     public_constant :LEGAL_STATUSES
 
     validates :memberships_package_id, presence: true
+    validates :address_line_1, presence: true
+    validates :business_start_date, presence: true
+    validates :business_activity, presence: true
+    validates :telephone, presence: true
+
     validates :primary_contact_email_address,
               presence: true,
               email: true,
+              on: :update
+
+    validates :accounts_contact_email_address,
+              presence: true,
+              email: true,
+              on: :update
+
+    validates :primary_contact_title,
+              presence: true,
+              on: :update
+
+    validates :primary_contact_forename,
+              presence: true,
+              on: :update
+
+    validates :primary_contact_surname,
+              presence: true,
+              on: :update
+
+    validates :primary_contact_role,
+              presence: true,
+              on: :update
+
+    validates :primary_contact_telephone,
+              presence: true,
+              on: :update
+
+    validates :accounts_contact_forename,
+              presence: true,
+              on: :update
+
+    validates :accounts_contact_surname,
+              presence: true,
+              on: :update
+
+    validates :accounts_contact_role,
+              presence: true,
+              on: :update
+
+    validates :accounts_contact_telephone,
+              presence: true,
+              on: :update
+
+    validates :accounts_contact_title,
+              presence: true,
               on: :update
 
     validates :company_name, presence: true
