@@ -9,6 +9,13 @@ fieldset {
   .fields {
     margin: em(20px) 0;
   }
+
+  .field {
+    &--inline {
+      display: inline-block;
+      margin-right: em(16px);
+    }
+  }
 }
 
 input[type="text"],

@@ -21,7 +21,7 @@
 #  instagram                      :string
 #  legal_status                   :string
 #  linkedin                       :string
-#  memberships_package_cost       :decimal(, )
+#  memberships_package_cost       :decimal(8, 2)
 #  memberships_package_title      :string
 #  number_of_employees            :integer
 #  paid                           :boolean          default(FALSE)
@@ -33,27 +33,24 @@
 #  primary_contact_telephone      :string
 #  primary_contact_title          :string
 #  telephone                      :string
-#  total_paid                     :decimal(, )
+#  total_paid                     :decimal(8, 2)
 #  twitter                        :string
 #  vat_number                     :string
 #  website                        :string
 #  created_at                     :datetime         not null
 #  updated_at                     :datetime         not null
 #  hashed_id                      :string
-#  memberships_how_heard_id       :integer
 #  memberships_package_id         :integer
 #  stripe_charge_id               :string
 #  stripe_payment_intent_id       :string
 #
 # Indexes
 #
-#  index_memberships_payments_on_hashed_id                 (hashed_id)
-#  index_memberships_payments_on_memberships_how_heard_id  (memberships_how_heard_id)
-#  index_memberships_payments_on_memberships_package_id    (memberships_package_id)
+#  index_memberships_payments_on_hashed_id               (hashed_id)
+#  index_memberships_payments_on_memberships_package_id  (memberships_package_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (memberships_how_heard_id => memberships_how_heards.id)
 #  fk_rails_...  (memberships_package_id => memberships_packages.id)
 #
 
@@ -64,14 +61,22 @@ module Memberships
     include OptimadminScopes
     include ObfuscateIds
 
-    belongs_to :how_heard,
-               foreign_key: :memberships_how_heard_id,
-               class_name: '::Memberships::HowHeard'
-               delegate :title, to: :how_heard, allow_nil: true, prefix: true
+    has_many :payment_how_heards,
+             class_name: '::Memberships::PaymentHowHeard',
+             foreign_key: :memberships_payment_id,
+             dependent: :nullify
+    has_many :how_heards, through: :payment_how_heards
+
+    has_many :payment_join_reasons,
+             class_name: '::Memberships::PaymentJoinReason',
+             foreign_key: :memberships_payment_id,
+             dependent: :nullify
+    has_many :join_reasons, through: :payment_join_reasons
 
     belongs_to :package,
                foreign_key: :memberships_package_id,
-               class_name: '::Memberships::Package'
+               class_name: '::Memberships::Package',
+               inverse_of: :payments
     delegate :title, :cost, to: :package, prefix: true
 
     LEGAL_STATUSES = [
@@ -86,9 +91,11 @@ module Memberships
     ].freeze
     public_constant :LEGAL_STATUSES
 
-    validates :memberships_package_id, presence: true, on: :update
-    validates :memberships_how_heard_id, presence: true, on: :update
-    validates :primary_contact_email_address, presence: true, email: true, on: :update
+    validates :memberships_package_id, presence: true
+    validates :primary_contact_email_address,
+              presence: true,
+              email: true,
+              on: :update
 
     validates :company_name, presence: true
     validates :postcode, presence: true
@@ -165,6 +172,24 @@ module Memberships
     #
     def total_inc_vat
       memberships_package_cost + total_vat
+    end
+
+    #
+    # How heard titles
+    #
+    # @return [string]
+    #
+    def how_heard_titles
+      how_heards.map(&:title).join(', ')
+    end
+
+    #
+    # How heard titles
+    #
+    # @return [string]
+    #
+    def join_reason_titles
+      join_reasons.map(&:title).join(', ')
     end
 
     private

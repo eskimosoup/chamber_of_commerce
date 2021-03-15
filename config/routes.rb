@@ -113,10 +113,11 @@ Optimadmin::Engine.routes.draw do
   end
 
   namespace :memberships do
+    resources :join_reasons, except: :show, concerns: %i[orderable toggleable imageable], path: 'join-reasons'
     resources :groups, except: :show, concerns: %i[orderable toggleable imageable]
     resources :packages, except: :show, concerns: %i[orderable toggleable]
     resources :enquiries, only: [:index, :show]
-    resources :how_heards, except: [:show], concerns: %i[orderable toggleable]
+    resources :how_heards, except: [:show], concerns: %i[orderable toggleable], path: 'how-heards'
     resources :payments, only: [:index, :show]
   end
 

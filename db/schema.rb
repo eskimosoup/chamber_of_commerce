@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210312121810) do
+ActiveRecord::Schema.define(version: 20210315140500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -327,6 +327,7 @@ ActiveRecord::Schema.define(version: 20210312121810) do
     t.integer  "memberships_package_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.text     "message"
   end
 
   add_index "memberships_enquiries", ["memberships_package_id"], name: "index_memberships_enquiries_on_memberships_package_id", using: :btree
@@ -354,6 +355,14 @@ ActiveRecord::Schema.define(version: 20210312121810) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "memberships_join_reasons", force: :cascade do |t|
+    t.integer  "position",   default: 0
+    t.string   "title"
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "memberships_packages", force: :cascade do |t|
     t.integer  "position",                           default: 0
     t.string   "title"
@@ -363,8 +372,28 @@ ActiveRecord::Schema.define(version: 20210312121810) do
     t.datetime "updated_at",                                        null: false
   end
 
+  create_table "memberships_payment_how_heards", force: :cascade do |t|
+    t.integer  "memberships_payment_id"
+    t.integer  "memberships_how_heard_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "memberships_payment_how_heards", ["memberships_how_heard_id"], name: "index_memberships_how_heards_on_memberships_how_heard_id", using: :btree
+  add_index "memberships_payment_how_heards", ["memberships_payment_id"], name: "index_memberships_payment_how_heards_on_memberships_payment_id", using: :btree
+
+  create_table "memberships_payment_join_reasons", force: :cascade do |t|
+    t.integer  "memberships_payment_id"
+    t.integer  "memberships_join_reason_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "memberships_payment_join_reasons", ["memberships_join_reason_id"], name: "index_memberships_join_reasons_on_memberships_join_reason_id", using: :btree
+  add_index "memberships_payment_join_reasons", ["memberships_payment_id"], name: "index_memberships_join_reasons_on_memberships_payment_id", using: :btree
+
   create_table "memberships_payments", force: :cascade do |t|
-    t.string   "company_name",                                   null: false
+    t.string   "company_name",                                                           null: false
     t.string   "address_line_1"
     t.string   "address_line_2"
     t.string   "city"
@@ -395,20 +424,18 @@ ActiveRecord::Schema.define(version: 20210312121810) do
     t.string   "accounts_contact_telephone"
     t.string   "accounts_contact_email_address"
     t.integer  "memberships_package_id"
-    t.integer  "memberships_how_heard_id"
     t.string   "memberships_package_title"
-    t.decimal  "memberships_package_cost"
-    t.decimal  "total_paid"
-    t.boolean  "paid",                           default: false
+    t.decimal  "memberships_package_cost",       precision: 8, scale: 2
+    t.decimal  "total_paid",                     precision: 8, scale: 2
+    t.boolean  "paid",                                                   default: false
     t.string   "stripe_charge_id"
     t.string   "stripe_payment_intent_id"
     t.string   "hashed_id"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
   end
 
   add_index "memberships_payments", ["hashed_id"], name: "index_memberships_payments_on_hashed_id", using: :btree
-  add_index "memberships_payments", ["memberships_how_heard_id"], name: "index_memberships_payments_on_memberships_how_heard_id", using: :btree
   add_index "memberships_payments", ["memberships_package_id"], name: "index_memberships_payments_on_memberships_package_id", using: :btree
 
   create_table "newsletter_signups", force: :cascade do |t|
@@ -542,6 +569,9 @@ ActiveRecord::Schema.define(version: 20210312121810) do
   add_foreign_key "member_logins", "members"
   add_foreign_key "member_offers", "members"
   add_foreign_key "memberships_enquiries", "memberships_packages"
-  add_foreign_key "memberships_payments", "memberships_how_heards"
+  add_foreign_key "memberships_payment_how_heards", "memberships_how_heards"
+  add_foreign_key "memberships_payment_how_heards", "memberships_payments"
+  add_foreign_key "memberships_payment_join_reasons", "memberships_join_reasons"
+  add_foreign_key "memberships_payment_join_reasons", "memberships_payments"
   add_foreign_key "memberships_payments", "memberships_packages"
 end

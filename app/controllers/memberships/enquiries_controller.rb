@@ -22,7 +22,8 @@ module Memberships
         :email_address,
         :company_name,
         :postcode,
-        :memberships_package_id
+        :memberships_package_id,
+        :message
       )
     end
   end

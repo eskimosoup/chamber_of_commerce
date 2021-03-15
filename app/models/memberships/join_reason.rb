@@ -1,19 +1,16 @@
 # == Schema Information
 #
-# Table name: memberships_how_heards
+# Table name: memberships_join_reasons
 #
 #  id         :integer          not null, primary key
 #  display    :boolean          default(TRUE)
 #  position   :integer          default(0)
-#  title      :string           not null
+#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
-require_dependency 'memberships'
-
 module Memberships
-  class HowHeard < ActiveRecord::Base
+  class JoinReason < ActiveRecord::Base
     include OptimadminScopes
 
     scope :ordered, -> { order(:position) }
@@ -21,10 +18,10 @@ module Memberships
 
     validates :title, presence: true
 
-    has_many :payment_how_heards,
-             class_name: '::Memberships::PaymentHowHeard',
-             foreign_key: :memberships_how_heard_id,
+    has_many :payment_join_reasons,
+             class_name: '::Memberships::PaymentJoinReason',
+             foreign_key: :memberships_join_reason_id,
              dependent: :nullify
-    has_many :payments, through: :payment_how_heards
+    has_many :payments, through: :payment_join_reasons
   end
 end

@@ -36,6 +36,11 @@
       </p>
 
       <p>
+        <strong>Message</strong>
+        <%= simple_format(@enquiry.message) %>
+      </p>
+
+      <p>
         <strong>Created at</strong>
         <%= l(@enquiry.created_at, format: :long) %>
       </p>

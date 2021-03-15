@@ -29,7 +29,7 @@ class AdditionalContent < ActiveRecord::Base
   ].freeze.sort
 
   validates :area, uniqueness: true
-  validates :area, :title, :content, presence: true
+  validates :area, :title, presence: true
   validates :button_link, presence: true, if: :button_text?
   validates :button_text, presence: true, if: :button_link?
 

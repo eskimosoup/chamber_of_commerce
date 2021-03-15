@@ -164,9 +164,15 @@
           <%= @facade.payment.accounts_contact_email_address %>
         </p>
 
+
         <p>
-          <strong><%= Memberships::Payment.human_attribute_name(:how_heard_title) %></strong><br />
-          <%= @facade.payment.how_heard_title %>
+          <strong><%= Memberships::Payment.human_attribute_name(:how_heard_ids) %></strong><br />
+          <%= @facade.payment.how_heard_titles %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:join_reason_ids) %></strong><br />
+          <%= @facade.payment.join_reason_titles %>
         </p>
 
         <p>

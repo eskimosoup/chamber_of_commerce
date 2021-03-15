@@ -21,7 +21,7 @@
 #  instagram                      :string
 #  legal_status                   :string
 #  linkedin                       :string
-#  memberships_package_cost       :decimal(, )
+#  memberships_package_cost       :decimal(8, 2)
 #  memberships_package_title      :string
 #  number_of_employees            :integer
 #  paid                           :boolean          default(FALSE)
@@ -33,27 +33,24 @@
 #  primary_contact_telephone      :string
 #  primary_contact_title          :string
 #  telephone                      :string
-#  total_paid                     :decimal(, )
+#  total_paid                     :decimal(8, 2)
 #  twitter                        :string
 #  vat_number                     :string
 #  website                        :string
 #  created_at                     :datetime         not null
 #  updated_at                     :datetime         not null
 #  hashed_id                      :string
-#  memberships_how_heard_id       :integer
 #  memberships_package_id         :integer
 #  stripe_charge_id               :string
 #  stripe_payment_intent_id       :string
 #
 # Indexes
 #
-#  index_memberships_payments_on_hashed_id                 (hashed_id)
-#  index_memberships_payments_on_memberships_how_heard_id  (memberships_how_heard_id)
-#  index_memberships_payments_on_memberships_package_id    (memberships_package_id)
+#  index_memberships_payments_on_hashed_id               (hashed_id)
+#  index_memberships_payments_on_memberships_package_id  (memberships_package_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (memberships_how_heard_id => memberships_how_heards.id)
 #  fk_rails_...  (memberships_package_id => memberships_packages.id)
 #
 FactoryGirl.define do

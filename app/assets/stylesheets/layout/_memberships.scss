@@ -71,3 +71,29 @@
     }
   }
 }
+
+.membership-package {
+  border-bottom: 1px solid $light-grey;
+  margin: em(8px) em(1px);
+  padding: 0 em(5px) em(16px);
+  overflow: auto;
+
+  &__title {
+    display: inline-block;
+    font-size: em(16px);
+    font-weight: $light;
+    color: $bronze;
+  }
+
+  &__cost {
+    color: $light-blue;
+    display: inline-block;
+    font-size: em(18px);
+    font-weight: $semibold;
+    line-height: 1.25;
+
+    @media screen and (min-width: 1024px) {
+      float: right;
+    }
+  }
+}

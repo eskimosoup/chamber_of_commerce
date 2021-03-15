@@ -28,5 +28,11 @@ module Memberships
              class_name: '::Memberships::Enquiry',
              foreign_key: :memberships_package_id,
              inverse_of: :package
+
+    has_many :payments,
+             dependent: :nullify,
+             class_name: '::Memberships::Payment',
+             foreign_key: :memberships_package_id,
+             inverse_of: :package
   end
 end

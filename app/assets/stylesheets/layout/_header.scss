@@ -139,7 +139,7 @@ header {
     }
 
     @media screen and (min-width: 1024px) {
-      font-size: em(32px);
+      font-size: em(41px);
       font-weight: $light;
       letter-spacing: 2px;
     }
@@ -151,10 +151,17 @@ header {
 
   &__content {
     color: $white;
+    padding-right: rem(5px);
 
     p {
-      font-size: em(22px);
+      font-size: em(20px);
       line-height: 1.25;
+
+      @media screen and (max-width: 1023px) {
+        br {
+          display: none;
+        }
+      }
 
       &:last-of-type {
         margin-top: 0;
@@ -199,13 +206,9 @@ header {
   }
 
   &__button-microcopy {
-    font-size: em(14px, 24px);
+    font-size: em(24px, 24px);
     font-weight: $light;
     letter-spacing: normal;
-
-    @media screen and (min-width: 1024px) {
-      display: block;
-    }
   }
 
   &__button-emphasis {

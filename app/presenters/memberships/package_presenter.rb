@@ -4,7 +4,7 @@ module Memberships
     delegate :title, to: :package
 
     def cost
-      h.number_to_currency(package.cost)
+      h.number_to_currency(package.cost).gsub('.00', '')
     end
   end
 end

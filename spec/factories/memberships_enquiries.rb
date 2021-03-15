@@ -6,6 +6,7 @@
 #  company_name           :string
 #  email_address          :string
 #  forename               :string
+#  message                :text
 #  postcode               :string
 #  surname                :string
 #  telephone              :string

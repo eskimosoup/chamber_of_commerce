@@ -7,6 +7,12 @@
     <%#= render(partial: 'optimadmin/shared/module/index/order', locals: { options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC']] }) %>
   </div>
 
+  <div class="row collapse">
+    <div class="columns">
+      <%= link_to 'Download CSV', url_for(only_path: true, format: :csv) %>
+    </div>
+  </div>
+
   <div class="row collapse module-list-index header">
     <%= list_item('') { 'Full name' } %>
     <%= list_item('') { 'Company' } %>

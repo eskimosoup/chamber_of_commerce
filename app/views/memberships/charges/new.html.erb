@@ -134,6 +134,172 @@
             <button id="card-button" data-secret="<%= @charge.client_secret %>">Submit Payment</button>
           <% end %>
         <% end %>
+
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:company_name) %></strong><br />
+          <%= @facade.payment.company_name %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:address_line_1) %></strong><br />
+          <%= @facade.payment.address_line_1 %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:address_line_2) %></strong><br />
+          <%= @facade.payment.address_line_2 %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:city) %></strong><br />
+          <%= @facade.payment.city %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:county) %></strong><br />
+          <%= @facade.payment.county %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:postcode) %></strong><br />
+          <%= @facade.payment.postcode %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:business_activity) %></strong><br />
+          <%= @facade.payment.business_activity %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:number_of_employees) %></strong><br />
+          <%= @facade.payment.number_of_employees %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:website) %></strong><br />
+          <%= @facade.payment.website %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:telephone) %></strong><br />
+          <%= @facade.payment.telephone %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:legal_status) %></strong><br />
+          <%= @facade.payment.legal_status %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:business_start_date) %></strong><br />
+          <%= @facade.payment.business_start_date %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:linkedin) %></strong><br />
+          <%= @facade.payment.linkedin %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:twitter) %></strong><br />
+          <%= @facade.payment.twitter %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:facebook) %></strong><br />
+          <%= @facade.payment.facebook %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:instagram) %></strong><br />
+          <%= @facade.payment.instagram %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:primary_contact_title) %></strong><br />
+          <%= @facade.payment.primary_contact_title %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:primary_contact_forename) %></strong><br />
+          <%= @facade.payment.primary_contact_forename %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:primary_contact_surname) %></strong><br />
+          <%= @facade.payment.primary_contact_surname %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:primary_contact_role) %></strong><br />
+          <%= @facade.payment.primary_contact_role %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:primary_contact_telephone) %></strong><br />
+          <%= @facade.payment.primary_contact_telephone %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:primary_contact_email_address) %></strong><br />
+          <%= @facade.payment.primary_contact_email_address %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:company_number) %></strong><br />
+          <%= @facade.payment.company_number %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:vat_number) %></strong><br />
+          <%= @facade.payment.vat_number %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:accounts_contact_title) %></strong><br />
+          <%= @facade.payment.accounts_contact_title %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:accounts_contact_forename) %></strong><br />
+          <%= @facade.payment.accounts_contact_forename %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:accounts_contact_surname) %></strong><br />
+          <%= @facade.payment.accounts_contact_surname %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:accounts_contact_role) %></strong><br />
+          <%= @facade.payment.accounts_contact_role %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:accounts_contact_telephone) %></strong><br />
+          <%= @facade.payment.accounts_contact_telephone %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:accounts_contact_email_address) %></strong><br />
+          <%= @facade.payment.accounts_contact_email_address %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:how_heard_ids) %></strong><br />
+          <%= @facade.payment.how_heard_titles %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:join_reason_ids) %></strong><br />
+          <%= @facade.payment.join_reason_titles %>
+        </p>
+
+        <p>
+          <strong><%= Memberships::Payment.human_attribute_name(:memberships_package_title) %></strong><br />
+          <%= @facade.payment.memberships_package_title %>
+        </p>
       </div>
     </div>
   </div>

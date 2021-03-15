@@ -6,6 +6,7 @@
 #  company_name           :string
 #  email_address          :string
 #  forename               :string
+#  message                :text
 #  postcode               :string
 #  surname                :string
 #  telephone              :string
@@ -40,6 +41,7 @@ module Memberships
     validates :company_name, presence: true
     validates :postcode, presence: true
     validates :email_address, presence: true, email: true
+    validates :message, presence: true
 
     def full_name
       [forename, surname].join(' ')

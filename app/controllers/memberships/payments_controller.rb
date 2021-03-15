@@ -83,7 +83,8 @@ module Memberships
         :accounts_contact_email_address,
         :postcode,
         :memberships_package_id,
-        :memberships_how_heard_id
+        how_heard_ids: [],
+        join_reason_ids: [],
       )
     end
   end

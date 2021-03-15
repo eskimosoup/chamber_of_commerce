@@ -6,8 +6,8 @@ en:
         vat_number: VAT number
         memberships_package_id: Please select the package most relevant to your company
         memberships_package_title: Membership package
-        memberships_how_heard_id: How did you hear about us?
-        how_heard_title: How did you hear about us?
+        how_heard_ids: How did you hear about us?
+        join_reason_ids: What is your reason for joining?
   date:
     abbr_day_names:
     - Sun

@@ -243,8 +243,23 @@
     </div>
 
     <div class="field">
-      <%= f.label :memberships_how_heard_id %>
-      <%= f.select :memberships_how_heard_id, ::Memberships::HowHeard.displayed.ordered.pluck(:title, :id), prompt: 'Please select' %>
+      <p><b><%= Memberships::Payment.human_attribute_name(:how_heard_ids) %></b></p>
+      <%= f.collection_check_boxes(:how_heard_ids, ::Memberships::HowHeard.displayed.ordered, :id, :title) do |b| %>
+        <div class="field field--inline">
+          <%= b.label %>
+          <%= b.check_box %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <p><b><%= Memberships::Payment.human_attribute_name(:join_reason_ids) %></b></p>
+      <%= f.collection_check_boxes(:join_reason_ids, ::Memberships::JoinReason.displayed.ordered, :id, :title) do |b| %>
+        <div class="field field--inline">
+          <%= b.label %>
+          <%= b.check_box %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 <% end %>
