@@ -32,7 +32,7 @@ module Memberships
     belongs_to :package,
                foreign_key: :memberships_package_id,
                class_name: '::Memberships::Package'
-    delegate :title, to: :package, prefix: true
+    delegate :title, to: :package, prefix: true, allow_nil: true
 
     validates :memberships_package_id, presence: true
     validates :forename, presence: true
