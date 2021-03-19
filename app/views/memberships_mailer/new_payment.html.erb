@@ -1,5 +1,14 @@
 <h1>Thank you for your payment</h1>
 
+<p>You and your staff are now members of the Hull & Humber Chamber of Commerce</p>
+
+<p>We will send you a Welcome Pack shortly and we look forward to working with you!</p>
+
+<p>If you have any questions, please contact:</p>
+
+<p><strong>Hull and East Yorkshire office</strong>: 01482 324976 or email <%= mail_to 'j.harrison@hull-humber-chamber.co.uk' %></p>
+<p><strong>Northern Lincolnshire Office</strong>: 01472 342981 or email <%= mail_to 'a.tate@hull-humber-chamber.co.uk' %></p>
+
 <p>
   <strong><%= Memberships::Payment.human_attribute_name(:company_name) %></strong><br />
   <%= @payment.company_name %>
