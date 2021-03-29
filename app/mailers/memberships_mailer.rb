@@ -29,13 +29,13 @@ class MembershipsMailer < ApplicationMailer
   #
   #   en.memberships_mailer.new_enquiry.subject
   #
-  # MembershipsMailer::new_payment_copy(Memberships::Payment.last).deliver_now
+  # MembershipsMailer::new_payment_copy(Memberships::Payment.find(1)).deliver_now
   def new_payment_copy(payment)
     @payment = payment
     @copy = true
     mail(
       to: membership_email,
-      subject: t('memberships_mailer.new_enquiry.subject')
+      subject: t('memberships_mailer.new_payment.subject')
     ) do |format|
       format.html { render('memberships_mailer/new_payment') }
     end
