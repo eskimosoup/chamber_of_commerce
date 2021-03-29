@@ -23,4 +23,21 @@ class MembershipsMailer < ApplicationMailer
       from: member_offer_email
     )
   end
+
+  # Subject can be set in your I18n file at config/locales/en.yml
+  # with the following lookup:
+  #
+  #   en.memberships_mailer.new_enquiry.subject
+  #
+  # MembershipsMailer::new_payment_copy(Memberships::Payment.last).deliver_now
+  def new_payment_copy(payment)
+    @payment = payment
+    @copy = true
+    mail(
+      to: membership_email,
+      subject: t('memberships_mailer.new_enquiry.subject')
+    ) do |format|
+      format.html { render('memberships_mailer/new_payment') }
+    end
+  end
 end
