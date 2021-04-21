@@ -1,0 +1,33 @@
+<html lang="en">
+  <body>
+
+    <h1>Member login created</h1>
+
+    <p>You member login for Hull and Humber Chamber of Commerce has been created.</p>
+
+    <p>You have the following accounts available to set a password:</p>
+
+    <% @member.member_login.each do |member_login| %>
+      <p>
+        <strong>Username</strong><br />
+        <%= member_login.username %>
+      </p>
+
+      <p>
+        <strong>Password</strong><br />
+        <%= link_to 'Click here to set the password for this account', member_password_reset_url(member_login.password_reset_token) %>
+      </p>
+    <% end %>
+
+    <p>
+      Please note these links expire after 2 hours,
+      after which you will be able to request a password reset using <%= link_to('the request a new password link', new_member_password_reset_url) %>.
+    </p>
+
+    <p>If you have any questions, please contact:</p>
+
+    <p><strong>Hull and East Yorkshire office</strong>: 01482 324976 or email <%= mail_to 'j.harrison@hull-humber-chamber.co.uk' %></p>
+    <p><strong>Northern Lincolnshire Office</strong>: 01472 342981 or email <%= mail_to 'a.tate@hull-humber-chamber.co.uk' %></p>
+
+  </body>
+</html>

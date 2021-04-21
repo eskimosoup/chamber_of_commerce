@@ -194,6 +194,25 @@
         <strong><%= Memberships::Payment.human_attribute_name(:paid) %></strong><br />
         <%= @payment.paid %>
       </p>
+
+      <% if @payment.paid? %>
+        <h2 id="member-login">Create member login</h2>
+
+        <p class="admin-note">
+          Enter the Chamber DB ID to automatically create a verified member login.
+        </p>
+
+        <%= form_tag({ action: :update }, method: :put) do %>
+          <div class="field">
+            <%= label_tag :chamber_db_id, 'Chamber DB ID' %>
+            <%= number_field_tag :chamber_db_id %>
+          </div>
+
+          <div class="actions">
+            <%= submit_tag 'Create' %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

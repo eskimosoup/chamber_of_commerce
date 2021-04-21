@@ -212,5 +212,7 @@ en:
       short: "%H:%M"
     pm: pm
   memberships_mailer:
+    new_member_login:
+      subject: Your member login account details
     new_enquiry:
       subject: New membership enquiry

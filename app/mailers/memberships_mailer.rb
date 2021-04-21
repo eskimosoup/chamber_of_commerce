@@ -2,6 +2,16 @@ class MembershipsMailer < ApplicationMailer
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
+  #   en.memberships_mailer.new_member_login.subject
+  #
+  def new_member_login(member_login)
+    @member = member_login.member
+    mail(to: member_login.username)
+  end
+
+  # Subject can be set in your I18n file at config/locales/en.yml
+  # with the following lookup:
+  #
   #   en.memberships_mailer.new_enquiry.subject
   #
   def new_enquiry(enquiry)

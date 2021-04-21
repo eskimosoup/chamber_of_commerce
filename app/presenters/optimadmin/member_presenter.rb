@@ -2,6 +2,8 @@ module Optimadmin
   class MemberPresenter < Optimadmin::BasePresenter
     presents :member
 
+    delegate :chamber_db_id, to: :member
+
     def member_logins
       member.member_login
     end
