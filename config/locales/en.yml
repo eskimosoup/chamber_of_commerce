@@ -216,3 +216,5 @@ en:
       subject: Your member login account details
     new_enquiry:
       subject: New membership enquiry
+    new_payment:
+      subject: Thank you for your payment
