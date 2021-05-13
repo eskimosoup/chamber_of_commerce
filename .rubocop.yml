@@ -1,8 +1,10 @@
 # @see
+#   https://rubystyle.guide/
+#   https://rails.rubystyle.guide/
+#
 #   https://docs.rubocop.org/rubocop/cops.html
 #   https://docs.rubocop.org/rubocop-rails/cops_rails.html
 #   https://github.com/rubocop-hq/ruby-style-guide
-#   https://rails.rubystyle.guide/
 
 require:
   - rubocop-rails
@@ -21,8 +23,11 @@ Style/Copyright:
   Enabled: false
 
 Layout/LineLength:
-  Max: 80
+  Max: 100
   Enabled: true
+  Include:
+    - 'app/**/*'
+    - 'lib/**/*'
 
 Lint/ConstantResolution:
   Enabled: false
@@ -48,7 +53,6 @@ Style/MethodCallWithArgsParentheses:
     - 'execute'
     - 'exit'
     - 'get'
-    - 'head'
     - 'include'
     - 'post'
     - 'put'

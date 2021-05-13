@@ -4,6 +4,15 @@
 
 # Configure sensitive parameters which will be filtered from the log file.
 Rails.application.config.filter_parameters += %i[
+  passw
+  secret
+  token
+  _key
+  crypt
+  salt
+  certificate
+  otp
+  ssn
   password
   password_confirmation
   forename
@@ -32,4 +41,9 @@ Rails.application.config.filter_parameters += %i[
   date_of_birth
   age
   age_in_years
+  house_number
+  street
+  town
+  contact_number
+  sexual_orientation
 ]
