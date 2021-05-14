@@ -29,7 +29,6 @@ class MembershipsMailer < ApplicationMailer
     mail(
       to: @payment.primary_contact_email_address,
       cc: @payment.accounts_contact_email_address,
-      bcc: membership_email,
       from: member_offer_email
     )
   end
@@ -42,7 +41,6 @@ class MembershipsMailer < ApplicationMailer
   # MembershipsMailer::new_payment_copy(Memberships::Payment.find(1)).deliver_now
   def new_payment_copy(payment)
     @payment = payment
-    @copy = true
     mail(
       to: membership_email,
       from: member_offer_email,

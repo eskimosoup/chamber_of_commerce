@@ -12,6 +12,19 @@ class EventBookingMailer < ApplicationMailer
     end
   end
 
+  def booking_completed_copy(event_booking, event)
+    @event_booking = event_booking
+    @event = event
+
+    mail(
+      to: @event.event_office.email,
+      from: @event.event_office.email,
+      subject: "Booking Confirmation for #{@event.name}"
+    ) do |format|
+      format.html { render('event_booking_mailer/booking_completed') }
+    end
+  end
+
   def booking_refunded(event_booking)
     @event_booking = event_booking
     @event = @event_booking.event

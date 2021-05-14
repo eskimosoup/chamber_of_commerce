@@ -19,6 +19,8 @@ module Memberships
       )
 
         MembershipsMailer.new_payment(payment).deliver_now
+        MembershipsMailer.new_payment_copy(payment).deliver_now
+
         redirect_to(
           thank_you_memberships_payments_path,
           notice: 'Thank you for your payment'
