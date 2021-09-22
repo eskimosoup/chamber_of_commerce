@@ -48,7 +48,7 @@ module Optimadmin
     end
 
     def magazine_params
-      params.require(:magazine).permit(:name, :file, :date, :image, :image_cache, :remove_image, :remote_image_url, :display)
+      params.require(:magazine).permit(:name, :file, :date, :image, :image_cache, :remove_image, :remote_image_url, :display, :external_url)
     end
   end
 end

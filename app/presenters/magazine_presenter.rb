@@ -20,6 +20,10 @@ class MagazinePresenter < BasePresenter
   end
 
   def view
-    h.link_to 'View Issue', magazine.file.url, target: '_blank', class: 'magazine-publication-view content-box-ghost-button aside'
+    if magazine.external_url?
+      h.link_to 'View Issue', magazine.external_url, target: '_blank', rel: 'noopener', class: 'magazine-publication-view content-box-ghost-button aside'
+    else
+      h.link_to 'View Issue', magazine.file.url, target: '_blank', class: 'magazine-publication-view content-box-ghost-button aside'
+    end
   end
 end

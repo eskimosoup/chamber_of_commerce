@@ -20,19 +20,35 @@ namespace :deploy do
   desc 'Compile assets'
   task compile_assets: [:set_rails_env] do
     # invoke 'deploy:assets:precompile'
+    # invoke 'deploy:assets:download'
     invoke 'deploy:assets:exec'
-    # invoke 'deploy:assets:compress_images'
+    invoke 'deploy:assets:compress_images'
     invoke 'deploy:assets:sync'
     invoke 'deploy:assets:cleanup'
     invoke 'deploy:assets:backup_manifest'
   end
 
   namespace :assets do
+    desc 'Pull current assets'
+    task :download do
+      on roles(:app) do |server|
+        remote_path = "#{server.user}@#{server.hostname}:#{current_path}"
+
+        directories.each do |local, remote|
+          next unless test("[ -d #{current_path}/#{remote} ]")
+
+          run_locally do
+            execute "rsync -va --delete #{remote_path}/#{remote} #{local}"
+          end
+        end
+      end
+    end
+
     desc 'Precompile'
     task :exec do
       run_locally do
         with rails_env: fetch(:stage) do
-          execute "bundle exec rake assets:clobber assets:precompile RAILS_ENV=#{fetch(:stage)}"
+          execute "bundle exec rake assets:precompile RAILS_ENV=#{fetch(:stage)}"
         end
       end
     end

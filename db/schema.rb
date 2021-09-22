@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210315140500) do
+ActiveRecord::Schema.define(version: 20210922154823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -245,13 +245,14 @@ ActiveRecord::Schema.define(version: 20210315140500) do
   end
 
   create_table "magazines", force: :cascade do |t|
-    t.string   "name",                      null: false
+    t.string   "name",                        null: false
     t.string   "file"
     t.date     "date"
     t.string   "image"
-    t.boolean  "display",    default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "display",      default: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "external_url"
   end
 
   create_table "member_industries", force: :cascade do |t|
