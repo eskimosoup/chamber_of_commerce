@@ -97,3 +97,13 @@
     }
   }
 }
+
+.membership-package-output {
+  border: 1px solid $bronze;
+  color: $light-blue;
+  padding: em(11px);
+
+  &--hidden {
+    display: none;
+  }
+}

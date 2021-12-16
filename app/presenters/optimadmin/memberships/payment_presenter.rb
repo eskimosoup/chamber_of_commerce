@@ -6,7 +6,7 @@ module Optimadmin
       include Optimadmin::PresenterMethods
 
       presents :payment
-      delegate :id, :title, :company_name, to: :payment
+      delegate :id, :title, :company_name, :paid?, to: :payment
 
       def submitted
         h.l(payment.created_at, format: :long)
@@ -16,7 +16,7 @@ module Optimadmin
         h.link_to(
           'Create member login',
           h.memberships_payment_path(payment, anchor: 'member-login')
-        )
+        ) if paid?
       end
 
       def view_link
@@ -24,7 +24,7 @@ module Optimadmin
       end
 
       def paid
-        payment.paid? ? 'Yes' : 'No'
+        paid? ? 'Yes' : 'No'
       end
     end
   end

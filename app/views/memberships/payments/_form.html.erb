@@ -1,8 +1,6 @@
 <%= form_for(model, url: (model.new_record? ? memberships_payments_path : { controller: 'memberships/payments', action: :update })) do |f| %>
   <%= render(partial: 'shared/form_errors', locals: { object: model }) %>
-
   <%= render(partial: 'memberships/payments/shared/form_fields', locals: { f: f }) %>
-
   <div class="actions">
     <%= f.submit (model.new_record? ? 'Join now' : 'Pay now'), class: 'button' %>
   </div>

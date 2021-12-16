@@ -1,3 +1,19 @@
+<%= content_for(:footer) do %>
+  <script>
+    $(document).on('change', '.js--membership-package-input', function() {
+      var selectedVal = $(this).find('option:selected').text();
+      console.log(selectedVal);
+
+      if(selectedVal != 'Please select') {
+        $('.js--membership-package-output').html('You have selected the following package: <b>' + selectedVal + '</b>.<br /> Please ensure this is correct before proceeding to make payment.');
+        $('.js--membership-package-output').removeClass('membership-package-output--hidden');
+      } else {
+        $('.js--membership-package-output').html('');
+        $('.js--membership-package-output').addClass('membership-package-output--hidden');
+      }
+    });
+  </script>
+<% end %>
 <% if f.object.new_record? %>
   <%= field_set_tag "Company details" do %>
     <div class="field">
@@ -239,7 +255,10 @@
   <%= field_set_tag "Membership details" do %>
     <div class="field">
       <%= f.label :memberships_package_id %>
-      <%= f.select :memberships_package_id, ::Memberships::Package.displayed.ordered.map { |x| ["#{x.title} (#{number_to_currency(x.cost)} + VAT)", x.id] }, prompt: 'Please select' %>
+      <%= f.select :memberships_package_id, ::Memberships::Package.displayed.ordered.map { |x| ["#{x.title} (#{number_to_currency(x.cost)} + VAT)", x.id] }, { prompt: 'Please select' }, { class: 'js--membership-package-input' } %>
+
+      <p class="membership-package-output membership-package-output--hidden js--membership-package-output">
+      </p>
     </div>
 
     <div class="field">
