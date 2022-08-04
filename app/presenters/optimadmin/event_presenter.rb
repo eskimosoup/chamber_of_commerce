@@ -20,7 +20,7 @@ module Optimadmin
     end
 
     def location
-      event.event_location.location_name
+      event.event_location.location_name if event.event_location.present?
     end
 
     def description
