@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.14.0"
+# lock "~> 3.14.0"
 
 set :application, 'chamber_of_commerce'
 set :client, 'chamber_of_commerce'
