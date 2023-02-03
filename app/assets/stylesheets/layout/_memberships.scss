@@ -107,3 +107,32 @@
     display: none;
   }
 }
+
+.membership-package-offers {
+  border: 4px solid $bronze;
+  color: $light-blue;
+  padding: em(11px);
+  color: $bronze;
+
+  &__title {
+    color: $offset-black;
+    font-size: rem(21px);
+  }
+
+  &__emphasis {
+    text-transform: uppercase;
+    display: block;
+  }
+}
+
+.membership-package-offers-list {
+  list-style: none;
+  margin: 0;
+
+  &__price {
+    font-weight: bold;
+    color: $light-blue;
+    text-transform: uppercase;
+    font-size: rem(18px);
+  }
+}

@@ -1,11 +1,16 @@
 <% present package do |presenter| %>
-<div class="membership-package">
-  <div class="membership-package__title">
-    <%= presenter.title %>
-  </div>
+  <div class="membership-package">
+    <div class="membership-package__title">
+      <%= presenter.title %>
+    </div>
 
-  <div class="membership-package__cost">
-    <%= presenter.cost %> + VAT
+    <div class="membership-package__cost">
+      <% if presenter.special_offer_price? %>
+        <%= content_tag(:del, presenter.cost) %>
+        <%= presenter.special_offer_price %>
+      <% else %>
+        <%= presenter.price %>
+      <% end %> + VAT
+    </div>
   </div>
-</div>
 <% end %>

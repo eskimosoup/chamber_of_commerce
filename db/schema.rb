@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210922154823) do
+ActiveRecord::Schema.define(version: 20230203140906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -365,12 +365,13 @@ ActiveRecord::Schema.define(version: 20210922154823) do
   end
 
   create_table "memberships_packages", force: :cascade do |t|
-    t.integer  "position",                           default: 0
+    t.integer  "position",                                    default: 0
     t.string   "title"
-    t.decimal  "cost",       precision: 8, scale: 2,                null: false
-    t.boolean  "display",                            default: true
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.decimal  "cost",                precision: 8, scale: 2,                null: false
+    t.boolean  "display",                                     default: true
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
+    t.decimal  "special_offer_price", precision: 8, scale: 2
   end
 
   create_table "memberships_payment_how_heards", force: :cascade do |t|

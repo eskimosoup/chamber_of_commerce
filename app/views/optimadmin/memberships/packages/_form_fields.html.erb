@@ -20,6 +20,10 @@
       <%= f.label :cost %><br>
       <%= f.number_field :cost, step: 0.01 %>
     </div>
+    <div class="field">
+      <%= f.label :special_offer_price %><br>
+      <%= f.number_field :special_offer_price, step: 0.01 %>
+    </div>
   <% end %>
 
   <%= field_set_tag(nil, id: 'tabs-2') do %>

@@ -77,7 +77,7 @@ module Memberships
                foreign_key: :memberships_package_id,
                class_name: '::Memberships::Package',
                inverse_of: :payments
-    delegate :title, :cost, to: :package, prefix: true
+    delegate :title, :price, to: :package, prefix: true
 
     LEGAL_STATUSES = [
       'Plc',
@@ -245,7 +245,7 @@ module Memberships
     private
 
     def set_static_amounts
-      self.memberships_package_cost = package_cost
+      self.memberships_package_cost = package_price
       self.memberships_package_title = package_title
     end
   end

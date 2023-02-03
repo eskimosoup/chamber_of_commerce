@@ -2,13 +2,14 @@
 #
 # Table name: memberships_packages
 #
-#  id         :integer          not null, primary key
-#  cost       :decimal(8, 2)    not null
-#  display    :boolean          default(TRUE)
-#  position   :integer          default(0)
-#  title      :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                  :integer          not null, primary key
+#  cost                :decimal(8, 2)    not null
+#  display             :boolean          default(TRUE)
+#  position            :integer          default(0)
+#  special_offer_price :decimal(8, 2)
+#  title               :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
 #
 
 require_dependency 'memberships'
@@ -34,5 +35,9 @@ module Memberships
              class_name: '::Memberships::Payment',
              foreign_key: :memberships_package_id,
              inverse_of: :package
+
+    def price
+      special_offer_price? ? special_offer_price : cost
+    end
   end
 end

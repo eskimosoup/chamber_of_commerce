@@ -253,9 +253,36 @@
 
 <% if f.object.new_record? %>
   <%= field_set_tag "Membership details" do %>
+    <div class="membership-package-offers">
+      <h2 class="membership-package-offers__title">
+        <span class="membership-package-offers__emphasis">
+          Limited Membership Offer
+        </span>
+
+        75% discount for firms with 50 staff or less joining the Chamber
+      </h2>
+
+      <ul class="membership-package-offers-list">
+        <li class="membership-package-offers-list__item">
+          1-9 Employees:  Normal price £250
+          <span class="membership-package-offers-list__price">You Pay £62.50 + Vat<span>
+        </li>
+
+        <li class="membership-package-offers-list__item">
+          10-19 Employees: Normal Price £300
+          <span class="membership-package-offers-list__price">You Pay £75 + Vat<span>
+        </li>
+
+        <li class="membership-package-offers-list__item">
+          20-49 Employees: Normal Price £360
+          <span class="membership-package-offers-list__price">You Pay £90 + Vat<span>
+        </li>
+      </ul>
+    </div>
+
     <div class="field">
       <%= f.label :memberships_package_id %>
-      <%= f.select :memberships_package_id, ::Memberships::Package.displayed.ordered.map { |x| ["#{x.title} (#{number_to_currency(x.cost)} + VAT)", x.id] }, { prompt: 'Please select' }, { class: 'js--membership-package-input' } %>
+      <%= f.select :memberships_package_id, ::Memberships::Package.displayed.ordered.map { |x| ["#{x.title} (#{number_to_currency(x.price)} + VAT)", x.id] }, { prompt: 'Please select' }, { class: 'js--membership-package-input' } %>
 
       <p class="membership-package-output membership-package-output--hidden js--membership-package-output">
       </p>

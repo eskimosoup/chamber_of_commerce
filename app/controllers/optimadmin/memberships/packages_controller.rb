@@ -69,7 +69,8 @@ module Optimadmin
           :position,
           :title,
           :cost,
-          :display
+          :display,
+          :special_offer_price
         )
       end
     end
