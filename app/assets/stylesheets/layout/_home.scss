@@ -359,6 +359,15 @@
   color: $white;
   padding: rem(10px 0);
 
+  &__image-wrap {
+    margin-top: rem(10px);
+
+    @media screen and (min-width: 1024px) {
+      margin-top: 0;
+      text-align: right;
+    }
+  }
+
   &__link {
     display: block;
     color: $white;
