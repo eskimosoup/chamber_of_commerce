@@ -1,3 +1,20 @@
+<div class="home-content-promotion">
+  <%= link_to('/events/chamber-expo-2023', class: 'home-content-promotion__link') do %>
+    <div class="row">
+      <div class="small-12 large-8 columns">
+        <p class="home-content-promotion__title">
+          Early Bird stand deal now available as Chamber Expo 2023 opens for bookings -
+          so don't delay . . . book today!
+        </p>
+      </div>
+
+      <div class="small-12 large-4 columns text-right">
+        <%= image_tag('components/chamber-expo-logo.png', alt: '', class: 'home-content-promotion__image') %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
 <%= render 'application/shared/home_slider_area' %>
 
 <%= render 'application/shared/members_area' %>

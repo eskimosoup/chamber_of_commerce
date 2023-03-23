@@ -353,3 +353,36 @@
   @extend %preview-home-item;
   background: $light-blue;
 }
+
+.home-content-promotion {
+  background-color: $deep-blue;
+  color: $white;
+  padding: rem(10px 0);
+
+  &__link {
+    display: block;
+    color: $white;
+
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &__title {
+    display: block;
+    font-size: rem(28px);
+    line-height: 1.25;
+    margin: rem(15px) 0 0;
+
+    @include responsive-to(medium) {
+      font-size: rem(18px);
+    }
+  }
+
+  &__image {
+    max-height: 90px;
+  }
+}
