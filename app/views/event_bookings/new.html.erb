@@ -1,11 +1,10 @@
-
 <%= content_for :footer do %>
   <% if @event_booking.errors.any? %>
     <script>
-    $(function() {
-      $('.add-event-attendees').attr('data-clicked', 'true');
-      guestify();
-    })
+      $(function() {
+        $('.add-event-attendees').attr('data-clicked', 'true');
+        guestify();
+      })
     </script>
   <% end %>
 
@@ -122,43 +121,55 @@
               <% end %>
             </div>
 
-            <%= link_to 'Next', '#event-attendees', class: 'button event-process next add-event-attendees', data: { container: "#event-attendees, .actions, .event-process.next", class: 'hide', return: 'true' } %>
-            <%#= link_to 'Previous', '#event-attendees', class: 'button event-process previous toggle-class hide', data: { container: "#event-attendees, .actions, .event-booking-details, .event-process.previous, .event-process.next", class: 'hide', return: 'false' } %>
+            <% if @event.event_agendas.map(&:table_size).sum.positive? %>
+              <%= link_to 'Next', '#event-attendees', class: 'button event-process next add-event-attendees', data: { container: "#event-attendees, .actions, .event-process.next", class: 'hide', return: 'true' } %>
+              <%#= link_to 'Previous', '#event-attendees', class: 'button event-process previous toggle-class hide', data: { container: "#event-attendees, .actions, .event-booking-details, .event-process.previous, .event-process.next", class: 'hide', return: 'false' } %>
 
+              <%= field_set_tag "Attendees", id: "event-attendees", class: 'hide' do %>
+                <p>
+                  If you are booking a place on behalf of someone else then please
+                  change the Attendee details below.
+                </p>
 
-            <%= field_set_tag "Attendees", id: "event-attendees", class: 'hide' do %>
-              <p>
-                If you are booking a place on behalf of someone else then please
-                change the Attendee details below.
-              </p>
+                <p>
+                  If you require additional places please click Add Attendee or
+                  if you do not know attendee names at this time please use Add Guest.
+                </p>
 
-              <p>
-                If you require additional places please click Add Attendee or
-                if you do not know attendee names at this time please use Add Guest.
-              </p>
+                <p>
+                  If the event has a discount for
+                  groups or tables this will be calculated based on the number of
+                  Attendees/Guests entered below.
+                </p>
 
-              <p>
-                If the event has a discount for
-                groups or tables this will be calculated based on the number of
-                Attendees/Guests entered below.
-              </p>
-
-              <%= f.fields_for :attendees do |attendee| %>
-                <%= render "attendees/attendee_fields", f: attendee %>
+                <%= f.fields_for :attendees do |attendee| %>
+                  <%= render "attendees/attendee_fields", f: attendee %>
+                <% end %>
+                <%= link_to_add_association "Add Another Attendee", f, :attendees, class: 'hide', partial: "attendees/attendee_fields" %>
+                <%= link_to 'Add Attendee', '#', class: 'add-attendee left' %>
+                <%= link_to 'Add Guest', '#', class: 'add-guest right' %>
+                <%#= link_to_add_association "Add Guest", f, :attendees, partial: "attendees/attendee_fields" %>
               <% end %>
-              <%= link_to_add_association "Add Another Attendee", f, :attendees, class: 'hide', partial: "attendees/attendee_fields" %>
-              <%= link_to 'Add Attendee', '#', class: 'add-attendee left' %>
-              <%= link_to 'Add Guest', '#', class: 'add-guest right' %>
-              <%#= link_to_add_association "Add Guest", f, :attendees, partial: "attendees/attendee_fields" %>
+
+              <div class="actions hide">
+                <% if current_administrator.present? %>
+                  <%= f.submit "Offline payment", class: 'button' %>
+                <% else %>
+                  <%= f.submit "Create Booking", class: 'button create-booking-button' %>
+                <% end %>
+              </div>
+            <% else %>
+              <div style="display:none !important;">
+                <%= f.fields_for :attendees do |attendee| %>
+                  <%= render "attendees/attendee_fields", f: attendee %>
+                <% end %>
+                <%= link_to_add_association "Add Another Attendee", f, :attendees, class: 'hide', partial: "attendees/attendee_fields" %>
+                <%= link_to 'Add Attendee', '#', class: 'add-attendee left' %>
+                <%= link_to 'Add Guest', '#', class: 'add-guest right' %>
+              </div>
+
+              <%= link_to 'Next', '#event-attendees', class: 'button event-process next add-event-attendees-and-proceed', data: { container: "#event-attendees, .actions, .event-process.next", class: 'hide', return: 'true' } %>
             <% end %>
-
-            <div class="actions hide">
-              <% if current_administrator.present? %>
-                <%= f.submit "Offline payment", class: 'button' %>
-              <% else %>
-                <%= f.submit "Create Booking", class: 'button create-booking-button' %>
-              <% end %>
-            </div>
           <% end %>
         </div>
       </div>
