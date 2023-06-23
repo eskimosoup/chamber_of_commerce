@@ -49,7 +49,7 @@ module Optimadmin
 
     def patron_params
       params.require(:patron).permit(
-        :name, :image, :image_cache, :remove_image, :link, :display, :no_follow
+        :name, :image, :image_cache, :remove_image, :link, :display, :no_follow, :highlight
       )
     end
   end

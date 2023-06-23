@@ -1,1 +1,9 @@
-<%= patron_presenter.display %>
+<div>
+  <%= patron_presenter.display %>
+
+  <% if patron_presenter.highlight? %>
+    <div class="patron-highlight">
+      Gold patron
+    </div>
+  <% end %>
+</div>

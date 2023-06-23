@@ -8,6 +8,8 @@ en:
         memberships_package_title: Membership package
         how_heard_ids: How did you hear about us?
         join_reason_ids: What is your reason for joining?
+      patron:
+        highlight: Gold patron
   date:
     abbr_day_names:
     - Sun

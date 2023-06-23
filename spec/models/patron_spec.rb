@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  display    :boolean          default(TRUE)
+#  highlight  :boolean          default(FALSE)
 #  image      :string           not null
 #  link       :string
 #  name       :string           not null
