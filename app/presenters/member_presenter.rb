@@ -15,7 +15,7 @@ class MemberPresenter < BasePresenter
 
   def website(options = {})
     return nil if member.website.blank?
-    h.link_to member.website, "http://#{member.website}", options
+    h.link_to member.website, member.website, options
   end
 
   def email

@@ -44,6 +44,7 @@ class Member < ActiveRecord::Base
   #validates :company_name, uniqueness: true
   #validates :email, email: true, allow_blank: true
   validates :company_name, presence: true
+  validates :website, hyperlink: true, if: :website?
 
   scope :company_name, -> (company_name) { where("company_name ILIKE ?", "%#{company_name}%") if company_name.present? }
   #scope :nature_of_business, -> (nature_of_business) { where("nature_of_business ILIKE ?", "#{nature_of_business}%") }

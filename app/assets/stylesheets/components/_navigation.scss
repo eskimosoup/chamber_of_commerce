@@ -11,7 +11,9 @@
       display: block;
     }
 
-    &:hover {
+    &:hover,
+    &:focus,
+    &:active {
       ul {
         display: block;
       }
@@ -32,6 +34,10 @@
     position: absolute;
     min-width: 200px;
     z-index: 9999;
+
+    @media only screen and (max-width: 767px) {
+      position: static;
+    }
 
     li {
       display: block;
