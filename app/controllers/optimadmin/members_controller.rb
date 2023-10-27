@@ -69,7 +69,7 @@ module Optimadmin
     end
 
     def member_params
-      params.require(:member).permit(:company_name, :industry, :address, :telephone, :website, :email, :verified, :nature_of_business, :in_csv)
+      params.require(:member).permit(:company_name, :industry, :address, :telephone, :website, :email, :verified, :nature_of_business, :in_csv, :chamber_db_id)
     end
 
     def member_import_params

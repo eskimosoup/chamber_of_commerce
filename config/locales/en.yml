@@ -2,6 +2,8 @@
 en:
   activerecord:
     attributes:
+      member:
+        chamber_db_id: Chamber database ID
       memberships/payment:
         vat_number: VAT number
         memberships_package_id: Please select the package most relevant to your company
