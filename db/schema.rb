@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20230623142736) do
+ActiveRecord::Schema.define(version: 20231201093240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -161,6 +161,31 @@ ActiveRecord::Schema.define(version: 20230623142736) do
 
   add_index "event_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "event_category_anc_desc_idx", unique: true, using: :btree
   add_index "event_category_hierarchies", ["descendant_id"], name: "event_category_desc_idx", using: :btree
+
+  create_table "event_groupings", force: :cascade do |t|
+    t.integer  "event_group_id"
+    t.integer  "event_category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "event_groupings", ["event_category_id"], name: "index_event_groupings_on_event_category_id", using: :btree
+  add_index "event_groupings", ["event_group_id"], name: "index_event_groupings_on_event_group_id", using: :btree
+
+  create_table "event_groups", force: :cascade do |t|
+    t.integer  "position",      default: 0
+    t.string   "area"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "title"
+    t.boolean  "display",       default: true
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "event_groups", ["slug"], name: "index_event_groups_on_slug", using: :btree
 
   create_table "event_locations", force: :cascade do |t|
     t.string   "address_line_1", null: false
@@ -567,6 +592,8 @@ ActiveRecord::Schema.define(version: 20230623142736) do
   add_foreign_key "event_agendas", "event_categories"
   add_foreign_key "event_agendas", "events"
   add_foreign_key "event_bookings", "events"
+  add_foreign_key "event_groupings", "event_categories"
+  add_foreign_key "event_groupings", "event_groups"
   add_foreign_key "member_industries", "industries"
   add_foreign_key "member_industries", "members"
   add_foreign_key "member_logins", "members"

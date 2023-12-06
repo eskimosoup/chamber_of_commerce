@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :event_bookings, only: [], path: 'event-bookings' do
     resources :charges, only: [:new, :create]
   end
+  resources :event_groups, only: [:index, :show], path: 'event-groups'
   resources :events, only: [:index, :show] do
     resources :event_bookings, path: 'event-bookings', only: [:new, :create]
     member do
@@ -126,6 +127,7 @@ Optimadmin::Engine.routes.draw do
   end
 
   resources :event_offices, except: [:show], concerns: %i[orderable toggleable]
+  resources :event_groups, except: [:show], concerns: %i[orderable toggleable], path: 'event-groups'
 
   resources :industries, except: [:show], concerns: %i[toggleable] do
     collection do

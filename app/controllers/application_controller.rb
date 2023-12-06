@@ -68,6 +68,7 @@ class ApplicationController < ActionController::Base
     @header_menu = Optimadmin::Menu.new(name: 'header')
     @footer_menu = Optimadmin::Menu.new(name: 'footer')
     @newsletter_signup = NewsletterSignup.new
+    @chamber_event_group = EventGroup.displayed.find_by(area: 'Chamber')
     advertisements
   end
 

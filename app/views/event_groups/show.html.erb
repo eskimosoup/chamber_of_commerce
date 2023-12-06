@@ -1,0 +1,79 @@
+<section class="content-area">
+  <div class="row">
+    <div class="medium-3 small-12 columns">
+      <aside class="aside-content-wrap">
+        <h3><span>Events Filter</span></h3>
+
+        <div class="filters">
+          <%= form_tag event_group_path(@event_group), method: :get do %>
+            <div class="field">
+              <%= label_tag :event_location_id, 'Event location' %>
+              <%= select_tag :event_location_id, options_for_select(@event_locations.map{|x| [x.location_name, x.id]}, params[:event_location_id]), prompt: "Any location" %>
+            </div>
+
+            <div class="field">
+              <%= label_tag :event_categories_id, 'Event category' %>
+              <%= select_tag :event_categories_id, options_for_select(closure_tree_select(@event_group.event_categories.select(:name, :id)), params[:event_location_id]), include_blank: "Any event category" %>
+            </div>
+
+            <!--
+            <div class="field">
+              <div class="row">
+                <div class="small-12 medium-8 columns">
+                  <%#= label_tag :bookable, "Bookable event" %>
+                </div>
+
+                <div class="small-12 medium-4 columns text-right">
+                  <%#= check_box_tag :bookable, 1, params[:bookable]  %>
+                </div>
+              </div>
+            </div>
+            -->
+
+            <div class="field">
+              <div class="row">
+                <div class="small-12 medium-8 columns">
+                  <%= label_tag :has_tables, "Table based event" %>
+                </div>
+
+                <div class="small-12 medium-4 columns text-right">
+                  <%= check_box_tag :has_tables, 1, params[:has_tables] %>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="row">
+                <div class="small-12 medium-8 columns">
+                  <%= label_tag :food_event, "Food event" %>
+                </div>
+
+                <div class="small-12 medium-4 columns text-right">
+                  <%= check_box_tag :food_event, 1, params[:food_event] %>
+                </div>
+              </div>
+            </div>
+            <%= hidden_field_tag :filter, 1 %>
+            <%= submit_tag "Filter Events", class: 'button' %>
+          <% end %>
+        </div>
+      </aside>
+    </div>
+
+    <div class="medium-9 small-12 columns">
+      <div class="main-content-wrap">
+        <h1><%= @event_group.title %></h1>
+
+
+
+        <div class="content">
+          <%= raw(@event_group.content) %>
+
+          <%= render(partial: 'events/event', collection: @presented_events, as: :event_presenter) || 'There are no events to show.' %>
+
+          <%= paginate @presented_events %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

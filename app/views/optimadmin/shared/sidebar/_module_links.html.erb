@@ -54,6 +54,7 @@
         <%= module_link(content: "Event Offices", model: EventOffice, path: event_offices_path) %>
         <%= module_link(content: "Event Categories", model: EventCategory, path: event_categories_path) %>
         <%= module_link(content: "Event Locations", model: EventLocation, path: event_locations_path) %>
+        <%= module_link(content: EventGroup.model_name.human.pluralize.titleize, model: EventGroup, path: event_groups_path) %>
       </ul>
 
       <div class="content-category-type">

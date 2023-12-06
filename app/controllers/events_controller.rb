@@ -6,6 +6,8 @@ class EventsController < ApplicationController
     @presented_events = BaseCollectionPresenter.new(collection:
                         Event.upcoming.filter(params.slice(:event_location_id, :event_categories_id, :has_tables, :food_event)).page(params[:page]).per(params[:per_page] || 15),
                                                     view_template: view_context, presenter: EventPresenter)
+
+    redirect_to(event_groups_path, status: 302)
   end
 
   def show

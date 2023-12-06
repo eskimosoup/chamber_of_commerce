@@ -1,0 +1,20 @@
+<div class="small-6 columns">
+
+  <div class="list-item-with-image">
+    <%= link_to(event_group, class: 'list-item-with-image-title') do %>
+      <div class="list-item-with-image__image">
+        <% if event_group.area == 'International' %>
+          <%= image_tag 'placeholders/trade-image.jpg', alt: '' %>
+        <% else %>
+          <%= image_tag 'placeholders/chamber-image.jpg', alt: '' %>
+        <% end %>
+      </div>
+
+      <%= event_group.title %>
+    <% end %>
+
+    <%= raw(event_group.summary) %>
+
+    <%= link_to 'View events', event_group, class: 'content-box-ghost-button' %>
+  </div>
+</div>
