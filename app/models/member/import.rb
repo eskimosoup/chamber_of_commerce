@@ -9,6 +9,7 @@ class Member::Import
     CSV.foreach(file.path, headers: true, header_converters: :symbol, encoding: 'windows-1251:utf-8') do |row|
       member = assign_member_from_csv_row(row)
       new_record = member.new_record?
+
       if member.save!
         if new_record
           @imported_count += 1
@@ -54,6 +55,11 @@ class Member::Import
 
   def assign_member_from_csv_row(row)
     member_details = make_hash_from_row(row)
+
+    if member_details[:website].present? && member_details[:website].exclude?('http://')
+      member_details[:website] = "http://#{member_details[:website]}"
+    end
+
     member = Member.unscoped.find_or_initialize_by(chamber_db_id: row[:id_no])
     member.assign_attributes(member_details.merge(in_csv: true))
     member
