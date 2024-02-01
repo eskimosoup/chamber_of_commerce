@@ -21,7 +21,11 @@ class EventGroupsController < ApplicationController
   end
 
   def events
-    event_group.events.upcoming
+    ::Event.upcoming.where('id IN (?) OR event_agendas_count = ?', event_group_event_ids, 0)
+  end
+
+  def event_group_event_ids
+    event_group.events.upcoming.ids
   end
 
   def event_group

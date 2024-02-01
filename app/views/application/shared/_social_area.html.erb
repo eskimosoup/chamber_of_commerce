@@ -9,7 +9,7 @@
 
   <% unless Rails.env.test? %>
     <div class="row" data-equalizer="social-area">
-      <% if @chamber_event_group.present? && @chamber_event_group.events.upcoming.present? %>
+      <% if @chamber_event_group.present? && @chamber_events.present? %>
         <div class="small-12 medium-6 columns">
           <% if false %>
             <div class="social-widget" data-equalizer-watch="social-area">
@@ -23,7 +23,7 @@
           <div class="social-widget" data-equalizer-watch="social-area">
             <h3 class="social-widget-title"><span>Upcoming Chamber Events</span></h3>
 
-            <%= render partial: 'shared/aside_link_list', collection: BaseCollectionPresenter.new(collection: @chamber_event_group.events.upcoming.limit(8), view_template: self, presenter: EventPresenter), as: :module_presenter %>
+            <%= render partial: 'shared/aside_link_list', collection: BaseCollectionPresenter.new(collection: @chamber_events.limit(8), view_template: self, presenter: EventPresenter), as: :module_presenter %>
 
             <div class="text-center">
               <%= link_to 'See All', event_group_path(@chamber_event_group), class: 'content-box-ghost-button aside' %>
