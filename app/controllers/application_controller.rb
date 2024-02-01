@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
     @footer_menu = Optimadmin::Menu.new(name: 'footer')
     @newsletter_signup = NewsletterSignup.new
     @chamber_event_group = EventGroup.displayed.find_by(area: 'Chamber')
-    @chamber_events = ::Event.upcoming.where('id IN (?) OR event_agendas_count = ?', @chamber_event_group.events.upcoming.ids, 0)
+    @chamber_events = ::Event.upcoming.where('id IN (?) OR event_agendas_count = ?', @chamber_event_group.events.upcoming.ids, 0) if @chamber_event_group.present?
     advertisements
   end
 
