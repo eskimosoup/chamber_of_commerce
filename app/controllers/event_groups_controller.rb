@@ -12,6 +12,10 @@ class EventGroupsController < ApplicationController
       view_template: view_context,
       presenter: EventPresenter
     )
+  rescue ActiveRecord::StatementInvalid
+    raise if Rails.env.development?
+
+    head(:bad_request)
   end
 
   private
@@ -21,7 +25,7 @@ class EventGroupsController < ApplicationController
   end
 
   def events
-    ::Event.upcoming.where('id IN (?) OR event_agendas_count = ?', event_group_event_ids, 0)
+    ::Event.upcoming.where('events.id IN (?) OR event_agendas_count = ?', event_group_event_ids, 0)
   end
 
   def event_group_event_ids
