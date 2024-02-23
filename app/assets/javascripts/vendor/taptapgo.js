@@ -5,7 +5,6 @@ const tapTapGo = (function () {
 
   var bindEvents = function () {
     var elements = document.querySelectorAll(selector);
-    console.log(elements);
     for (let i = 0, n = elements.length; i < n; i++) {
       elements[i].parentElement.addEventListener('click', processInteraction);
     };
@@ -36,7 +35,6 @@ const tapTapGo = (function () {
 
   self.init = function (tmpSelector) {
     selector = tmpSelector
-    console.log(tmpSelector);
     bindEvents();
   }
 

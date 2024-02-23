@@ -48,15 +48,17 @@ $(document).on('click', '.about-the-chamber-arrow-right', function() {
   return false;
 });
 
-$(document).on('click', '.home-arrow-up', function() {
+$(document).on('click', '.home-arrow-up', function(e) {
   $('.scrolling-slider .content:not(.hide)').slick('slickPrev');
+  e.preventDefault();
 });
 
-$(document).on('click', '.home-arrow-down', function() {
+$(document).on('click', '.home-arrow-down', function(e) {
   $('.scrolling-slider .content:not(.hide)').slick('slickNext');
+  e.preventDefault();
 });
 
-$(document).on('click', '.content-focus-tabs a', function() {
+$(document).on('click', '.content-focus-tabs a', function(e) {
   $('.scrolling-slider .content:not(.hide)').slick('unslick');
 
   var sliderContainer = $(this).data('slider');
@@ -64,7 +66,9 @@ $(document).on('click', '.content-focus-tabs a', function() {
   $(sliderContainer).removeClass('hide');
   $(this).parent().addClass('active').siblings().removeClass('active');
   $('.content:not(.hide) .title:first a').mouseenter();
+
   slick();
+  e.preventDefault();
 });
 
 $(document).on({
@@ -73,6 +77,10 @@ $(document).on({
       var moduleId = $(this).data('id');
       $('.banner-focus').addClass('hide');
       $('#' + moduleType + '-' + moduleId).removeClass('hide');
+      var height = $('.slider-focus').height();
+      var offsetHeight = $('.content-focus-tabs').height();
+      height -= offsetHeight
+      $('.scrolling-slider').height(height);
     },
     mouseleave: function () {
 

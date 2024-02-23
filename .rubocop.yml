@@ -47,7 +47,7 @@ Style/DocumentationMethod:
 Style/MethodCallWithArgsParentheses:
   Exclude:
     - 'Gemfile'
-  IgnoredMethods:
+  AllowedMethods:
     - 'after'
     - 'append'
     - 'execute'
