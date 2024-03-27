@@ -5,7 +5,8 @@
   <%= render 'optimadmin/shared/module/form/back', path: unpaid_or_refunded_event_event_bookings_path(@event.id), title: 'Unpaid or Refunded Event Bookings' if @event_booking_presenter.paid != 'Yes' || @event_booking_presenter.refunded == 'Yes' %>
 
   <%= @event_booking_presenter.payment_link %>
-  <%= @event_booking_presenter.created_at %>
+  Created: <%= @event_booking_presenter.created_at %>
+  Updated: <%= @event_booking_presenter.updated_at %>
 
   <div>
     <h2>
