@@ -3,7 +3,7 @@ module Optimadmin
     presents :event_booking
 
     delegate :company_name, :industry, :nature_of_business, :phone_number, :email, :payment_method,
-             :attendees_count, :address_line_1, :address_line_2, :town, :postcode, :created_at, :stripe_payment_intent_id, to: :event_booking
+             :attendees_count, :address_line_1, :address_line_2, :town, :postcode, :created_at, :updated_at, :stripe_payment_intent_id, to: :event_booking
 
     def name
       [event_booking.forename, event_booking.surname].compact.join(" ")
