@@ -50,6 +50,14 @@ $(function() {
   });
 });
 
+$('.js--promo-banners').slick({
+  autoplay: true,
+  autoplaySpeed: 6000,
+  dots: false,
+  fade: true,
+  arrows: false
+});
+
 $('.patron-logos').slick({
   autoplay: true,
   autoplaySpeed: 2000,

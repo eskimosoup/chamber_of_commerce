@@ -1,3 +1,13 @@
+.js--promo-banners {
+  &.slick-slider {
+    margin: 0;
+  }
+
+  &:not(.slick-initialized) {
+    display: none;
+  }
+}
+
 header {
   background: $white;
 

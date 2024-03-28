@@ -18,32 +18,46 @@
   </div>
 <% end %>
 
-<% if membership_banner.present? %>
-  <% present membership_banner do |presenter| %>
-    <section class="membership-banner">
+<section class="membership-banner">
+  <div class="js--promo-banners">
+    <div>
       <div class="row">
         <div class="small-12 columns">
-          <div class="membership-banner__header">
-            <div class="membership-banner__title">
-              <%= presenter.title.html_safe %>
+          <%= link_to('/events/chamber-expo-2024-1b200633-4943-4de6-8eb8-d7b429b6aa54') do %>
+            <%= image_tag('layout/header/top-banner.png', alt: '') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <% if membership_banner.present? %>
+      <div>
+        <% present membership_banner do |presenter| %>
+          <div class="row">
+            <div class="small-12 columns">
+              <div class="membership-banner__header">
+                <div class="membership-banner__title">
+                  <%= presenter.title.html_safe %>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="large-9 small-12 columns">
-          <div class="membership-banner__content">
-            <%= presenter.content %>
+          <div class="row">
+            <div class="large-9 small-12 columns">
+              <div class="membership-banner__content">
+                <%= presenter.content %>
+              </div>
+            </div>
+            <div class="large-3 small-12 columns">
+              <%= presenter.button(class: 'membership-banner__button') %>
+            </div>
           </div>
-        </div>
-        <div class="large-3 small-12 columns">
-          <%= presenter.button(class: 'membership-banner__button') %>
-        </div>
+        <% end %>
       </div>
-    </section>
-  <% end %>
-<% end %>
+    <% end %>
+  </div>
+</section>
 
 <% if app_banner.present? %>
   <section class="app-banner">
