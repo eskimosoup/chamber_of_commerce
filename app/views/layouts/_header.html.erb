@@ -20,16 +20,6 @@
 
 <section class="membership-banner">
   <div class="js--promo-banners">
-    <div>
-      <div class="row">
-        <div class="small-12 columns">
-          <%= link_to('/events/chamber-expo-2024-1b200633-4943-4de6-8eb8-d7b429b6aa54') do %>
-            <%= image_tag('layout/header/top-banner.png', alt: '') %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
     <% if membership_banner.present? %>
       <div>
         <% present membership_banner do |presenter| %>
