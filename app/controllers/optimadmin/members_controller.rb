@@ -65,7 +65,7 @@ module Optimadmin
 
 
     def set_member
-      @member = Member.find(params[:id])
+      @member = Member.unscoped.find(params[:id])
     end
 
     def member_params
