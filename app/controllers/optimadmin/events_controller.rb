@@ -14,16 +14,15 @@ module Optimadmin
       return if event.blank?
 
       new_event = event.deep_clone include: [:event_agendas] do |original, copy|
-        copy.name = "Copy - #{original.name}"
         copy.image = original.image if original.has_attribute?(:image) && original.image.present?
       end
 
       new_event.save!
 
-      new_event.update_columns(display: false)
+      new_event.update_columns(name: "Copy - #{event.name}", display: false)
       Event.reset_counters(new_event.id, :event_agendas)
 
-      redirect_to({ action: :index }, notice: "Event successfully duplicated as #{new_event.name}")
+      redirect_to({ action: :edit, id: new_event }, notice: "Event successfully duplicated as #{new_event.name}")
     end
 
     def show
