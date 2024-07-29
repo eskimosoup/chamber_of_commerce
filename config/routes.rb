@@ -166,6 +166,7 @@ Optimadmin::Engine.routes.draw do
       post 'order'
     end
     member do
+      get 'duplicate'
       get 'toggle'
       get 'edit_images'
       post 'update_image_default'

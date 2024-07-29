@@ -1,5 +1,5 @@
-<div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= event_presenter.id %>">
-  <div class="large-3 small-6 columns" data-equalizer-watch="module-list">
+<div class="row expanded collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= event_presenter.id %>">
+  <div class="large-2 small-6 columns" data-equalizer-watch="module-list">
     <%= event_presenter.toggle_title %>
   </div>
 
@@ -16,19 +16,23 @@
   </div>
 
 
-  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+  <div class="large-1 small-4 columns text-center" data-equalizer-watch="module-list">
     <%= event_presenter.toggle_link %>
   </div>
 
-  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+  <div class="large-1 small-4 columns text-center" data-equalizer-watch="module-list">
+    <%= event_presenter.duplicate_link %>
+  </div>
+
+  <div class="large-1 small-4 columns text-center" data-equalizer-watch="module-list">
     <%= event_presenter.show_link %>
   </div>
 
-  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+  <div class="large-1 small-4 columns text-center" data-equalizer-watch="module-list">
     <%= event_presenter.edit_link %>
   </div>
 
-  <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
+  <div class="large-1 small-4 columns last text-center" data-equalizer-watch="module-list">
     <%= event_presenter.delete_link %>
   </div>
 

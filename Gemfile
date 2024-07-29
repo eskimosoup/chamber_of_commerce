@@ -26,6 +26,7 @@ gem 'stripe', '4.21.3'
 gem 'therubyracer', platforms: :ruby
 gem 'tinymce-rails', '4.8.2'
 gem 'uglifier', '>= 1.3.0'
+gem 'deep_cloneable', '~> 3.2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -148,7 +148,6 @@ class EventPresenter < BasePresenter
   end
 
   def display_booking_button?
-    event.event_agendas.present? &&
-        ((event.booking_deadline.present? && event.booking_deadline >= Time.zone.now) || event.booking_deadline.blank?)
+    event.event_agendas.present? && event.within_event_booking_deadline? && event.within_event_booking_start_time?
   end
 end

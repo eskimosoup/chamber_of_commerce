@@ -8,6 +8,24 @@ module Optimadmin
       @events = Optimadmin::BaseCollectionPresenter.new(collection: Event.where('name ILIKE ?', "%#{params[:search]}%").order(start_date: :desc).page(params[:page]).per(params[:per_page] || 15).order(params[:order] || "start_date desc"), view_template: view_context, presenter: Optimadmin::EventPresenter)
     end
 
+    def duplicate
+      event = Event.find(params[:id])
+
+      return if event.blank?
+
+      new_event = event.deep_clone include: [:event_agendas] do |original, copy|
+        copy.name = "Copy - #{original.name}"
+        copy.image = original.image if original.has_attribute?(:image) && original.image.present?
+      end
+
+      new_event.save!
+
+      new_event.update_columns(display: false)
+      Event.reset_counters(new_event.id, :event_agendas)
+
+      redirect_to({ action: :index }, notice: "Event successfully duplicated as #{new_event.name}")
+    end
+
     def show
     end
 
@@ -51,7 +69,7 @@ module Optimadmin
       params.require(:event).permit(:name, :event_agendas, :start_date, :end_date, :remote_image_url, :image_cache,
                                     :remove_image, :image, :event_location_id, :description, :display, :summary, :caption,
                                     :event_office_id, :booking_confirmation_information, :eventbrite_link, :allow_booking, :booking_deadline, :layout,
-                                    :fully_booked_content)
+                                    :fully_booked_content, :booking_start_date)
     end
 
   end

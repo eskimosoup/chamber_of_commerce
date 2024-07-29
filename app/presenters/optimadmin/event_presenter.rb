@@ -3,6 +3,10 @@ module Optimadmin
     presents :event
     delegate :event_location, to: :event_location
 
+    def duplicate_link
+      h.link_to(h.octicon('diff'), h.duplicate_event_path(event))
+    end
+
     def name
       event.name
     end

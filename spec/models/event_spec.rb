@@ -6,6 +6,7 @@
 #  allow_booking                    :boolean          default(TRUE)
 #  booking_confirmation_information :text
 #  booking_deadline                 :datetime
+#  booking_start_date               :datetime
 #  caption                          :string
 #  description                      :text
 #  display                          :boolean          default(TRUE)

@@ -1,6 +1,6 @@
 <%= render 'optimadmin/shared/header/main_title', title: 'Manage Events' %>
 
-<div class="main-content">
+<div class="main-content" style="max-width:98%">
   <div class="row module-header collapse">
     <%= render 'optimadmin/shared/module/index/new_item', title: 'Event', object: Event, path: new_event_path if EventLocation.count >= 1 %>
     <%= render 'optimadmin/shared/search_form' %>
@@ -14,9 +14,9 @@
   <% end %>
 
 
-  <div class="row collapse module-list-index header">
+  <div class="row expanded collapse module-list-index header">
 
-    <%= list_item('large-3 small-6') { 'Name' } %>
+    <%= list_item('large-2 small-6') { 'Name' } %>
 
     <%= list_item('large-2 small-4') { 'Event Agendas' } %>
     <%= list_item('large-2 small-4') { 'Bookings' } %>
@@ -24,10 +24,11 @@
     <%= list_item('large-1 hide-for-medium-down') { 'Image' } %>
 
     <%= list_item { 'Display' } %>
+    <%= list_item { 'Duplicate' } %>
     <%= list_item { 'View' } %>
     <%= list_item { 'Edit' } %>
 
-    <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
+    <%= list_item('large-1 text-center last') { 'Delete' } %>
   </div>
 
   <%= render partial: 'event', collection: @events, as: :event_presenter %>

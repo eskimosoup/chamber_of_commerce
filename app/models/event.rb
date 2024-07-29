@@ -6,6 +6,7 @@
 #  allow_booking                    :boolean          default(TRUE)
 #  booking_confirmation_information :text
 #  booking_deadline                 :datetime
+#  booking_start_date               :datetime
 #  caption                          :string
 #  description                      :text
 #  display                          :boolean          default(TRUE)
@@ -74,8 +75,20 @@ class Event < ActiveRecord::Base
   def self.layouts
     %w{ right_image full_image }
   end
-  
+
   def sensible_dates
     errors.add(:end_date, 'cannot be before the start date') if self.end_date.present? && self.start_date.present? && self.end_date < self.start_date
+  end
+
+  def within_event_booking_deadline?
+    return true if booking_deadline.blank?
+
+    booking_deadline >= Time.zone.now
+  end
+
+  def within_event_booking_start_time?
+    return true if booking_start_date.blank?
+
+    booking_start_date <= Time.zone.now
   end
 end
