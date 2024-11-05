@@ -25,14 +25,14 @@
 
         <% if @presented_event_agendas.count > 1 %>
           <p>Click BOOK NOW below to choose and book the events you wish to attend.</p>
-        <% end %>
 
-        <%= @presented_event.booking_button %>
+          <%= @presented_event.booking_button %>
 
-        <% if @presented_event.booking_deadline.present? && @presented_event.booking_deadline <= Time.zone.now %>
-          <p>Bookings are no longer being taken for this event.</p>
-        <% elsif @presented_event.booking_deadline.present? && @presented_event.booking_deadline > Time.zone.now %>
-          <p>The deadline for bookings is <strong><%= @presented_event.booking_deadline(:long) %></strong>.</p>
+          <% if @presented_event.booking_deadline.present? && @presented_event.booking_deadline <= Time.zone.now %>
+            <p>Bookings are no longer being taken for this event.</p>
+          <% elsif @presented_event.booking_deadline.present? && @presented_event.booking_deadline > Time.zone.now %>
+            <p>The deadline for bookings is <strong><%= @presented_event.booking_deadline(:long) %></strong>.</p>
+          <% end %>
         <% end %>
       </div>
     </div>
