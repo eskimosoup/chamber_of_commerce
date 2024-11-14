@@ -23,7 +23,7 @@
         <% end %>
 
 
-        <% if @presented_event_agendas.count > 1 %>
+        <% if @presented_event_agendas.count >= 1 %>
           <p>Click BOOK NOW below to choose and book the events you wish to attend.</p>
 
           <%= @presented_event.booking_button %>
