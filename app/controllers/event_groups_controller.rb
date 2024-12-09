@@ -25,7 +25,11 @@ class EventGroupsController < ApplicationController
   end
 
   def events
-    ::Event.upcoming.where('events.id IN (?) OR event_agendas_count = ?', event_group_event_ids, 0)
+    if event_group.area == 'International'
+      ::Event.upcoming.where('events.id IN (?)', event_group_event_ids)
+    else
+      ::Event.upcoming.where('events.id IN (?) OR event_agendas_count = ?', event_group_event_ids, 0)
+    end
   end
 
   def event_group_event_ids
