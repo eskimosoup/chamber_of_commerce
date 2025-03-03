@@ -4,6 +4,7 @@
       $(function() {
         $('.add-event-attendees').attr('data-clicked', 'true');
         guestify();
+        console.log('test');
       })
     </script>
   <% end %>
@@ -121,7 +122,7 @@
               <% end %>
             </div>
 
-            <% if @event.event_agendas.map(&:table_size).sum.positive? %>
+            <% if @event.event_agendas.map(&:table_size).sum.positive? || true %>
               <%= link_to 'Next', '#event-attendees', class: 'button event-process next add-event-attendees', data: { container: "#event-attendees, .actions, .event-process.next", class: 'hide', return: 'true' } %>
               <%#= link_to 'Previous', '#event-attendees', class: 'button event-process previous toggle-class hide', data: { container: "#event-attendees, .actions, .event-booking-details, .event-process.previous, .event-process.next", class: 'hide', return: 'false' } %>
 
