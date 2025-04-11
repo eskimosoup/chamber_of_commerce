@@ -48,6 +48,13 @@ $(function() {
     width: '675px',
     height: '675px'
   });
+
+  $('.js--video-colorbox').colorbox({
+    href: 'https://www.youtube.com/embed/38jSVhj1eGM',
+    iframe: true,
+    width: '80%',
+    height: '80%'
+  });
 });
 
 $('.js--promo-banners').slick({
