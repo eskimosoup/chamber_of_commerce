@@ -30,6 +30,18 @@
       </div>
     </div>
 
+    <% if Date.new(2025, 05, 14) > Time.zone.today %>
+      <div>
+        <div class="row">
+          <div class="small-12 columns">
+            <%= link_to('http://www.adrenalineadvertising.co.uk/') do %>
+              <%= image_tag('layout/header/adrenaline-advert.jpg', alt: 'Adrenaline Advertising') %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
     <% if membership_banner.present? %>
       <div>
         <% present membership_banner do |presenter| %>
@@ -98,6 +110,8 @@
           <gcse:search></gcse:search>
 
           <%= link_to(image_tag('components/icons/video.png', alt: 'View video', height: 45, width: 45), 'https://www.youtube.com/watch?v=38jSVhj1eGM', class: 'js--video-colorbox') %>
+
+          <%= link_to('Book Expo25 Now', 'https://localhost:3000/events/chamber-expo-2025-early-bird-offer', style: 'display:inline-block;padding:.25rem; font-size: 1.25rem;') %>
         </div>
         <div class="small-2 medium-12 columns">
           <%= link_to '#header-navigation', class: 'toggle-class navigation-toggle show-for-medium-down', title: 'Navigation', data: { container: '.header-navigation', class: 'hide-for-medium-down', return: 'false' } do %>
