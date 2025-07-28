@@ -52,6 +52,8 @@ module Optimadmin
       else
         render :import_csv, notice: "There were errors with your CSV file"
       end
+    rescue StandardError => e
+      redirect_to({ action: :import_csv }, flash: { error: e.message })
     end
 
     def destroy_non_csv_members
