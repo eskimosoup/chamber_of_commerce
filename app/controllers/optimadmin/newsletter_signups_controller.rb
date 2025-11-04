@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_newsletter_signup, only: [:show, :edit, :update, :destroy]
 
     def index
-      @newsletter_signups = Optimadmin::BaseCollectionPresenter.new(collection: NewsletterSignup.page(params[:page]).per(params[:per_page] || 15).order(params[:order]), view_template: view_context, presenter: Optimadmin::NewsletterSignupPresenter)
+      @newsletter_signups = Optimadmin::BaseCollectionPresenter.new(collection: NewsletterSignup.where('created_at >= ?', 1.year.ago.beginning_of_day).page(params[:page]).per(params[:per_page] || 15).order(params[:order]), view_template: view_context, presenter: Optimadmin::NewsletterSignupPresenter)
     end
 
     def export_csv
