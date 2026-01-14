@@ -154,6 +154,14 @@
 
               <div class="actions hide">
                 <% if current_administrator.present? %>
+                  <p style="
+                        padding: 1rem;
+                        background: #d7e4e4;
+                        border: 1px solid #ab956e;
+                        font-weight: 700;
+                      ">
+                    You are logged in as an admin so are able to create an 'offline payment'. You will see a 'create booking' when you log out of the admin.
+                  </p>
                   <%= f.submit "Offline payment", class: 'button' %>
                 <% else %>
                   <%= f.submit "Create Booking", class: 'button create-booking-button' %>
