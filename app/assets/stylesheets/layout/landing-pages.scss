@@ -1,0 +1,128 @@
+@import 'lib/variables';
+
+.exppo-landing-page-title {
+  background: transparent image-url('layout/headings/border.jpg') center repeat-x;
+  text-align: center;
+  margin: 1.5rem 0;
+
+  div {
+    background: $white;
+    display: inline-block;
+    color: $deep-blue;
+    font-size: 1.5rem;
+    font-weight: $light;
+    letter-spacing: 2px;
+    padding: 0 2rem;
+    text-transform: uppercase;
+  }
+}
+
+.expo-landing-page-header {
+  background: $white;
+  padding: 1.25rem;
+  margin: 1.625rem 0;
+
+  &__styles {
+    color: $light-blue;
+  }
+}
+
+.expo-landing-page-content {
+  background: $white;
+  padding: 1.25rem;
+  margin: 1.625rem 0;
+
+  &__styles {
+    color: $light-blue;
+  }
+}
+
+.expo-landing-page-sponsors {
+  background: $white;
+  padding: 1.25rem;
+  margin: 0 0 1.625rem;
+
+  &__styles {
+    color: $light-blue;
+  }
+
+  &__item {
+    padding: 0.5rem;
+  }
+}
+
+.expo-landing-page-testimonials {
+  background: $deep-blue;
+  color: $white;
+  padding: 1.25rem;
+  margin: 0;
+
+  &__styles {
+    color: $light-blue;
+  }
+
+  &__item {
+    padding: 0.5rem;
+  }
+}
+
+.expo-landing-page-testimonial {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $light-grey;
+
+  &__content {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  &__title {
+
+  }
+}
+
+.js--expo-landing-page-sponsors-slick {
+  margin: 0;
+  display: none;
+
+  &.slick-initialized  {
+    display: block;
+  }
+}
+
+.expo-landing-page-event-wrap {
+  background: $white;
+  padding: 1.25rem;
+  margin: 0 0 1.625rem;
+}
+
+.expo-landing-page-event {
+  &__title {
+    border-bottom: 4px solid $bronze;
+    color: $light-blue;
+    padding: 0 0 0.3125rem;
+  }
+
+  &__image {
+    margin-bottom: 1rem;
+  }
+
+  &__summary {
+    // font-weight: $semibold;
+  }
+
+  &__button {
+    border: 3px solid $light-blue;
+    display: inline-block;
+    letter-spacing: 1px;
+    padding: 0.75rem;
+    text-transform: uppercase;
+
+    &:hover,
+    &:active {
+      background: $light-blue;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}

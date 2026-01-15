@@ -1,0 +1,5 @@
+<%= content_for(:head) do %>
+  <%= stylesheet_link_tag('layout/landing-pages', media: 'all') %>
+<% end %>
+
+<%= render(partial: @facade.landing_page.style, locals: { facade: @facade }) %>

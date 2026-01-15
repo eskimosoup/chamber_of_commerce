@@ -73,6 +73,8 @@ Rails.application.routes.draw do
     root to: 'homes#index'
   end
 
+  resources :landing_pages, only: :show, path: 'features'
+
   root to: 'application#index'
 
   mount Optimadmin::Engine => '/admin'
@@ -111,6 +113,10 @@ Optimadmin::Engine.routes.draw do
                 as: "published_#{options[:module]}",
                 controller: "#{options[:module]}/published"
     end
+  end
+
+  resources :landing_pages, except: :show, concerns: %i[orderable toggleable imageable], path: 'landing-pages' do
+    resources :landing_page_sections, except: :show, concerns: %i[orderable toggleable imageable], path: 'landing-page-sections'
   end
 
   namespace :memberships do

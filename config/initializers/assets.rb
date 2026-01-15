@@ -8,4 +8,4 @@ Rails.application.config.assets.version = '1.1'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( components/event_booking_cocoon.js vendor/foundation-ie8.js )
+Rails.application.config.assets.precompile += %w( components/event_booking_cocoon.js layout/landing-pages.css vendor/foundation-ie8.js )

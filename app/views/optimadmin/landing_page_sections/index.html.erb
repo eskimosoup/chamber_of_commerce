@@ -1,0 +1,22 @@
+<%= render(partial: 'optimadmin/shared/header/main_title', locals: { title: t('optimadmin.views.module.index.title', model_name: LandingPageSection.model_name.human.pluralize) }) %>
+
+<div class="main-content">
+  <%= render(partial: 'optimadmin/shared/module/form/back', locals: { path: landing_pages_path, title: LandingPage.model_name.human }) %>
+
+  <div class="row module-header collapse">
+    <%= render(partial: 'optimadmin/shared/module/index/new_item', locals: { title: LandingPageSection.model_name.human.titleize, object: LandingPageSection, path: { action: :new } }) %>
+    <%= render(partial: 'optimadmin/shared/search_form') %>
+    <%= render(partial: 'optimadmin/shared/module/index/pagination') %>
+    <%#= render(partial: 'optimadmin/shared/module/index/order', locals: { options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC']] }) %>
+  </div>
+
+  <% @landing_page_sections.ordered.group_by(&:area).each do |area, landing_page_sections| %>
+    <h2><%= area %></h2>
+
+    <%= render(partial: 'optimadmin/landing_page_sections/shared/header') %>
+
+    <div class="module-sortable" data-module="LandingPageSection">
+      <%= render(partial: 'landing_page_section', collection: landing_page_sections, as: :landing_page_section) %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,59 @@
+<div class="field">
+  <%= f.label :title %><br />
+  <%= f.text_field :title %>
+</div>
+
+<div class="tabs prevent-flash">
+  <ul class="tab-list">
+    <li><a href="#tabs-1">Content</a></li>
+    <li><a href="#tabs-2">Media</a></li>
+    <li><a href="#tabs-3">Settings</a></li>
+    <li>
+      <%= link_to('#', class: 'destroy-tabs right', data: { class: 'tabs' }) do %>
+        <%= octicon('chevron-down') %>
+      <% end %>
+    </li>
+  </ul>
+
+  <%= field_set_tag(nil, id: 'tabs-1') do %>
+    <div class="field">
+      <%= f.label :header %><br>
+      <%= f.text_area :header, class: 'tinymce' %>
+    </div>
+    <div class="field">
+      <%= f.label :content %><br>
+      <%= f.text_area :content, class: 'tinymce' %>
+    </div>
+    <div class="field">
+      <%= f.label :footer %><br>
+      <%= f.text_area :footer, class: 'tinymce' %>
+    </div>
+
+    <div class="field <%= 'hide' unless f.object.class::STYLES.size > 1 %>">
+      <%= f.label :style %><br>
+      <%= f.select :style, f.object.class::STYLES.map { |x| [x.humanize, x] }  %>
+    </div>
+    <div class="field <%= 'hide' unless f.object.class::LAYOUTS.size > 1 %>">
+      <%= f.label :layout %><br>
+      <%= f.select :layout, f.object.class::LAYOUTS.map { |x| [x.humanize, x] } %>
+    </div>
+  <% end %>
+
+  <%= field_set_tag(nil, id: 'tabs-2') do %>
+    <%= f.image_field :image %>
+
+
+    <div class="field">
+      <%= f.label :video_embed %><br>
+      <%= f.text_area :video_embed %>
+    </div>
+  <% end %>
+
+  <%= field_set_tag(nil, id: 'tabs-3') do %>
+    <%= render(partial: 'optimadmin/shared/suggested_url_field', locals: { f: f }) %>
+    <div class="field">
+      <%= f.label :display %><br>
+      <%= f.check_box :display %>
+    </div>
+  <% end %>
+</div>

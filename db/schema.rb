@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20240729152244) do
+ActiveRecord::Schema.define(version: 20260115121401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -269,6 +269,41 @@ ActiveRecord::Schema.define(version: 20240729152244) do
     t.datetime "updated_at",                null: false
     t.text     "text"
   end
+
+  create_table "landing_page_sections", force: :cascade do |t|
+    t.integer  "landing_page_id"
+    t.integer  "position",        default: 0
+    t.string   "area",                           null: false
+    t.string   "title"
+    t.text     "content"
+    t.string   "image"
+    t.string   "button_link"
+    t.string   "button_text"
+    t.boolean  "display",         default: true
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "landing_page_sections", ["area"], name: "index_landing_page_sections_on_area", using: :btree
+  add_index "landing_page_sections", ["landing_page_id"], name: "index_landing_page_sections_on_landing_page_id", using: :btree
+
+  create_table "landing_pages", force: :cascade do |t|
+    t.string   "title",                                 null: false
+    t.text     "header"
+    t.text     "content"
+    t.text     "footer"
+    t.text     "video_embed"
+    t.boolean  "display",       default: true
+    t.string   "style",         default: "basic"
+    t.string   "layout",        default: "application"
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.string   "image"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "landing_pages", ["slug"], name: "index_landing_pages_on_slug", using: :btree
 
   create_table "magazines", force: :cascade do |t|
     t.string   "name",                        null: false
@@ -595,6 +630,7 @@ ActiveRecord::Schema.define(version: 20240729152244) do
   add_foreign_key "event_bookings", "events"
   add_foreign_key "event_groupings", "event_categories"
   add_foreign_key "event_groupings", "event_groups"
+  add_foreign_key "landing_page_sections", "landing_pages"
   add_foreign_key "member_industries", "industries"
   add_foreign_key "member_industries", "members"
   add_foreign_key "member_logins", "members"

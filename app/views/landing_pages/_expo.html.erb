@@ -1,0 +1,172 @@
+<%= content_for(:footer) do %>
+  <script>
+    $('.js--expo-landing-page-testimonials-slick').slick({
+      vertical: true,
+      dots: false,
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      infinite: false,
+      adaptiveHeight: false
+    });
+    
+    $('.js--expo-landing-page-sponsors-slick').slick({
+      autoplay: true,
+      autoplaySpeed: 2000,
+      dots: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 6,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+  </script>
+<% end %>
+
+<div class="row">
+  <div class="small-12 columns">
+    <% if facade.landing_page.image? %>
+      <%= image_tag(facade.landing_page.image.url, alt: facade.landing_page.title) %>
+    <% end %>
+
+    <% if facade.landing_page.header? %>
+      <div class="expo-landing-page-header">
+        <div class="expo-landing-page-header__styles">
+          <%= raw(facade.landing_page.header) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% if facade.landing_page.landing_page_sections.where(area: 'Expo/Event - Item').present? %>
+  <div class="row">
+    <% facade.landing_page.landing_page_sections.where(area: 'Expo/Event - Item').each do |landing_page_section| %>
+      <div class="small-12 large-6 columns">
+        <div class="expo-landing-page-event-wrap">
+          <div class="expo-landing-page-event">
+            <h2 class="expo-landing-page-event__title">
+              <%= landing_page_section.title %>
+            </h2>
+
+            <% if landing_page_section.image? %>
+              <div class="row">
+                <div class="small-12 large-8 columns">
+                  <%= raw(landing_page_section.content) %>
+                </div>
+
+                <div class="small-12 large-4 columns">
+                  <%= image_tag(landing_page_section.image.url, alt: '') %>
+                </div>
+              </div>
+            <% else %>
+              <%= raw(landing_page_section.content) %>
+            <% end %>
+
+            <% if landing_page_section.button? %>
+              <%= link_to(landing_page_section.button_link, class: 'expo-landing-page-event__button') do %>
+                <%= landing_page_section.button_text %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="small-12 large-8 columns">
+    <% if facade.landing_page.video_embed? %>
+      <div class="expo-landing-page-video-embed">
+        <div class="expo-landing-page-video-embed__content">
+          <div class="flex-video">
+            <%= raw(facade.landing_page.video_embed) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% if facade.landing_page.content? %>
+      <div class="expo-landing-page-content">
+        <div class="expo-landing-page-content__styles">
+          <%= raw(facade.landing_page.content) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="small-12 large-4 columns">
+    <% if facade.landing_page.landing_page_sections.where(area: 'Expo/Testimonial - Item').present? %>
+      <div class="expo-landing-page-testimonials">
+        <div class="expo-landing-page-testimonials__content">
+          <div class="js--expo-landing-page-testimonials-slick">
+            <% facade.landing_page.landing_page_sections.where(area: 'Expo/Testimonial - Item').each do |landing_page_section| %>
+              <div>
+                <div class="expo-landing-page-testimonial">
+                  <div class="expo-landing-page-testimonial__content">
+                    <%= raw(landing_page_section.content) %>
+                  </div>
+
+                  <div class="expo-landing-page-testimonial__title">
+                    <%= landing_page_section.title %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% if facade.landing_page.landing_page_sections.where(area: 'Expo/Sponsor - Item').present? %>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="expo-landing-page-sponsors">
+        <div class="expo-landing-page-sponsors__content">
+          <h2 class="exppo-landing-page-title">
+            <div>Thank you to our sponsors</div>
+          </h2>
+
+          <div class="js--expo-landing-page-sponsors-slick">
+            <% facade.landing_page.landing_page_sections.where(area: 'Expo/Sponsor - Item').each do |landing_page_section| %>
+              <div>
+                <div class="expo-landing-page-sponsors__item">
+                  <%= image_tag(landing_page_section.image.url, alt: landing_page_section.title) %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

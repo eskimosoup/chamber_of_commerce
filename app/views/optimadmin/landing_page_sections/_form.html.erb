@@ -1,0 +1,10 @@
+<%= form_for(model, url: model.new_record? ? { action: :create } : { action: :update }) do |f| %>
+  <%= render(partial: 'optimadmin/shared/form_errors', locals: { model: model }) %>
+
+  <%= render(partial: 'form_fields', locals: { f: f }) %>
+
+  <div class="actions">
+    <%= f.submit 'Save' %>
+    <%= f.submit 'Save and continue editing' %>
+  </div>
+<% end %>
