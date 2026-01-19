@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20260115121401) do
+ActiveRecord::Schema.define(version: 20260119095454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 20260115121401) do
     t.string   "suggested_url"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.string   "redirect_url"
   end
 
   add_index "event_groups", ["slug"], name: "index_event_groups_on_slug", using: :btree

@@ -52,7 +52,6 @@ class LandingPageSection < ActiveRecord::Base
   with_options(presence: true) do
     validates :area, inclusion: { in: AREAS }
     validates :button_link, if: :button_text?
-    validates :button_text, if: :button_link?
   end
 
   # Callbacks

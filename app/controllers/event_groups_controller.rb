@@ -4,6 +4,8 @@ class EventGroupsController < ApplicationController
   end
 
   def show
+    redirect_to(event_group.redirect_url) if event_group.redirect_url?
+
     @event_group = event_group
     @event_locations = filtered_events.map(&:event_location).uniq
 

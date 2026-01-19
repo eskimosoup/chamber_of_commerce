@@ -7,6 +7,7 @@
 #  content       :text
 #  display       :boolean          default(TRUE)
 #  position      :integer          default(0)
+#  redirect_url  :string
 #  slug          :string
 #  suggested_url :string
 #  summary       :text

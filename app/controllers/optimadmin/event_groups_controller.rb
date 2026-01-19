@@ -59,6 +59,7 @@ module Optimadmin
         :area,
         :summary,
         :content,
+        :redirect_url,
         event_category_ids: []
       )
     end

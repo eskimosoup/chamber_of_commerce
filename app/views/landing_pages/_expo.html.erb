@@ -6,12 +6,12 @@
       arrows: false,
       autoplay: true,
       autoplaySpeed: 5000,
-      slidesToShow: 4,
+      slidesToShow: 1,
       slidesToScroll: 1,
       infinite: false,
       adaptiveHeight: false
     });
-    
+
     $('.js--expo-landing-page-sponsors-slick').slick({
       autoplay: true,
       autoplaySpeed: 2000,
@@ -65,9 +65,9 @@
   </div>
 </div>
 
-<% if facade.landing_page.landing_page_sections.where(area: 'Expo/Event - Item').present? %>
+<% if facade.landing_page_sections.where(area: 'Expo/Event - Item').present? %>
   <div class="row">
-    <% facade.landing_page.landing_page_sections.where(area: 'Expo/Event - Item').each do |landing_page_section| %>
+    <% facade.landing_page_sections.where(area: 'Expo/Event - Item').each do |landing_page_section| %>
       <div class="small-12 large-6 columns">
         <div class="expo-landing-page-event-wrap">
           <div class="expo-landing-page-event">
@@ -123,11 +123,11 @@
   </div>
 
   <div class="small-12 large-4 columns">
-    <% if facade.landing_page.landing_page_sections.where(area: 'Expo/Testimonial - Item').present? %>
+    <% if facade.landing_page_sections.where(area: 'Expo/Testimonial - Item').present? %>
       <div class="expo-landing-page-testimonials">
         <div class="expo-landing-page-testimonials__content">
           <div class="js--expo-landing-page-testimonials-slick">
-            <% facade.landing_page.landing_page_sections.where(area: 'Expo/Testimonial - Item').each do |landing_page_section| %>
+            <% facade.landing_page_sections.where(area: 'Expo/Testimonial - Item').order('random()').each do |landing_page_section| %>
               <div>
                 <div class="expo-landing-page-testimonial">
                   <div class="expo-landing-page-testimonial__content">
@@ -147,7 +147,7 @@
   </div>
 </div>
 
-<% if facade.landing_page.landing_page_sections.where(area: 'Expo/Sponsor - Item').present? %>
+<% if facade.landing_page_sections.where(area: 'Expo/Sponsor - Item').present? %>
   <div class="row">
     <div class="small-12 columns">
       <div class="expo-landing-page-sponsors">
@@ -157,10 +157,16 @@
           </h2>
 
           <div class="js--expo-landing-page-sponsors-slick">
-            <% facade.landing_page.landing_page_sections.where(area: 'Expo/Sponsor - Item').each do |landing_page_section| %>
+            <% facade.landing_page_sections.where(area: 'Expo/Sponsor - Item').each do |landing_page_section| %>
               <div>
                 <div class="expo-landing-page-sponsors__item">
-                  <%= image_tag(landing_page_section.image.url, alt: landing_page_section.title) %>
+                  <% if landing_page_section.button_link? %>
+                    <%= link_to(landing_page_section.button_link, target: '_blank', rel: 'noopener') do %>
+                      <%= image_tag(landing_page_section.image.url, alt: landing_page_section.title) %>
+                    <% end %>
+                  <% else %>
+                    <%= image_tag(landing_page_section.image.url, alt: landing_page_section.title) %>
+                  <% end %>
                 </div>
               </div>
             <% end %>
