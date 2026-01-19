@@ -39,7 +39,8 @@ class LandingPageSection < ActiveRecord::Base
   AREAS = [
     'Expo/Event - Item',
     'Expo/Testimonial - Item',
-    'Expo/Sponsor - Item'
+    'Expo/Sponsor - Item',
+    'Expo/Gallery - Item',
   ].sort.freeze
   public_constant :AREAS
 

@@ -4,7 +4,8 @@
     <%= link_to(event_group, class: 'list-item-with-image-title') do %>
       <div class="list-item-with-image__image">
         <% if event_group.area == 'International' %>
-          <%= image_tag 'placeholders/trade-image.jpg', alt: '' %>
+          <%= image_tag 'placeholders/chamber-image.jpg', alt: '' %>
+          <%#= image_tag 'placeholders/trade-image.jpg', alt: '' %>
         <% else %>
           <%= image_tag 'placeholders/chamber-image.jpg', alt: '' %>
         <% end %>

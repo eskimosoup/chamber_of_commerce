@@ -11,6 +11,13 @@
       infinite: false,
       adaptiveHeight: false
     });
+    $('.js--expo-landing-page-gallery-slick').slick({
+      dots: false,
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      adaptiveHeight: false
+    });
 
     $('.js--expo-landing-page-sponsors-slick').slick({
       autoplay: true,
@@ -103,6 +110,20 @@
 
 <div class="row">
   <div class="small-12 large-8 columns">
+    <% if facade.landing_page_sections.where(area: 'Expo/Gallery - Item').present? %>
+      <div class="expo-landing-page-gallery">
+        <div class="expo-landing-page-gallery__content">
+          <div class="js--expo-landing-page-gallery-slick">
+            <% facade.landing_page_sections.where(area: 'Expo/Gallery - Item').order('random()').each do |landing_page_section| %>
+              <div>
+                  <%= image_tag(landing_page_section.image.show.url, alt: landing_page_section.title) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
     <% if facade.landing_page.video_embed? %>
       <div class="expo-landing-page-video-embed">
         <div class="expo-landing-page-video-embed__content">

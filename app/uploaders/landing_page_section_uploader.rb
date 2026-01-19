@@ -3,7 +3,7 @@
 class LandingPageSectionUploader < Optimadmin::ImageUploader
   CROPS = {
     index: ['fill', 250, 250],
-    show: ['fill', 640, 250]
+    show: ['fill', 675, 380]
   }.freeze
   public_constant :CROPS
 
