@@ -27,10 +27,14 @@
   }
 }
 
+.expo-landing-page-video-embed {
+  margin: 0 0 1.625rem;
+}
+
 .expo-landing-page-content {
   background: $white;
   padding: 1.25rem;
-  margin: 1.625rem 0;
+  margin: 0 0 1.625rem;
 
   &__styles {
     color: $light-blue;
