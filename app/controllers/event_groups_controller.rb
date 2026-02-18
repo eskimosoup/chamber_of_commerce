@@ -27,7 +27,7 @@ class EventGroupsController < ApplicationController
   end
 
   def events
-    if event_group.area == 'Chamber'
+    if event_group.area == 'Chamber' && event_group.title != 'Chamber Expo 2026'
     ::Event.upcoming.where('events.id IN (?) OR event_agendas_count = ?', event_group_event_ids, 0)
   else
     ::Event.upcoming.where('events.id IN (?)', event_group_event_ids)
