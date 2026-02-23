@@ -61,15 +61,12 @@ class Member < ActiveRecord::Base
   end
 
   def self.search_terms(search_terms)
-    if search_terms.present?
-      joins(:industries).where(
-        "nature_of_business ILIKE :search_terms
-          OR industries.name ILIKE :search_terms
-          OR members.company_name ILIKE :search_terms
-        ",
-        search_terms: "%#{search_terms}%"
-      )
-    end
+    return if search_terms.blank?
+
+    where(
+      "nature_of_business ILIKE :search_terms OR members.company_name ILIKE :search_terms",
+      search_terms: "%#{search_terms}%"
+    )
   end
 
 end
