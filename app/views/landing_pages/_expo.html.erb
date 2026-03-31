@@ -72,41 +72,6 @@
   </div>
 </div>
 
-<% if facade.landing_page_sections.where(area: 'Expo/Event - Item').present? %>
-  <div class="row">
-    <% facade.landing_page_sections.where(area: 'Expo/Event - Item').each do |landing_page_section| %>
-      <div class="small-12 large-6 columns">
-        <div class="expo-landing-page-event-wrap">
-          <div class="expo-landing-page-event">
-            <h2 class="expo-landing-page-event__title">
-              <%= landing_page_section.title %>
-            </h2>
-
-            <% if landing_page_section.image? %>
-              <div class="row">
-                <div class="small-12 large-8 columns">
-                  <%= raw(landing_page_section.content) %>
-                </div>
-
-                <div class="small-12 large-4 columns">
-                  <%= image_tag(landing_page_section.image.url, alt: '') %>
-                </div>
-              </div>
-            <% else %>
-              <%= raw(landing_page_section.content) %>
-            <% end %>
-
-            <% if landing_page_section.button? %>
-              <%= link_to(landing_page_section.button_link, class: 'expo-landing-page-event__button') do %>
-                <%= landing_page_section.button_text %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-<% end %>
 
 <div class="row">
   <div class="small-12 large-8 columns">
@@ -165,6 +130,42 @@
     <% end %>
   </div>
 </div>
+
+<% if facade.landing_page_sections.where(area: 'Expo/Event - Item').present? %>
+  <div class="row">
+    <% facade.landing_page_sections.where(area: 'Expo/Event - Item').each do |landing_page_section| %>
+      <div class="small-12 large-6 columns">
+        <div class="expo-landing-page-event-wrap">
+          <div class="expo-landing-page-event">
+            <h2 class="expo-landing-page-event__title">
+              <%= landing_page_section.title %>
+            </h2>
+
+            <% if landing_page_section.image? %>
+              <div class="row">
+                <div class="small-12 large-8 columns">
+                  <%= raw(landing_page_section.content) %>
+                </div>
+
+                <div class="small-12 large-4 columns">
+                  <%= image_tag(landing_page_section.image.url, alt: '') %>
+                </div>
+              </div>
+            <% else %>
+              <%= raw(landing_page_section.content) %>
+            <% end %>
+
+            <% if landing_page_section.button? %>
+              <%= link_to(landing_page_section.button_link, class: 'expo-landing-page-event__button') do %>
+                <%= landing_page_section.button_text %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
 <% if facade.landing_page_sections.where(area: 'Expo/Sponsor - Item').present? %>
   <div class="row">
