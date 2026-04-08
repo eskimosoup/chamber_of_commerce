@@ -88,15 +88,6 @@
         </div>
       </div>
     <% end %>
-
-    <% if facade.landing_page.video_embed? %>
-      <div class="expo-landing-page-video-embed">
-        <div class="expo-landing-page-video-embed__content">
-          <%= raw(facade.landing_page.video_embed) %>
-        </div>
-      </div>
-    <% end %>
-
     <% if facade.landing_page.content? %>
       <div class="expo-landing-page-content">
         <div class="expo-landing-page-content__styles">
@@ -107,7 +98,13 @@
   </div>
 
   <div class="small-12 large-4 columns">
-    <% if facade.landing_page_sections.where(area: 'Expo/Testimonial - Item').present? %>
+    <% if facade.landing_page.video_embed? %>
+      <div class="expo-landing-page-video-embed">
+        <div class="expo-landing-page-video-embed__content">
+          <%= raw(facade.landing_page.video_embed) %>
+        </div>
+      </div>
+    <% elsif facade.landing_page_sections.where(area: 'Expo/Testimonial - Item').present? %>
       <div class="expo-landing-page-testimonials">
         <div class="expo-landing-page-testimonials__content">
           <div class="js--expo-landing-page-testimonials-slick">
