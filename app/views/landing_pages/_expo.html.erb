@@ -175,11 +175,11 @@
                   <%= landing_page_section.title %>
                 </h2>
 
-
                 <% if landing_page_section.button? %>
                   <%= link_to(landing_page_section.button_link, class: 'expo-landing-page-event__button') do %>
                     <%= landing_page_section.button_text %>
                   <% end %>
+                <% end %>
 
                 <% if landing_page_section.image? %>
                   <div class="row">
@@ -193,7 +193,6 @@
                   </div>
                 <% else %>
                   <%= raw(landing_page_section.content) %>
-                <% end %>
                 <% end %>
               </div>
             </div>
