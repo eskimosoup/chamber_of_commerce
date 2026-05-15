@@ -132,7 +132,7 @@
     <div class="small-12 large-8 columns">
       <div class="row">
         <% facade.landing_page_sections.where(area: 'Expo/Event - Item').limit(3).each_with_index do |landing_page_section, index| %>
-          <div class="small-12 large-<%= index < 2 ? '6' : '12' %> columns end">
+          <div class="small-12 large-12 columns end">
             <div class="expo-landing-page-event-wrap">
               <div class="expo-landing-page-event">
                 <h2 class="expo-landing-page-event__title">
