@@ -146,7 +146,7 @@
         <strong>Total price</strong>
       </div>
       <div class="small-9 columns">
-        <strong><%= number_to_currency (@event_booking_presenter.stripe_price / 100) %></strong>
+        <strong><%= number_to_currency ((@event_booking_presenter.stripe_price.to_f / 100)) %></strong>
       </div>
     </div>
     <div class="row">
@@ -175,7 +175,7 @@
             <%= @event_booking_presenter.refunded %>
           </div>
         <% elsif @event_booking_presenter.stripe_charge_id.present? %>
-          <p>This will refund <strong><%= number_to_currency (@event_booking_presenter.stripe_price / 100) %></strong>.</p>
+          <p>This will refund <strong><%= number_to_currency (@event_booking_presenter.stripe_price.to_f / 100) %></strong>.</p>
           <div class="small-12 columns">
             <h3>Refund</h3>
             <%= form_for :refund, url: refund_event_event_booking_path(@event, @event_booking) do |f| %>
@@ -192,7 +192,7 @@
             <% end %>
           </div>
         <% elsif @event_booking_presenter.stripe_payment_intent_id.present? %>
-          <p>This will refund <strong><%= number_to_currency (@event_booking_presenter.stripe_price / 100) %></strong>.</p>
+          <p>This will refund <strong><%= number_to_currency (@event_booking_presenter.stripe_price.to_f / 100) %></strong>.</p>
           <div class="small-12 columns">
             <h3>Refund</h3>
             <%= form_for :refund, url: refund_event_event_booking_path(@event, @event_booking) do |f| %>
