@@ -15,6 +15,24 @@ module Optimadmin
 
       def show; end
 
+      def destroy
+        if @enquiry.destroy
+          redirect_to(
+            { action: :index },
+            notice: t(
+              'optimadmin.controllers.module.destroy',
+              model_name: ::Memberships::Enquiry.model_name.human
+            )
+          )
+        else
+          redirect_to(
+            { action: :index },
+            flash: { error: @enquiry.errors.messages[:base].first }
+          )
+        end
+      end
+
+
       private
 
       def csv_data

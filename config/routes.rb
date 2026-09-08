@@ -123,7 +123,7 @@ Optimadmin::Engine.routes.draw do
     resources :join_reasons, except: :show, concerns: %i[orderable toggleable imageable], path: 'join-reasons'
     resources :groups, except: :show, concerns: %i[orderable toggleable imageable]
     resources :packages, except: :show, concerns: %i[orderable toggleable]
-    resources :enquiries, only: [:index, :show]
+    resources :enquiries, only: [:index, :show, :destroy]
     resources :how_heards, except: [:show], concerns: %i[orderable toggleable], path: 'how-heards'
     resources :payments, only: [:index, :show, :update]
   end
