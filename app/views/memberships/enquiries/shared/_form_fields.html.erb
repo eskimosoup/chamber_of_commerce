@@ -49,4 +49,8 @@
     <%= f.label :memberships_package_id, 'Please select the package most relevent to your company' %>
     <%= f.select :memberships_package_id, ::Memberships::Package.displayed.ordered.pluck(:title, :id), prompt: 'Please select' %>
   </div>
+
+  <div style="width:1px;height:1px;position:absolute;left:-1000px;top:auto;overflow:hidden;">
+    <%= f.text_field(:honeypot) %>
+  </div>
 <% end %>

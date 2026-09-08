@@ -42,6 +42,9 @@ module Memberships
     validates :postcode, presence: true
     validates :email_address, presence: true, email: true
     validates :message, presence: true
+    validates :honeypot, absence: true
+
+    attr_accessor :honeypot
 
     def full_name
       [forename, surname].join(' ')

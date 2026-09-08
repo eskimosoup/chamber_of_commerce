@@ -2,7 +2,9 @@ module Memberships
   class EnquiriesController < BaseController
     def create
       @enquiry = ::Memberships::Enquiry.new(memberships_enquiry_params)
-      if @enquiry.save
+      if @enquiry.honeypot.present?
+        redirect_to(memberships_root_path, alert: 'Bot detected.')
+      elsif @enquiry.save
         MembershipsMailer.new_enquiry(@enquiry).deliver_now
         redirect_to(memberships_root_path, notice: 'Thank you for your enquiry. We will be in touch.')
       else
@@ -23,7 +25,8 @@ module Memberships
         :company_name,
         :postcode,
         :memberships_package_id,
-        :message
+        :message,
+        :honeypot
       )
     end
   end
