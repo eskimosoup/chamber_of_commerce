@@ -4,7 +4,7 @@ module Optimadmin
       before_action :set_payment, only: %i[show edit update destroy]
 
       def index
-        @payments = ::Memberships::Payment.field_order('created_at desc')
+        @payments = ::Memberships::Payment.where(paid: true).field_order('created_at desc')
                                           .field_search(params[:search], 'company_name')
                                           .pagination(params[:page], params[:per_page])
 
@@ -68,7 +68,7 @@ module Optimadmin
 
       def csv
         ::CsvExports::MembershipPaymentsService.new(
-          ::Memberships::Payment.all, 'index'
+          ::Memberships::Payment.where(paid: true), 'index'
         ).to_csv
       end
 
