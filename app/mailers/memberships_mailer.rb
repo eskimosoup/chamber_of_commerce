@@ -6,7 +6,10 @@ class MembershipsMailer < ApplicationMailer
   #
   def new_member_login(member_login)
     @member = member_login.member
-    mail(to: member_login.username, from: member_offer_email)
+    mail(
+      to: member_login.username
+      # from: member_offer_email
+    )
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -16,7 +19,11 @@ class MembershipsMailer < ApplicationMailer
   #
   def new_enquiry(enquiry)
     @enquiry = enquiry
-    mail(to: membership_email, from: member_offer_email, reply_to: @enquiry.email_address)
+    mail(
+      to: membership_email,
+      # from: member_offer_email,
+      reply_to: @enquiry.email_address
+    )
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -28,8 +35,8 @@ class MembershipsMailer < ApplicationMailer
     @payment = payment
     mail(
       to: @payment.primary_contact_email_address,
-      cc: @payment.accounts_contact_email_address,
-      from: member_offer_email
+      cc: @payment.accounts_contact_email_address
+      # from: member_offer_email
     )
   end
 
@@ -43,7 +50,7 @@ class MembershipsMailer < ApplicationMailer
     @payment = payment
     mail(
       to: membership_email,
-      from: member_offer_email,
+      # from: member_offer_email,
       subject: t('memberships_mailer.new_payment.subject')
     ) do |format|
       format.html { render('memberships_mailer/new_payment') }

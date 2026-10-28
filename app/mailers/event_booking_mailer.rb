@@ -6,9 +6,13 @@ class EventBookingMailer < ApplicationMailer
     @event = event
 
     if bcc == true
-      mail to: email_to, from: @event.event_office.email, bcc: @event.event_office.email, subject: "Booking Confirmation for #{ @event.name }"
+      mail to: email_to,
+      # from: @event.event_office.email,
+      bcc: @event.event_office.email, subject: "Booking Confirmation for #{ @event.name }"
     else
-      mail to: email_to, from: @event.event_office.email, subject: "Booking Confirmation for #{ @event.name }"
+      mail to: email_to,
+      # from: @event.event_office.email,
+      subject: "Booking Confirmation for #{ @event.name }"
     end
   end
 
@@ -18,7 +22,7 @@ class EventBookingMailer < ApplicationMailer
 
     mail(
       to: @event.event_office.email,
-      from: @event.event_office.email,
+      # from: @event.event_office.email,
       subject: "Booking Confirmation for #{@event.name}"
     ) do |format|
       format.html { render('event_booking_mailer/booking_completed') }
@@ -28,7 +32,9 @@ class EventBookingMailer < ApplicationMailer
   def booking_refunded(event_booking)
     @event_booking = event_booking
     @event = @event_booking.event
-    mail to: @event_booking.email, from: @event.event_office.email, bcc: @event.event_office.email,
+    mail to: @event_booking.email,
+          # from: @event.event_office.email,
+          bcc: @event.event_office.email,
          subject: "Confirmation of refund for #{ @event.name }"
   end
 end

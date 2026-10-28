@@ -18,14 +18,25 @@ Rails.application.configure do
 
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-    address: 'optimisedmail.co.uk',
-    authentication: :plain,
-    user_name: 'noreply@hull-humber-chamber.co.uk',
-    password: ENV['CHAMBER_OF_COMMERCE_NOREPLY_PASSWORD'],
-    enable_starttls_auto: true,
-    openssl_verify_mode: 'none',
-    port: 587
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    domain: 'website-mail.co.uk',
+    user_name: 'apikey',
+    password: ENV['SENDGRID_API_KEY'],
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
+
+  # ActionMailer::Base.delivery_method = :smtp
+  # ActionMailer::Base.smtp_settings = {
+  #   address: 'optimisedmail.co.uk',
+  #   authentication: :plain,
+  #   user_name: 'noreply@hull-humber-chamber.co.uk',
+  #   password: ENV['CHAMBER_OF_COMMERCE_NOREPLY_PASSWORD'],
+  #   enable_starttls_auto: true,
+  #   openssl_verify_mode: 'none',
+  #   port: 587
+  # }
 
   # Settings specified here will take precedence over those in config/application.rb.
 
